@@ -1,3 +1,7 @@
+@import "./page/eventPage";
+@import "./page/homeOnlinePage";
+@import "./page/homeOfflinePage";
+
 @mixin default() {
   font-family: Roboto, sans-serif;
   padding: 0px;

@@ -3,8 +3,8 @@ import React from 'react';
 const FRIP_HomeOfflinePage = React.createClass({
   render: function() {
     return (
-      <div>
-        <h1>Je suis le composant Home offline</h1>
+      <div id="homeOfflinePage">
+        <h1>Je suis le composant home offline</h1>
       </div>
     );
   }
