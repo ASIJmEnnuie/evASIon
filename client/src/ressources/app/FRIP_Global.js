@@ -1,8 +1,8 @@
 import React from 'react';
 
-import FRIP_HomeOfflinePage from './page/FRIP_HomeOfflinePage';
-import FRIP_HomeOnlinePage from './page/FRIP_HomeOnlinePage';
-import FRIP_EventPage from './page/FRIP_EventPage';
+import FRIP_HomeOfflinePage from './pages/FRIP_HomeOfflinePage';
+import FRIP_HomeOnlinePage from './pages/FRIP_HomeOnlinePage';
+import FRIP_EventPage from './pages/FRIP_EventPage';
 
 const FRIP_Global = React.createClass({
   render: function() {

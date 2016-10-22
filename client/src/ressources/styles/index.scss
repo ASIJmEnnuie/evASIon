@@ -1,6 +1,5 @@
-@import "./page/eventPage";
-@import "./page/homeOnlinePage";
-@import "./page/homeOfflinePage";
+@import "./components/all";
+@import "./pages/all";
 
 @mixin default() {
   font-family: Roboto, sans-serif;
