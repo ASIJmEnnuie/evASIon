@@ -6,6 +6,8 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {fade} from 'material-ui/utils/colorManipulator';
 import { indigo400, indigo700, pinkA200, grey100, grey300, grey400, grey500, white, darkBlack, fullBlack } from 'material-ui/styles/colors';
 
+import FRIP_Global from './FRIP_Global';
+
 const muiTheme = getMuiTheme({
   fontFamily: 'Roboto, sans-serif',
   palette: {
@@ -31,4 +33,4 @@ injectTapEventPlugin();
 
 var racine =  document.getElementById('app');
 
-ReactDOM.render(<MuiThemeProvider muiTheme={muiTheme}><div><h1>Hello world</h1></div></MuiThemeProvider>, racine);
+ReactDOM.render(<MuiThemeProvider muiTheme={muiTheme}><FRIP_Global/></MuiThemeProvider>, racine);
