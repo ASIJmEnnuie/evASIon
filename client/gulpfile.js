@@ -93,8 +93,10 @@ gulp.task('watch', function () {
   livereload.listen();
   gulp.watch(source + '/ressources/styles/*.scss', ['compileCSS']);
   gulp.watch(source + '/ressources/styles/*/*.scss', ['compileCSS']);
+  gulp.watch(source + '/ressources/styles/*/*/*.scss', ['compileCSS']);
   gulp.watch(source + '/ressources/app/*.js', ['webpack']);
   gulp.watch(source + '/ressources/app/*/*.js', ['webpack']);
+  gulp.watch(source + '/ressources/app/*/*/*.js', ['webpack']);
   gulp.watch(source + '/ressources/app/*.jsx', ['webpack']);
   gulp.watch(source + '/ressources/datas/*.json',  ['webpack']);
   gulp.watch(source + '/ressources/datas/*/*.json',  ['webpack']);

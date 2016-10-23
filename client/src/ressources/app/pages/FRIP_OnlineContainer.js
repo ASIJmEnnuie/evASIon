@@ -1,9 +1,9 @@
 import React from 'react';
 
-import FRIP_NavbarOnline from './FRIP_Navbar';
-import FRIP_DrawerLeft from './FRIP_Drawer';
+import FRIP_NavbarOnline from '../components/FRIP_Navbar';
+import FRIP_DrawerLeft from '../components/FRIP_Drawer';
 
-const FRIP_OnlinePage = React.createClass({
+const FRIP_onlineContainer = React.createClass({
   getInitialState: function () {
     return {
       drawerLeftId: "drawerLeftExtended",
@@ -46,4 +46,4 @@ const FRIP_OnlinePage = React.createClass({
   }
 });
 
-export default FRIP_OnlinePage;
+export default FRIP_onlineContainer;

@@ -1,7 +1,7 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const FRIP_HomeOfflinePage = React.createClass({
+const FRIP_OfflineContainer = React.createClass({
   render: function() {
     return (
       <div id="homeOfflinePage">
@@ -12,4 +12,4 @@ const FRIP_HomeOfflinePage = React.createClass({
   }
 });
 
-export default FRIP_HomeOfflinePage;
+export default FRIP_OfflineContainer;

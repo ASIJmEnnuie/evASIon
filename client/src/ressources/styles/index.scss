@@ -1,6 +1,10 @@
 @import "./variables";
-@import "./components/all";
-@import "./pages/all";
+@import "./components/drawer";
+@import "./components/navbar";
+@import "./containers/online";
+@import "./containers/offline";
+@import "./containers/online_pages/eventPage";
+@import "./containers/online_pages/homePage";
 
 @mixin default() {
   font-family: Roboto, sans-serif;
