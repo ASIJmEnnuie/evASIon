@@ -25,15 +25,15 @@ const FRIP_Global = React.createClass({
 
   render: function() {
     var homeOffline = (
-      <div>
-        <FRIP_HomeOfflinePage connexion={this.connexion}/>
-      </div>
+      <FRIP_HomeOfflinePage connexion={this.connexion}/>
     );
 
     var homeOnline = (
-      <div>
-        <FRIP_HomeOnlinePage/>
-      </div>
+      <FRIP_HomeOnlinePage/>
+    );
+
+    var eventPage = (
+      <FRIP_EventPage/>
     );
 
     switch (this.state.page) {
@@ -43,6 +43,10 @@ const FRIP_Global = React.createClass({
 
       case "homeOnline":
         return homeOnline;
+        break;
+
+      case "event":
+        return eventPage;
         break;
 
       default:

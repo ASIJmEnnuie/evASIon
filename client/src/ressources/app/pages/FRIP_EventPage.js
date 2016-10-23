@@ -1,11 +1,14 @@
 import React from 'react';
+import FRIP_OnlinePage from './FRIP_OnlinePage';
 
 const FRIP_EventPage = React.createClass({
   render: function() {
     return (
-      <div id="eventPage">
-        <h1>Je suis le composant event</h1>
-      </div>
+      <FRIP_OnlinePage>
+        <div id="eventPage">
+          <h1>Bienvenue, vous êtes actuellement sur la page Events</h1>
+        </div>
+      </FRIP_OnlinePage>
     );
   }
 });
