@@ -14,12 +14,6 @@ var FRIP_IconLeft = React.createClass({
 });
 
 var FRIP_NavbarOnline = React.createClass({
-  getDefaultProps: function() {
-    return {
-      title:"evASIon",
-    }
-  },
-
   render: function() {
     return (
       <AppBar

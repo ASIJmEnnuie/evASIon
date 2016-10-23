@@ -10,7 +10,8 @@ const FRIP_Global = React.createClass({
     return {
       stompClient: null,
       donnees: [],
-      container: "offline"
+      container: "offline",
+      lang: "fr"
     }
   },
 
@@ -23,12 +24,14 @@ const FRIP_Global = React.createClass({
   },
 
   render: function() {
+    var data = require("../data/"+this.state.lang+"/online");
+
     var offlinePage = (
       <FRIP_OfflineContainer connexion={this.connexion}/>
     );
 
     var onlinePage = (
-      <FRIP_OnlineContainer/>
+      <FRIP_OnlineContainer data={data.onlineContainer}/>
     );
 
     switch (this.state.container) {

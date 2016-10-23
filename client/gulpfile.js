@@ -98,8 +98,7 @@ gulp.task('watch', function () {
   gulp.watch(source + '/ressources/app/*/*.js', ['webpack']);
   gulp.watch(source + '/ressources/app/*/*/*.js', ['webpack']);
   gulp.watch(source + '/ressources/app/*.jsx', ['webpack']);
-  gulp.watch(source + '/ressources/datas/*.json',  ['webpack']);
-  gulp.watch(source + '/ressources/datas/*/*.json',  ['webpack']);
+  gulp.watch(source + '/ressources/data/*/*.json',  ['webpack']);
   gulp.watch(source + '/index.html',  ['copyHTML']);
 });
 

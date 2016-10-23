@@ -52,16 +52,21 @@ const FRIP_OnlineContainer = React.createClass({
       default:
         page = (<FRIP_HomePage/>);
     }
-    var value = (<div><h1>Hello world</h1></div>);
+
+    console.log(this.props.data);
+
     return (
       <div>
         <FRIP_DrawerLeft
           id={this.state.drawerLeftId}
           changePage={this.changePage}
-          itemList={itemList}
+          itemList={this.props.data.drawerLeft.itemList}
         />
         <div id={this.state.pageId}>
-          <FRIP_NavbarOnline clickOnLeftButton={this.clickOnLeftButton}/>
+          <FRIP_NavbarOnline
+            clickOnLeftButton={this.clickOnLeftButton}
+            title={this.props.data.navbar.title}
+          />
           {page}
         </div>
       </div>

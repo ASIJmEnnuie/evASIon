@@ -1,0 +1,10 @@
+{
+  "onlineContainer": {
+    "navbar": {
+      "title": "evASIon"
+    },
+    "drawerLeft": {
+      "itemList": ["Accueil", "Évènements"]
+    }
+  }
+}
