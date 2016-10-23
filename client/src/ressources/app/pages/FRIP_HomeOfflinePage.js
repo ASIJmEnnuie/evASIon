@@ -1,10 +1,12 @@
 import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const FRIP_HomeOfflinePage = React.createClass({
   render: function() {
     return (
       <div id="homeOfflinePage">
-        <h1>Je suis le composant home offline</h1>
+        <h1>Bienvenue, vous êtes actuellement sur la page HomeOffline</h1>
+        <RaisedButton label="Connexion" primary={true} onTouchTap={this.props.connexion}/>
       </div>
     );
   }
