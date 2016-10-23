@@ -24,7 +24,7 @@ const FRIP_Global = React.createClass({
   },
 
   render: function() {
-    var data = require("../data/"+this.state.lang+"/online");
+    var data = require("../data/"+this.state.lang+"/onlineContainer");
 
     var offlinePage = (
       <FRIP_OfflineContainer connexion={this.connexion}/>
