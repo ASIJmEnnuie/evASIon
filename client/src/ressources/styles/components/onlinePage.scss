@@ -1,0 +1,21 @@
+@mixin page($left) {
+  height: 100%;
+  width: 100% - $left;
+  margin-left: $left;
+  transition: $transitionTime;
+}
+
+#pageReduced {
+  @include page($widthDrawerLeftMobile);
+}
+
+#pageExtended {
+  @include page(0%);
+}
+
+@media screen and ("min-width": "900px") {
+  #pageReduced {
+    width: 100% - $widthDrawerLeftDesktop;
+    margin-left: $widthDrawerLeftDesktop;
+  }
+}

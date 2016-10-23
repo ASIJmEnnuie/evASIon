@@ -1,5 +1,5 @@
 import React from 'react';
-import FRIP_OnlinePage from './FRIP_OnlinePage';
+import FRIP_OnlinePage from '../components/FRIP_OnlinePage';
 
 const FRIP_HomeOnlinePage = React.createClass({
   render: function() {

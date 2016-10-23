@@ -1,0 +1,30 @@
+@mixin drawerLeft($left) {
+  background-color: white;
+  height: 100%;
+  position: fixed;
+  z-index: 1101;
+  top: 0;
+  left: $left;
+  border-color: $gray;
+  width: $widthDrawerLeftMobile;
+  transition: $transitionTime;
+}
+
+#drawerLeftExtended {
+  @include drawerLeft(0%);
+  -moz-box-shadow: 2px 2px 10px 0px $gray;
+  -webkit-box-shadow: 2px 2px 10px 0px $gray;
+  -o-box-shadow: 2px 2px 10px 0px $gray;
+  box-shadow: 2px 2px 10px 0px $gray;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=$gray, Direction=134, Strength=10);
+}
+
+#drawerLeftReduced {
+  @include drawerLeft(- $widthDrawerLeftMobile);
+}
+
+@media screen and ("min-width": "900px") {
+  #drawerLeftExtended {
+    width: $widthDrawerLeftDesktop;
+  }
+}
