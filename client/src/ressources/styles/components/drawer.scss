@@ -19,6 +19,14 @@
   filter:progid:DXImageTransform.Microsoft.Shadow(color=$gray, Direction=134, Strength=10);
 }
 
+#drawerLeftExtended > div {
+  width: 100% !important;
+}
+
+#drawerLeftExtended > div > div{
+  padding: 0px !important;
+}
+
 #drawerLeftReduced {
   @include drawerLeft(- $widthDrawerLeftMobile);
 }
@@ -27,4 +35,5 @@
   #drawerLeftExtended {
     width: $widthDrawerLeftDesktop;
   }
+
 }

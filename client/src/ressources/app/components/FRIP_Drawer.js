@@ -1,19 +1,27 @@
 import React from 'react';
+import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 
 var FRIP_DrawerLeft = React.createClass({
   getDefaultProps: function() {
     return {
-      open: true,
-      id: "leftDrawerOpen"
+      id: "leftDrawerOpen",
+      itemList: []
    }
  },
 
   render: function() {
     return (
-      <div id={this.props.id} open={this.props.open}>
-        <MenuItem>Accueil</MenuItem>
-        <MenuItem>Events</MenuItem>
+      <div id={this.props.id}>
+        <Menu onItemTouchTap={this.props.changePage}>
+          {
+            this.props.itemList.map(function(item, i){
+              return (
+                <MenuItem key={i}>{item}</MenuItem>
+              );
+            })
+          }
+        </Menu>
       </div>
     );
   }

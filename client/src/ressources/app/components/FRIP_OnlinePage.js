@@ -32,7 +32,11 @@ const FRIP_OnlinePage = React.createClass({
   render: function() {
     return (
       <div>
-        <FRIP_DrawerLeft id={this.state.drawerLeftId}/>
+        <FRIP_DrawerLeft
+          id={this.state.drawerLeftId}
+          changePage={this.props.changePage}
+          itemList={this.props.itemList}
+        />
         <div id={this.state.pageId}>
           <FRIP_NavbarOnline clickOnLeftButton={this.clickOnLeftButton}/>
           {this.props.children}
