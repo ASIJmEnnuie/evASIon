@@ -31,6 +31,14 @@
   @include drawerLeft(- $widthDrawerLeftMobile);
 }
 
+#drawerLeftReduced > div {
+  width: 100% !important;
+}
+
+#drawerLeftReduced > div > div{
+  padding: 0px !important;
+}
+
 @media screen and ("min-width": "900px") {
   #drawerLeftExtended {
     width: $widthDrawerLeftDesktop;
