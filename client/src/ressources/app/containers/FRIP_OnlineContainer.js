@@ -6,8 +6,6 @@ import FRIP_DrawerLeft from '../components/FRIP_Drawer';
 import FRIP_HomePage from './online_pages/FRIP_HomePage';
 import FRIP_EventPage from './online_pages/FRIP_EventPage';
 
-const itemList = ["Accueil", "Évènements"];
-
 const FRIP_OnlineContainer = React.createClass({
   getInitialState: function () {
     return {
@@ -44,28 +42,27 @@ const FRIP_OnlineContainer = React.createClass({
 
     switch (this.state.page) {
       case 0:
-        page = (<FRIP_HomePage/>);
+        page = (<FRIP_HomePage id={this.state.pageId}/>);
         break;
       case 1:
-        page = (<FRIP_EventPage/>);
+        page = (<FRIP_EventPage id={this.state.pageId}/>);
         break;
       default:
-        page = (<FRIP_HomePage/>);
+        page = (<FRIP_HomePage id={this.state.pageId}/>);
     }
-
-    console.log(this.props.data);
 
     return (
       <div>
-        <FRIP_DrawerLeft
-          id={this.state.drawerLeftId}
-          changePage={this.changePage}
-          itemList={this.props.data.drawerLeft.itemList}
+        <FRIP_NavbarOnline
+          clickOnLeftButton={this.clickOnLeftButton}
+          title={this.props.data.navbar.title}
         />
-        <div id={this.state.pageId}>
-          <FRIP_NavbarOnline
-            clickOnLeftButton={this.clickOnLeftButton}
-            title={this.props.data.navbar.title}
+
+        <div id="container">
+          <FRIP_DrawerLeft
+            id={this.state.drawerLeftId}
+            changePage={this.changePage}
+            itemList={this.props.data.drawerLeft.itemList}
           />
           {page}
         </div>

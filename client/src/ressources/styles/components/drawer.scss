@@ -1,13 +1,8 @@
-@mixin drawerLeft($left) {
+@mixin drawerLeft($width) {
   background-color: white;
   height: 100%;
-  position: fixed;
-  z-index: 1101;
-  top: 0;
-  left: $left;
+  width: $width;
   border-color: $gray;
-  width: $widthDrawerLeftMobile;
-  transition: $transitionTime;
 }
 
 #drawerLeftExtended {
@@ -19,29 +14,20 @@
   filter:progid:DXImageTransform.Microsoft.Shadow(color=$gray, Direction=134, Strength=10);
 }
 
-#drawerLeftExtended > div {
-  width: 100% !important;
-}
-
-#drawerLeftExtended > div > div{
-  padding: 0px !important;
-}
-
 #drawerLeftReduced {
-  @include drawerLeft(- $widthDrawerLeftMobile);
-}
-
-#drawerLeftReduced > div {
-  width: 100% !important;
-}
-
-#drawerLeftReduced > div > div{
-  padding: 0px !important;
+  display: none;
 }
 
 @media screen and ("min-width": "900px") {
   #drawerLeftExtended {
     width: $widthDrawerLeftDesktop;
   }
+}
 
+#drawerLeftExtended > div {
+  width: 100% !important;
+}
+
+#drawerLeftExtended > div > div{
+  padding: 0px !important;
 }

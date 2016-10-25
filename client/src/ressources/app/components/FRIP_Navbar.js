@@ -18,6 +18,7 @@ var FRIP_NavbarOnline = React.createClass({
     return (
       <AppBar
         title={this.props.title}
+        id="navbar"
         iconElementLeft={<FRIP_IconLeft openLeftDrawer={this.props.clickOnLeftButton} />}
       />
     );

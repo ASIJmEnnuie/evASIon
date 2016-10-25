@@ -1,21 +1,25 @@
-@mixin page($left) {
-  height: 100%;
-  width: 100% - $left;
-  margin-left: $left;
-  transition: $transitionTime;
+@mixin page($width) {
+  height: auto;
+  padding-left: 20px;
+  width: $width;
+}
+
+#container {
+  width: 100%;
+  height: 100% - $heightNavbar;
+  display: inline-flex;
 }
 
 #pageReduced {
-  @include page($widthDrawerLeftMobile);
+  @include page(100% - $widthDrawerLeftMobile);
 }
 
 #pageExtended {
-  @include page(0%);
+  @include page(100%);
 }
 
 @media screen and ("min-width": "900px") {
   #pageReduced {
     width: 100% - $widthDrawerLeftDesktop;
-    margin-left: $widthDrawerLeftDesktop;
   }
 }
