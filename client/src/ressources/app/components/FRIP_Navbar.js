@@ -8,6 +8,9 @@ import ActionReorder from 'material-ui/svg-icons/action/reorder';
 
 var FRIP_NavbarOnline = React.createClass({
   render: function() {
+    var lengthMenuItem = this.props.text.iconMenu.length;
+    var navbar = this;
+
     var avatar = (
       <IconButton style={{padding: 0}}>
         <Avatar size={40}>A</Avatar>
@@ -20,19 +23,16 @@ var FRIP_NavbarOnline = React.createClass({
       </IconButton>
     );
 
+
     var iconRight = (
       <IconMenu
         iconButtonElement={avatar}
         anchorOrigin={{horizontal: 'left', vertical: 'top'}}
         targetOrigin={{horizontal: 'left', vertical: 'top'}}
       >
-      {
-        this.props.text.iconMenu.map(function(value, i) {
-          return (
-            <MenuItem key={"menuItemNavbar"+i} primaryText={value} />
-          );
-        })
-      }
+        <MenuItem onTouchTap={navbar.props.accessToParameters} primaryText={this.props.text.iconMenu[0]} />
+        <MenuItem onTouchTap={navbar.props.accessToHelp} primaryText={this.props.text.iconMenu[1]} />
+        <MenuItem onTouchTap={navbar.props.deconnexion} primaryText={this.props.text.iconMenu[2]} />
       </IconMenu>
     );
 

@@ -20,6 +20,14 @@ const FRIP_OnlineContainer = React.createClass({
     this.setState({page: index});
   },
 
+  accessToParameters: function() {
+    console.log("paramètres");
+  },
+
+  accessToHelp: function() {
+    console.log("aide");
+  },
+
   clickOnLeftButton: function(){
     this.setState(function(previousState, currentProps) {
       if (previousState.openLeftDrawer === true) {
@@ -39,7 +47,6 @@ const FRIP_OnlineContainer = React.createClass({
 
   render: function() {
     var page = null;
-
     switch (this.state.page) {
       case 0:
         page = (<FRIP_HomePage id={this.state.pageId}/>);
@@ -50,12 +57,14 @@ const FRIP_OnlineContainer = React.createClass({
       default:
         page = (<FRIP_HomePage id={this.state.pageId}/>);
     }
-    console.log(this.props.navbar);
     return (
       <div>
         <FRIP_NavbarOnline
           clickOnLeftButton={this.clickOnLeftButton}
           text={this.props.data.navbar}
+          accessToParameters={this.accessToParameters}
+          accessToHelp={this.accessToHelp}
+          deconnexion={this.props.deconnexion}
         />
         <div id="container">
           <FRIP_DrawerLeft

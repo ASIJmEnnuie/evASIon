@@ -15,23 +15,29 @@ const FRIP_Global = React.createClass({
     }
   },
 
-  connexion: function () {
+  connexion: function() {
     if (this.state.stompClient === null) {
-      console.log("Connexion");
-      // Initiation de la connexion avec les sockets
+      // TODO initiate stompClient connexion
       this.setState({container:"online"});
     }
   },
 
+  deconnexion: function() {
+    //TODO disconnect stompClient here
+    this.setState({container:"offline"});
+  },
+
   render: function() {
     var data = require("../data/"+this.state.lang+"/onlineContainer");
-
     var offlinePage = (
       <FRIP_OfflineContainer connexion={this.connexion}/>
     );
 
     var onlinePage = (
-      <FRIP_OnlineContainer data={data.onlineContainer}/>
+      <FRIP_OnlineContainer
+        data={data.onlineContainer}
+        deconnexion={this.deconnexion}
+      />
     );
 
     switch (this.state.container) {
