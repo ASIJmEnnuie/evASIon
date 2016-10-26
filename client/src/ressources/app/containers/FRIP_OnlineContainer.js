@@ -71,6 +71,7 @@ const FRIP_OnlineContainer = React.createClass({
             id={this.state.drawerLeftId}
             changePage={this.changePage}
             itemList={this.props.data.drawerLeft.itemList}
+            page={this.state.page}
           />
           {page}
         </div>
