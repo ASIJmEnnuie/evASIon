@@ -1,7 +1,8 @@
 {
   "onlineContainer": {
     "navbar": {
-      "title": "evASIon"
+      "title": "evASIon",
+      "iconMenu": ["Paramètres", "Aide", "Déconnexion"]
     },
     "drawerLeft": {
       "itemList": ["Accueil", "Évènements"]
