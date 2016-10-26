@@ -1,7 +1,7 @@
 
 $gray: gray;
 $transitionTime: 1s;
-
+$heightNavbar: 64px;
 
 $breakpoints: (
   'small': 900px,
@@ -12,10 +12,4 @@ $widthDrawerLeft: (
   'mobile': 50%,
   'medium': 15%,
   'large': 15%
-);
-
-$heightNavbar: (
-  'mobile': 11.5%,
-  'medium': 8.5%,
-  'large': 8.5%
 );

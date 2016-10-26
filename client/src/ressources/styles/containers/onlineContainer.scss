@@ -6,15 +6,10 @@
 
 #container {
   width: 100%;
-  height: 100% - map-get($heightNavbar, mobile);
+  height: -webkit-calc(100% - #{$heightNavbar});
+  height: -moz-calc(100% - #{$heightNavbar});
+  height: calc(100% - #{$heightNavbar});
   display: inline-flex;
-
-  @include respond-to(medium) {
-    height: 100% - map-get($heightNavbar, medium);
-  }
-  @include respond-to(large) {
-    height: 100% - map-get($heightNavbar, large);
-  }
 }
 
 #pageReduced {
