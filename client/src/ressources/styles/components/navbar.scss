@@ -1,3 +1,10 @@
 #navbar {
-  height: $heightNavbar;
+  height: map-get($heightNavbar, mobile);
+
+  @include respond-to(medium) {
+    height: map-get($heightNavbar, medium)
+  };
+  @include respond-to(large) {
+    height: map-get($heightNavbar, large)
+  };
 }

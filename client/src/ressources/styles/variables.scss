@@ -1,5 +1,21 @@
-$widthDrawerLeftDesktop: 15%;
-$widthDrawerLeftMobile: 50%;
-$transitionTime: 1s;
+
 $gray: gray;
-$heightNavbar: 8.5%;
+$transitionTime: 1s;
+
+
+$breakpoints: (
+  'small': 900px,
+  'large': 1400px
+);
+
+$widthDrawerLeft: (
+  'mobile': 50%,
+  'medium': 15%,
+  'large': 15%
+);
+
+$heightNavbar: (
+  'mobile': 11.5%,
+  'medium': 8.5%,
+  'large': 8.5%
+);
