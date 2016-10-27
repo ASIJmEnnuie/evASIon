@@ -3,6 +3,11 @@
     "navbar": {
       "title": "evASIon",
       "name": "name"
+    },
+
+    "carousel": {
+      "pictureList": ["../../images/imagesAccueil/acceuil.png","../../images/imagesAccueil/acceuilOnline.png"],
+      "namePicture": ["Accueil","Accueil Online"]
     }
   }
 }

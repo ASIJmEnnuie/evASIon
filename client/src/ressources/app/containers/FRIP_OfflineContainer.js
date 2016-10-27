@@ -2,6 +2,7 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import FRIP_NavbarOffline from '../components/FRIP_NavbarOffline';
+import FRIP_CarouselOffline from '../components/FRIP_CarouselOffline';
 
 const FRIP_OfflineContainer = React.createClass({
   render: function() {
@@ -12,7 +13,15 @@ const FRIP_OfflineContainer = React.createClass({
         />
         <div id="homeOfflinePage">
           <h1>Bienvenue, vous êtes actuellement sur la page HomeOffline</h1>
-          <RaisedButton label="Connexion" primary={true} onTouchTap={this.props.connexion}/>
+          <div id="carousel">
+            <FRIP_CarouselOffline
+                pictureList={this.props.data.carousel.pictureList}
+                namePicture={this.props.data.carousel.namePicture}
+              />
+          </div>
+          <div id="formulaire">
+            <RaisedButton label="Connexion" primary={true} onTouchTap={this.props.connexion}/>
+          </div>
         </div>
       </div>
     );
