@@ -30,7 +30,8 @@ var configWebpack = {
 gulp.task('compileCSS', () =>
     sass(source + '/ressources/styles/index.scss', {
       sourcemap: false,
-      require: ["sass-json-vars"]
+      require: ["sass-json-vars"],
+      // loadPath: ["node_modules/slick-carousel/slick", "node_modules/slick-carousel/slick/fonts"]
     })
     .on('error', sass.logError)
     .pipe(plugins.csscomb())
