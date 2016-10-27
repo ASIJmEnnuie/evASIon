@@ -1,10 +1,10 @@
+@import "slick-theme.scss";
+@import "slick.scss";
+
 .slider-slide > div {
   height: 200px;
   border-width: 1px;
   border-style: solid;
-
-@import "slick-theme.scss";
-@import "slick.scss";
 
 .slick-list {
   background-color: $gray;
