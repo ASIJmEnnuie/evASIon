@@ -1,24 +1,21 @@
 @mixin page($width) {
   height: auto;
-  padding-left: 20px;
   width: $width;
 }
 
 #container {
   width: 100%;
-  height: -webkit-calc(100% - #{$heightNavbar});
-  height: -moz-calc(100% - #{$heightNavbar});
-  height: calc(100% - #{$heightNavbar});
+  @include calc(height, "100% - " + $heightNavbar);
   display: inline-flex;
 }
 
 #pageReduced {
   @include page(100% - map-get($widthDrawerLeft, mobile));
   @include respond-to(medium) {
-    width: 100% - map-get($widthDrawerLeft, medium)
+    width: 100% - map-get($widthDrawerLeft, medium);
   };
   @include respond-to(large) {
-    width: 100% - map-get($widthDrawerLeft, large)
+    width: 100% - map-get($widthDrawerLeft, large);
   };
 }
 

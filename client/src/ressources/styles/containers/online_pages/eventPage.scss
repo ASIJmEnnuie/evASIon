@@ -1,3 +1,8 @@
-#eventPage {
-  color: red;
+#homeOnlinePage {
+  @include calc( width, '100% - 40px');
+  @include calc( height, '100% - 40px');
+  margin: 20px;
+  h1 {
+    margin: 0px;
+  }
 }
