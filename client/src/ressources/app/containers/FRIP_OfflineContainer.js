@@ -1,8 +1,8 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import FRIP_NavbarOffline from '../components/FRIP_NavbarOffline';
-import FRIP_CarouselOffline from '../components/FRIP_CarouselOffline';
+import {FRIP_NavbarOffline} from '../components/FRIP_Navbar';
+import {FRIP_CarouselOffline} from '../components/FRIP_Carousel';
 
 const FRIP_OfflineContainer = React.createClass({
   render: function() {
@@ -14,10 +14,9 @@ const FRIP_OfflineContainer = React.createClass({
         <div id="homeOfflinePage">
           <h1>Bienvenue, vous êtes actuellement sur la page HomeOffline</h1>
           <div id="carousel">
-            <FRIP_CarouselOffline
-                pictureList={this.props.data.carousel.pictureList}
-                namePicture={this.props.data.carousel.namePicture}
-              />
+            <FRIP_CarouselOffline>
+              
+            </FRIP_CarouselOffline>
           </div>
           <div id="formulaire">
             <RaisedButton label="Connexion" primary={true} onTouchTap={this.props.connexion}/>

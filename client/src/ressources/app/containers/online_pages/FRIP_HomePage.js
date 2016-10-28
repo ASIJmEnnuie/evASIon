@@ -1,5 +1,5 @@
 import React from 'react';
-import FRIP_Carousel from '../../components/FRIP_Carousel';
+import {FRIP_Carousel} from '../../components/FRIP_Carousel';
 
 const FRIP_HomePage = React.createClass({
   render: function() {

@@ -47,4 +47,19 @@ var FRIP_NavbarOnline = React.createClass({
   }
 });
 
-export default FRIP_NavbarOnline;
+var FRIP_NavbarOffline = React.createClass({
+  render: function() {
+    var navbar = this;
+
+    return (
+      <AppBar
+        id="navbar"
+        title={this.props.text.title}
+        name={this.props.text.name}
+        showMenuIconButton={false}
+      />
+    );
+  }
+});
+
+export {FRIP_NavbarOnline, FRIP_NavbarOffline};

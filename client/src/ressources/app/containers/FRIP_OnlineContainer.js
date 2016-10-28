@@ -1,6 +1,6 @@
 import React from 'react';
 
-import FRIP_NavbarOnline from '../components/FRIP_Navbar';
+import {FRIP_NavbarOnline} from '../components/FRIP_Navbar';
 import FRIP_DrawerLeft from '../components/FRIP_Drawer';
 
 import FRIP_HomePage from './online_pages/FRIP_HomePage';
