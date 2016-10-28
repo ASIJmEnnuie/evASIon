@@ -6,7 +6,7 @@
     },
 
     "carousel": {
-      "pictureList": ["../../images/imagesAccueil/acceuil.png","../../images/imagesAccueil/acceuilOnline.png"],
+      "pictureList": ["ressources/images/imagesAccueil/accueil.png","ressources/images/imagesAccueil/accueilOnline.png"],
       "namePicture": ["Accueil","Accueil Online"]
     }
   }

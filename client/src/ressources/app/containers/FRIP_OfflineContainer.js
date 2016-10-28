@@ -12,11 +12,12 @@ const FRIP_OfflineContainer = React.createClass({
           text={this.props.data.navbar}
         />
         <div id="homeOfflinePage">
-          <h1>Bienvenue, vous êtes actuellement sur la page HomeOffline</h1>
           <div id="carousel">
-            <FRIP_CarouselOffline>
-              
-            </FRIP_CarouselOffline>
+            <FRIP_CarouselOffline
+              id="carousselOffline"
+              pictureList={this.props.data.carousel.pictureList}
+              namePicture={this.props.data.carousel.namePicture}
+            />
           </div>
           <div id="formulaire">
             <RaisedButton label="Connexion" primary={true} onTouchTap={this.props.connexion}/>

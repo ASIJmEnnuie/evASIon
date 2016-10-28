@@ -1,18 +1,21 @@
 #homeOfflinePage {
   color: blue;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  margin-right: 1%;
+  @include calc(height, "100% - " + $heightNavbar);
 }
 
 #carousel {
   width: 48%;
-  height: 60%; // à régler
+  @include calc(height, "98% - " + $heightNavbar);
   float: left;
-  margin-left: 1%;
-  margin-right: 1%;
+  margin-right: 2%;
 }
 
 #formulaire {
   width: 48%;
+  @include calc(height, "98% - " + $heightNavbar);
   overflow: auto;
-  margin-left: 1%;
-  margin-right: 1%;
 }
