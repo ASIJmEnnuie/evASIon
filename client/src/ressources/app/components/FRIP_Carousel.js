@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'nuka-carousel';
+import Slider from 'react-slick';
 
 const FRIP_Carousel = React.createClass({
   getInitialState: function() {
@@ -37,38 +38,38 @@ const FRIP_Carousel = React.createClass({
   }
 });
 
-const FRIP_CarouselOffline = React.createClass({
-  getInitialState: function() {
-    return {
-      animationDuration: 800,
-      autoplay: true,
-      autoplayInterval: 3000,
-      infiniteLoop: true,
+var FRIP_CarouselOffline = React.createClass({
+  render: function () {
+    var carousel = this;
+
+    var settings = {
+      dots: true,
+			arrows: false,
+      infinite: true,
+			centerMode: false,
+			autoplay: true,
+			autoplaySpeed: 3000,
+      draggable: false,
+			pauseOnHover: true,
+      speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-    }
-  },
+      fade: true
+    };
 
-  render: function() {
-    var carousel = this;
     var slides = [];
     carousel.props.pictureList.map(function(item,i) {
       slides.push(
-        <img src={item} alt={carousel.props.namePicture[i]} />
-      )
+        <div key={i} className="slide">
+          <img src={item} alt={carousel.props.namePicture[i]}></img>
+        </div>
+      );
     })
 
     return (
-      <Carousel
-        animationDuration={this.state.animationDuration}
-        autoplay={this.state.autoplay}
-        autoplayInterval={this.state.autoplayInterval}
-        slidesToShow={this.state.slidesToShow}
-        slidesToScroll={this.state.slidesToScroll}
-        wrapAround={this.state.infiniteLoop}
-      >
+      <Slider {...settings}>
         {slides}
-      </Carousel>
+      </Slider>
     );
   }
 });

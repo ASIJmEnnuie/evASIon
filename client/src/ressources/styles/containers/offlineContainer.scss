@@ -9,13 +9,13 @@
 
 #carousel {
   width: 48%;
-  @include calc(height, "98% - " + $heightNavbar);
+  height: 85%;
   float: left;
   margin-right: 2%;
 }
 
 #formulaire {
   width: 48%;
-  @include calc(height, "98% - " + $heightNavbar);
+  height: 85%;
   overflow: auto;
 }

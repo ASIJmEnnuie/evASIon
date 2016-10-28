@@ -1,5 +1,16 @@
+@import "slick-theme.scss";
+@import "slick.scss";
+
 .slider-slide > div {
   height: 200px;
   border-width: 1px;
   border-style: solid;
+}
+
+.slide {
+  width: 0%;
+  margin: 0px;
+  background-color: white;
+  position: inherit;
+  text-align: center;
 }
