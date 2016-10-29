@@ -1,7 +1,7 @@
 import React from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
 import {FRIP_NavbarOffline} from '../components/FRIP_Navbar';
 import {FRIP_CarouselOffline} from '../components/FRIP_Carousel';
+import {FRIP_FormConnection} from '../components/FRIP_Form';
 
 const FRIP_OfflineContainer = React.createClass({
   render: function() {
@@ -19,7 +19,10 @@ const FRIP_OfflineContainer = React.createClass({
             />
           </div>
           <div id="formulaire">
-            <RaisedButton label="Connexion" primary={true} onTouchTap={this.props.connexion}/>
+            <FRIP_FormConnection
+              connexion={this.props.connexion}
+              text={this.props.data.formulaire}
+            />
           </div>
         </div>
       </div>

@@ -70,9 +70,36 @@ const FRIP_Carousel = React.createClass({
   }
 });
 
-var FRIP_CarouselOffline = React.createClass({
-  render: function () {
+const FRIP_CarouselOffline = React.createClass({
+  render: function() {
     var carousel = this;
+
+    var decorator = [
+      {
+        component: React.createClass({
+          render() {
+            return (
+              <IconButton onTouchTap={this.props.previousSlide}>
+                <HardwareKeyboardArrowLeft />
+              </IconButton>
+            )
+          }
+        }),
+        position: 'CenterLeft',
+      },
+      {
+        component: React.createClass({
+          render() {
+            return (
+              <IconButton onTouchTap={this.props.nextSlide}>
+                <HardwareKeyboardArrowRight />
+              </IconButton>
+            )
+          }
+        }),
+        position: 'CenterRight',
+      },
+    ];
 
     var settings = {
       animationDuration: 1000,
@@ -81,6 +108,7 @@ var FRIP_CarouselOffline = React.createClass({
       wrapAround: true,
       slidesToShow: 1,
       slidesToScroll: 1,
+      decorators: decorator,
     };
 
     var slides = [];

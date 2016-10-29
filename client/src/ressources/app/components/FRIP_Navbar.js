@@ -47,7 +47,7 @@ var FRIP_NavbarOnline = React.createClass({
   }
 });
 
-var FRIP_NavbarOffline = React.createClass({
+const FRIP_NavbarOffline = React.createClass({
   render: function() {
     var navbar = this;
 

@@ -8,6 +8,12 @@
     "carousel": {
       "pictureList": ["ressources/images/imagesAccueil/accueil.png","ressources/images/imagesAccueil/accueilOnline.png"],
       "namePicture": ["Accueil","Accueil Online"]
+    },
+
+    "formulaire": {
+      "email": "Email",
+      "password": "Mot de passe",
+      "errorText": "Champ obligatoire"
     }
   }
 }
