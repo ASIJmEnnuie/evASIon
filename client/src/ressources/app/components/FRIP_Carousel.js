@@ -1,6 +1,5 @@
 import React from 'react';
 import Carousel from 'nuka-carousel';
-import Slider from 'react-slick';
 import IconButton from 'material-ui/IconButton';
 import HardwareKeyboardArrowLeft from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
 import HardwareKeyboardArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right';

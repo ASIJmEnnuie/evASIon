@@ -1,6 +1,5 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-
 import {FRIP_NavbarOffline} from '../components/FRIP_Navbar';
 import {FRIP_CarouselOffline} from '../components/FRIP_Carousel';
 

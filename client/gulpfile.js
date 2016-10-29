@@ -30,8 +30,7 @@ var configWebpack = {
 gulp.task('compileCSS', () =>
     sass(source + '/ressources/styles/index.scss', {
       sourcemap: false,
-      require: ["sass-json-vars"],
-      loadPath: ["node_modules/slick-carousel/slick", "node_modules/react-slick/node_modules/slick-carousel/slick"]
+      require: ["sass-json-vars"]
     })
     .on('error', sass.logError)
     .pipe(plugins.csscomb())
@@ -57,11 +56,6 @@ gulp.task('copyImg', function() {
 gulp.task('copyImgPNG', function() {
   return gulp.src(source + '/ressources/images/*/*.png')
   .pipe(gulp.dest(destination + '/ressources/images/'));
-});
-
-gulp.task('copyFonts', function() {
-  return gulp.src("node_modules/react-slick/node_modules/slick-carousel/slick/fonts/*")
-  .pipe(gulp.dest(destination + '/ressources/styles/fonts/'));
 });
 
 gulp.task('minifyCSS', function () {
@@ -113,7 +107,7 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('build', ['webpack', 'compileCSS', 'copyHTML', 'copyImg', 'copyImgPNG', 'copyFonts']);
+gulp.task('build', ['webpack', 'compileCSS', 'copyHTML', 'copyImg', 'copyImgPNG']);
 gulp.task('minify', ['minifyCSS', 'minifyJS', 'minifyHTML']);
 gulp.task('prod', ['build',  'minify']);
 gulp.task('default', ['build']);
