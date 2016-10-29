@@ -1,9 +1,40 @@
 import React from 'react';
 import Carousel from 'nuka-carousel';
 import Slider from 'react-slick';
+import IconButton from 'material-ui/IconButton';
+import HardwareKeyboardArrowLeft from 'material-ui/svg-icons/hardware/keyboard-arrow-left';
+import HardwareKeyboardArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right';
+
 
 const FRIP_Carousel = React.createClass({
   getInitialState: function() {
+    var decorator = [
+      {
+        component: React.createClass({
+          render() {
+            return (
+              <IconButton onTouchTap={this.props.previousSlide}>
+                <HardwareKeyboardArrowLeft />
+              </IconButton>
+            )
+          }
+        }),
+        position: 'CenterLeft',
+      },
+      {
+        component: React.createClass({
+          render() {
+            return (
+              <IconButton onTouchTap={this.props.nextSlide}>
+                <HardwareKeyboardArrowRight />
+              </IconButton>
+            )
+          }
+        }),
+        position: 'CenterRight',
+      },
+  ];
+
     return {
       animationDuration: 1000,
       autoplay: true,
@@ -11,6 +42,7 @@ const FRIP_Carousel = React.createClass({
       infiniteLoop: true,
       slidesToShow: 3,
       slidesToScroll: 3,
+      decorators: decorator,
     }
   },
 
@@ -23,6 +55,7 @@ const FRIP_Carousel = React.createClass({
         slidesToShow={this.state.slidesToShow}
         slidesToScroll={this.state.slidesToScroll}
         wrapAround={this.state.infiniteLoop}
+        decorators={this.state.decorators}
       >
         <div>1</div>
         <div>2</div>
