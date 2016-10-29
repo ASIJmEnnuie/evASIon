@@ -2,18 +2,11 @@
 @import "slick.scss";
 
 .slider-slide > div {
-  height: 200px;
+  height: 500px;
   border-width: 1px;
   border-style: solid;
-}
+  border-color: black;
 
-.slide {
-  margin: 0px;
-  background-color: white;
-  position: inherit;
-  text-align: center;
-  height: 500px;
-  
   img {
     height: 100%;
     width: 100%;

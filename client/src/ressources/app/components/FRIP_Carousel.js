@@ -76,18 +76,12 @@ var FRIP_CarouselOffline = React.createClass({
     var carousel = this;
 
     var settings = {
-      dots: true,
-			arrows: false,
-      infinite: true,
-			centerMode: false,
-			autoplay: true,
-			autoplaySpeed: 3000,
-      draggable: false,
-			pauseOnHover: true,
-      speed: 500,
+      animationDuration: 1000,
+      autoplay: true,
+      autoplayInterval: 3000,
+      wrapAround: true,
       slidesToShow: 1,
       slidesToScroll: 1,
-      fade: true
     };
 
     var slides = [];
@@ -100,9 +94,9 @@ var FRIP_CarouselOffline = React.createClass({
     })
 
     return (
-      <Slider {...settings}>
+      <Carousel {...settings}>
         {slides}
-      </Slider>
+      </Carousel>
     );
   }
 });
