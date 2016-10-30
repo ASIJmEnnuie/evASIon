@@ -10,10 +10,21 @@
       "namePicture": ["Accueil","Accueil Online"]
     },
 
-    "formulaire": {
+    "form": {
       "email": "Email",
       "password": "Mot de passe",
-      "errorText": "Champ obligatoire"
-    }
+      "errorText": "Champ obligatoire",
+      "name": "Nom",
+      "surname": "Prénom",
+      "passwordConfirmation": "Confirmation de mot de passe",
+      "nameFormConnexion": "Connection",
+      "nameFormInscription": "Inscription"
+    },
+
+    "or": "ou",
+    "buttonConnexionLabel": "Connection",
+    "buttonInscriptionLabel": "Inscription",
+    "linkInscriptionLabel": "Pas encore inscrit ?",
+    "cancelLabel": "Annuler"
   }
 }
