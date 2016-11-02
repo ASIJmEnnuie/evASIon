@@ -1,11 +1,19 @@
-.slider-slide > div {
-  height: 600px;
+// .slider-slide > div {
+//   height: 600px;
+//   border-width: 1px;
+//   border-style: solid;
+//   border-color: black;
+//
+//   img {
+//     height: 100%;
+//     width: 100%;
+//   }
+// }
+
+.slideEvent {
+  height: 200px;
   border-width: 1px;
   border-style: solid;
   border-color: black;
-
-  img {
-    height: 100%;
-    width: 100%;
-  }
+  padding: -1px;
 }
