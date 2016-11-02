@@ -1,3 +1,26 @@
 #navbar {
   height: $heightNavbar;
 }
+
+#iconSearchShowed {
+  vertical-align: top;
+  margin-right: 25px !important;
+}
+
+#iconSearchHidden {
+  @extend #iconSearchShowed;
+  display: none !important;
+}
+
+#inputSearchShowed {
+  vertical-align: middle;
+  margin-right: 50px;
+  font-size: 15px;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+#inputSearchHidden {
+  @extend #inputSearchShowed;
+  display: none;
+}
