@@ -10,10 +10,19 @@
 //   }
 // }
 
-.slideEvent {
-  height: 200px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
-  padding: -1px;
-}
+
+  .slider {
+    height: 35% !important;
+  }
+
+  .slider-frame, .slider-list, .slider-slide {
+    height: 100% !important;
+  }
+
+  .slider-slide > div {
+    height: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    padding: -1px;
+  }

@@ -20,8 +20,13 @@ const FRIP_HomePage = React.createClass({
 
     return (
       <div id={this.props.id}>
-        <div id="homeOnlinePage">
-          <h1>Bienvenue, vous êtes actuellement sur la page HomeOnline</h1>
+        <div>
+          <FRIP_Carousel>
+            {slides}
+          </FRIP_Carousel>
+          <div id="homeOnlineText">
+            <h1>Autres Evenements</h1>
+          </div>
           <FRIP_Carousel>
             {slides}
           </FRIP_Carousel>
