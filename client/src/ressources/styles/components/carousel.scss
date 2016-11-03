@@ -1,11 +1,32 @@
-.slider-slide > div {
-  height: 600px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: black;
+#homeOfflinePage {
+  .slider-slide > div {
+    height: 600px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
 
-  img {
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+
+#homeOnlinePage {
+  .slider {
+    height: 35% !important;
+  }
+
+  .slider-frame, .slider-list, .slider-slide {
+    height: 100% !important;
+  }
+
+  .slider-slide > div {
     height: 100%;
-    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    padding: -1px;
   }
 }
