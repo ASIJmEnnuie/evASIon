@@ -20,7 +20,7 @@ const FRIP_HomePage = React.createClass({
 
     return (
       <div id={this.props.id}>
-        <div>
+        <div id="homeOnlinePage">
           <FRIP_Carousel>
             {slides}
           </FRIP_Carousel>
