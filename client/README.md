@@ -27,8 +27,8 @@
 * Executer la commande `npm install`
 * Executer la commande `gulp`
 * Executer la commande `docker-compose up`
-* Executer dans un nouveau terminal la commande `gulp watch` (penser à activer l'extension __live-reload__ sur le navigateur)
-* Se connecter à l'adresse __192.168.1.1:9090__ depuis votre navigateur
+* Executer dans un nouveau terminal la commande `gulp watch` (penser à activer l'extension *live-reload* sur le navigateur)
+* Se connecter à l'adresse *192.168.1.1:9090* depuis votre navigateur
 ---
 ## TODO
 
@@ -36,6 +36,7 @@
 - [x] Barre de navigation:
   - [x] Icône permettant le contrôle de l'affichage du menu de navigation latéral gauche
   - [x] Icône permettant l'affichage du menu d'accès aux propriétés liées au profil
+  - [x] Icône de recherche se transformant en input de saisie textuelle après clic
 - [x] Menu de navigation latéral gauche
 - [ ] Page d'accueil:
   - [x] Carrousels
