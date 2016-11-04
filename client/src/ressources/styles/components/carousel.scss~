@@ -25,6 +25,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
+<<<<<<< refs/remotes/origin/master
     margin-right: $margin;
     margin-left: $margin;
     opacity: 0.75;
@@ -33,6 +34,9 @@
       font-size: 30px;
       text-align: center;
     }
+=======
+    padding: -1px;
+>>>>>>> Affichage mobile accueil Offline + correction bordure carousel
   }
 
   .slide-event:hover, .slide-categorie:hover {
@@ -53,4 +57,8 @@
 
 .iconSliderNavigation:hover {
   background: $gray !important;
+}
+
+.slider {
+  border: 1px solid #888;
 }

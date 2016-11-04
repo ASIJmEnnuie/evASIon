@@ -17,12 +17,12 @@
       "name": "Nom",
       "surname": "Prénom",
       "passwordConfirmation": "Confirmation de mot de passe",
-      "nameFormConnexion": "Connection",
+      "nameFormConnexion": "Connexion",
       "nameFormInscription": "Inscription"
     },
 
     "or": "ou",
-    "buttonConnexionLabel": "Connection",
+    "buttonConnexionLabel": "Connexion",
     "buttonInscriptionLabel": "Inscription",
     "linkInscriptionLabel": "Pas encore inscrit ?",
     "cancelLabel": "Annuler"
