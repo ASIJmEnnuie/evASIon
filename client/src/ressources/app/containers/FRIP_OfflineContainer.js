@@ -8,15 +8,18 @@ var FRIP_OfflineContainer = React.createClass({
   getInitialState: function() {
     return {
       page: 0,
+      pageId: "homeOfflinePage"
     }
   },
 
   changePage: function() {
     if (this.state.page == 0) {
         this.setState({page: 1});
+        this.setState({pageId: "inscriptionPage"});
     }
     if (this.state.page == 1) {
         this.setState({page: 0});
+        this.setState({pageId: "homeOfflinePage"});
     }
   },
 
@@ -24,13 +27,13 @@ var FRIP_OfflineContainer = React.createClass({
     var page = null;
     switch (this.state.page) {
       case 0:
-        page = (<FRIP_HomeOfflinePage id="homeOfflinePage" data={this.props.data} connexion={this.props.connexion} changePage={this.changePage}/>);
+        page = (<FRIP_HomeOfflinePage id={this.state.pageId} data={this.props.data} connexion={this.props.connexion} changePage={this.changePage}/>);
         break;
       case 1:
-        page = (<FRIP_InscriptionPage id="inscriptionPage" data={this.props.data} connexion={this.props.connexion} changePage={this.changePage}/>);
+        page = (<FRIP_InscriptionPage id={this.state.pageId} data={this.props.data} connexion={this.props.connexion} changePage={this.changePage}/>);
         break;
       default:
-        page = (<FRIP_HomeOfflinePage id="homeOfflinePage" data={this.props.data} connexion={this.props.connexion} changePage={this.changePage}/>);
+        page = (<FRIP_HomeOfflinePage id={this.state.pageId} data={this.props.data} connexion={this.props.connexion} changePage={this.changePage}/>);
     }
     return (
       <div>

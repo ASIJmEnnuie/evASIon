@@ -10,13 +10,6 @@ const FRIP_HomeOfflinePage = React.createClass({
   render: function() {
     return (
       <div id={this.props.id}>
-        <div id="carousel">
-          <FRIP_CarouselOffline
-            id="carousselOffline"
-            pictureList={this.props.data.carousel.pictureList}
-            namePicture={this.props.data.carousel.namePicture}
-          />
-        </div>
         <div className="form">
           <FRIP_FormConnexion
             connexion={this.props.connexion}
@@ -24,6 +17,13 @@ const FRIP_HomeOfflinePage = React.createClass({
           />
           <RaisedButton className="form-button" label={this.props.data.buttonConnexionLabel} primary={true} onTouchTap={this.props.connexion}/>
           <div className="link" onTouchTap={this.props.changePage}>{this.props.data.linkInscriptionLabel}</div>
+        </div>
+        <div id="carousel">
+          <FRIP_CarouselOffline
+            id="carousselOffline"
+            pictureList={this.props.data.carousel.pictureList}
+            namePicture={this.props.data.carousel.namePicture}
+          />
         </div>
       </div>
     );

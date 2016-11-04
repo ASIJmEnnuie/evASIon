@@ -1,9 +1,6 @@
 #homeOfflinePage {
   .slider-slide > div {
-    height: 600px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
+    height: $heightMinCarouselOffline;
 
     img {
       height: 100%;
@@ -24,9 +21,10 @@
 
   .slider-slide > div {
     height: 100%;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
     padding: -1px;
   }
+}
+
+.slider {
+  border: 1px solid #888;
 }
