@@ -22,11 +22,18 @@
     height: 100% !important;
   }
 
-  .slider-slide > div {
+  .slide-event, .slide-categorie {
+    @include shadowBox($gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     height: 100%;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    padding: -1px;
+    margin: 20px;
+    opacity: 0.75;
+
+    div {
+      font-size: 30px;
+      text-align: center;
+    }
   }
 }
