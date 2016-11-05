@@ -37,4 +37,9 @@
       text-align: center;
     }
   }
+
+  .slide-event:hover, .slide-categorie:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
 }
