@@ -4,7 +4,7 @@
 
 #iconSearchShowed {
   vertical-align: top;
-  margin-right: 25px !important;
+  margin-right: $margin !important;
 }
 
 #iconSearchHidden {
@@ -14,10 +14,9 @@
 
 #inputSearchShowed {
   vertical-align: middle;
-  margin-right: 50px;
+  margin-right: 2*$margin;
   font-size: 15px;
-  padding: 3px;
-  border-radius: 3px;
+  padding: 5px;
 }
 
 #inputSearchHidden {
