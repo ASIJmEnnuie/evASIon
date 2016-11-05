@@ -11,10 +11,23 @@
   height: 30%;
   text-align: center;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
-#homeOnline > div {
-  height: 100%;
+#buttonEventAccess {
+  @include shadowBox($gray);
+  margin: auto;
+  font-size: 30px;
+  padding: 20px;
+  background-color: white;
+  border: none;
+}
+
+#buttonEventAccess:focus {
+  border: none !important;
+}
+
+#buttonEventAccess:hover {
+  background: $gray;
+  cursor: pointer;
+  opacity: 0.75;
 }

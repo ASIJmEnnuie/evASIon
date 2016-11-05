@@ -1,4 +1,5 @@
 import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 import {FRIP_Carousel} from '../../components/FRIP_Carousel';
 
 const colors = require('../../../data/colors.json').colors;
@@ -50,7 +51,7 @@ const FRIP_HomePage = React.createClass({
             {eventSlides}
           </FRIP_Carousel>
           <div id="homeOnlineText">
-            <h1>Autres Evenements</h1>
+            <button id="buttonEventAccess"> Autres Evenements </button>
           </div>
           <FRIP_Carousel>
             {categorieSlides}
