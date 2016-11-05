@@ -1,7 +1,8 @@
-
 $gray: gray;
 $transitionTime: 1s;
 $heightNavbar: 64px;
+$margin: 20px;
+$fontSize: 20px;
 $heightNavbarFull: 116px;
 $heightMinCarouselOffline : 600px;
 
@@ -11,7 +12,7 @@ $breakpoints: (
 );
 
 $widthDrawerLeft: (
-  'mobile': 50%,
+  'mobile': 100%,
   'medium': 15%,
   'large': 15%
 );

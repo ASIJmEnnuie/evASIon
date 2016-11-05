@@ -1,20 +1,33 @@
 #homeOnlinePage {
-  @include calc( width, '100% - 40px');
-  @include calc( height, '100% - 40px');
-  margin: 20px;
+  @include calc( width, '100% - 2 *' + $margin);
+  @include calc( height, '100% - 2 *' + $margin);
+  margin: $margin;
   h1 {
     margin: 0px;
   }
-
 }
 
 #homeOnlineText {
-  height: 20%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  height: 30%;
   text-align: center;
+  display: flex;
 }
 
-#homeOnline > div {
-  height: 100%;
+#buttonEventAccess {
+  @include shadowBox($gray);
+  margin: auto;
+  font-size: 30px;
+  padding: $margin;
+  background-color: white;
+  border: none;
+}
+
+#buttonEventAccess:focus {
+  border-style: none !important;
+}
+
+#buttonEventAccess:hover {
+  background: $gray;
+  cursor: pointer;
+  opacity: 0.75;
 }

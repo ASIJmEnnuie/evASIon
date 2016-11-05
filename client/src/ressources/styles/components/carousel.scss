@@ -22,11 +22,38 @@
     height: 100% !important;
   }
 
-  .slider-slide > div {
+  .slide-event, .slide-categorie {
+    @include shadowBox($gray);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     height: 100%;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    padding: -1px;
+    margin-right: $margin;
+    margin-left: $margin;
+    opacity: 0.75;
+
+    div {
+      font-size: 30px;
+      text-align: center;
+    }
   }
+
+  .slide-event:hover, .slide-categorie:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+}
+
+.iconSliderNavigation {
+  background-color: white !important;
+  border-style: solid !important;
+  border-color: $gray !important;
+  border-width: 1px !important;
+  height: 50px !important;
+  width: 50px !important;
+  border-radius: 50px !important;
+}
+
+.iconSliderNavigation:hover {
+  background: $gray !important;
 }
