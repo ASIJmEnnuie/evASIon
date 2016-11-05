@@ -11,7 +11,7 @@ const FRIP_Carousel = React.createClass({
         component: React.createClass({
           render() {
             return (
-              <IconButton onTouchTap={this.props.previousSlide}>
+              <IconButton className="iconSliderNavigation" onTouchTap={this.props.previousSlide}>
                 <HardwareKeyboardArrowLeft />
               </IconButton>
             )
@@ -23,7 +23,7 @@ const FRIP_Carousel = React.createClass({
         component: React.createClass({
           render() {
             return (
-              <IconButton onTouchTap={this.props.nextSlide}>
+              <IconButton className="iconSliderNavigation" onTouchTap={this.props.nextSlide}>
                 <HardwareKeyboardArrowRight />
               </IconButton>
             )
