@@ -11,11 +11,15 @@
 
 #pageReduced {
   @include page(100% - map-get($widthDrawerLeft, mobile));
+  display: none;
   @include respond-to(medium) {
     width: 100% - map-get($widthDrawerLeft, medium);
+    display: block;
   };
   @include respond-to(large) {
     width: 100% - map-get($widthDrawerLeft, large);
+    display: block;
+
   };
 }
 

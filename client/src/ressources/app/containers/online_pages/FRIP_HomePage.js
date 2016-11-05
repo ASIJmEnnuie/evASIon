@@ -15,6 +15,10 @@ const FRIP_HomePage = React.createClass({
   render: function() {
     var eventSlides = (<div className="slide-event"></div>);
     var categorieSlides = (<div className="slide-categorie"></div>);
+    var nbSlidesToShow = 3;
+    if (this.props.screenWidth <= 900) {
+      nbSlidesToShow = 1;
+    }
 
     if (this.props.eventList.length > 0) {
       eventSlides = this.props.eventList.map(function(event, i){
@@ -47,13 +51,13 @@ const FRIP_HomePage = React.createClass({
     return (
       <div id={this.props.id}>
         <div id="homeOnlinePage">
-          <FRIP_Carousel>
+          <FRIP_Carousel slidesToShow={nbSlidesToShow} slidesToScroll={nbSlidesToShow}>
             {eventSlides}
           </FRIP_Carousel>
           <div id="homeOnlineText">
             <button id="buttonEventAccess"> Autres Evenements </button>
           </div>
-          <FRIP_Carousel>
+          <FRIP_Carousel slidesToShow={nbSlidesToShow} slidesToScroll={nbSlidesToShow}>
             {categorieSlides}
           </FRIP_Carousel>
         </div>

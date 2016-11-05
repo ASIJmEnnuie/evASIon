@@ -17,7 +17,7 @@
   @include shadowBox($gray);
   margin: auto;
   font-size: 30px;
-  padding: 20px;
+  padding: $margin;
   background-color: white;
   border: none;
 }

@@ -49,13 +49,23 @@ const FRIP_OnlineContainer = React.createClass({
     var page = null;
     switch (this.state.page) {
       case 0:
-        page = (<FRIP_HomePage id={this.state.pageId}/>);
+        page = (
+          <FRIP_HomePage
+            id={this.state.pageId}
+            screenWidth={this.props.screenWidth}
+            screenHeight={this.props.screenHeight}
+          />);
         break;
       case 1:
         page = (<FRIP_EventPage id={this.state.pageId}/>);
         break;
       default:
-        page = (<FRIP_HomePage id={this.state.pageId}/>);
+        page = (
+          <FRIP_HomePage
+            id={this.state.pageId}
+            screenWidth={this.props.screenWidth}
+            screenHeight={this.props.screenHeight}
+          />);
     }
     return (
       <div>
