@@ -16,6 +16,7 @@
 #homeOnlinePage {
   .slider {
     height: 35% !important;
+    // @include calc(height, "35% - 40px");
   }
 
   .slider-frame, .slider-list, .slider-slide {
@@ -28,7 +29,8 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    margin: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
     opacity: 0.75;
 
     div {
