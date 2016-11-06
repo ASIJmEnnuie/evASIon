@@ -2,9 +2,6 @@
   @include calc( width, '100% - 2 *' + $margin);
   @include calc( height, '100% - 2 *' + $margin);
   margin: $margin;
-  h1 {
-    margin: 0px;
-  }
 }
 
 #homeOnlineText {

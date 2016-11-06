@@ -1,0 +1,20 @@
+.searchController {
+  @include shadowBox($gray);
+  @include calc( width, '100% - 2 * ' + $margin);
+  margin-left: $margin;
+  margin-right: $margin;
+  padding-top: $margin;
+  padding-bottom: $margin;
+  margin-bottom: $margin;
+  height: 50px;
+
+  .searchSelector {
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+  }
+
+  .searchSelector+.searchSelector {
+    margin-left: 5%;
+  }
+}

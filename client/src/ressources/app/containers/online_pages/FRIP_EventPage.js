@@ -1,10 +1,16 @@
 import React from 'react';
+import FRIP_SearchController from '../../components/FRIP_SearchController';
+import FRIP_EventList from '../../components/FRIP_EventList';
 
 const FRIP_EventPage = React.createClass({
   render: function() {
+    var events = require("../../../data/events.json").events;
     return (
       <div id={this.props.id}>
-        <h1>Bienvenue, vous êtes actuellement sur la page Events</h1>
+        <div id="eventPage">
+          <FRIP_SearchController id="eventPage"/>
+          <FRIP_EventList events={events}/>
+        </div>
       </div>
     );
   }
