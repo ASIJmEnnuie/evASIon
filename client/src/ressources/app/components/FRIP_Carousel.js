@@ -35,11 +35,11 @@ const FRIP_Carousel = React.createClass({
 
     return {
       animationDuration: 1000,
-      autoplay: false,
-      autoplayInterval: 3000,
+      autoplay: true,
+      autoplayInterval: 4000,
       infiniteLoop: true,
       slidesToShow: 3,
-      slidesToScroll: 3,
+      slidesToScroll: 1,
       decorators: decorator,
     }
   },

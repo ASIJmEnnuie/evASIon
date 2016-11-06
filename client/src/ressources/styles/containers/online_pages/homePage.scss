@@ -11,12 +11,11 @@
 }
 
 #buttonEventAccess {
-  @include shadowBox($gray);
   margin: auto;
   font-size: 30px;
   padding: $margin;
-  background-color: white;
-  border: none;
+  background-color: gray;
+  border-style: none;
 }
 
 #buttonEventAccess:focus {
@@ -24,7 +23,6 @@
 }
 
 #buttonEventAccess:hover {
-  background: $gray;
+  @include shadowBox($gray);
   cursor: pointer;
-  opacity: 0.75;
 }

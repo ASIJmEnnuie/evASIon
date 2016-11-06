@@ -23,14 +23,16 @@
   }
 
   .slide-event, .slide-categorie {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
+    @include calc(height, "100% - " + $margin);
+    margin-top: $margin/2;
+    margin-bottom: $margin/2;
     margin-right: $margin;
     margin-left: $margin;
     padding-left: 25px;
     padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     div {
       font-size: 30px;
