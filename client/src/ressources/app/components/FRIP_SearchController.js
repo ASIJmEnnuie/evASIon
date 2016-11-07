@@ -30,23 +30,9 @@ const FRIP_SearchController = React.createClass({
         </div>
 
         <div className="searchSelector">
-          <TextField
-            hintText="Lieu"
-            onChange={this.props.placeController}
-          />
-        </div>
-
-        <div className="searchSelector">
           <DatePicker
             hintText="Date"
             onChange={this.props.dateController}
-          />
-        </div>
-
-        <div className="searchSelector">
-          <TimePicker
-            hintText="Heure début"
-            onChange={this.props.timeController}
           />
         </div>
 
@@ -66,6 +52,25 @@ const FRIP_SearchController = React.createClass({
         </div>
 
         <div className="searchSelector">
+          <div className="text">Prix</div>
+          <Slider className="slider"/>
+        </div>
+
+        <div className="searchSelector">
+          <TextField
+            hintText="Lieu"
+            onChange={this.props.placeController}
+          />
+        </div>
+
+        <div className="searchSelector">
+          <TimePicker
+            hintText="Heure début"
+            onChange={this.props.timeController}
+          />
+        </div>
+
+        <div className="searchSelector">
           <SelectField
             floatingLabelText="Tags"
             value={this.state.value}
@@ -78,11 +83,6 @@ const FRIP_SearchController = React.createClass({
             <MenuItem value={4} primaryText="Weekends" />
             <MenuItem value={5} primaryText="Weekly" />
           </SelectField>
-        </div>
-
-        <div className="searchSelector">
-          <div className="text">Prix</div>
-          <Slider className="slider"/>
         </div>
 
         <div className="searchSelector">
