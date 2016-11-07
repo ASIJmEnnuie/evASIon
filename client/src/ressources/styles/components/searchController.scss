@@ -6,15 +6,31 @@
   padding-top: $margin;
   padding-bottom: $margin;
   margin-bottom: $margin;
-  height: 50px;
+  height: $searchControllerHeigth;
 
   .searchSelector {
     display: inline-block;
-    width: 30%;
+    width: 25%;
     text-align: center;
   }
 
-  .searchSelector+.searchSelector {
-    margin-left: 5%;
+  .select {
+    text-align: left;
+  }
+
+  .text {
+    text-align: left;
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  .slider {
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  .slider > div {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
   }
 }
