@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
-import moment from 'moment';
+import RaisedButton from 'material-ui/RaisedButton';
 
 var FRIP_FormConnexion = React.createClass({
 
@@ -20,6 +20,7 @@ var FRIP_FormConnexion = React.createClass({
           placeholder={this.props.text.password}
           className="form-text"
         /><br />
+        <RaisedButton className="form-button" label={this.props.label} primary={true} onTouchTap={this.props.connexion}/>
       </div>
     );
   },
@@ -58,6 +59,7 @@ var FRIP_FormInscription = React.createClass({
           placeholder={this.props.text.passwordConfirmation}
           className="form-text"
         /><br />
+        <RaisedButton className="form-button" label={this.props.label} primary={true} onTouchTap={this.props.connexion}/>
       </div>
     );
   },

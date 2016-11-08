@@ -1,5 +1,4 @@
 import React from 'react';
-import RaisedButton from 'material-ui/RaisedButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import {FRIP_CarouselOffline} from '../../components/FRIP_Carousel';
@@ -14,8 +13,8 @@ const FRIP_HomeOfflinePage = React.createClass({
           <FRIP_FormConnexion
             connexion={this.props.connexion}
             text={this.props.data.form}
+            label={this.props.data.buttonConnexionLabel}
           />
-          <RaisedButton className="form-button" label={this.props.data.buttonConnexionLabel} primary={true} onTouchTap={this.props.connexion}/>
           <div className="link" onTouchTap={this.props.changePage}>{this.props.data.linkInscriptionLabel}</div>
         </div>
         <div id="carousel">
