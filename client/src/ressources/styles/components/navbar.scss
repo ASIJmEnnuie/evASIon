@@ -1,5 +1,8 @@
 #navbar {
   height: $heightNavbar;
+  * {
+    color: #FB8C00 !important;
+  }
 }
 
 #iconSearchShowed {
@@ -18,10 +21,33 @@
   font-size: 15px;
   padding: 5px;
   border: none;
-  box-decoration-break: none;
+  box-shadow: inset 0px 0px 10px 2px $gray ;
+  background-color: #FB8C00;
+  color: white !important;
+}
+
+*::-webkit-input-placeholder {
+    color: white;
+}
+*:-moz-placeholder {
+    color: white;
+}
+*::-moz-placeholder {
+    color: white;
+}
+*:-ms-input-placeholder {
+    color: white;
 }
 
 #inputSearchHidden {
   @extend #inputSearchShowed;
   display: none;
+}
+
+.iconNavbar {
+  box-shadow: inset 0px 0px 10px 2px $gray ;
+}
+
+.iconNavbar:hover {
+  box-shadow: none;
 }

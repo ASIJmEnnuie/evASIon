@@ -3,8 +3,6 @@
   @include calc( width, '100% - 2 * ' + $margin);
   margin-left: $margin;
   margin-right: $margin;
-  // padding-top: $margin;
-  // padding-bottom: $margin;
   margin-bottom: $margin;
   height: $searchControllerHeigth;
   background-color: white;

@@ -28,5 +28,10 @@
 }
 
 #pageSelected {
-  background-color: #CCCCCC !important;
+  background-color: #FB8C00 !important;
+  box-shadow: inset 0px 0px 10px 2px $gray ;
+}
+
+#pageSelected:hover {
+  box-shadow: none;
 }

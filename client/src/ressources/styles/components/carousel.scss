@@ -54,8 +54,11 @@
   height: 50px !important;
   width: 50px !important;
   border-radius: 50px !important;
+  box-shadow: inset 0px 0px 10px 2px $gray ;
 }
 
 .iconSliderNavigation:hover {
-  background-color: #EEEEEE !important;
+  // background-color: #EEEEEE !important;
+  box-shadow: none;
+  
 }
