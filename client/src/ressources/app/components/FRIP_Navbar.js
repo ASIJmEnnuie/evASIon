@@ -51,7 +51,7 @@ var FRIP_NavbarOnline = React.createClass({
     );
 
     var iconLeft = (
-      <IconButton onTouchTap={this.props.clickOnLeftButton}>
+      <IconButton onTouchTap={this.props.clickOnLeftButton} style={{borderRadius: "50px"}}>
         <ActionReorder />
       </IconButton>
     );
@@ -91,6 +91,7 @@ var FRIP_NavbarOnline = React.createClass({
         title={this.props.text.title}
         iconElementLeft={iconLeft}
         iconElementRight={iconRight}
+        style={{backgroundColor: "#757575"}}
       />
     );
   }
