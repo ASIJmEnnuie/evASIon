@@ -5,6 +5,10 @@ import TimePicker from 'material-ui/TimePicker';
 import Slider from 'material-ui/Slider';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+
+import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
+import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -12,11 +16,17 @@ const FRIP_SearchController = React.createClass({
   getInitialState: function(){
     return {
       value: 1,
+      deploy: false,
+      idIconDeploy: "iconDeploy"
     }
   },
 
   handleChange: function (event, index, value) {
     this.setState({value});
+  },
+
+  deploySearchBar: function() {
+    
   },
 
   render: function() {
@@ -89,6 +99,13 @@ const FRIP_SearchController = React.createClass({
           <div className="text">Proximité</div>
           <Slider className="slider"/>
         </div>
+
+        <IconButton
+          id={this.state.idIconDeploy}
+          onTouchTap={this.deploySearchBar}
+        >
+          <HardwareKeyboardArrowDown />
+        </IconButton>
       </div>
     )
   },
