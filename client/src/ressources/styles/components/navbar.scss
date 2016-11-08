@@ -26,17 +26,17 @@
   color: white !important;
 }
 
-*::-webkit-input-placeholder {
-    color: white;
+#inputSearchShowed::-webkit-input-placeholder {
+    color: #EEEEEE;
 }
-*:-moz-placeholder {
-    color: white;
+#inputSearchShowed:-moz-placeholder {
+    color: #EEEEEE;
 }
-*::-moz-placeholder {
-    color: white;
+#inputSearchShowed::-moz-placeholder {
+    color: #EEEEEE;
 }
-*:-ms-input-placeholder {
-    color: white;
+#inputSearchShowed:-ms-input-placeholder {
+    color: #EEEEEE;
 }
 
 #inputSearchHidden {
