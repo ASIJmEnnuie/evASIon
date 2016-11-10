@@ -14,6 +14,7 @@
       "email": "Email",
       "password": "Mot de passe",
       "errorText": "Champ obligatoire",
+      "errorTextAllAreRequired": "Veuillez remplir tout les champs",
       "name": "Nom",
       "surname": "Prénom",
       "passwordConfirmation": "Confirmation de mot de passe",
