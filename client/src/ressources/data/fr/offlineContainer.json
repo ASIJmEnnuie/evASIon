@@ -14,15 +14,17 @@
       "email": "Email",
       "password": "Mot de passe",
       "errorText": "Champ obligatoire",
-      "name": "Nom",
-      "surname": "Prénom",
+      "errorTextAllAreRequired": "Veuillez remplir tout les champs",
+      "errorTextDifferentPassword": "Le mot de passe n'est pas identique",
+      "familyName": "Nom",
+      "firstname": "Prénom",
       "passwordConfirmation": "Confirmation de mot de passe",
-      "nameFormConnexion": "Connection",
+      "nameFormConnexion": "Connexion",
       "nameFormInscription": "Inscription"
     },
 
     "or": "ou",
-    "buttonConnexionLabel": "Connection",
+    "buttonConnexionLabel": "Connexion",
     "buttonInscriptionLabel": "Inscription",
     "linkInscriptionLabel": "Pas encore inscrit ?",
     "cancelLabel": "Annuler"
