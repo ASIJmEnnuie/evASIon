@@ -14,6 +14,23 @@ var ErrorText = React.createClass({
   }
 });
 
+var notDisplay = function (id) {
+    var obj = document.getElementById(id);
+    obj.style.display='none';
+};
+
+var display = function (id) {
+  var obj = document.getElementById(id);
+  obj.style.display='block';
+};
+
+var errorDisplay = function(state, id) {
+  if (state.length > 1)
+    notDisplay(id);
+  else
+    display(id);
+};
+
 var FRIP_FormConnexion = React.createClass({
   getInitialState: function() {
     return {
@@ -23,26 +40,24 @@ var FRIP_FormConnexion = React.createClass({
   },
 
   handleSubmit: function() {
-    // envoie à la BD pour control
     if (!this.state.email.trim() || !this.state.password.trim()) {
       return ;
     }
+    // envoie à la BD pour control
+    // si control valide, alors :
     this.props.connexion();
-  },
-
-  disparaitre: function (id) {
-    var obj = document.getElementById(id);
-    obj.style.display='none';
+    console.log("email : "+this.state.email);
+    console.log("password : "+this.state.password);
   },
 
   setEmail: function(event) {
     this.setState({email: event.target.value});
-    this.disparaitre("emailError");
+    errorDisplay(this.state.email, "emailError");
   },
 
   setPassword: function(event) {
     this.setState({password: event.target.value});
-    this.disparaitre("passwordError");
+    errorDisplay(this.state.password, "passwordError");
   },
 
   render: function() {
@@ -53,7 +68,6 @@ var FRIP_FormConnexion = React.createClass({
           <div>
             <TextField
               id="email"
-              type="email"
               placeholder={this.props.text.email}
               className="form-text"
               onChange={this.setEmail}
@@ -101,6 +115,7 @@ var FRIP_FormInscription = React.createClass({
         /><br />
         <TextField
           id="email"
+          type="email"
           placeholder={this.props.text.email}
           className="form-text"
         /><br />
