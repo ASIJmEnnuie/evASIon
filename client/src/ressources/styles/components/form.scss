@@ -2,15 +2,21 @@
   display: block;
   width: 240px;
   padding: 3px 15px;
-  margin-bottom: 15px;
+  margin-top: 15px;
   border-radius: 5px;
   font-size: 14px;
 }
 
 .form-button {
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 
 .form-title {
-  
+
+}
+
+.form-error {
+  color: black;
+  font-size: 70%;
 }
