@@ -45,13 +45,13 @@ var FRIP_NavbarOnline = React.createClass({
     var navbar = this;
 
     var avatar = (
-      <IconButton style={{padding: 0}}>
-        <Avatar size={40}>A</Avatar>
+      <IconButton style={{padding: 0, borderRadius: "50px"}} className="iconNavbar">
+        <Avatar size={50}>A</Avatar>
       </IconButton>
     );
 
     var iconLeft = (
-      <IconButton onTouchTap={this.props.clickOnLeftButton}>
+      <IconButton onTouchTap={this.props.clickOnLeftButton} className="iconNavbar" style={{borderRadius: "50px", backgroundColor: "#FB8C00"}}>
         <ActionReorder />
       </IconButton>
     );
@@ -91,6 +91,7 @@ var FRIP_NavbarOnline = React.createClass({
         title={this.props.text.title}
         iconElementLeft={iconLeft}
         iconElementRight={iconRight}
+        style={{backgroundColor: "#EEEEEE", color:"black"}}
       />
     );
   }

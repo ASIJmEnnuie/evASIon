@@ -7,7 +7,7 @@ const colors = require('../../../data/colors.json').colors;
 const FRIP_HomePage = React.createClass({
   getDefaultProps: function() {
     return {
-      eventList: ["Une sortie au musée des beaux arts?", "Un cours de cuisine?", "Une sortie cinéma?"],
+      eventList: ["Une sortie au musée des beaux arts?", "Un cours de cuisine?", "Une sortie cinéma?", "Un cours de danse?"],
       categorieList: ["Sport", "Concerts", "Cinéma", "Visites"]
     }
   },
@@ -51,13 +51,13 @@ const FRIP_HomePage = React.createClass({
     return (
       <div id={this.props.id}>
         <div id="homeOnlinePage">
-          <FRIP_Carousel slidesToShow={nbSlidesToShow} slidesToScroll={nbSlidesToShow}>
+          <FRIP_Carousel slidesToShow={nbSlidesToShow}>
             {eventSlides}
           </FRIP_Carousel>
           <div id="homeOnlineText">
             <button id="buttonEventAccess"> Autres Evenements </button>
           </div>
-          <FRIP_Carousel slidesToShow={nbSlidesToShow} slidesToScroll={nbSlidesToShow}>
+          <FRIP_Carousel slidesToShow={nbSlidesToShow}>
             {categorieSlides}
           </FRIP_Carousel>
         </div>

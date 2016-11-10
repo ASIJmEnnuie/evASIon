@@ -1,0 +1,52 @@
+.searchController {
+  @include shadowBox($gray);
+  @include calc( width, '100% - 2 * ' + $margin);
+  margin-left: $margin;
+  margin-right: $margin;
+  margin-bottom: $margin;
+  height: $searchControllerHeigth;
+  background-color: white;
+
+  .secondaryController {
+    display: none;
+  }
+
+  .searchSelector {
+    padding-top: 24px;
+    height: 76px;
+    vertical-align: top;
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+  }
+
+  .select {
+    text-align: left;
+    margin-top: -24px;
+  }
+
+  .text {
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  .slider {
+    margin-left: 10%;
+    width: 80%;
+  }
+
+  .slider > div {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  #iconDeploy {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    bottom: 25px;
+    @include calc(left, "100% - 50px - " + $margin);
+  }
+}

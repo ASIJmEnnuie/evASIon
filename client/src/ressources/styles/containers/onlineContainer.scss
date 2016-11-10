@@ -4,9 +4,10 @@
 }
 
 #container {
-  width: 100%;
   @include calc(height, "100% - " + $heightNavbar);
+  width: 100%;
   display: inline-flex;
+  background-color: #fb8c00;
 }
 
 #pageReduced {
@@ -19,7 +20,6 @@
   @include respond-to(large) {
     width: 100% - map-get($widthDrawerLeft, large);
     display: block;
-
   };
 }
 

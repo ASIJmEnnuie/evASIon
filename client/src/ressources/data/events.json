@@ -1,0 +1,49 @@
+{
+  "events":
+  [
+    {
+      "nom": "un nom",
+      "lieu": "un lieu",
+      "organisateur": "un orga",
+      "date": "11/10/2016",
+      "heure": "13:59",
+      "description": "une description",
+      "nb_inscriptions": 1,
+      "nb_places": 20,
+      "image": "ressources/images/profil.svg"
+    },
+    {
+      "nom": "un autre nom",
+      "lieu": "un autre lieu",
+      "organisateur": "un autre orga",
+      "date": "11/10/2016",
+      "heure": "14:00",
+      "description": "une autre description",
+      "nb_inscriptions": 3,
+      "nb_places": 10,
+      "image": "ressources/images/profil.svg"
+    },
+    {
+      "nom": "un nom",
+      "lieu": "un lieu",
+      "organisateur": "un orga",
+      "date": "11/10/2016",
+      "heure": "13:59",
+      "description": "une description",
+      "nb_inscriptions": 1,
+      "nb_places": 20,
+      "image": "ressources/images/profil.svg"
+    },
+    {
+      "nom": "un autre nom",
+      "lieu": "un autre lieu",
+      "organisateur": "un autre orga",
+      "date": "11/10/2016",
+      "heure": "14:00",
+      "description": "une autre description",
+      "nb_inscriptions": 3,
+      "nb_places": 10,
+      "image": "ressources/images/profil.svg"
+    }
+  ]
+}

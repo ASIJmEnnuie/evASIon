@@ -2,9 +2,6 @@
   @include calc( width, '100% - 2 *' + $margin);
   @include calc( height, '100% - 2 *' + $margin);
   margin: $margin;
-  h1 {
-    margin: 0px;
-  }
 }
 
 #homeOnlineText {
@@ -14,12 +11,11 @@
 }
 
 #buttonEventAccess {
-  @include shadowBox($gray);
   margin: auto;
   font-size: 30px;
   padding: $margin;
-  background-color: white;
-  border: none;
+  background-color: gray;
+  border-style: none;
 }
 
 #buttonEventAccess:focus {
@@ -27,7 +23,6 @@
 }
 
 #buttonEventAccess:hover {
-  background: $gray;
+  @include shadowBox($gray);
   cursor: pointer;
-  opacity: 0.75;
 }

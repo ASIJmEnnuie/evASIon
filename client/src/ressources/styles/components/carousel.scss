@@ -23,14 +23,16 @@
   }
 
   .slide-event, .slide-categorie {
-    @include shadowBox($gray);
+    @include calc(height, "100% - " + $margin);
+    margin-top: $margin/2;
+    margin-bottom: $margin/2;
+    margin-right: $margin;
+    margin-left: $margin;
+    padding-left: 25px;
+    padding-right: 25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
-    margin-right: $margin;
-    margin-left: $margin;
-    opacity: 0.75;
 
     div {
       font-size: 30px;
@@ -39,7 +41,7 @@
   }
 
   .slide-event:hover, .slide-categorie:hover {
-    opacity: 1;
+    @include shadowBox($gray);
     cursor: pointer;
   }
 }
@@ -52,8 +54,9 @@
   height: 50px !important;
   width: 50px !important;
   border-radius: 50px !important;
+  box-shadow: inset 0px 0px 10px 2px $gray ;
 }
 
 .iconSliderNavigation:hover {
-  background: $gray !important;
+  box-shadow: none;
 }
