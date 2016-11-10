@@ -15,8 +15,9 @@
       "password": "Mot de passe",
       "errorText": "Champ obligatoire",
       "errorTextAllAreRequired": "Veuillez remplir tout les champs",
-      "name": "Nom",
-      "surname": "Prénom",
+      "errorTextDifferentPassword": "Le mot de passe n'est pas identique",
+      "familyName": "Nom",
+      "firstname": "Prénom",
       "passwordConfirmation": "Confirmation de mot de passe",
       "nameFormConnexion": "Connexion",
       "nameFormInscription": "Inscription"
