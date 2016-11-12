@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
+import areIntlLocalesSupported from 'intl-locales-supported';
 import RaisedButton from 'material-ui/RaisedButton';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 var ErrorText = React.createClass({
 
@@ -41,11 +44,15 @@ var FRIP_FormConnexion = React.createClass({
 
   handleSubmit: function() {
     if (!this.state.email.trim() || !this.state.password.trim()) {
-      return ;
+      display("globalConnexionError") ;
     }
-    // envoie à la BD pour control
-    // si control valide, alors :
-    this.props.connexion();
+    else {
+      // envoie à la BD pour control
+      // si control valide, alors :
+      this.props.connexion();
+    }
+
+    // à enlever
     console.log("email : "+this.state.email);
     console.log("password : "+this.state.password);
   },
@@ -63,28 +70,31 @@ var FRIP_FormConnexion = React.createClass({
   render: function() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <h2 className="form-title">{this.props.text.nameFormConnexion}</h2>
-          <div>
+          <div className="form-champ">
             <TextField
               id="email"
               placeholder={this.props.text.email}
               className="form-text"
-              onChange={this.setEmail}
+              onBlur={this.setEmail}
             />
+            <ErrorText id="emailError" text={this.props.text.errorText} />
           </div>
-          <ErrorText id="emailError" text={this.props.text.errorText} />
-          <div>
+          <div className="form-champ">
             <TextField
               id="password"
               type="password"
               placeholder={this.props.text.password}
               className="form-text"
-              onChange={this.setPassword}
+              onBlur={this.setPassword}
             />
+            <ErrorText id="passwordError" text={this.props.text.errorText} />
           </div>
-          <ErrorText id="passwordError" text={this.props.text.errorText} />
-          <RaisedButton type="submit" value="Submit" className="form-button" label={this.props.label} primary={true}/>
+          <div className="form-validation">
+            <RaisedButton value="Submit" className="form-button" label={this.props.label} primary={true} onTouchTap={this.handleSubmit}/>
+            <ErrorText id="globalConnexionError" text={this.props.text.errorTextAllAreRequired} />
+          </div>
         </form>
       </div>
     );
@@ -99,21 +109,30 @@ var FRIP_FormInscription = React.createClass({
       email: "",
       password: "",
       passwordConfirmation: "",
+      gender: "",
+      value: undefined,
+      birthday: undefined,
     }
   },
 
   handleSubmit: function() {
-    if (!this.state.familyName.trim() || !this.state.firstname.trim() || !this.state.email.trim() || !this.state.password.trim() || !this.state.passwordConfirmation.trim()) {
-      return ; // mettre action pour rester sur cette page
+    if (!this.state.familyName.trim() || !this.state.firstname.trim() || !this.state.email.trim() || !this.state.password.trim() || !this.state.passwordConfirmation.trim() || (this.state.password!=this.state.passwordConfirmation)) {
+      return display("globalInscriptionError");
     }
-    // envoie à la BD pour control
-    // si control valide, alors :
-    this.props.connexion();
+    else {
+      // envoie à la BD pour control
+      // si control valide, alors :
+      this.props.connexion();
+    }
+
+    // à enlever
     console.log("familyName : "+this.state.familyName);
     console.log("firstname : "+this.state.firstname);
     console.log("email : "+this.state.email);
     console.log("password : "+this.state.password);
     console.log("passwordConfirmation : "+this.state.passwordConfirmation);
+    console.log("genre : "+this.state.gender);
+    console.log("date de naissance"+this.state.birthday.toString());
   },
 
   setFamilyName: function(event) {
@@ -159,49 +178,63 @@ var FRIP_FormInscription = React.createClass({
     }
   },
 
+  setGender: function(event, index, value) {
+    this.setState({value});
+    if (value == 1)
+      this.setState({gender : "Female"});
+    else {
+      if (value == 2)
+        this.setState({gender: "Male"});
+    }
+  },
+
+  setBirthday: function(event, date) {
+    this.setState({birthday: date});
+  },
+
   render: function() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <h2 className="form-title">{this.props.text.nameFormInscription}</h2>
-          <div>
+          <div className="form-champ">
             <TextField
               id="familyName"
               placeholder={this.props.text.familyName}
               className="form-text"
-              onChange={this.setFamilyName}
+              onBlur={this.setFamilyName}
             />
+            <ErrorText id="familyNameError" text={this.props.text.errorText} />
           </div>
-          <ErrorText id="familyNameError" text={this.props.text.errorText} />
-          <div>
+          <div className="form-champ">
             <TextField
               id="firstname"
               placeholder={this.props.text.firstname}
               className="form-text"
-              onChange={this.setFirstname}
+              onBlur={this.setFirstname}
             />
+            <ErrorText id="firstnameError" text={this.props.text.errorText} />
           </div>
-          <ErrorText id="firstnameError" text={this.props.text.errorText} />
-          <div>
+          <div className="form-champ">
             <TextField
               id="email"
               placeholder={this.props.text.email}
               className="form-text"
-              onChange={this.setEmail}
+              onBlur={this.setEmail}
             />
+            <ErrorText id="emailError" text={this.props.text.errorText} />
           </div>
-          <ErrorText id="emailError" text={this.props.text.errorText} />
-          <div>
+          <div className="form-champ">
             <TextField
               id="password"
               type="password"
               placeholder={this.props.text.password}
               className="form-text"
-              onChange={this.setPassword}
+              onBlur={this.setPassword}
             />
+            <ErrorText id="passwordError" text={this.props.text.errorText} />
           </div>
-          <ErrorText id="passwordError" text={this.props.text.errorText} />
-          <div>
+          <div className="form-champ">
             <TextField
               id="passwordConfirmation"
               type="password"
@@ -209,10 +242,27 @@ var FRIP_FormInscription = React.createClass({
               className="form-text"
               onChange={this.setPasswordConfirmation}
             />
+            <ErrorText id="passwordConfirmationError" text={this.props.text.errorTextDifferentPassword} />
           </div>
-          <ErrorText id="passwordConfirmationError" text={this.props.text.errorTextDifferentPassword} />
-          <RaisedButton type="submit" className="form-button" label={this.props.label} primary={true}/>
-        </form>
+          <div className="form-select-field">
+            <SelectField
+              className="form-select-gender"
+              value={this.state.value}
+              onChange={this.setGender}
+              hintText={this.props.text.gender}
+            >
+              <MenuItem value={1} primaryText={this.props.text.female} className="form-select-gender"/>
+              <MenuItem value={2} primaryText={this.props.text.male} className="form-select-gender"/>
+            </SelectField>
+          </div>
+          <div className="form-select-field">
+            <DatePicker hintText={this.props.text.birthday} onChange={this.setBirthday}/>
+          </div>
+          <div>
+            <RaisedButton className="form-button" label={this.props.label} primary={true} onTouchTap={this.handleSubmit}/>
+            <ErrorText id="globalInscriptionError" text={this.props.text.errorTextAllAreRequired} />
+          </div>
+          </form>
       </div>
     );
   },

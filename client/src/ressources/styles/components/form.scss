@@ -17,4 +17,23 @@
 
 .form-error {
   font-size: 70%;
+  display: none;
+}
+
+.form-champ {
+  height: 66px;
+}
+
+.form-validation {
+  height: 83px;
+}
+
+.form-select-gender {
+  text-align: left;
+}
+
+.form-select-field {
+  padding: 3px 12px;
+  border-radius: 5px;
+  font-size: 14px;
 }

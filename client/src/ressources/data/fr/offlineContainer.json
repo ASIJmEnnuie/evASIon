@@ -19,6 +19,10 @@
       "familyName": "Nom",
       "firstname": "Prénom",
       "passwordConfirmation": "Confirmation de mot de passe",
+      "gender": "Genre",
+      "female": "Femme",
+      "male": "Homme",
+      "birthday": "Date de naissance",
       "nameFormConnexion": "Connexion",
       "nameFormInscription": "Inscription"
     },
