@@ -63,14 +63,15 @@
 
 ### Partie hors connexion
 - [x] Barre de navigation
-- [ ] Page d’accueil:
+- [x] Page d’accueil:
   - [x] Carrousel
   - [x] Formulaire de connexion
-- [ ] Page d’inscription (formulaire):
+- [x] Page d’inscription (formulaire):
   - [x] nom
   - [x] email
   - [x] mot de passe
-  - [ ] date de naissance
+  - [x] genre (non obligatoire)
+  - [x] date de naissance (non obligatoire)
 
 ### Autres
 - [x] Gestion multilingue possible

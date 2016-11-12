@@ -6,6 +6,15 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
+let DateTimeFormat;
+
+var lang = require("../../data/lang");
+if (lang.lang == "fr") {
+  if (areIntlLocalesSupported(['fr'])) {
+    DateTimeFormat = global.Intl.DateTimeFormat;
+  }
+}
+
 var ErrorText = React.createClass({
 
   render: function() {
@@ -74,7 +83,6 @@ var FRIP_FormConnexion = React.createClass({
           <h2 className="form-title">{this.props.text.nameFormConnexion}</h2>
           <div className="form-champ">
             <TextField
-              id="email"
               placeholder={this.props.text.email}
               className="form-text"
               onBlur={this.setEmail}
@@ -83,7 +91,6 @@ var FRIP_FormConnexion = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
-              id="password"
               type="password"
               placeholder={this.props.text.password}
               className="form-text"
@@ -132,7 +139,7 @@ var FRIP_FormInscription = React.createClass({
     console.log("password : "+this.state.password);
     console.log("passwordConfirmation : "+this.state.passwordConfirmation);
     console.log("genre : "+this.state.gender);
-    console.log("date de naissance"+this.state.birthday.toString());
+    console.log("date de naissance : "+this.state.birthday.toString());
   },
 
   setFamilyName: function(event) {
@@ -193,13 +200,13 @@ var FRIP_FormInscription = React.createClass({
   },
 
   render: function() {
+
     return (
       <div>
         <form>
           <h2 className="form-title">{this.props.text.nameFormInscription}</h2>
           <div className="form-champ">
             <TextField
-              id="familyName"
               placeholder={this.props.text.familyName}
               className="form-text"
               onBlur={this.setFamilyName}
@@ -208,7 +215,6 @@ var FRIP_FormInscription = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
-              id="firstname"
               placeholder={this.props.text.firstname}
               className="form-text"
               onBlur={this.setFirstname}
@@ -217,7 +223,6 @@ var FRIP_FormInscription = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
-              id="email"
               placeholder={this.props.text.email}
               className="form-text"
               onBlur={this.setEmail}
@@ -226,7 +231,6 @@ var FRIP_FormInscription = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
-              id="password"
               type="password"
               placeholder={this.props.text.password}
               className="form-text"
@@ -236,7 +240,6 @@ var FRIP_FormInscription = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
-              id="passwordConfirmation"
               type="password"
               placeholder={this.props.text.passwordConfirmation}
               className="form-text"
@@ -256,7 +259,14 @@ var FRIP_FormInscription = React.createClass({
             </SelectField>
           </div>
           <div className="form-select-field">
-            <DatePicker hintText={this.props.text.birthday} onChange={this.setBirthday}/>
+            <DatePicker
+              hintText={this.props.text.birthday}
+              onChange={this.setBirthday}
+              DateTimeFormat={DateTimeFormat}
+              okLabel={this.props.text.okLabel}
+              cancelLabel={this.props.text.cancelLabel}
+              locale={this.props.text.locale}
+            />
           </div>
           <div>
             <RaisedButton className="form-button" label={this.props.label} primary={true} onTouchTap={this.handleSubmit}/>

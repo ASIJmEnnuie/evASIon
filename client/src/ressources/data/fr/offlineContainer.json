@@ -1,4 +1,6 @@
 {
+  "_comment": "comment text goes here... si lang en alors locale vaut en-US",
+
   "offlineContainer": {
     "navbar": {
       "title": "evASIon",
@@ -24,7 +26,10 @@
       "male": "Homme",
       "birthday": "Date de naissance",
       "nameFormConnexion": "Connexion",
-      "nameFormInscription": "Inscription"
+      "nameFormInscription": "Inscription",
+      "cancelLabel": "Annuler",
+      "okLabel": "Ok",
+      "locale": "fr"
     },
 
     "or": "ou",
