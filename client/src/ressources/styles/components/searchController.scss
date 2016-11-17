@@ -16,8 +16,16 @@
     height: 76px;
     vertical-align: top;
     display: inline-block;
-    width: 25%;
+    width: 100%;
     text-align: center;
+
+    @include respond-to(medium) {
+      width: 25%;
+    };
+
+    @include respond-to(large) {
+      width: 25%;
+    };
   }
 
   .select {
@@ -33,12 +41,12 @@
   }
 
   .slider {
-    margin-left: 10%;
-    width: 80%;
+    width: 90%;
+    margin-left: 5%;
   }
 
   .slider > div {
-    margin-top: 0px !important;
+    margin-top: 2.5px !important;
     margin-bottom: 0px !important;
   }
 
