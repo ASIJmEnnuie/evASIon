@@ -12,21 +12,35 @@
   }
 
   .searchSelector {
-    padding-top: 24px;
     height: 76px;
+    padding-top: 24px;
     vertical-align: top;
-    display: inline-block;
-    width: 100%;
     text-align: center;
-
-    @include respond-to(medium) {
-      width: 25%;
-    };
-
-    @include respond-to(large) {
-      width: 25%;
-    };
+    display: none;
+    width: 100%;
   }
+
+  @include respond-to(medium) {
+    @for $i from 1 through 3 {
+      .searchSelector:nth-child(#{$i}) {
+        display: inline-block;
+        width: 32%;
+      }
+    }
+    .searchSelector+.searchSelector {
+      margin-left: 2%;
+    }
+  };
+
+  @include respond-to(large) {
+    @for $i from 1 through 4 {
+      .searchSelector:nth-child(#{$i}) {
+        display: inline-block;
+        width: 25%;
+        margin-left: 0px;
+      }
+    }
+  };
 
   .select {
     text-align: left;
@@ -41,8 +55,8 @@
   }
 
   .slider {
-    width: 90%;
-    margin-left: 5%;
+    width: 80%;
+    margin-left: 10%;
   }
 
   .slider > div {
