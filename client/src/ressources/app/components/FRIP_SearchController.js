@@ -100,12 +100,15 @@ const FRIP_SearchController = React.createClass({
           <Slider className="slider"/>
         </div>
 
-        <IconButton
-          id={this.state.idIconDeploy}
-          onTouchTap={this.deploySearchBar}
-        >
-          <HardwareKeyboardArrowDown />
-        </IconButton>
+        <div className="deploy">
+          <span>Rechercher</span>
+          <IconButton
+            id={this.state.idIconDeploy}
+            onTouchTap={this.deploySearchBar}
+          >
+            <HardwareKeyboardArrowDown />
+          </IconButton>
+        </div>
       </div>
     )
   },
