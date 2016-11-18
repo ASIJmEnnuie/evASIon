@@ -52,14 +52,14 @@ var FRIP_FormConnexion = React.createClass({
   },
 
   handleSubmit: function() {
-    if (!this.state.email.trim() || !this.state.password.trim()) {
-      display("globalConnexionError") ;
-    }
-    else {
+    // if (!this.state.email.trim() || !this.state.password.trim()) {
+    //   display("globalConnexionError") ;
+    // }
+    // else {
       // envoie à la BD pour control
       // si control valide, alors :
       this.props.connexion();
-    }
+    //}
 
     // à enlever
     console.log("email : "+this.state.email);
@@ -83,6 +83,7 @@ var FRIP_FormConnexion = React.createClass({
           <h2 className="form-title">{this.props.text.nameFormConnexion}</h2>
           <div className="form-champ">
             <TextField
+              id="email"
               placeholder={this.props.text.email}
               className="form-text"
               onBlur={this.setEmail}
@@ -91,6 +92,7 @@ var FRIP_FormConnexion = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
+              id="password"
               type="password"
               placeholder={this.props.text.password}
               className="form-text"
@@ -207,6 +209,7 @@ var FRIP_FormInscription = React.createClass({
           <h2 className="form-title">{this.props.text.nameFormInscription}</h2>
           <div className="form-champ">
             <TextField
+              id="name"
               placeholder={this.props.text.familyName}
               className="form-text"
               onBlur={this.setFamilyName}
@@ -215,6 +218,7 @@ var FRIP_FormInscription = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
+              id="firstname"
               placeholder={this.props.text.firstname}
               className="form-text"
               onBlur={this.setFirstname}
@@ -223,6 +227,7 @@ var FRIP_FormInscription = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
+              id="email"
               placeholder={this.props.text.email}
               className="form-text"
               onBlur={this.setEmail}
@@ -231,6 +236,7 @@ var FRIP_FormInscription = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
+              id="password"
               type="password"
               placeholder={this.props.text.password}
               className="form-text"
@@ -240,6 +246,7 @@ var FRIP_FormInscription = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
+              id="passwordConfirmation"
               type="password"
               placeholder={this.props.text.passwordConfirmation}
               className="form-text"
@@ -249,6 +256,7 @@ var FRIP_FormInscription = React.createClass({
           </div>
           <div className="form-select-field">
             <SelectField
+              id="gender"
               className="form-select-gender"
               value={this.state.value}
               onChange={this.setGender}
@@ -260,6 +268,7 @@ var FRIP_FormInscription = React.createClass({
           </div>
           <div className="form-select-field">
             <DatePicker
+              id="birthday"
               hintText={this.props.text.birthday}
               onChange={this.setBirthday}
               DateTimeFormat={DateTimeFormat}
@@ -278,6 +287,119 @@ var FRIP_FormInscription = React.createClass({
   },
 });
 
+var FRIP_FormEventCreation = React.createClass({
+  getInitialState: function() {
+    return {
+      eventName: "",
+      eventPlace: "",
+      meetingPlace: "",
+      eventDate: undefined,
+      nbMemberMax: undefined,
+    }
+  },
+
+  handleSubmit: function() {
+    if (!this.state.eventName.trim() || !this.state.eventPlace.trim() || !(this.state.eventDate.toString().length > 0) ) {
+      return display("globalEventCreationError");
+    }
+    else {
+      // envoie à la BD pour control
+      // si control valide, alors :
+      //this.props.eventCreation();
+      console.log("evénement créé")
+    }
+
+    // à enlever
+    console.log("eventName : "+this.state.eventName);
+    console.log("eventPlace : "+this.state.eventPlace);
+    console.log("meetingPlace : "+this.state.meetingPlace);
+    console.log("eventDate : "+this.state.eventDate.toString());
+    console.log("nbMemberMax : "+this.state.nbMemberMax);
+  },
+
+  setEventName: function(event) {
+    this.setState({eventName: event.target.value});
+    errorDisplay(event.target.value, "eventNameError");
+  },
+
+  setEventPlace: function(event) {
+    this.setState({eventPlace: event.target.value});
+    errorDisplay(event.target.value, "eventPlaceError");
+  },
+
+  setMeetingPlace: function(event) {
+    this.setState({meetingPlace: event.target.value});
+  },
+
+  setEventDate: function(event, date) {
+    this.setState({eventDate: date});
+  },
+
+  setNbMemberMax: function(event) {
+    this.setState({nbMemberMax: event.target.value});
+  },
+
+  render: function() {
+
+    return (
+      <div>
+        <form>
+          <h2 className="form-title">{this.props.text.nameFormEventCreation}</h2>
+          <div className="form-champ">
+            <TextField
+              id="eventName"
+              placeholder={this.props.text.eventName}
+              className="form-text"
+              onBlur={this.setEventName}
+            />
+          <ErrorText id="eventNameError" text={this.props.text.errorText} />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="eventPlace"
+              placeholder={this.props.text.eventPlace}
+              className="form-text"
+              onBlur={this.setEventPlace}
+            />
+          <ErrorText id="eventPlaceError" text={this.props.text.errorText} />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="meetingPlace"
+              placeholder={this.props.text.meetingPlace}
+              className="form-text"
+              onBlur={this.setMeetingPlace}
+            />
+          </div>
+          <div className="form-select-field">
+            <DatePicker
+              id="eventDate"
+              hintText={this.props.text.eventDate}
+              onChange={this.setEventDate}
+              DateTimeFormat={DateTimeFormat}
+              okLabel={this.props.text.okLabel}
+              cancelLabel={this.props.text.cancelLabel}
+              locale={this.props.text.locale}
+            />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="nbMemberMax"
+              placeholder={this.props.text.nbMemberMax}
+              className="form-text"
+              onBlur={this.setNbMemberMax}
+            />
+          </div>
+          <div>
+            <RaisedButton className="form-button" label={this.props.label} primary={true} onTouchTap={this.handleSubmit}/>
+            <ErrorText id="globalEventCreationError" text={this.props.text.errorTextAllAreRequired} />
+          </div>
+          </form>
+      </div>
+    );
+  },
+});
 
 
-export {FRIP_FormConnexion, FRIP_FormInscription};
+
+export {FRIP_FormConnexion, FRIP_FormInscription, FRIP_FormEventCreation};

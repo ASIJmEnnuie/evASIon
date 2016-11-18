@@ -5,7 +5,22 @@
       "iconMenu": ["Paramètres", "Aide", "Déconnexion"]
     },
     "drawerLeft": {
-      "itemList": ["Accueil", "Évènements"]
+      "itemList": ["Accueil", "Évènements", "Créer un évènement", "Créer une activité"]
+    },
+    "eventCreation": {
+      "errorText": "Champ obligatoire",
+      "errorTextAllAreRequired": "Veuillez remplir tout les champs obligatoires *",
+      "eventName": "Nom de l'évènement *",
+      "eventDate": "Date de l'évènement *",
+      "eventPlace": "Lieu de l'évènement *",
+      "meetingPlace": "Lieu de rendez-vous",
+      "nbMemberMax": "Nombre maximum de participants",
+      "nameFormEventCreation": "Création d'un évènement",
+      "cancelLabel": "Annuler",
+      "okLabel": "Ok",
+      "locale": "fr",
+      "or": "ou",
+      "buttonEventCreationLabel": "Créer"
     }
   }
 }

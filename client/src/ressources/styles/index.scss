@@ -9,6 +9,7 @@
 @import "./containers/offlineContainer";
 @import "./containers/online_pages/eventPage";
 @import "./containers/online_pages/homePage";
+@import "./containers/online_pages/eventCreationPage";
 
 @mixin default() {
   font-family: Roboto, sans-serif;
