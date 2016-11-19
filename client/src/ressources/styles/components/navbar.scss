@@ -1,7 +1,7 @@
 #navbar {
   height: $heightNavbar;
   * {
-    color: #FB8C00 !important;
+    color: $primaryColor !important;
   }
 }
 
@@ -22,21 +22,21 @@
   padding: 5px;
   border: none;
   box-shadow: inset 0px 0px 10px 2px $gray ;
-  background-color: #FB8C00;
-  color: white !important;
+  background-color: $primaryColor;
+  color: $secondaryColor !important;
 }
 
 #inputSearchShowed::-webkit-input-placeholder {
-    color: #EEEEEE;
+    color: $secondaryColor;
 }
 #inputSearchShowed:-moz-placeholder {
-    color: #EEEEEE;
+    color: $secondaryColor;
 }
 #inputSearchShowed::-moz-placeholder {
-    color: #EEEEEE;
+    color: $secondaryColor;
 }
 #inputSearchShowed:-ms-input-placeholder {
-    color: #EEEEEE;
+    color: $secondaryColor;
 }
 
 #inputSearchHidden {

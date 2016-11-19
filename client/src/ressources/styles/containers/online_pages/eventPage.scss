@@ -23,7 +23,7 @@
       @include shadowBox($gray);
       margin-top: $margin;
       margin-bottom: $margin;
-      background-color: white;
+      background-color: $secondaryColor;
 
       .content {
         padding-top: $margin;
