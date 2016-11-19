@@ -34,21 +34,21 @@ const FRIP_SearchController = React.createClass({
       <div className="searchController">
         <div className="searchSelector">
           <TextField
-            hintText="Nom"
+            hintText={this.props.data.name}
             onChange={this.props.nameController}
           />
         </div>
 
         <div className="searchSelector">
           <DatePicker
-            hintText="Date"
-            onChange={this.props.dateController}
+            hintText={this.props.data.date}
+            onChange={this.props.data.dateController}
           />
         </div>
 
         <div className="searchSelector">
           <SelectField
-            floatingLabelText="Catégorie"
+            floatingLabelText={this.props.data.categorie.name}
             value={this.state.value}
             onChange={this.handleChange}
             className="select"
@@ -62,27 +62,27 @@ const FRIP_SearchController = React.createClass({
         </div>
 
         <div className="searchSelector">
-          <div className="text">Prix</div>
+          <div className="text">{this.props.data.price}</div>
           <Slider className="slider"/>
         </div>
 
         <div className="searchSelector">
           <TextField
-            hintText="Lieu"
+            hintText={this.props.data.place}
             onChange={this.props.placeController}
           />
         </div>
 
         <div className="searchSelector">
           <TimePicker
-            hintText="Heure début"
+            hintText={this.props.data.time}
             onChange={this.props.timeController}
           />
         </div>
 
         <div className="searchSelector">
           <SelectField
-            floatingLabelText="Tags"
+            floatingLabelText={this.props.data.tag.name}
             value={this.state.value}
             onChange={this.handleChange}
             className="select"
@@ -96,12 +96,12 @@ const FRIP_SearchController = React.createClass({
         </div>
 
         <div className="searchSelector">
-          <div className="text">Proximité</div>
+          <div className="text">{this.props.data.proximity}</div>
           <Slider className="slider"/>
         </div>
 
         <div className="deploy">
-          <span>Rechercher</span>
+          <span>{this.props.data.search}</span>
           <IconButton
             id={this.state.idIconDeploy}
             onTouchTap={this.deploySearchBar}

@@ -8,5 +8,8 @@
     "#757575",
     "#616161",
     "#424242"
-  ]
+  ],
+  "primaryColor": "#fb8c00",
+  "secondaryColor": "#FFFFFF",
+  "secondaryColor2": "#EEEEEE"
 }

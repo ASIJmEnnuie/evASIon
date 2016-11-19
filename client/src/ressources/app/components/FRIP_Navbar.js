@@ -7,6 +7,8 @@ import Avatar from 'material-ui/Avatar';
 import ActionReorder from 'material-ui/svg-icons/action/reorder';
 import ActionSearch from 'material-ui/svg-icons/action/search';
 
+const colors = require('../../data/colors');
+
 var FRIP_NavbarOnline = React.createClass({
   getInitialState: function() {
     return {
@@ -45,13 +47,20 @@ var FRIP_NavbarOnline = React.createClass({
     var navbar = this;
 
     var avatar = (
-      <IconButton style={{padding: 0, borderRadius: "50px"}} className="iconNavbar">
+      <IconButton
+        style={{padding: 0, borderRadius: "50px"}}
+        className="iconNavbar"
+      >
         <Avatar size={50}>A</Avatar>
       </IconButton>
     );
 
     var iconLeft = (
-      <IconButton onTouchTap={this.props.clickOnLeftButton} className="iconNavbar" style={{borderRadius: "50px", backgroundColor: "#FB8C00"}}>
+      <IconButton
+        onTouchTap={this.props.clickOnLeftButton}
+        className="iconNavbar"
+        style={{borderRadius: "50px", backgroundColor: colors.primaryColor}}
+      >
         <ActionReorder />
       </IconButton>
     );
@@ -61,7 +70,7 @@ var FRIP_NavbarOnline = React.createClass({
         <input
           id={this.state.idInputSearch}
           type="text"
-          placeholder="Rechercher"
+          placeholder={this.props.text.search}
           name="search"
           onKeyPress={this.inputSearchChange}
         />
@@ -78,9 +87,18 @@ var FRIP_NavbarOnline = React.createClass({
           anchorOrigin={{horizontal: 'left', vertical: 'top'}}
           targetOrigin={{horizontal: 'left', vertical: 'top'}}
         >
-          <MenuItem onTouchTap={navbar.props.accessToParameters} primaryText={this.props.text.iconMenu[0]} />
-          <MenuItem onTouchTap={navbar.props.accessToHelp} primaryText={this.props.text.iconMenu[1]} />
-          <MenuItem onTouchTap={navbar.props.deconnexion} primaryText={this.props.text.iconMenu[2]} />
+          <MenuItem
+            onTouchTap={navbar.props.accessToParameters}
+            primaryText={this.props.text.iconMenu[0]}
+          />
+          <MenuItem
+            onTouchTap={navbar.props.accessToHelp}
+            primaryText={this.props.text.iconMenu[1]}
+          />
+          <MenuItem
+            onTouchTap={navbar.props.deconnexion}
+            primaryText={this.props.text.iconMenu[2]}
+          />
         </IconMenu>
       </div>
     );
@@ -91,7 +109,7 @@ var FRIP_NavbarOnline = React.createClass({
         title={this.props.text.title}
         iconElementLeft={iconLeft}
         iconElementRight={iconRight}
-        style={{backgroundColor: "#EEEEEE", color:"black"}}
+        style={{backgroundColor: colors.secondaryColor2, color:"black"}}
       />
     );
   }
