@@ -4,8 +4,16 @@
   margin-left: $margin;
   margin-right: $margin;
   margin-bottom: $margin;
-  height: $searchControllerHeigth;
   background-color: white;
+  height: $heightBtnDeploy;
+
+  @include respond-to(medium) {
+    height: $searchControllerHeigth + $heightBtnDeploy;
+  };
+
+  @include respond-to(large) {
+    height: $searchControllerHeigth + $heightBtnDeploy;
+  };
 
   .secondaryController {
     display: none;
@@ -65,17 +73,22 @@
   }
 
   .deploy {
+    height: $heightBtnDeploy;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: $margin;
+
     span {
-      vertical-align: middle;
+      margin-top: auto;
+      margin-bottom: auto;
     }
   }
 
   #iconDeploy {
-    // position: relative;
-    background-color: blue !important;
-    width: 50px;
-    height: 50px;
-    // bottom: 25px;
-    // @include calc(left, "100% - 50px - " + $margin);
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+    width: 24px !important;
+    height: 24px !important;
+    padding: 0px !important;
   }
 }

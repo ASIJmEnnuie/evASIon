@@ -5,11 +5,19 @@
   margin-top: 0px;
 
   .eventList {
-    @include calc(height, '100% - ' + $searchControllerHeigth );
+    @include calc(height, '100% - ' + $heightBtnDeploy );
     @include calc( width, '100% - 2 * ' + $margin);
     padding-left: $margin;
     padding-right: $margin;
     overflow: auto;
+
+    @include respond-to(medium) {
+      @include calc(height, '100% - ' + $searchControllerHeigth + ' - ' + $heightBtnDeploy);
+    };
+
+    @include respond-to(large) {
+      @include calc(height, '100% - ' + $searchControllerHeigth + ' - ' + $heightBtnDeploy);
+    };
 
     .event {
       @include shadowBox($gray);
