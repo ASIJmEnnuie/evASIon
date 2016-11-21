@@ -56,7 +56,7 @@ const FRIP_SearchController = React.createClass({
             {
               this.props.data.categorie.items.map(function(item, i) {
                 return (
-                  <MenuItem value={i} primaryText={item} />
+                  <MenuItem value={i} primaryText={item} key={"searchSelectorCategorie"+i}/>
                 );
               })
             }
@@ -92,7 +92,7 @@ const FRIP_SearchController = React.createClass({
             {
               this.props.data.tag.items.map(function(item, i) {
                 return (
-                  <MenuItem value={i} primaryText={item} />
+                  <MenuItem value={i} primaryText={item} key={"searchSelectorTag"+i}/>
                 );
               })
             }
