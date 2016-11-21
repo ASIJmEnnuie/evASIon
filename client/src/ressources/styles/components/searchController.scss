@@ -4,7 +4,7 @@
   margin-left: $margin;
   margin-right: $margin;
   margin-bottom: $margin;
-  background-color: white;
+  background-color: $secondaryColor;
   height: $heightBtnDeploy;
 
   @include respond-to(medium) {

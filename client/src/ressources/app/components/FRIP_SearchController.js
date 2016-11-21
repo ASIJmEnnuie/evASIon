@@ -16,17 +16,29 @@ const FRIP_SearchController = React.createClass({
   getInitialState: function(){
     return {
       value: 1,
-      deploy: false,
-      idIconDeploy: "iconDeploy"
+      isDeploy: false,
+      renderIconDeploy: <HardwareKeyboardArrowDown/>
     }
   },
 
   handleChange: function (event, index, value) {
     this.setState({value});
+    console.log(this.state.value);
   },
 
-  deploySearchBar: function() {
-
+  deploySearchBar: function(e) {
+    if (this.state.isDeploy == false) {
+      this.setState({
+        isDeploy: true,
+        renderIconDeploy: <HardwareKeyboardArrowUp/>
+      });
+    }
+    else {
+      this.setState({
+        isDeploy: false,
+        renderIconDeploy: <HardwareKeyboardArrowDown/>
+      });
+    }
   },
 
   render: function() {
@@ -107,10 +119,10 @@ const FRIP_SearchController = React.createClass({
         <div className="deploy">
           <span>{this.props.data.search}</span>
           <IconButton
-            id={this.state.idIconDeploy}
+            id="iconDeploy"
             onTouchTap={this.deploySearchBar}
           >
-            <HardwareKeyboardArrowDown />
+            {this.state.renderIconDeploy}
           </IconButton>
         </div>
       </div>
