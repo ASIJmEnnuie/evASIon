@@ -5,9 +5,13 @@
   }
 }
 
+.navContentRight {
+  display: flex;
+}
+
 #iconSearchShowed {
   vertical-align: top;
-  margin-right: $margin !important;
+  margin-right: $margin/2 !important;
 }
 
 #iconSearchHidden {
@@ -17,7 +21,9 @@
 
 #inputSearchShowed {
   vertical-align: middle;
-  margin-right: 2*$margin;
+  margin-right: $margin;
+  margin-top: auto;
+  margin-bottom: auto;
   font-size: 15px;
   padding: 5px;
   border: none;

@@ -66,7 +66,7 @@ var FRIP_NavbarOnline = React.createClass({
     );
 
     var iconRight = (
-      <div>
+      <div className="navContentRight">
         <input
           id={this.state.idInputSearch}
           type="text"
@@ -114,6 +114,14 @@ var FRIP_NavbarOnline = React.createClass({
     );
   }
 });
+
+
+
+
+/*---------------------------------------*/
+
+
+
 
 const FRIP_NavbarOffline = React.createClass({
   render: function() {
