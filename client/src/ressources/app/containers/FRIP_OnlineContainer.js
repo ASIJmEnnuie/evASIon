@@ -6,6 +6,8 @@ import FRIP_DrawerLeft from '../components/FRIP_Drawer';
 import FRIP_HomePage from './online_pages/FRIP_HomePage';
 import FRIP_EventPage from './online_pages/FRIP_EventPage';
 
+import parameters from '../../data/parameters';
+
 const FRIP_OnlineContainer = React.createClass({
   getInitialState: function () {
     return {
@@ -18,6 +20,10 @@ const FRIP_OnlineContainer = React.createClass({
 
   changePage: function(event, menuItem, index) {
     this.setState({page: index});
+    var breakpointSmall = parseInt(parameters.breakpoints.small.substring(0, parameters.breakpoints.small.length-2));
+    if (this.props.screenWidth <= breakpointSmall) {
+      this.clickOnLeftButton();
+    }
   },
 
   accessToParameters: function() {

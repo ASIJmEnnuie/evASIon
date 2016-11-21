@@ -1,4 +1,4 @@
-@import "../data/colors.json";
+@import "../data/parameters.json";
 
 $gray: rgba(0,0,0,0.20);
 $imgHeight: 200px;
@@ -10,11 +10,6 @@ $margin: 20px;
 $fontSize: 20px;
 $heightNavbarFull: 116px;
 $heightMinCarouselOffline : 600px;
-
-$breakpoints: (
-  'small': 900px,
-  'large': 1400px
-);
 
 $widthDrawerLeft: (
   'mobile': 100%,

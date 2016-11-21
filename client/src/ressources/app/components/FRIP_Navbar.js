@@ -7,7 +7,7 @@ import Avatar from 'material-ui/Avatar';
 import ActionReorder from 'material-ui/svg-icons/action/reorder';
 import ActionSearch from 'material-ui/svg-icons/action/search';
 
-const colors = require('../../data/colors');
+const parameters = require('../../data/parameters');
 
 var FRIP_NavbarOnline = React.createClass({
   getInitialState: function() {
@@ -59,7 +59,7 @@ var FRIP_NavbarOnline = React.createClass({
       <IconButton
         onTouchTap={this.props.clickOnLeftButton}
         className="iconNavbar"
-        style={{borderRadius: "50px", backgroundColor: colors.primaryColor}}
+        style={{borderRadius: "50px", backgroundColor: parameters.primaryColor}}
       >
         <ActionReorder />
       </IconButton>
@@ -109,7 +109,7 @@ var FRIP_NavbarOnline = React.createClass({
         title={this.props.text.title}
         iconElementLeft={iconLeft}
         iconElementRight={iconRight}
-        style={{backgroundColor: colors.secondaryColor2, color:"black"}}
+        style={{backgroundColor: parameters.secondaryColor2, color:"black"}}
       />
     );
   }

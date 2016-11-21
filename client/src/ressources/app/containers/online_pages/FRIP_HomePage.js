@@ -2,7 +2,7 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import {FRIP_Carousel} from '../../components/FRIP_Carousel';
 
-const colors = require('../../../data/colors.json').colors;
+const colors = require('../../../data/parameters').colors;
 
 const FRIP_HomePage = React.createClass({
   getDefaultProps: function() {
