@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
+import TimePicker from 'material-ui/TimePicker';
 import areIntlLocalesSupported from 'intl-locales-supported';
 import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
@@ -277,7 +278,7 @@ var FRIP_FormInscription = React.createClass({
               locale={this.props.text.locale}
             />
           </div>
-          <div>
+          <div className="form-validation">
             <RaisedButton className="form-button" label={this.props.label} primary={true} onTouchTap={this.handleSubmit}/>
             <ErrorText id="globalInscriptionError" text={this.props.text.errorTextAllAreRequired} />
           </div>
@@ -292,29 +293,13 @@ var FRIP_FormEventCreation = React.createClass({
     return {
       eventName: "",
       eventPlace: "",
-      meetingPlace: "",
+      evantMeetingPlace: "",
       eventDate: undefined,
-      nbMemberMax: undefined,
+      eventTime: undefined,
+      eventDateEnd: undefined,
+      eventMemberMax: undefined,
+      eventDescription: "",
     }
-  },
-
-  handleSubmit: function() {
-    if (!this.state.eventName.trim() || !this.state.eventPlace.trim() || !(this.state.eventDate.toString().length > 0) ) {
-      return display("globalEventCreationError");
-    }
-    else {
-      // envoie à la BD pour control
-      // si control valide, alors :
-      //this.props.eventCreation();
-      console.log("evénement créé")
-    }
-
-    // à enlever
-    console.log("eventName : "+this.state.eventName);
-    console.log("eventPlace : "+this.state.eventPlace);
-    console.log("meetingPlace : "+this.state.meetingPlace);
-    console.log("eventDate : "+this.state.eventDate.toString());
-    console.log("nbMemberMax : "+this.state.nbMemberMax);
   },
 
   setEventName: function(event) {
@@ -327,16 +312,28 @@ var FRIP_FormEventCreation = React.createClass({
     errorDisplay(event.target.value, "eventPlaceError");
   },
 
-  setMeetingPlace: function(event) {
-    this.setState({meetingPlace: event.target.value});
+  setEventMeetingPlace: function(event) {
+    this.setState({eventMeetingPlace: event.target.value});
   },
 
   setEventDate: function(event, date) {
     this.setState({eventDate: date});
   },
 
-  setNbMemberMax: function(event) {
-    this.setState({nbMemberMax: event.target.value});
+  setEventTime: function(event, date) {
+    this.setState({eventTime: date});
+  },
+
+  setEventDateEnd: function(event, date) {
+    this.setState({eventDateEnd: date});
+  },
+
+  setEventMemberMax: function(event) {
+    this.setState({eventMemberMax: event.target.value});
+  },
+
+  setEventDescription: function(event) {
+    this.setState({eventDescription: event.target.value});
   },
 
   render: function() {
@@ -365,10 +362,10 @@ var FRIP_FormEventCreation = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
-              id="meetingPlace"
-              placeholder={this.props.text.meetingPlace}
+              id="ventMeetingPlace"
+              placeholder={this.props.text.eventMeetingPlace}
               className="form-text"
-              onBlur={this.setMeetingPlace}
+              onBlur={this.setEventMeetingPlace}
             />
           </div>
           <div className="form-select-field">
@@ -382,16 +379,45 @@ var FRIP_FormEventCreation = React.createClass({
               locale={this.props.text.locale}
             />
           </div>
-          <div className="form-champ">
-            <TextField
-              id="nbMemberMax"
-              placeholder={this.props.text.nbMemberMax}
-              className="form-text"
-              onBlur={this.setNbMemberMax}
+          <div className="form-select-field">
+            <TimePicker
+              id="eventTime"
+              hintText={this.props.text.eventTime}
+              onChange={this.setEventTime}
+              autoOk={true}
+              format="ampm"
+              okLabel={this.props.text.okLabel}
+              cancelLabel={this.props.text.cancelLabel}
             />
           </div>
-          <div>
-            <RaisedButton className="form-button" label={this.props.label} primary={true} onTouchTap={this.handleSubmit}/>
+          <div className="form-select-field">
+            <DatePicker
+              id="eventDateEnd"
+              hintText={this.props.text.eventDateEnd}
+              onChange={this.setEventDateEnd}
+              DateTimeFormat={DateTimeFormat}
+              okLabel={this.props.text.okLabel}
+              cancelLabel={this.props.text.cancelLabel}
+              locale={this.props.text.locale}
+            />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="eventMemberMax"
+              placeholder={this.props.text.eventMemberMax}
+              className="form-text"
+              onBlur={this.setEventMemberMax}
+            />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="eventDescription"
+              placeholder={this.props.text.eventDescription}
+              className="form-text"
+              onBlur={this.setEventDescription}
+            />
+          </div>
+          <div className="form-event-validation">
             <ErrorText id="globalEventCreationError" text={this.props.text.errorTextAllAreRequired} />
           </div>
           </form>

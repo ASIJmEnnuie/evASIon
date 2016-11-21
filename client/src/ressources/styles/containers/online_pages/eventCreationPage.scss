@@ -2,9 +2,23 @@
   margin: 2%;
 
   @include respond-to(medium) {
+    width: 48%;
     margin-left: auto;
     margin-right: auto;
   };
 
-  background-color: white;
+  .form {
+    width: 100%;
+    background-color: white;
+    border: 0px solid #888;
+
+    .form-event-validation {
+      height: 15px;
+    }
+  }
+
+  .form-stepper-content {
+    text-align: center;
+  }
+
 }
