@@ -13,8 +13,8 @@
     },
 
     "form": {
-      "email": "Email",
-      "password": "Mot de passe",
+      "email": "Email *",
+      "password": "Mot de passe *",
       "errorText": "Champ obligatoire",
       "errorTextAllAreRequired": "Veuillez remplir tout les champs obligatoires *",
       "errorTextDifferentPassword": "Le mot de passe n'est pas identique",

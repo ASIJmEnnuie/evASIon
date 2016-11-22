@@ -297,6 +297,7 @@ var FRIP_FormEventCreation = React.createClass({
       eventDate: undefined,
       eventTime: undefined,
       eventDateEnd: undefined,
+      eventTimeEnd: undefined,
       eventMemberMax: undefined,
       eventDescription: "",
     }
@@ -326,6 +327,10 @@ var FRIP_FormEventCreation = React.createClass({
 
   setEventDateEnd: function(event, date) {
     this.setState({eventDateEnd: date});
+  },
+
+  setEventTimeEnd: function(event, date) {
+    this.setState({eventTimeEnd: date});
   },
 
   setEventMemberMax: function(event) {
@@ -362,7 +367,7 @@ var FRIP_FormEventCreation = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
-              id="ventMeetingPlace"
+              id="eventMeetingPlace"
               placeholder={this.props.text.eventMeetingPlace}
               className="form-text"
               onBlur={this.setEventMeetingPlace}
@@ -385,7 +390,7 @@ var FRIP_FormEventCreation = React.createClass({
               hintText={this.props.text.eventTime}
               onChange={this.setEventTime}
               autoOk={true}
-              format="ampm"
+              format={this.props.text.timeFormat}
               okLabel={this.props.text.okLabel}
               cancelLabel={this.props.text.cancelLabel}
             />
@@ -401,12 +406,24 @@ var FRIP_FormEventCreation = React.createClass({
               locale={this.props.text.locale}
             />
           </div>
+          <div className="form-select-field">
+            <TimePicker
+              id="eventTimeEnd"
+              hintText={this.props.text.eventTimeEnd}
+              onChange={this.setEventTimeEnd}
+              autoOk={true}
+              format={this.props.text.timeFormat}
+              okLabel={this.props.text.okLabel}
+              cancelLabel={this.props.text.cancelLabel}
+            />
+          </div>
           <div className="form-champ">
             <TextField
               id="eventMemberMax"
               placeholder={this.props.text.eventMemberMax}
               className="form-text"
               onBlur={this.setEventMemberMax}
+              type="number"
             />
           </div>
           <div className="form-champ">

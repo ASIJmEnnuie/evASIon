@@ -44,7 +44,7 @@ const FRIP_EventCreationPage = React.createClass({
   },
 
   handleSubmit: function() {
-    if (!this.refs.formEvent.state.eventName.trim() || !(this.refs.formEvent.state.eventDate) || !(this.refs.formEvent.state.eventTime) ) {
+    if (!this.refs.formEvent.state.eventName.trim() || !this.refs.formEvent.state.eventPlace.trim() || !(this.refs.formEvent.state.eventDate) || !(this.refs.formEvent.state.eventTime) ) {
       var obj = document.getElementById("globalEventCreationError");
       obj.style.display='block';
       return false;
@@ -59,7 +59,8 @@ const FRIP_EventCreationPage = React.createClass({
       console.log("eventMeetingPlace : "+this.refs.formEvent.state.eventMeetingPlace);
       console.log("eventDate : "+this.refs.formEvent.state.eventDate.toString());
       console.log("eventTime : "+this.refs.formEvent.state.eventTime.toString());
-      console.log("eventDateEnd : "+this.refs.formEvent.state.eventDateEnd.toString());
+      // console.log("eventDateEnd : "+this.refs.formEvent.state.eventDateEnd.toString());
+      // console.log("eventTimeEnd : "+this.refs.formEvent.state.eventTimeEnd.toString());
       console.log("eventMemberMax : "+this.refs.formEvent.state.eventMemberMax);
       console.log("eventDescription : "+this.refs.formEvent.state.eventDescription);
 

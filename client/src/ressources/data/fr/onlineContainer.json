@@ -1,4 +1,6 @@
 {
+  "_comment": "comment text goes here... si lang en alors timeFormat vaut ampm",
+
   "onlineContainer": {
     "navbar": {
       "title": "evASIon",
@@ -18,17 +20,19 @@
       "errorText": "Champ obligatoire",
       "errorTextAllAreRequired": "Veuillez remplir tout les champs obligatoires *",
       "eventName": "Nom de l'évènement *",
-      "eventDate": "Date de l'évènement *",
-      "eventTime": "Heure de l'évènement *",
-      "eventDateEnd": "Date de fin de l'évènement",
-      "eventPlace": "Lieu de l'évènement",
-      "eventDescription": "Description de l'évènement",
+      "eventDate": "Date *",
+      "eventTime": "Heure *",
+      "eventDateEnd": "Date de fin",
+      "eventTimeEnd": "Heure de fin",
+      "eventPlace": "Lieu de l'évènement *",
+      "eventDescription": "Description",
       "eventMeetingPlace": "Lieu de rendez-vous",
       "eventMemberMax": "Nombre maximum de participants",
       "nameFormEventCreation": "Création d'un évènement",
       "cancelLabel": "Annuler",
       "okLabel": "Ok",
       "locale": "fr",
+      "timeFormat": "24hr",
       "or": "ou",
       "buttonEventCreationLabel": "Créer"
     }
