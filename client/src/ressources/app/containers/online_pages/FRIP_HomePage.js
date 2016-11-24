@@ -26,7 +26,8 @@ const FRIP_HomePage = React.createClass({
           <div
             key={"slide-event"+i}
             className="slide-event"
-            style={{backgroundColor: colors[parseInt(Math.random()*colors.length)]}}
+            // style={{backgroundColor: colors[parseInt(Math.random()*colors.length)]}}
+            style={{backgroundColor: "white"}}
           >
             <div> {event} </div>
           </div>

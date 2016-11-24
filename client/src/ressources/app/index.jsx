@@ -6,15 +6,17 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import {fade} from 'material-ui/utils/colorManipulator';
 import { indigo400, indigo700, pinkA200, grey100, grey300, grey400, grey500, white, darkBlack, fullBlack } from 'material-ui/styles/colors';
 
+var parameters = require('../data/parameters.json');
+
 import FRIP_Global from './FRIP_Global';
 
 const muiTheme = getMuiTheme({
   fontFamily: 'Roboto, sans-serif',
   palette: {
-    primary1Color: indigo700,
-    primary2Color: indigo400,
+    primary1Color: parameters.secondaryColor2,
+    primary2Color: parameters.secondaryColor,
     primary3Color: grey400,
-    accent1Color: pinkA200,
+    accent1Color: parameters.primaryColor,
     accent2Color: grey100,
     accent3Color: grey500,
     textColor: darkBlack,
