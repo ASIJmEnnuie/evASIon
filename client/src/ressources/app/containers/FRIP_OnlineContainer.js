@@ -65,7 +65,7 @@ const FRIP_OnlineContainer = React.createClass({
         page = (<FRIP_EventCreationPage id={this.state.pageId} data={this.props.data.eventCreation}/>);
         break;
       case 3:
-        page = (<FRIP_ActvityCreationPage id={this.state.pageId}/>);
+        page = (<FRIP_ActivityCreationPage id={this.state.pageId}/>);
         break;
       default:
         page = (

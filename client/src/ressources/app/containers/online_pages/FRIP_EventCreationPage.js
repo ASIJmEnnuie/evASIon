@@ -15,25 +15,33 @@ const FRIP_EventCreationPage = React.createClass({
     return {
       finished: false,
       stepIndex: 0,
+      eventActivityName: "",
     }
   },
 
   handleNext: function() {
     const {stepIndex} = this.state;
 
-    if (this.state.stepIndex == 1) {
-      if (this.handleSubmit()) {
+    switch (this.state.stepIndex) {
+      case 0:
+        this.refs.searchActivity.handleSubmit();
         this.setState({
           stepIndex: stepIndex + 1,
           finished: stepIndex >= 1,
+          eventActivityName: this.refs.searchActivity.state.activitySelected,
         });
-      }
-    }
-    else {
-      this.setState({
-        stepIndex: stepIndex + 1,
-        finished: stepIndex >= 1,
-      });
+        break;
+      case 1:
+        if (this.refs.formEvent.handleSubmit()) {
+          this.setState({
+            stepIndex: stepIndex + 1,
+            finished: stepIndex >= 1,
+          });
+        }
+        this.handleSubmit();
+        break;
+      default: console.log("error");
+
     }
   },
 
@@ -45,28 +53,21 @@ const FRIP_EventCreationPage = React.createClass({
   },
 
   handleSubmit: function() {
-    if (!this.refs.formEvent.state.eventName.trim() || !this.refs.formEvent.state.eventPlace.trim() || !(this.refs.formEvent.state.eventDate) || !(this.refs.formEvent.state.eventTime) ) {
-      var obj = document.getElementById("globalEventCreationError");
-      obj.style.display='block';
-      return false;
-    }
-    else {
-      // TODO envoie à la BD pour control
-      // si control valide, alors :
-      //this.props.eventCreation();
-      console.log("evénement créé");
-      console.log("eventName : "+this.refs.formEvent.state.eventName);
-      console.log("eventPlace : "+this.refs.formEvent.state.eventPlace);
-      console.log("eventMeetingPlace : "+this.refs.formEvent.state.eventMeetingPlace);
-      console.log("eventDate : "+this.refs.formEvent.state.eventDate.toString());
-      console.log("eventTime : "+this.refs.formEvent.state.eventTime.toString());
-      // console.log("eventDateEnd : "+this.refs.formEvent.state.eventDateEnd.toString());
-      // console.log("eventTimeEnd : "+this.refs.formEvent.state.eventTimeEnd.toString());
-      console.log("eventMemberMax : "+this.refs.formEvent.state.eventMemberMax);
-      console.log("eventDescription : "+this.refs.formEvent.state.eventDescription);
 
-      return true;
-    }
+    // TODO ENVOI BD pour la création de l'évt
+
+    // A ENLEVER
+    console.log("eventActivityName: "+this.state.eventActivityName);
+    console.log("eventName : "+this.refs.formEvent.state.eventName);
+    console.log("eventPlace : "+this.refs.formEvent.state.eventPlace);
+    console.log("eventMeetingPlace : "+this.refs.formEvent.state.eventMeetingPlace);
+    console.log("eventDate : "+this.refs.formEvent.state.eventDate.toString());
+    console.log("eventTime : "+this.refs.formEvent.state.eventTime.toString());
+    // console.log("eventDateEnd : "+this.refs.formEvent.state.eventDateEnd.toString());
+    // console.log("eventTimeEnd : "+this.refs.formEvent.state.eventTimeEnd.toString());
+    console.log("eventMemberMax : "+this.refs.formEvent.state.eventMemberMax);
+    console.log("eventDescription : "+this.refs.formEvent.state.eventDescription);
+
   },
 
   getStepContent: function(stepIndex) {
@@ -77,7 +78,7 @@ const FRIP_EventCreationPage = React.createClass({
             <div>{this.props.data.firstStepContent}</div>
             <FRIP_SearchActivityLittleController
               data={this.props.data}
-              ref="activitySearch"
+              ref="searchActivity"
             />
           </div>);
       case 1:

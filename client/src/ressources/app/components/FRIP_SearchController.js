@@ -123,20 +123,24 @@ let SelectableList = MakeSelectable(List);
 const FRIP_SearchActivityLittleController = React.createClass({
   getInitialState: function(){
     return {
-      activityName: "",
-      selectedIndex: ""
+      activitySearch: "",
+      activitySelected: "",
     }
   },
 
   handleSearchChange: function(event){
-    this.setState({activityName: event.target.value});
-    // TODO récupère les activités associés dans BD
+    this.setState({activitySearch: event.target.value});
+    // TODO récupère les activités associés dans BD, suivre notation de activities.json, puis le supprimer
   },
 
   handleSelectChange: function(event, index){
-    this.setState({selectedIndex: index});
+    this.setState({activitySelected: index});
+  },
 
-    console.log(index);
+  handleSubmit: function() {
+    if (!this.state.activitySelected) {
+      this.setState({activitySelected: "Autre"})
+    }
   },
 
   render: function() {
@@ -146,11 +150,11 @@ const FRIP_SearchActivityLittleController = React.createClass({
       <div className="searchLittleController">
         <div>
           <TextField
-            id="activityName"
+            id="activitySearch"
             placeholder={this.props.data.activityName}
             onBlur={this.handleSearchChange}
           />
-        <SelectableList  value={this.state.selectedIndex} onChange={this.handleSelectChange}>
+        <SelectableList  value={this.state.activitySelected} onChange={this.handleSelectChange}>
             {activities.map(function(event, i){
               return (
                 <ListItem

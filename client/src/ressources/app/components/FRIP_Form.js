@@ -300,13 +300,24 @@ var FRIP_FormEventCreation = React.createClass({
     return {
       eventName: "",
       eventPlace: "",
-      evantMeetingPlace: "",
+      eventMeetingPlace: "",
       eventDate: undefined,
       eventTime: undefined,
       eventDateEnd: undefined,
       eventTimeEnd: undefined,
       eventMemberMax: undefined,
       eventDescription: "",
+    }
+  },
+
+  handleSubmit: function() {
+    if (!this.state.eventName.trim() || !this.state.eventPlace.trim() || !(this.state.eventDate) || !(this.state.eventTime) ) {
+      var obj = document.getElementById("globalEventCreationError");
+      obj.style.display='block';
+      return false;
+    }
+    else {
+      return true;
     }
   },
 
