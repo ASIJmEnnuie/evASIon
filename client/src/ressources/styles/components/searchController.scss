@@ -50,3 +50,11 @@
     @include calc(left, "100% - 50px - " + $margin);
   }
 }
+
+.searchLittleController {
+  @include shadowBox($gray);
+
+  .searchResultItem {
+    text-align: left;
+  }
+}

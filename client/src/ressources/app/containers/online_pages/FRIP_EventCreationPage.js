@@ -8,6 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
 import {FRIP_FormEventCreation} from '../../components/FRIP_Form';
+import {FRIP_SearchActivityLittleController} from '../../components/FRIP_SearchController';
 
 const FRIP_EventCreationPage = React.createClass({
   getInitialState: function() {
@@ -19,6 +20,7 @@ const FRIP_EventCreationPage = React.createClass({
 
   handleNext: function() {
     const {stepIndex} = this.state;
+
 
     if (this.state.stepIndex == 1) {
       if (this.handleSubmit()) {
@@ -71,13 +73,19 @@ const FRIP_EventCreationPage = React.createClass({
   getStepContent: function(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return (<div>{this.props.text.firstStepContent}</div>);
+        return (
+          <div>
+            <div>{this.props.text.firstStepContent}</div>
+            <FRIP_SearchActivityLittleController
+              data={this.props.text}
+              ref="activitySearch"
+            />
+          </div>);
       case 1:
         return (
           <div className="form">
             <FRIP_FormEventCreation
               text={this.props.text}
-              label={this.props.text.buttonEventCreationLabel}
               ref="formEvent"
             />
           </div>

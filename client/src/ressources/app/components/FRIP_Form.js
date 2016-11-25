@@ -282,7 +282,7 @@ var FRIP_FormInscription = React.createClass({
             <RaisedButton className="form-button" label={this.props.label} primary={true} onTouchTap={this.handleSubmit}/>
             <ErrorText id="globalInscriptionError" text={this.props.text.errorTextAllAreRequired} />
           </div>
-          </form>
+        </form>
       </div>
     );
   },
@@ -437,12 +437,10 @@ var FRIP_FormEventCreation = React.createClass({
           <div className="form-event-validation">
             <ErrorText id="globalEventCreationError" text={this.props.text.errorTextAllAreRequired} />
           </div>
-          </form>
+        </form>
       </div>
     );
   },
 });
-
-
 
 export {FRIP_FormConnexion, FRIP_FormInscription, FRIP_FormEventCreation};

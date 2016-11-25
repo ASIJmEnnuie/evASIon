@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component, PropTypes, Children} from 'react';
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
@@ -6,6 +6,9 @@ import Slider from 'material-ui/Slider';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
+
+import {List, ListItem, MakeSelectable} from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
 
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
@@ -115,4 +118,60 @@ const FRIP_SearchController = React.createClass({
   },
 });
 
-export default FRIP_SearchController;
+let SelectableList = MakeSelectable(List);
+
+const FRIP_SearchActivityLittleController = React.createClass({
+  getInitialState: function(){
+    return {
+      activityName: "",
+      activitySelected: "",
+      selectedIndex: 1
+    }
+  },
+
+  handleSearchChange: function(event){
+    this.setState({activityName: event.target.value});
+    // récupère les activités associés dans BD
+  },
+
+  handleSelectChange: function(event, index){
+    this.setState({selectedIndex: index});
+
+    console.log(index);
+  },
+
+  render: function() {
+    var activities = require("../../data/activities.json").activities;
+    var searchController = this;
+
+    return (
+      <div className="searchLittleController">
+        <div>
+          <TextField
+            id="activityName"
+            placeholder={this.props.data.activityName}
+            onBlur={this.handleSearchChange}
+          />
+        <SelectableList  value={this.state.selectedIndex} onChange={this.handleSelectChange}>
+            {activities.map(function(event, i){
+              return (
+                <ListItem
+                  className="searchResultItem"
+                  value={i+1}
+                  key={i+1}
+                  primaryText={event.name}
+                  value={event.name}
+                  leftIcon={<Avatar size={25} src={event.image} />}
+                />
+              );
+            })
+            }
+          </SelectableList>
+        </div>
+      </div>
+    )
+  },
+});
+
+
+export {FRIP_SearchController, FRIP_SearchActivityLittleController};

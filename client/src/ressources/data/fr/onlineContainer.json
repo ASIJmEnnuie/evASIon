@@ -34,7 +34,8 @@
       "locale": "fr",
       "timeFormat": "24hr",
       "or": "ou",
-      "buttonEventCreationLabel": "Créer"
+      "buttonEventCreationLabel": "Créer",
+      "activityName": "Nom de l'activité"
     }
   }
 }

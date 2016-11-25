@@ -17,3 +17,8 @@ hs_err_pid*
 client/node_modules
 client/dist
 client/.sass-cache
+
+# Compilator
+client/.node-gyp
+client/.npm
+client/*.json

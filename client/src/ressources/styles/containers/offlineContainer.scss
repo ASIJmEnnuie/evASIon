@@ -2,6 +2,7 @@
   margin: 2%;
 
   #carousel {
+    @include shadowBox($gray);
     @include respond-to(medium) {
       width: 48%;
       float: right;
@@ -22,16 +23,6 @@
     margin-left: auto;
     margin-right: auto;
   };
-}
-
-.form {
-  @include respond-to(medium) {
-    width: 48%;
-  };
-  overflow: auto;
-  border: 1px solid #888;
-  text-align: center;
-  margin-bottom: 2%;
 }
 
 .link {
