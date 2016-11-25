@@ -1,7 +1,7 @@
 #homeOfflinePage {
   margin: 2%;
 
-  #carousel {
+  .carousel {
     @include shadowBox($gray);
     @include respond-to(medium) {
       width: 48%;

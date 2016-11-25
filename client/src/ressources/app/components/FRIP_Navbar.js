@@ -99,13 +99,11 @@ var FRIP_NavbarOnline = React.createClass({
 
 const FRIP_NavbarOffline = React.createClass({
   render: function() {
-    var navbar = this;
-
     return (
       <AppBar
         id="navbar"
-        title={this.props.text.title}
-        name={this.props.text.name}
+        title={this.props.data.title}
+        name={this.props.data.name}
         showMenuIconButton={false}
       />
     );

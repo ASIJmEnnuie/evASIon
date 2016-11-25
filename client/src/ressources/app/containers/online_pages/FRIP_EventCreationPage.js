@@ -21,7 +21,6 @@ const FRIP_EventCreationPage = React.createClass({
   handleNext: function() {
     const {stepIndex} = this.state;
 
-
     if (this.state.stepIndex == 1) {
       if (this.handleSubmit()) {
         this.setState({
@@ -52,7 +51,7 @@ const FRIP_EventCreationPage = React.createClass({
       return false;
     }
     else {
-      // envoie à la BD pour control
+      // TODO envoie à la BD pour control
       // si control valide, alors :
       //this.props.eventCreation();
       console.log("evénement créé");
@@ -75,9 +74,9 @@ const FRIP_EventCreationPage = React.createClass({
       case 0:
         return (
           <div>
-            <div>{this.props.text.firstStepContent}</div>
+            <div>{this.props.data.firstStepContent}</div>
             <FRIP_SearchActivityLittleController
-              data={this.props.text}
+              data={this.props.data}
               ref="activitySearch"
             />
           </div>);
@@ -85,7 +84,7 @@ const FRIP_EventCreationPage = React.createClass({
         return (
           <div className="form">
             <FRIP_FormEventCreation
-              text={this.props.text}
+              data={this.props.data}
               ref="formEvent"
             />
           </div>
@@ -104,30 +103,30 @@ const FRIP_EventCreationPage = React.createClass({
           <div>
             <Stepper activeStep={stepIndex} orientation="horizontal">
               <Step>
-                <StepLabel>{this.props.text.firstStep}</StepLabel>
+                <StepLabel>{this.props.data.firstStep}</StepLabel>
               </Step>
               <Step>
-                <StepLabel>{this.props.text.secondStep}</StepLabel>
+                <StepLabel>{this.props.data.secondStep}</StepLabel>
               </Step>
             </Stepper>
           </div>
           <div className="form-stepper-content">
             {finished ? (
               <div>
-                {this.props.text.eventCreationValidation}
+                {this.props.data.eventCreationValidation}
               </div>
             ) : (
               <div>
                 {this.getStepContent(stepIndex)}
                 <div style={{marginTop: 12}}>
                   <FlatButton
-                    label={this.props.text.back}
+                    label={this.props.data.back}
                     disabled={stepIndex === 0}
                     onTouchTap={this.handlePrev}
                     style={{marginRight: 12}}
                   />
                   <RaisedButton
-                    label={stepIndex === 1 ? this.props.text.finish : this.props.text.next}
+                    label={stepIndex === 1 ? this.props.data.finish : this.props.data.next}
                     primary={true}
                     onTouchTap={this.handleNext}
                   />

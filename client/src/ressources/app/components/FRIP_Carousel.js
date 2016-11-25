@@ -165,7 +165,7 @@ const FRIP_CarouselOffline = React.createClass({
     var slides = [];
     carousel.props.pictureList.map(function(item,i) {
       slides.push(
-        <div key={i} className="slide">
+        <div key={i}>
           <img src={item} alt={carousel.props.namePicture[i]}></img>
         </div>
       );

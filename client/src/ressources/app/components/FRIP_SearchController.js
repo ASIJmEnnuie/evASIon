@@ -124,14 +124,13 @@ const FRIP_SearchActivityLittleController = React.createClass({
   getInitialState: function(){
     return {
       activityName: "",
-      activitySelected: "",
-      selectedIndex: 1
+      selectedIndex: ""
     }
   },
 
   handleSearchChange: function(event){
     this.setState({activityName: event.target.value});
-    // récupère les activités associés dans BD
+    // TODO récupère les activités associés dans BD
   },
 
   handleSelectChange: function(event, index){
@@ -142,7 +141,6 @@ const FRIP_SearchActivityLittleController = React.createClass({
 
   render: function() {
     var activities = require("../../data/activities.json").activities;
-    var searchController = this;
 
     return (
       <div className="searchLittleController">
@@ -157,7 +155,6 @@ const FRIP_SearchActivityLittleController = React.createClass({
               return (
                 <ListItem
                   className="searchResultItem"
-                  value={i+1}
                   key={i+1}
                   primaryText={event.name}
                   value={event.name}

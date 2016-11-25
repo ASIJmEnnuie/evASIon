@@ -12,12 +12,12 @@ const FRIP_HomeOfflinePage = React.createClass({
         <div className="form">
           <FRIP_FormConnexion
             connexion={this.props.connexion}
-            text={this.props.data.form}
+            data={this.props.data.form}
             label={this.props.data.buttonConnexionLabel}
           />
           <div className="link" onTouchTap={this.props.changePage}>{this.props.data.linkInscriptionLabel}</div>
         </div>
-        <div id="carousel">
+        <div className="carousel">
           <FRIP_CarouselOffline
             id="carousselOffline"
             pictureList={this.props.data.carousel.pictureList}

@@ -38,7 +38,7 @@ var FRIP_OfflineContainer = React.createClass({
     return (
       <div>
         <FRIP_NavbarOffline
-          text={this.props.data.navbar}
+          data={this.props.data.navbar}
         />
         {page}
       </div>
