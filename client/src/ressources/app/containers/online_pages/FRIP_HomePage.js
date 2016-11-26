@@ -4,24 +4,24 @@ import IconButton from 'material-ui/IconButton';
 import ContentAddCircle from 'material-ui/svg-icons/content/add-circle';
 import {FRIP_Carousel} from '../../components/FRIP_Carousel';
 
-const colors = require('../../../data/parameters').colors;
+const parameters = require('../../../data/parameters');
 const iconStyle = {
   height:"100px",
   width:"100px",
   padding:"0px",
-  color:"white"
+  color:parameters.secondaryColor2
 }
 const styleHomeOnlineButton = {
   height:"100px",
   width:"100px",
   padding:"0px",
   margin:"auto",
-  boxShadow:"0px 0px 10px 2px rgba(0,0,0,0.20)",
+  boxShadow:"0px 0px 10px 2px " + parameters.gray,
   borderRadius:"100px",
-  backgroundColor:"rgba(0,0,0,0.20)"
+  backgroundColor: parameters.gray
 }
 const styleSlideCarousel = {
-  backgroundColor:"white"
+  backgroundColor: parameters.secondaryColor
 }
 
 
@@ -48,7 +48,7 @@ const FRIP_HomePage = React.createClass({
           <div
             key={"slide-event"+i}
             className="slide-event"
-            style={{backgroundColor: "white"}}
+            style={styleSlideCarousel}
           >
             <div> {event} </div>
           </div>
@@ -62,7 +62,7 @@ const FRIP_HomePage = React.createClass({
           <div
             key={"slide-categorie"+i}
             className="slide-categorie"
-            style={{backgroundColor: "white"}}
+            style={styleSlideCarousel}
           >
             <div> {categorie} </div>
           </div>
