@@ -26,5 +26,8 @@ html {
     #app {
       @include default();
     }
+    #app > div {
+      height: 100%;
+    }
   }
 }

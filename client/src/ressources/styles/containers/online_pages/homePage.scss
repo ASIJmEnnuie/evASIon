@@ -1,6 +1,6 @@
 #homeOnlinePage {
-  @include calc( width, '100% - 2 *' + $margin);
-  @include calc( height, '100% - 2 *' + $margin);
+  @include calc( width, '100% - 2 * ' + $margin);
+  @include calc( height, '100% - 2 * ' + $margin);
   margin: $margin;
 }
 
