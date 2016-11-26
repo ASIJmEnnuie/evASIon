@@ -5,6 +5,26 @@ import ContentAddCircle from 'material-ui/svg-icons/content/add-circle';
 import {FRIP_Carousel} from '../../components/FRIP_Carousel';
 
 const colors = require('../../../data/parameters').colors;
+const iconStyle = {
+  height:"100px",
+  width:"100px",
+  padding:"0px",
+  color:"white"
+}
+const styleHomeOnlineButton = {
+  height:"100px",
+  width:"100px",
+  padding:"0px",
+  margin:"auto",
+  boxShadow:"0px 0px 10px 2px rgba(0,0,0,0.20)",
+  borderRadius:"100px",
+  backgroundColor:"rgba(0,0,0,0.20)"
+}
+const styleSlideCarousel = {
+  backgroundColor:"white"
+}
+
+
 
 const FRIP_HomePage = React.createClass({
   getDefaultProps: function() {
@@ -28,7 +48,6 @@ const FRIP_HomePage = React.createClass({
           <div
             key={"slide-event"+i}
             className="slide-event"
-            // style={{backgroundColor: colors[parseInt(Math.random()*colors.length)]}}
             style={{backgroundColor: "white"}}
           >
             <div> {event} </div>
@@ -43,7 +62,6 @@ const FRIP_HomePage = React.createClass({
           <div
             key={"slide-categorie"+i}
             className="slide-categorie"
-            // style={{backgroundColor: colors[parseInt(Math.random()*colors.length)]}}
             style={{backgroundColor: "white"}}
           >
             <div> {categorie} </div>
@@ -55,18 +73,24 @@ const FRIP_HomePage = React.createClass({
     return (
       <div id={this.props.id}>
         <div id="homeOnlinePage">
-          <FRIP_Carousel slidesToShow={nbSlidesToShow}>
+          <FRIP_Carousel
+            slidesToShow={nbSlidesToShow}
+          >
             {eventSlides}
           </FRIP_Carousel>
+
           <div id="homeOnlineButtons">
             <IconButton
-              style={{height:"100px", width:"100px", padding:"0px", margin:"auto", boxShadow: "0px 0px 10px 2px rgba(0,0,0,0.20)", borderRadius:"100px", backgroundColor:"rgba(0,0,0,0.20)"}}
-              iconStyle={{height:"100px", width:"100px", padding:"0px", color:"white"}}
+              style={styleHomeOnlineButton}
+              iconStyle={iconStyle}
             >
               <ContentAddCircle/>
             </IconButton>
           </div>
-          <FRIP_Carousel slidesToShow={nbSlidesToShow}>
+
+          <FRIP_Carousel
+            slidesToShow={nbSlidesToShow}
+          >
             {categorieSlides}
           </FRIP_Carousel>
         </div>
