@@ -1,5 +1,7 @@
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import IconButton from 'material-ui/IconButton';
+import ContentAddCircle from 'material-ui/svg-icons/content/add-circle';
 import {FRIP_Carousel} from '../../components/FRIP_Carousel';
 
 const colors = require('../../../data/parameters').colors;
@@ -41,7 +43,8 @@ const FRIP_HomePage = React.createClass({
           <div
             key={"slide-categorie"+i}
             className="slide-categorie"
-            style={{backgroundColor: colors[parseInt(Math.random()*colors.length)]}}
+            // style={{backgroundColor: colors[parseInt(Math.random()*colors.length)]}}
+            style={{backgroundColor: "white"}}
           >
             <div> {categorie} </div>
           </div>
@@ -55,8 +58,13 @@ const FRIP_HomePage = React.createClass({
           <FRIP_Carousel slidesToShow={nbSlidesToShow}>
             {eventSlides}
           </FRIP_Carousel>
-          <div id="homeOnlineText">
-            <button id="buttonEventAccess"> Autres Evenements </button>
+          <div id="homeOnlineButtons">
+            <IconButton
+              style={{height:"100px", width:"100px", padding:"0px", margin:"auto", boxShadow: "0px 0px 10px 2px rgba(0,0,0,0.20)", borderRadius:"100px", backgroundColor:"rgba(0,0,0,0.20)"}}
+              iconStyle={{height:"100px", width:"100px", padding:"0px", color:"white"}}
+            >
+              <ContentAddCircle/>
+            </IconButton>
           </div>
           <FRIP_Carousel slidesToShow={nbSlidesToShow}>
             {categorieSlides}

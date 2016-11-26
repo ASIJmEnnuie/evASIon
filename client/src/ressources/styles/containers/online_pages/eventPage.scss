@@ -21,7 +21,6 @@
 
     .event {
       @include shadowBox($gray);
-      margin-top: $margin;
       margin-bottom: $margin;
       background-color: $secondaryColor;
 
@@ -93,6 +92,10 @@
           }
         }
       }
+    }
+
+    .event+.event {
+      margin-top: $margin;
     }
   }
 }
