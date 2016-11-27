@@ -4,10 +4,7 @@
   background-color: $secondaryColor;
 
   .content {
-    padding-top: $margin;
-    padding-bottom: $margin;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: $margin;
 
     .colImage {
       vertical-align: top;
@@ -33,7 +30,6 @@
 
         span {
           margin: $margin;
-
           .digit {
             margin: 0px;
             font-weight: bold;
@@ -49,12 +45,19 @@
           font-weight: bold;
           text-transform: uppercase;
         }
+
+        span.title::after{
+          content: "";
+          height: $margin/4;
+          display: block;
+          width: 100%;
+        }
       }
 
       .col {
         vertical-align: top;
-        height: 50%;
-        width: 50%;
+        height: auto;
+        width: 100%;
         display: inline-block;
 
         .row {
@@ -64,11 +67,29 @@
       }
 
       .col+.col {
-        margin-left: -2px;
-        border-left-style: solid;
-        border-color: $gray;
-        border-left-width: 1px;
+        border-bottom-color: $gray;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        padding-bottom: $margin/2;
+        margin-bottom: $margin/2;
       }
+
+      @include respond-to(medium) {
+        .col {
+          height: 50%;
+          width: 50%;
+        }
+
+        .col+.col {
+          padding: 0px;
+          margin: 0px;
+          border-style: none;
+          margin-left: -2px;
+          border-left-style: solid;
+          border-color: $gray;
+          border-left-width: 1px;
+        }
+      };
     }
   }
 }
