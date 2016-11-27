@@ -1,94 +1,115 @@
-.searchController {
+@mixin searchController() {
+  width: 100%;
+  background-color: $secondaryColor;
+}
+
+
+$heightSearchSelector: 76px;
+$paddingTopSearchSelector: 24px;
+$heightTotalSearchSelector: $heightSearchSelector + $paddingTopSearchSelector;
+
+
+.globalController {
   @include shadowBox($gray);
-  @include calc( width, '100% - 2 * ' + $margin);
   margin-left: $margin;
   margin-right: $margin;
   margin-bottom: $margin;
-  background-color: $secondaryColor;
-  height: $heightBtnDeploy;
+  max-height: 100%;
 
-  @include respond-to(medium) {
-    height: $searchControllerHeigth + $heightBtnDeploy;
-  };
-
-  @include respond-to(large) {
-    height: $searchControllerHeigth + $heightBtnDeploy;
-  };
-
-  .secondaryController {
-    display: none;
-  }
-
-  .searchSelector {
-    height: 76px;
-    padding-top: 24px;
-    vertical-align: top;
-    text-align: center;
-    display: none;
-    width: 100%;
-  }
-
-  @include respond-to(medium) {
-    @for $i from 1 through 3 {
-      .searchSelector:nth-child(#{$i}) {
-        display: inline-block;
-        width: 32%;
-      }
-    }
-    .searchSelector+.searchSelector {
-      margin-left: 2%;
-    }
-  };
-
-  @include respond-to(large) {
-    @for $i from 1 through 4 {
-      .searchSelector:nth-child(#{$i}) {
-        display: inline-block;
-        width: 25%;
-        margin-left: 0px;
-      }
-    }
-  };
-
-  .select {
-    text-align: left;
-    margin-top: -24px;
-  }
-
-  .text {
-    margin-top: 10px;
-    text-align: left;
-    margin-left: 10%;
-    width: 80%;
-  }
-
-  .slider {
-    width: 80%;
-    margin-left: 10%;
-  }
-
-  .slider > div {
-    margin-top: 2.5px !important;
-    margin-bottom: 0px !important;
-  }
-
-  .deploy {
+  .deployController {
+    @include searchController();
     height: $heightBtnDeploy;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: $margin;
+    display: inline-flex;
 
     span {
+      margin-left: auto;
       margin-top: auto;
       margin-bottom: auto;
     }
   }
 
-  #iconDeploy {
-    margin-top: auto !important;
-    margin-bottom: auto !important;
-    width: 24px !important;
-    height: 24px !important;
-    padding: 0px !important;
+  .searchSelector {
+    height: $heightSearchSelector;
+    padding-top: $paddingTopSearchSelector;
+    vertical-align: top;
+    text-align: center;
+    display: none;
+    width: 100%;
+
+    .select {
+      text-align: left;
+      margin-top: -24px;
+    }
+
+    .text {
+      margin-top: 10px;
+      text-align: left;
+      margin-left: auto;
+      margin-right: auto;
+      width: 256px;
+    }
+
+    .slider {
+      width: 256px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .slider > div {
+      margin-top: 2.5px !important;
+      margin-bottom: 0px !important;
+    }
+  }
+
+  .searchController {
+    @include searchController();
+    display: none;
+
+    @include respond-to(medium) {
+      display: block;
+      height: $searchControllerHeigth;
+      @for $i from 1 through 3 {
+        .searchSelector:nth-child(#{$i}) {
+          display: inline-block;
+          @include calc(width, "100% / 3");
+        }
+      }
+    };
+
+    @include respond-to(large) {
+      height: $searchControllerHeigth;
+      @for $i from 1 through 4 {
+        .searchSelector:nth-child(#{$i}) {
+          display: inline-block;
+          width: 25%;
+          margin-left: 0px;
+        }
+      }
+    };
+  }
+
+  .searchControllerDeploy {
+    @include searchController();
+    @include calc(height, "100% - " + $heightBtnDeploy);
+    overflow: auto;
+
+    .searchSelector {
+      display: inline-block;
+      width: 100%;
+    }
+
+    @include respond-to(medium) {
+      @include calc(height, "100% - " + $heightBtnDeploy + " - 3 * " + $heightTotalSearchSelector);
+      .searchSelector {
+        @include calc(width, "100% / 3");
+      }
+    };
+
+    @include respond-to(large) {
+      @include calc(height, "100% - " + $heightBtnDeploy + " - 2 * " + $heightTotalSearchSelector);
+      .searchSelector {
+        width: 25%;
+      }
+    };
   }
 }
