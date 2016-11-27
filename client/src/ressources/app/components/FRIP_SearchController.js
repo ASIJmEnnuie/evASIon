@@ -11,13 +11,21 @@ import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-a
 import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
 
 import RaisedButton from 'material-ui/RaisedButton';
+const iconStyle = {
+  marginTop: "auto",
+  marginBottom: "auto",
+  width: "24px",
+  height: "24px",
+  padding: "0px",
+};
 
 const FRIP_SearchController = React.createClass({
   getInitialState: function(){
     return {
       value: 1,
       isDeploy: false,
-      renderIconDeploy: <HardwareKeyboardArrowDown/>
+      renderIconDeploy: <HardwareKeyboardArrowDown/>,
+      searchControllerClassName: "searchController",
     }
   },
 
@@ -30,100 +38,103 @@ const FRIP_SearchController = React.createClass({
     if (this.state.isDeploy == false) {
       this.setState({
         isDeploy: true,
-        renderIconDeploy: <HardwareKeyboardArrowUp/>
+        renderIconDeploy: <HardwareKeyboardArrowUp/>,
+        searchControllerClassName: "searchControllerDeploy",
       });
     }
     else {
       this.setState({
         isDeploy: false,
-        renderIconDeploy: <HardwareKeyboardArrowDown/>
+        renderIconDeploy: <HardwareKeyboardArrowDown/>,
+        searchControllerClassName: "searchController",
       });
     }
   },
 
   render: function() {
     return (
-      <div className="searchController">
-        <div className="searchSelector">
-          <TextField
-            hintText={this.props.data.name}
-            onChange={this.props.nameController}
-          />
-        </div>
+      <div className="globalController">
+      <div className="deployController">
+        <span>{this.props.data.search}</span>
+        <IconButton
+          onTouchTap={this.deploySearchBar}
+          iconStyle={iconStyle}
+        >
+          {this.state.renderIconDeploy}
+        </IconButton>
+      </div>
+        <div className={this.state.searchControllerClassName}>
+          <div className="searchSelector">
+            <TextField
+              hintText={this.props.data.name}
+              onChange={this.props.nameController}
+            />
+          </div>
 
-        <div className="searchSelector">
-          <DatePicker
-            hintText={this.props.data.date}
-            onChange={this.props.data.dateController}
-          />
-        </div>
+          <div className="searchSelector">
+            <DatePicker
+              hintText={this.props.data.date}
+              onChange={this.props.data.dateController}
+            />
+          </div>
 
-        <div className="searchSelector">
-          <SelectField
-            floatingLabelText={this.props.data.categorie.name}
-            value={this.state.value}
-            onChange={this.handleChange}
-            className="select"
-          >
-            {
-              this.props.data.categorie.items.map(function(item, i) {
-                return (
-                  <MenuItem value={i} primaryText={item} key={"searchSelectorCategorie"+i}/>
-                );
-              })
-            }
-          </SelectField>
-        </div>
+          <div className="searchSelector">
+            <SelectField
+              floatingLabelText={this.props.data.categorie.name}
+              value={this.state.value}
+              onChange={this.handleChange}
+              className="select"
+            >
+              {
+                this.props.data.categorie.items.map(function(item, i) {
+                  return (
+                    <MenuItem value={i} primaryText={item} key={"searchSelectorCategorie"+i}/>
+                  );
+                })
+              }
+            </SelectField>
+          </div>
 
-        <div className="searchSelector">
-          <div className="text">{this.props.data.price}</div>
-          <Slider className="slider"/>
-        </div>
+          <div className="searchSelector">
+            <div className="text">{this.props.data.price}</div>
+            <Slider className="slider"/>
+          </div>
 
-        <div className="searchSelector">
-          <TextField
-            hintText={this.props.data.place}
-            onChange={this.props.placeController}
-          />
-        </div>
+          <div className="searchSelector">
+            <TextField
+              hintText={this.props.data.place}
+              onChange={this.props.placeController}
+            />
+          </div>
 
-        <div className="searchSelector">
-          <TimePicker
-            hintText={this.props.data.time}
-            onChange={this.props.timeController}
-          />
-        </div>
+          <div className="searchSelector">
+            <TimePicker
+              hintText={this.props.data.time}
+              onChange={this.props.timeController}
+            />
+          </div>
 
-        <div className="searchSelector">
-          <SelectField
-            floatingLabelText={this.props.data.tag.name}
-            value={this.state.value}
-            onChange={this.handleChange}
-            className="select"
-          >
-            {
-              this.props.data.tag.items.map(function(item, i) {
-                return (
-                  <MenuItem value={i} primaryText={item} key={"searchSelectorTag"+i}/>
-                );
-              })
-            }
-          </SelectField>
-        </div>
+          <div className="searchSelector">
+            <SelectField
+              floatingLabelText={this.props.data.tag.name}
+              value={this.state.value}
+              onChange={this.handleChange}
+              className="select"
+            >
+              {
+                this.props.data.tag.items.map(function(item, i) {
+                  return (
+                    <MenuItem value={i} primaryText={item} key={"searchSelectorTag"+i}/>
+                  );
+                })
+              }
+            </SelectField>
+          </div>
 
-        <div className="searchSelector">
-          <div className="text">{this.props.data.proximity}</div>
-          <Slider className="slider"/>
-        </div>
-
-        <div className="deploy">
-          <span>{this.props.data.search}</span>
-          <IconButton
-            id="iconDeploy"
-            onTouchTap={this.deploySearchBar}
-          >
-            {this.state.renderIconDeploy}
-          </IconButton>
+          <div className="searchSelector">
+            <div className="text">{this.props.data.proximity}</div>
+            <Slider className="slider"/>
+          </div>
         </div>
       </div>
     )

@@ -4,6 +4,8 @@
 @import "./components/navbar";
 @import "./components/carousel";
 @import "./components/form";
+@import "./components/event";
+@import "./components/eventList";
 @import "./components/searchController";
 @import "./containers/onlineContainer";
 @import "./containers/offlineContainer";
@@ -25,6 +27,9 @@ html {
     @include default();
     #app {
       @include default();
+    }
+    #app > div {
+      height: 100%;
     }
   }
 }
