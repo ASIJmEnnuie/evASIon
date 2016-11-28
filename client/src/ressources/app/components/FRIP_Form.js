@@ -270,8 +270,8 @@ var FRIP_FormInscription = React.createClass({
               onChange={this.setGender}
               hintText={this.props.data.gender}
             >
-              <MenuItem value={1} primaryText={this.props.data.female} className="form-select-gender"/>
-              <MenuItem value={2} primaryText={this.props.data.male} className="form-select-gender"/>
+              <MenuItem value={1} primaryText={this.props.data.female} className="form-select-content"/>
+              <MenuItem value={2} primaryText={this.props.data.male} className="form-select-content"/>
             </SelectField>
           </div>
           <div className="form-select-field">

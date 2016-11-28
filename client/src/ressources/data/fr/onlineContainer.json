@@ -11,8 +11,9 @@
     },
     "eventCreation": {
       "firstStep": "Étape 1",
-      "firstStepContent": "Cet évènement est-il lié à une activité ?",
+      "firstStepContent": "L'évènement à créer est-il lié à une activité ?",
       "secondStep": "Étape 2",
+      "thirdStep": "Étape 3",
       "finish" : "Créer",
       "next": "Suivant",
       "back": "Retour",
@@ -33,7 +34,10 @@
       "okLabel": "Ok",
       "locale": "fr",
       "timeFormat": "24hr",
-      "activityName": "Nom de l'activité"
+      "activitySearch": "Rechercher une activité",
+      "yes": "Oui",
+      "no": "Non",
+      "createActivitySuggestion": "Créer une activité ?"
     }
   }
 }
