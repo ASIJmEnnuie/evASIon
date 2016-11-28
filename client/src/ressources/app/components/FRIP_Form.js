@@ -265,7 +265,6 @@ var FRIP_FormInscription = React.createClass({
           <div className="form-select-field">
             <SelectField
               id="gender"
-              className="form-select-gender"
               value={this.state.value}
               onChange={this.setGender}
               hintText={this.props.data.gender}

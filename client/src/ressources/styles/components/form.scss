@@ -11,9 +11,7 @@
 
   .form-text {
     display: block;
-    width: 240px;
     padding: 3px 0px;
-    font-size: 14px;
   }
 
   .form-button {
@@ -46,13 +44,16 @@
     font-size: 14px;
     height: 66px;
   }
+
 }
 
 /* Cacher les fleches des Textfield de type="number" */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
 }

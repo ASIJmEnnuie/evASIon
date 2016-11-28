@@ -15,6 +15,16 @@
       "name": "Activité 3",
       "description": "une description",
       "image": "ressources/images/profil.svg"
+    },
+    {
+      "name": "Name 1",
+      "description": "une description",
+      "image": "ressources/images/profil.svg"
+    },
+    {
+      "name": "Name 2",
+      "description": "une description",
+      "image": "ressources/images/profil.svg"
     }
   ]
 }

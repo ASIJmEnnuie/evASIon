@@ -24,4 +24,10 @@
     display: none;
   }
 
+  .firstStep {
+    @include shadowBox($gray);
+    padding: 10px 20px;
+    height: 85px;
+  }
+
 }

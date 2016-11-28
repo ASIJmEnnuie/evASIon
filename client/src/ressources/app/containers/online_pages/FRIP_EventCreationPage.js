@@ -12,8 +12,6 @@ import MenuItem from 'material-ui/MenuItem';
 import {FRIP_FormEventCreation} from '../../components/FRIP_Form';
 import {FRIP_SearchActivityLittleController} from '../../components/FRIP_SearchController';
 
-const colors = require('../../../data/colors.json').colors;
-
 const FRIP_EventCreationPage = React.createClass({
   getInitialState: function() {
     return {
@@ -59,8 +57,8 @@ const FRIP_EventCreationPage = React.createClass({
             stepIndex: stepIndex + 1,
             finished: stepIndex >= 2,
           });
+          this.handleSubmit();
         }
-        this.handleSubmit();
         break;
       default: console.log("error");
 
@@ -115,19 +113,21 @@ const FRIP_EventCreationPage = React.createClass({
       case 0:
         //TODO mettre le lien ! onTouchTap={}
         return (
-          <div className="form-select-field">
-            <div>{this.props.data.firstStepContent}</div>
-            <SelectField
-              id="activityLink"
-              className="form-select-content"
-              value={this.state.value}
-              onChange={this.setActivityPresent}
-              hintText={this.props.data.answer}
-            >
-              <MenuItem value={1} primaryText={this.props.data.yes} className="form-select-content"/>
-              <MenuItem value={2} primaryText={this.props.data.no} className="form-select-content"/>
-            </SelectField>
-            <div id="linkCreateActivity" className="link">{this.props.data.createActivitySuggestion}</div>
+          <div className="firstStep">
+            <div className="form-select-field">
+              <div>{this.props.data.firstStepContent}</div>
+              <SelectField
+                id="activityLink"
+                className="form-select-content"
+                value={this.state.value}
+                onChange={this.setActivityPresent}
+                hintText={this.props.data.answer}
+              >
+                <MenuItem value={1} primaryText={this.props.data.yes} className="form-select-content"/>
+                <MenuItem value={2} primaryText={this.props.data.no} className="form-select-content"/>
+              </SelectField>
+              <div id="linkCreateActivity" className="link">{this.props.data.createActivitySuggestion}</div>
+            </div>
           </div>
           );
       case 1:

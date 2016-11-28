@@ -30,7 +30,7 @@
       "eventPlace": "Lieu de l'évènement *",
       "eventDescription": "Description",
       "eventMeetingPlace": "Lieu de rendez-vous",
-      "eventMemberMax": "Nombre maximum de participants",
+      "eventMemberMax": "Nombre max de participants",
       "nameFormEventCreation": "Création d'un évènement",
       "cancelLabel": "Annuler",
       "okLabel": "Ok",
@@ -67,6 +67,7 @@
         },
         "proximity": "Proximité",
         "search": "Rechercher"
+      }
     }
   }
 }
