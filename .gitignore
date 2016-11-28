@@ -17,6 +17,7 @@ hs_err_pid*
 client/node_modules
 client/dist
 client/.sass-cache
+client/.node-gyp
 .v8*
 .gem
 .npm
