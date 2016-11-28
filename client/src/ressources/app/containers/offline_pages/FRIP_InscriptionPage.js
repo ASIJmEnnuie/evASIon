@@ -8,7 +8,7 @@ var FRIP_InscriptionPage = React.createClass({
     return (
       <div className="form" id={this.props.id}>
         <FRIP_FormInscription
-          text={this.props.data.form}
+          data={this.props.data.form}
           label={this.props.data.buttonInscriptionLabel}
           connexion={this.props.connexion}
         />

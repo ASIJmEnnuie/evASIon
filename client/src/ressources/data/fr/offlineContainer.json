@@ -13,14 +13,15 @@
     },
 
     "form": {
-      "email": "Email",
-      "password": "Mot de passe",
+      "email": "Email *",
+      "password": "Mot de passe *",
       "errorText": "Champ obligatoire",
-      "errorTextAllAreRequired": "Veuillez remplir tout les champs",
+      "errorTextAllAreRequired": "Veuillez remplir tout les champs obligatoires *",
+      "errorInfo": "Informations incorrectes",
       "errorTextDifferentPassword": "Le mot de passe n'est pas identique",
-      "familyName": "Nom",
-      "firstname": "Prénom",
-      "passwordConfirmation": "Confirmation de mot de passe",
+      "familyName": "Nom *",
+      "firstname": "Prénom *",
+      "passwordConfirmation": "Confirmation de mot de passe *",
       "gender": "Genre",
       "female": "Femme",
       "male": "Homme",
@@ -32,7 +33,6 @@
       "locale": "fr"
     },
 
-    "or": "ou",
     "buttonConnexionLabel": "Connexion",
     "buttonInscriptionLabel": "Inscription",
     "linkInscriptionLabel": "Pas encore inscrit ?",

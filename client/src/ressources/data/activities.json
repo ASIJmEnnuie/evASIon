@@ -1,0 +1,20 @@
+{
+  "activities":
+  [
+    {
+      "name": "Activité 1",
+      "description": "une description",
+      "image": "ressources/images/profil.svg"
+    },
+    {
+      "name": "Activité 2",
+      "description": "une description",
+      "image": "ressources/images/profil.svg"
+    },
+    {
+      "name": "Activité 3",
+      "description": "une description",
+      "image": "ressources/images/profil.svg"
+    }
+  ]
+}

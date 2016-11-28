@@ -1,5 +1,5 @@
 import React from 'react';
-import FRIP_SearchController from '../../components/FRIP_SearchController';
+import {FRIP_SearchController} from '../../components/FRIP_SearchController';
 import FRIP_EventList from '../../components/FRIP_EventList';
 
 const FRIP_EventPage = React.createClass({

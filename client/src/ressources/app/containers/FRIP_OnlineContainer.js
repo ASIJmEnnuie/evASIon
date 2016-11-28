@@ -5,6 +5,8 @@ import FRIP_DrawerLeft from '../components/FRIP_Drawer';
 
 import FRIP_HomePage from './online_pages/FRIP_HomePage';
 import FRIP_EventPage from './online_pages/FRIP_EventPage';
+import FRIP_EventCreationPage from './online_pages/FRIP_EventCreationPage';
+import FRIP_ActivityCreationPage from './online_pages/FRIP_ActivityCreationPage';
 
 import parameters from '../../data/parameters';
 
@@ -69,6 +71,12 @@ const FRIP_OnlineContainer = React.createClass({
             data={this.props.data.eventPage}
           />
         );
+        break;
+      case 2:
+        page = (<FRIP_EventCreationPage id={this.state.pageId} data={this.props.data.eventCreation}/>);
+        break;
+      case 3:
+        page = (<FRIP_ActivityCreationPage id={this.state.pageId}/>);
         break;
       default:
         page = (

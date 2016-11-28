@@ -13,11 +13,16 @@ var FRIP_OfflineContainer = React.createClass({
   },
 
   changePage: function() {
-    if (this.state.page == 0) {
+    switch (this.state.page) {
+      case 0:
         this.setState({page: 1});
         this.setState({pageId: "inscriptionPage"});
-    }
-    if (this.state.page == 1) {
+        break;
+      case 1:
+        this.setState({page: 0});
+        this.setState({pageId: "homeOfflinePage"});
+        break;
+      default:
         this.setState({page: 0});
         this.setState({pageId: "homeOfflinePage"});
     }
@@ -38,7 +43,7 @@ var FRIP_OfflineContainer = React.createClass({
     return (
       <div>
         <FRIP_NavbarOffline
-          text={this.props.data.navbar}
+          data={this.props.data.navbar}
         />
         {page}
       </div>
