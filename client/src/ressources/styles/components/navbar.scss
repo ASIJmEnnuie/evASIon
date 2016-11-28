@@ -1,13 +1,17 @@
 #navbar {
   height: $heightNavbar;
   * {
-    color: #FB8C00 !important;
+    color: $primaryColor !important;
   }
+}
+
+.navContentRight {
+  display: flex;
 }
 
 #iconSearchShowed {
   vertical-align: top;
-  margin-right: $margin !important;
+  margin-right: $margin/2 !important;
 }
 
 #iconSearchHidden {
@@ -17,26 +21,28 @@
 
 #inputSearchShowed {
   vertical-align: middle;
-  margin-right: 2*$margin;
+  margin-right: $margin;
+  margin-top: auto;
+  margin-bottom: auto;
   font-size: 15px;
   padding: 5px;
   border: none;
   box-shadow: inset 0px 0px 10px 2px $gray ;
-  background-color: #FB8C00;
-  color: white !important;
+  background-color: $primaryColor;
+  color: $secondaryColor !important;
 }
 
 #inputSearchShowed::-webkit-input-placeholder {
-    color: #EEEEEE;
+    color: $secondaryColor;
 }
 #inputSearchShowed:-moz-placeholder {
-    color: #EEEEEE;
+    color: $secondaryColor;
 }
 #inputSearchShowed::-moz-placeholder {
-    color: #EEEEEE;
+    color: $secondaryColor;
 }
 #inputSearchShowed:-ms-input-placeholder {
-    color: #EEEEEE;
+    color: $secondaryColor;
 }
 
 #inputSearchHidden {

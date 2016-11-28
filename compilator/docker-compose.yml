@@ -1,0 +1,4 @@
+compilator:
+  build: .
+  volumes:
+    - ../client:/root/project

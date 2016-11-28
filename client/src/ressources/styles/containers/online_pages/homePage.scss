@@ -1,28 +1,11 @@
 #homeOnlinePage {
-  @include calc( width, '100% - 2 *' + $margin);
-  @include calc( height, '100% - 2 *' + $margin);
+  @include calc( width, '100% - 2 * ' + $margin);
+  @include calc( height, '100% - 2 * ' + $margin);
   margin: $margin;
 }
 
-#homeOnlineText {
+#homeOnlineButtons {
   height: 30%;
   text-align: center;
   display: flex;
-}
-
-#buttonEventAccess {
-  margin: auto;
-  font-size: 30px;
-  padding: $margin;
-  background-color: gray;
-  border-style: none;
-}
-
-#buttonEventAccess:focus {
-  border-style: none !important;
-}
-
-#buttonEventAccess:hover {
-  @include shadowBox($gray);
-  cursor: pointer;
 }

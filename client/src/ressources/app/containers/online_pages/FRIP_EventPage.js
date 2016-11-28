@@ -8,7 +8,10 @@ const FRIP_EventPage = React.createClass({
     return (
       <div id={this.props.id}>
         <div id="eventPage">
-          <FRIP_SearchController id="eventPage"/>
+          <FRIP_SearchController
+            id="eventPage"
+            data={this.props.data.searchController}
+          />
           <FRIP_EventList events={events}/>
         </div>
       </div>

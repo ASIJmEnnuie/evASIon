@@ -8,6 +8,8 @@ import FRIP_EventPage from './online_pages/FRIP_EventPage';
 import FRIP_EventCreationPage from './online_pages/FRIP_EventCreationPage';
 import FRIP_ActivityCreationPage from './online_pages/FRIP_ActivityCreationPage';
 
+import parameters from '../../data/parameters';
+
 const FRIP_OnlineContainer = React.createClass({
   getInitialState: function () {
     return {
@@ -20,6 +22,10 @@ const FRIP_OnlineContainer = React.createClass({
 
   changePage: function(event, menuItem, index) {
     this.setState({page: index});
+    var breakpointSmall = parseInt(parameters.breakpoints.small.substring(0, parameters.breakpoints.small.length-2));
+    if (this.props.screenWidth <= breakpointSmall) {
+      this.clickOnLeftButton();
+    }
   },
 
   accessToParameters: function() {
@@ -59,7 +65,12 @@ const FRIP_OnlineContainer = React.createClass({
           />);
         break;
       case 1:
-        page = (<FRIP_EventPage id={this.state.pageId}/>);
+        page = (
+          <FRIP_EventPage
+            id={this.state.pageId}
+            data={this.props.data.eventPage}
+          />
+        );
         break;
       case 2:
         page = (<FRIP_EventCreationPage id={this.state.pageId} data={this.props.data.eventCreation}/>);

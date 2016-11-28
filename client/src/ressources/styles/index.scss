@@ -4,6 +4,8 @@
 @import "./components/navbar";
 @import "./components/carousel";
 @import "./components/form";
+@import "./components/event";
+@import "./components/eventList";
 @import "./components/searchController";
 @import "./containers/onlineContainer";
 @import "./containers/offlineContainer";
@@ -17,6 +19,7 @@
   margin: 0px;
   width: 100%;
   height: 100%;
+  background-color: $primaryColor;
 }
 
 html {
@@ -25,6 +28,9 @@ html {
     @include default();
     #app {
       @include default();
+    }
+    #app > div {
+      height: 100%;
     }
   }
 }

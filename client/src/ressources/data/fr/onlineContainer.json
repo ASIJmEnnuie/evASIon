@@ -4,8 +4,10 @@
   "onlineContainer": {
     "navbar": {
       "title": "evASIon",
-      "iconMenu": ["Paramètres", "Aide", "Déconnexion"]
+      "iconMenu": ["Paramètres", "Aide", "Déconnexion"],
+      "search": "Rechercher"
     },
+
     "drawerLeft": {
       "itemList": ["Accueil", "Évènements", "Créer un évènement", "Créer une activité"]
     },
@@ -38,6 +40,33 @@
       "yes": "Oui",
       "no": "Non",
       "createActivitySuggestion": "Créer une activité ?"
+    },
+
+    "eventPage": {
+      "searchController": {
+        "name": "Nom",
+        "date": "Date",
+        "categorie": {
+          "name": "Catégorie",
+          "items": [
+            "catégorie1",
+            "catégorie2",
+            "catégorie3"
+          ]
+        },
+        "price": "Prix",
+        "place": "Lieu",
+        "time": "Heure de début",
+        "tag": {
+          "name": "Tags",
+          "items": [
+            "tag1",
+            "tag2",
+            "tag3"
+          ]
+        },
+        "proximity": "Proximité",
+        "search": "Rechercher"
     }
   }
 }

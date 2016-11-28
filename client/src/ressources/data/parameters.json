@@ -1,0 +1,10 @@
+{
+  "primaryColor": "#ffa726",
+  "secondaryColor": "#FFFFFF",
+  "secondaryColor2": "#EEEEEE",
+  "gray": "rgba(0,0,0,0.20)",
+  "breakpoints": {
+    "small": "900px",
+    "large": "1600px"
+  }
+}

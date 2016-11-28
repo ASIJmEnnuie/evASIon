@@ -12,7 +12,7 @@ const FRIP_Global = React.createClass({
       donnees: [],
       screenHeight: window.innerHeight,
       screenWidth: window.innerWidth,
-      container: "offline",
+      container: "online",
       lang: "fr"
     }
   },

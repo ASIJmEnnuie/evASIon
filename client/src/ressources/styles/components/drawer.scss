@@ -1,5 +1,5 @@
 @mixin drawerLeft($width) {
-  background-color: white;
+  background-color: $secondaryColor;
   height: 100%;
   width: $width;
 }
@@ -28,7 +28,7 @@
 }
 
 #pageSelected {
-  background-color: #FB8C00 !important;
+  background-color: $primaryColor !important;
   box-shadow: inset 0px 0px 10px 2px $gray ;
 }
 

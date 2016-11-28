@@ -1,53 +1,116 @@
-.searchController {
+@mixin searchController() {
+  width: 100%;
+  background-color: $secondaryColor;
+}
+
+
+$heightSearchSelector: 76px;
+$paddingTopSearchSelector: 24px;
+$heightTotalSearchSelector: $heightSearchSelector + $paddingTopSearchSelector;
+
+
+.globalController {
   @include shadowBox($gray);
-  @include calc( width, '100% - 2 * ' + $margin);
   margin-left: $margin;
   margin-right: $margin;
   margin-bottom: $margin;
-  height: $searchControllerHeigth;
-  background-color: white;
+  max-height: 100%;
 
-  .secondaryController {
-    display: none;
+  .deployController {
+    @include searchController();
+    height: $heightBtnDeploy;
+    display: inline-flex;
+
+    span {
+      margin-left: auto;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
   }
 
   .searchSelector {
-    padding-top: 24px;
-    height: 76px;
+    height: $heightSearchSelector;
+    padding-top: $paddingTopSearchSelector;
     vertical-align: top;
-    display: inline-block;
-    width: 25%;
     text-align: center;
+    display: none;
+    width: 100%;
+
+    .select {
+      text-align: left;
+      margin-top: -24px;
+    }
+
+    .text {
+      margin-top: 10px;
+      text-align: left;
+      margin-left: auto;
+      margin-right: auto;
+      width: 256px;
+    }
+
+    .slider {
+      width: 256px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .slider > div {
+      margin-top: 2.5px !important;
+      margin-bottom: 0px !important;
+    }
   }
 
-  .select {
-    text-align: left;
-    margin-top: -24px;
+  .searchController {
+    @include searchController();
+    display: none;
+
+    @include respond-to(medium) {
+      display: block;
+      height: $searchControllerHeigth;
+      @for $i from 1 through 3 {
+        .searchSelector:nth-child(#{$i}) {
+          display: inline-block;
+          @include calc(width, "100% / 3");
+        }
+      }
+    };
+
+    @include respond-to(large) {
+      height: $searchControllerHeigth;
+      @for $i from 1 through 4 {
+        .searchSelector:nth-child(#{$i}) {
+          display: inline-block;
+          width: 25%;
+          margin-left: 0px;
+        }
+      }
+    };
   }
 
-  .text {
-    margin-top: 10px;
-    text-align: left;
-    margin-left: 10%;
-    width: 80%;
-  }
+  .searchControllerDeploy {
+    @include searchController();
+    @include calc(height, "100% - " + $heightBtnDeploy);
+    overflow: auto;
 
-  .slider {
-    margin-left: 10%;
-    width: 80%;
-  }
+    .searchSelector {
+      display: inline-block;
+      width: 100%;
+    }
 
-  .slider > div {
-    margin-top: 0px !important;
-    margin-bottom: 0px !important;
-  }
+    @include respond-to(medium) {
+      @include calc(height, "100% - " + $heightBtnDeploy + " - 3 * " + $heightTotalSearchSelector);
+      .searchSelector {
+        @include calc(width, "100% / 3");
+      }
+    };
 
-  #iconDeploy {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    bottom: 25px;
-    @include calc(left, "100% - 50px - " + $margin);
+    @include respond-to(large) {
+      @include calc(height, "100% - " + $heightBtnDeploy + " - 2 * " + $heightTotalSearchSelector);
+      .searchSelector {
+        width: 25%;
+      }
+    };
   }
 }
 
