@@ -19,11 +19,11 @@ var FRIP_DrawerLeft = React.createClass({
             this.props.itemList.map(function(item, i){
               if (page == i) {
                 return (
-                  <MenuItem key={"menuItemDrawer"+i} id="pageSelected">{item}</MenuItem>
+                  <MenuItem key={"menuItemDrawer"+i} id="pageSelected" style={{fontSize: "20px", textAlign: "center"}}>{item}</MenuItem>
                 );
               }
               return (
-                <MenuItem key={"menuItemDrawer"+i}>{item}</MenuItem>
+                <MenuItem key={"menuItemDrawer"+i} style={{fontSize: "20px", textAlign: "center"}}>{item}</MenuItem>
               );
             })
           }

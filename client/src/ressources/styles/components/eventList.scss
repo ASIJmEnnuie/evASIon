@@ -1,15 +1,34 @@
-.eventList {
-  @include calc(height, '100% - ' + $heightBtnDeploy );
+@mixin eventList() {
   @include calc(width, '100% - 2 * ' + $margin);
   padding-left: $margin;
   padding-right: $margin;
   overflow: auto;
 
+}
+
+.eventListDeployed {
+  @include eventList();
+  @include calc(height, '100% - ' + $heightBtnDeploy );
   @include respond-to(medium) {
     @include calc(height, '100% - ' + $searchControllerHeigth + ' - ' + $heightBtnDeploy);
   };
 
   @include respond-to(large) {
     @include calc(height, '100% - ' + $searchControllerHeigth + ' - ' + $heightBtnDeploy);
+  };
+}
+
+
+.eventListReduced {
+  @include eventList();
+  display: none;
+
+  @include respond-to(medium) {
+    display: block;
+    @include calc(height, "100% - " + $heightBtnDeploy + " - 3 * " + $heightTotalSearchSelector);
+  };
+
+  @include respond-to(large) {
+    @include calc(height, "100% - " + $heightBtnDeploy + " - 2 * " + $heightTotalSearchSelector);
   };
 }

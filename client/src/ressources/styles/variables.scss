@@ -15,3 +15,8 @@ $widthDrawerLeft: (
   'medium': 15%,
   'large': 15%
 );
+
+
+$heightSearchSelector: 76px;
+$paddingTopSearchSelector: 24px;
+$heightTotalSearchSelector: $heightSearchSelector + $paddingTopSearchSelector;

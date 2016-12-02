@@ -10,9 +10,9 @@ const FRIP_EventList = React.createClass({
 
   render: function() {
     return (
-      <div className="eventList">
+      <div className={this.props.eventListClassName}>
       {
-        this.props.events.map(function(event, i){
+        this.props.events.map((event, i) => {
           return(
             <FRIP_Event
               key={i}

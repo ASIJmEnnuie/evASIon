@@ -24,50 +24,36 @@ const iconStyle = {
 };
 
 const FRIP_SearchController = React.createClass({
-  getInitialState: function(){
+  getInitialState: function() {
     return {
       value: 1,
-      isDeploy: false,
-      renderIconDeploy: <HardwareKeyboardArrowDown/>,
+    }
+  },
+
+  getDefaultProps: function() {
+    return {
+      iconDeploySearchController: <HardwareKeyboardArrowDown/>,
       searchControllerClassName: "searchController",
     }
   },
 
-  handleChange: function (event, index, value) {
+  handleChange: function(event, index, value) {
     this.setState({value});
-    console.log(this.state.value);
-  },
-
-  deploySearchBar: function(e) {
-    if (this.state.isDeploy == false) {
-      this.setState({
-        isDeploy: true,
-        renderIconDeploy: <HardwareKeyboardArrowUp/>,
-        searchControllerClassName: "searchControllerDeploy",
-      });
-    }
-    else {
-      this.setState({
-        isDeploy: false,
-        renderIconDeploy: <HardwareKeyboardArrowDown/>,
-        searchControllerClassName: "searchController",
-      });
-    }
   },
 
   render: function() {
     return (
       <div className="globalController">
-      <div className="deployController">
-        <span>{this.props.data.search}</span>
-        <IconButton
-          onTouchTap={this.deploySearchBar}
-          iconStyle={iconStyle}
-        >
-          {this.state.renderIconDeploy}
-        </IconButton>
-      </div>
-        <div className={this.state.searchControllerClassName}>
+        <div className="deployController">
+          <span>{this.props.data.search}</span>
+          <IconButton
+            onTouchTap={this.props.deploySearchController}
+            iconStyle={iconStyle}
+          >
+            {this.props.iconDeploySearchController}
+          </IconButton>
+        </div>
+        <div className={this.props.searchControllerClassName}>
           <div className="searchSelector">
             <TextField
               hintText={this.props.data.name}
