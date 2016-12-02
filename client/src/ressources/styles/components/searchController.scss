@@ -88,7 +88,7 @@ $heightTotalSearchSelector: $heightSearchSelector + $paddingTopSearchSelector;
     };
   }
 
-  .searchControllerDeploy {
+  .searchControllerDeployed {
     @include searchController();
     @include calc(height, "100% - " + $heightBtnDeploy);
     overflow: auto;
