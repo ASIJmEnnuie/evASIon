@@ -3,12 +3,6 @@
   background-color: $secondaryColor;
 }
 
-
-$heightSearchSelector: 76px;
-$paddingTopSearchSelector: 24px;
-$heightTotalSearchSelector: $heightSearchSelector + $paddingTopSearchSelector;
-
-
 .globalController {
   @include shadowBox($gray);
   margin-left: $margin;
@@ -61,7 +55,7 @@ $heightTotalSearchSelector: $heightSearchSelector + $paddingTopSearchSelector;
     }
   }
 
-  .searchController {
+  .searchControllerReduced {
     @include searchController();
     display: none;
 
@@ -99,14 +93,16 @@ $heightTotalSearchSelector: $heightSearchSelector + $paddingTopSearchSelector;
     }
 
     @include respond-to(medium) {
-      @include calc(height, "100% - " + $heightBtnDeploy + " - 3 * " + $heightTotalSearchSelector);
+      @include calc(height, "3 * " + $heightTotalSearchSelector);
+      @include calc(max-height, "100% - " + $heightBtnDeploy + " - 3 * " + $heightTotalSearchSelector);
       .searchSelector {
         @include calc(width, "100% / 3");
       }
     };
 
     @include respond-to(large) {
-      @include calc(height, "100% - " + $heightBtnDeploy + " - 2 * " + $heightTotalSearchSelector);
+      @include calc(height, "2 * " + $heightTotalSearchSelector);
+      @include calc(max-height, "100% - " + $heightBtnDeploy + " - 2 * " + $heightTotalSearchSelector);
       .searchSelector {
         width: 25%;
       }

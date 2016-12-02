@@ -10,7 +10,8 @@ const FRIP_EventPage = React.createClass({
     return {
       isSearchControllerDeployed: false,
       iconDeploySearchController: <HardwareKeyboardArrowDown/>,
-      searchControllerClassName: "searchController",
+      searchControllerClassName: "searchControllerReduced",
+      eventListClassName: "eventListDeployed",
     }
   },
 
@@ -19,13 +20,15 @@ const FRIP_EventPage = React.createClass({
       this.setState({
         isSearchControllerDeployed: false,
         iconDeploySearchController: <HardwareKeyboardArrowDown/>,
-        searchControllerClassName: "searchController",
+        searchControllerClassName: "searchControllerReduced",
+        eventListClassName: "eventListDeployed",
       });
     } else {
       this.setState({
         isSearchControllerDeployed: true,
         iconDeploySearchController: <HardwareKeyboardArrowUp/>,
         searchControllerClassName: "searchControllerDeployed",
+        eventListClassName: "eventListReduced",
       });
     }
   },
@@ -41,7 +44,10 @@ const FRIP_EventPage = React.createClass({
             iconDeploySearchController={this.state.iconDeploySearchController}
             searchControllerClassName={this.state.searchControllerClassName}
           />
-          <FRIP_EventList events={events}/>
+          <FRIP_EventList
+            events={events}
+            eventListClassName={this.state.eventListClassName}
+          />
         </div>
       </div>
     );
