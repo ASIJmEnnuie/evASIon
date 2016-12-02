@@ -101,6 +101,7 @@ const FRIP_OnlineContainer = React.createClass({
             changePage={this.changePage}
             itemList={this.props.data.drawerLeft.itemList}
             page={this.state.page}
+            screenWidth={this.props.screenWidth}
           />
           {page}
         </div>

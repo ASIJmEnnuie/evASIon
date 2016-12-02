@@ -94,7 +94,6 @@
 
     @include respond-to(medium) {
       @include calc(height, "3 * " + $heightTotalSearchSelector);
-      @include calc(max-height, "100% - " + $heightBtnDeploy + " - 3 * " + $heightTotalSearchSelector);
       .searchSelector {
         @include calc(width, "100% / 3");
       }
@@ -102,7 +101,6 @@
 
     @include respond-to(large) {
       @include calc(height, "2 * " + $heightTotalSearchSelector);
-      @include calc(max-height, "100% - " + $heightBtnDeploy + " - 2 * " + $heightTotalSearchSelector);
       .searchSelector {
         width: 25%;
       }
