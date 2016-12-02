@@ -10,6 +10,7 @@
   }
 
   .form {
+    @include shadowBox($gray);
     @include respond-to(medium) {
       float: left;
     };

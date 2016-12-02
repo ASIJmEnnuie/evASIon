@@ -1,33 +1,39 @@
 #eventCreationPage {
-  margin: 2%;
+  height: 100%;
+  overflow: auto;
+  //background-color: white;
 
-  @include respond-to(medium) {
-    width: 48%;
-    margin-left: auto;
-    margin-right: auto;
-  };
+  #eventCreationContent {
+    margin: 2%;
 
-  .form {
-    width: 100%;
-    background-color: white;
+    @include respond-to(medium) {
+      width: 48%;
+      margin-left: auto;
+      margin-right: auto;
+    };
 
-    .form-event-validation {
-      height: 15px;
+    .form {
+      width: 100%;
+
+      .form-event-validation {
+        height: 15px;
+      }
     }
-  }
 
-  .form-stepper-content {
-    text-align: center;
-  }
+    .form-stepper-content {
+      text-align: center;
+    }
 
-  #linkCreateActivity {
-    display: none;
-  }
+    #linkCreateActivity {
+      display: none;
+    }
 
-  .firstStep {
-    @include shadowBox($gray);
-    padding: 10px 20px;
-    height: 85px;
-  }
+    .step {
+      //@include shadowBox($gray);
+      padding: 10px 20px;
+      height: 60%;
+      overflow: auto;
+    }
 
+  }
 }

@@ -113,7 +113,7 @@ const FRIP_EventCreationPage = React.createClass({
       case 0:
         //TODO mettre le lien ! onTouchTap={}
         return (
-          <div className="firstStep">
+          <div className="step">
             <div className="form-select-field">
               <div>{this.props.data.firstStepContent}</div>
               <SelectField
@@ -132,7 +132,7 @@ const FRIP_EventCreationPage = React.createClass({
           );
       case 1:
         return (
-          <div>
+          <div className="step">
             <FRIP_SearchActivityLittleController
               data={this.props.data}
               ref="searchActivity"
@@ -140,11 +140,13 @@ const FRIP_EventCreationPage = React.createClass({
           </div>);
       case 2:
         return (
+          <div className="step">
           <div className="form">
             <FRIP_FormEventCreation
               data={this.props.data}
               ref="formEvent"
             />
+          </div>
           </div>
       );
       default:
@@ -158,6 +160,7 @@ const FRIP_EventCreationPage = React.createClass({
     return (
       <div id={this.props.id}>
         <div id="eventCreationPage">
+        <div id="eventCreationContent">
           <div>
             <Stepper activeStep={stepIndex} orientation="horizontal">
               <Step>
@@ -179,7 +182,7 @@ const FRIP_EventCreationPage = React.createClass({
             ) : (
               <div>
                 {this.getStepContent(stepIndex)}
-                <div style={{marginTop: 12}}>
+                <div style={{marginTop: 30}}>
                   <FlatButton
                     label={this.props.data.back}
                     disabled={stepIndex === 0}
@@ -195,6 +198,7 @@ const FRIP_EventCreationPage = React.createClass({
               </div>
             )}
           </div>
+        </div>
         </div>
       </div>
     );
