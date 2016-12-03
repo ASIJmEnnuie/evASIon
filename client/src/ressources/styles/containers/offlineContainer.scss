@@ -1,13 +1,16 @@
 #homeOfflinePage {
-  margin: 2%;
+  @include calc(height, "100% - " + $heightNavbar + " - 2 * " + $margin);
+  @include calc(width, "100%  - 2 * " + $margin);
+  margin: $margin;
 
   .carousel {
     display: none;
 
     @include respond-to(medium) {
-      display: block;
       @include shadowBox($gray);
-      width: 48%;
+      @include calc(width, "50%  -  " + $margin + " / 2");
+      margin-right: $margin / 2;
+      display: block;
       float: right;
     };
   }
@@ -15,13 +18,19 @@
   .form {
     @include shadowBox($gray);
     @include respond-to(medium) {
-      float: left;
+      @include calc(width, "50%  -  " + $margin + " / 2");
+      vertical-align: top;
+      margin-left: $margin / 2;
+      display: block;
+      float: right;
     };
   }
 }
 
 #inscriptionPage {
-  margin: 2%;
+  @include calc(height, "100% - " + $heightNavbar + " - 2 * " + $margin);
+  @include calc(max-width, "100%  - 2 * " + $margin);
+  margin: $margin;
 
   @include respond-to(medium) {
     margin-left: auto;
@@ -36,5 +45,5 @@
 }
 
 div.link:hover {
-  color: rgb(48, 63, 159);
+  color: $primaryColor;
 }
