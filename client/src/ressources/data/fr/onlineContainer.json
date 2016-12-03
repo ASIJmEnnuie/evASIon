@@ -42,6 +42,24 @@
       "createActivitySuggestion": "Créer une activité ?"
     },
 
+    "activityCreation": {
+      "activityCreationValidation": "L'activité a bien été créé :)",
+      "errorText": "Champ obligatoire",
+      "errorTextAllAreRequired": "Veuillez remplir tout les champs obligatoires *",
+      "activityName": "Nom de l'activité *",
+      "activityPlace": "Lieu de l'activité",
+      "activityDescription": "Description",
+      "activityPrice": "Prix de l'activité",
+      "activityCategory": "Catégorie",
+      "activityWebsite": "Lien du site web de l'activité",
+      "nameFormActivityCreation": "Création d'une activité",
+      "cancelLabel": "Annuler",
+      "okLabel": "Ok",
+      "locale": "fr",
+      "timeFormat": "24hr",
+      "creationLabel": "Créer"
+    },
+
     "eventPage": {
       "searchController": {
         "name": "Nom",

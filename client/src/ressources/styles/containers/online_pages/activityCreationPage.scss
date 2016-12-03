@@ -1,0 +1,13 @@
+#activityCreationPage {
+  @include calc( max-height, '100% - 2 * ' + $margin);
+  overflow: auto;
+  //background-color: white;
+  margin: 2%;
+
+  @include respond-to(medium) {
+    width: 48%;
+    margin-left: auto;
+    margin-right: auto;
+  };
+
+}

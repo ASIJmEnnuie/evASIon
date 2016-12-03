@@ -460,4 +460,128 @@ var FRIP_FormEventCreation = React.createClass({
   },
 });
 
-export {FRIP_FormConnexion, FRIP_FormInscription, FRIP_FormEventCreation};
+
+var FRIP_FormActivityCreation = React.createClass({
+  getInitialState: function() {
+    return {
+      activityName: "",
+      activityPlace: "",
+      activityDescription: "",
+      activityPrice: undefined,
+      activityCategory: "",
+      activityWebsite: "",
+    }
+  },
+
+  handleSubmit: function() {
+    if (!this.state.activityName.trim()) {
+      var obj = document.getElementById("globalActivityCreationError");
+      obj.style.display='block';
+      return false;
+    }
+    else {
+      // TODO envoie BD
+      this.props.link();
+
+      // A ENLEVER
+      console.log("activityName : "+this.state.activityName);
+      console.log("activityPlace : "+this.state.activityPlace);
+      console.log("activityDescription : "+this.state.activityDescription);
+      console.log("activityPrice : "+this.state.activityPrice);
+      console.log("activityCategory : "+this.state.activityCategory);
+      console.log("activityWebsite : "+this.state.activityWebsite);
+    }
+  },
+
+  setActivityName: function(event) {
+    this.setState({activityName: event.target.value});
+    errorDisplay(event.target.value, "activityNameError");
+  },
+
+  setActivityPlace: function(event) {
+    this.setState({activityPlace: event.target.value});
+  },
+
+  setActivityDescription: function(event) {
+    this.setState({activityDescription: event.target.value});
+  },
+
+  setActivityPrice: function(event) {
+    this.setState({activityPrice: event.target.value});
+  },
+
+  setActivityCategory: function(event) {
+    this.setState({activityCategory: event.target.value});
+  },
+
+  setActivityWebsite: function(event) {
+    this.setState({activityWebsite: event.target.value});
+  },
+
+  render: function() {
+
+    return (
+      <div>
+        <form>
+          <h2 className="form-title">{this.props.data.nameFormActivityCreation}</h2>
+          <div className="form-champ">
+            <TextField
+              id="activityName"
+              placeholder={this.props.data.activityName}
+              className="form-text"
+              onBlur={this.setActivityName}
+            />
+          <ErrorText id="activityNameError" text={this.props.data.errorText} />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="activityPlace"
+              placeholder={this.props.data.activityPlace}
+              className="form-text"
+              onBlur={this.setActivityPlace}
+            />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="activityDescription"
+              placeholder={this.props.data.activityDescription}
+              className="form-text"
+              onBlur={this.setActivityDescription}
+            />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="activityPrice"
+              placeholder={this.props.data.activityPrice}
+              className="form-text"
+              onBlur={this.setActivityPrice}
+              type="number"
+            />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="activityCategory"
+              placeholder={this.props.data.activityCategory}
+              className="form-text"
+              onBlur={this.setActivityCategory}
+            />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="activityWebsite"
+              placeholder={this.props.data.activityWebsite}
+              className="form-text"
+              onBlur={this.setActivityWebsite}
+            />
+          </div>
+          <div className="form-validation">
+            <RaisedButton className="form-button" label={this.props.data.creationLabel} primary={true} onTouchTap={this.handleSubmit}/>
+            <ErrorText id="globalActivityCreationError" text={this.props.data.errorTextAllAreRequired} />
+          </div>
+        </form>
+      </div>
+    );
+  },
+});
+
+export {FRIP_FormConnexion, FRIP_FormInscription, FRIP_FormEventCreation, FRIP_FormActivityCreation};
