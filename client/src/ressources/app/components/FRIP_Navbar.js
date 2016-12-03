@@ -131,6 +131,7 @@ const FRIP_NavbarOffline = React.createClass({
         title={this.props.data.title}
         name={this.props.data.name}
         showMenuIconButton={false}
+        style={{backgroundColor: parameters.secondaryColor2, color:"black"}}
       />
     );
   }
