@@ -8,8 +8,9 @@ import ActionReorder from 'material-ui/svg-icons/action/reorder';
 import ActionSearch from 'material-ui/svg-icons/action/search';
 
 const parameters = require('../../data/parameters');
+const styleNavbar = {backgroundColor: parameters.secondaryColor2, color:"black"};
 
-var FRIP_NavbarOnline = React.createClass({
+const FRIP_NavbarOnline = React.createClass({
   getInitialState: function() {
     return {
       search: true,
@@ -109,7 +110,7 @@ var FRIP_NavbarOnline = React.createClass({
         title={this.props.text.title}
         iconElementLeft={iconLeft}
         iconElementRight={iconRight}
-        style={{backgroundColor: parameters.secondaryColor2, color:"black"}}
+        style={styleNavbar}
       />
     );
   }
@@ -131,7 +132,7 @@ const FRIP_NavbarOffline = React.createClass({
         title={this.props.data.title}
         name={this.props.data.name}
         showMenuIconButton={false}
-        style={{backgroundColor: parameters.secondaryColor2, color:"black"}}
+        style={styleNavbar}
       />
     );
   }
