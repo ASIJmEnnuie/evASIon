@@ -9,7 +9,7 @@
     @include respond-to(medium) {
       @include shadowBox($gray);
       @include calc(width, "50%  -  " + $margin + " / 2");
-      margin-right: $margin / 2;
+      margin-left: $margin / 2;
       display: block;
       float: right;
     };
@@ -20,9 +20,9 @@
     @include respond-to(medium) {
       @include calc(width, "50%  -  " + $margin + " / 2");
       vertical-align: top;
-      margin-left: $margin / 2;
+      margin-right: $margin / 2;
       display: block;
-      float: right;
+      float: left;
     };
   }
 }

@@ -28,6 +28,14 @@ const FRIP_OnlineContainer = React.createClass({
     }
   },
 
+  accessToPage3: function() {
+    this.setState({page: 3});
+    var breakpointSmall = parseInt(parameters.breakpoints.small.substring(0, parameters.breakpoints.small.length-2));
+    if (this.props.screenWidth <= breakpointSmall) {
+      this.clickOnLeftButton();
+    }
+  },
+
   accessToParameters: function() {
     console.log("paramètres");
   },
@@ -73,10 +81,10 @@ const FRIP_OnlineContainer = React.createClass({
         );
         break;
       case 2:
-        page = (<FRIP_EventCreationPage id={this.state.pageId} data={this.props.data.eventCreation}/>);
+        page = (<FRIP_EventCreationPage id={this.state.pageId} data={this.props.data.eventCreation} accessToPage3={this.accessToPage3}/>);
         break;
       case 3:
-        page = (<FRIP_ActivityCreationPage id={this.state.pageId} data={this.props.data.activityCreation} changePage={this.changePage}/>);
+        page = (<FRIP_ActivityCreationPage id={this.state.pageId} data={this.props.data.activityCreation}/>);
         break;
       default:
         page = (

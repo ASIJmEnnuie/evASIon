@@ -43,12 +43,16 @@ const FRIP_EventCreationPage = React.createClass({
         }
         break;
       case 1:
-        if (this.refs.searchActivity.state.value.trim()) {
+        var obj = document.getElementById("errorNotSelected");
+        if (this.refs.searchActivity.state.selected) {
+          obj.style.display='none';
           this.setState({
             stepIndex: stepIndex + 1,
             finished: stepIndex >= 2,
             eventActivityName: this.refs.searchActivity.state.value,
           });
+        } else {
+          obj.style.display='block';
         }
         break;
       case 2:
@@ -126,7 +130,7 @@ const FRIP_EventCreationPage = React.createClass({
                 <MenuItem value={1} primaryText={this.props.data.yes} className="form-select-content"/>
                 <MenuItem value={2} primaryText={this.props.data.no} className="form-select-content"/>
               </SelectField>
-              <div id="linkCreateActivity" className="link">{this.props.data.createActivitySuggestion}</div>
+              <div id="linkCreateActivity" className="link" onTouchTap={this.props.accessToPage3}>{this.props.data.createActivitySuggestion}</div>
             </div>
           </div>
           );
@@ -137,6 +141,7 @@ const FRIP_EventCreationPage = React.createClass({
               data={this.props.data}
               ref="searchActivity"
             />
+          <div id="errorNotSelected" className="error" >{this.props.data.errorNotSelected}</div>
           </div>);
       case 2:
         return (

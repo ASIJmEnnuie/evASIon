@@ -8,7 +8,6 @@ const FRIP_ActivityCreationPage = React.createClass({
         <div id="activityCreationPage" className="form">
           <FRIP_FormActivityCreation
             data={this.props.data}
-            link={this.props.changePage}
           />
         </div>
       </div>
