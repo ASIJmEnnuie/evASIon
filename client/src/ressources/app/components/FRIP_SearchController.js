@@ -98,6 +98,23 @@ const FRIP_EventsSearchController = React.createClass({
   }
 });
 
+const FRIP_ActivitiesSearchController = React.createClass({
+  render: function() {
+    return (
+      <FRIP_SearchController
+        deploySearchController={this.props.deploySearchController}
+        iconDeploySearchController={this.props.iconDeploySearchController}
+        searchControllerClassName={this.props.searchControllerClassName}
+        deployText={this.props.data.search}
+      >
+        <FRIP_TextField
+          hintText={this.props.data.name}
+        />
+      </FRIP_SearchController>
+    );
+  }
+});
+
 
 /*-----------------------------*/
 
