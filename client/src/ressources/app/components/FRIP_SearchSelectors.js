@@ -21,7 +21,12 @@ const FRIP_TextField = React.createClass({
 const FRIP_DatePicker = React.createClass({
   render: function() {
     return (
-      <div>DatePicker</div>
+      <div className="searchSelector">
+        <DatePicker
+          hintText={this.props.hintText}
+          onChange={this.props.onChange}
+        />
+      </div>
     );
   }
 });

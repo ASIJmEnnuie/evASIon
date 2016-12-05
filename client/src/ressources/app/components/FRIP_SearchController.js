@@ -64,12 +64,10 @@ const FRIP_SearchController = React.createClass({
             onChange={this.props.nameController}
           />
 
-          <div className="searchSelector">
-            <DatePicker
-              hintText={this.props.data.date}
-              onChange={this.props.data.dateController}
-            />
-          </div>
+          <FRIP_DatePicker
+            hintText={this.props.data.date}
+            onChange={this.props.dateController}
+          />
 
           <div className="searchSelector">
             <SelectField
@@ -93,12 +91,10 @@ const FRIP_SearchController = React.createClass({
             <Slider className="slider"/>
           </div>
 
-          <div className="searchSelector">
-            <TextField
-              hintText={this.props.data.place}
-              onChange={this.props.placeController}
-            />
-          </div>
+          <FRIP_TextField
+            hintText={this.props.data.place}
+            onChange={this.props.placeController}
+          />
 
           <div className="searchSelector">
             <TimePicker
