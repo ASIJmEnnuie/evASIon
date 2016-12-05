@@ -1,5 +1,5 @@
 import React from 'react';
-import {FRIP_SearchController} from '../../components/FRIP_SearchController';
+import {FRIP_EventsSearchController} from '../../components/FRIP_SearchController';
 import FRIP_EventList from '../../components/FRIP_EventList';
 
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
@@ -38,7 +38,7 @@ const FRIP_EventPage = React.createClass({
     return (
       <div id={this.props.id}>
         <div id="eventPage">
-          <FRIP_SearchController
+          <FRIP_EventsSearchController
             data={this.props.data.searchController}
             deploySearchController={this.deploySearchController}
             iconDeploySearchController={this.state.iconDeploySearchController}

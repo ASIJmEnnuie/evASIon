@@ -83,6 +83,18 @@ const FRIP_SearchController = React.createClass({
 });
 
 
+const FRIP_EventsSearchController = React.createClass({
+  render: function() {
+    return (
+      <FRIP_SearchController
+        data={this.props.data}
+        deploySearchController={this.props.deploySearchController}
+        iconDeploySearchController={this.props.iconDeploySearchController}
+        searchControllerClassName={this.props.searchControllerClassName}
+      />
+    );
+  }
+});
 
 
 /*-----------------------------*/
@@ -195,4 +207,4 @@ const FRIP_SearchActivityLittleController = React.createClass({
 });
 
 
-export {FRIP_SearchController, FRIP_SearchActivityLittleController};
+export {FRIP_EventsSearchController, FRIP_SearchActivityLittleController};
