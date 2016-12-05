@@ -4,13 +4,24 @@
   "onlineContainer": {
     "navbar": {
       "title": "evASIon",
-      "iconMenu": ["Paramètres", "Aide", "Déconnexion"],
+      "iconMenu": [
+        "Paramètres",
+        "Aide",
+        "Déconnexion"
+      ],
       "search": "Rechercher"
     },
 
     "drawerLeft": {
-      "itemList": ["Accueil", "Évènements", "Créer un évènement", "Créer une activité"]
+      "itemList": [
+        "Accueil",
+        "Évènements",
+        "Créer un évènement",
+        "Activités",
+        "Créer une activité"
+      ]
     },
+
     "eventCreation": {
       "firstStep": "Étape 1",
       "firstStepContent": "L'évènement à créer est-il lié à une activité ?",
