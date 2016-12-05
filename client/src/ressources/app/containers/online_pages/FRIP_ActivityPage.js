@@ -1,18 +1,18 @@
 import React from "react";
 import FRIP_SearchPage from "../../components/FRIP_SearchPage.js";
 
-const FRIP_EventPage = React.createClass({
+const FRIP_ActivityPage = React.createClass({
   render: function() {
-    let events = require("../../../data/events.json").events;
+    let activities = require("../../../data/activities.json").activities;
     return (
       <FRIP_SearchPage
+        page="activity"
         id={this.props.id}
         data={this.props.data}
-        content={events}
-        page="event"
+        content={activities}
       />
     );
   }
 });
 
-export default FRIP_EventPage;
+export default FRIP_ActivityPage;

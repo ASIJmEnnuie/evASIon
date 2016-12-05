@@ -5,14 +5,16 @@
 @import "./components/carousel";
 @import "./components/form";
 @import "./components/event";
-@import "./components/eventList";
 @import "./components/searchController";
 @import "./containers/onlineContainer";
 @import "./containers/offlineContainer";
-@import "./containers/online_pages/eventPage";
+
 @import "./containers/online_pages/homePage";
 @import "./containers/online_pages/eventCreationPage";
 @import "./containers/online_pages/activityCreationPage";
+
+@import "./components/searchPage.scss";
+@import "./components/contentList.scss";
 
 @mixin default() {
   font-family: Roboto, sans-serif;

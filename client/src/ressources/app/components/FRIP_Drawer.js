@@ -23,8 +23,12 @@ var FRIP_DrawerLeft = React.createClass({
     }
 
     return (
-      <div id={this.props.id}>
-        <Menu onItemTouchTap={this.props.changePage}>
+      <div
+        id={this.props.id}
+      >
+        <Menu
+          onItemTouchTap={this.props.changePage}
+        >
           {
             this.props.itemList.map(function(item, i){
               if (page == i) {

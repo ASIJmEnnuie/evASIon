@@ -34,4 +34,22 @@ const FRIP_EventList = React.createClass({
   }
 });
 
-export default FRIP_EventList;
+
+const FRIP_ActivityList = React.createClass({
+  render: function() {
+    return (
+      <div className={this.props.activityListClassName}>
+        <div>Liste activités</div>
+        {
+          this.props.activities.map((activity, i) => {
+            return(
+              <div key={"activity"+i}> {JSON.stringify(activity)} </div>
+            );
+          })
+        }
+      </div>
+    );
+  }
+})
+
+export {FRIP_EventList, FRIP_ActivityList};
