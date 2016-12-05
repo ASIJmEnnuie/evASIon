@@ -58,7 +58,6 @@ const FRIP_SearchController = React.createClass({
         </div>
 
         <div className={this.props.searchControllerClassName}>
-
           <FRIP_TextField
             hintText={this.props.data.name}
           />
@@ -72,10 +71,9 @@ const FRIP_SearchController = React.createClass({
             items={this.props.data.categorie.items}
           />
 
-          <div className="searchSelector">
-            <div className="text">{this.props.data.price}</div>
-            <Slider className="slider"/>
-          </div>
+          <FRIP_Slider
+            title={this.props.data.price}
+          />
 
           <FRIP_TextField
             hintText={this.props.data.place}
@@ -94,10 +92,9 @@ const FRIP_SearchController = React.createClass({
             items={this.props.data.tag.items}
           />
 
-          <div className="searchSelector">
-            <div className="text">{this.props.data.proximity}</div>
-            <Slider className="slider"/>
-          </div>
+          <FRIP_Slider
+            title={this.props.data.proximity}
+          />
         </div>
       </div>
     )

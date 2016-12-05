@@ -73,7 +73,12 @@ const FRIP_SelectField = React.createClass({
 const FRIP_Slider = React.createClass({
   render: function() {
     return (
-      <div>Slider</div>
+      <div className="searchSelector">
+        <div className="text">
+          {this.props.title}
+        </div>
+        <Slider className="slider"/>
+      </div>
     );
   }
 });
