@@ -3,7 +3,7 @@ import FRIP_SearchPage from "../../components/FRIP_SearchPage.js";
 
 const FRIP_ActivityPage = React.createClass({
   render: function() {
-    let activities = require("../../../data/activities.json").events;
+    let activities = require("../../../data/activities.json").activities;
     return (
       <FRIP_SearchPage
         page="activity"

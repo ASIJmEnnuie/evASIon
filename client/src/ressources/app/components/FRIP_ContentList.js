@@ -40,6 +40,13 @@ const FRIP_ActivityList = React.createClass({
     return (
       <div className={this.props.activityListClassName}>
         <div>Liste activités</div>
+        {
+          this.props.activities.map((activity, i) => {
+            return(
+              <div key={"activity"+i}> {JSON.stringify(activity)} </div>
+            );
+          })
+        }
       </div>
     );
   }
