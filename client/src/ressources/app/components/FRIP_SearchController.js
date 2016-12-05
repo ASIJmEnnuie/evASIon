@@ -50,7 +50,7 @@ const FRIP_SearchController = React.createClass({
 });
 
 
-const FRIP_EventsSearchController = React.createClass({
+const FRIP_EventSearchController = React.createClass({
   render: function() {
     return (
       <FRIP_SearchController
@@ -98,7 +98,7 @@ const FRIP_EventsSearchController = React.createClass({
   }
 });
 
-const FRIP_ActivitiesSearchController = React.createClass({
+const FRIP_ActivitySearchController = React.createClass({
   render: function() {
     return (
       <FRIP_SearchController
@@ -226,4 +226,4 @@ const FRIP_SearchActivityLittleController = React.createClass({
 });
 
 
-export {FRIP_EventsSearchController, FRIP_SearchActivityLittleController};
+export {FRIP_EventSearchController, FRIP_ActivitySearchController, FRIP_SearchActivityLittleController};

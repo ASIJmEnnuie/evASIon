@@ -1,4 +1,4 @@
-#eventPage {
+#contentPage {
   @include calc( width, '100% - 2 * ' + $margin);
   @include calc( height, '100% - ' + $margin);
   margin: $margin;

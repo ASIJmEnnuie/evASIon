@@ -1,4 +1,4 @@
-@mixin eventList() {
+@mixin contentList() {
   @include calc(width, '100% - 2 * ' + $margin);
   padding-left: $margin;
   padding-right: $margin;
@@ -6,8 +6,8 @@
 
 }
 
-.eventListDeployed {
-  @include eventList();
+.contentListDeployed {
+  @include contentList();
   @include calc(height, '100% - ' + $heightBtnDeploy );
   @include respond-to(medium) {
     @include calc(height, '100% - ' + $searchControllerHeigth + ' - ' + $heightBtnDeploy);
@@ -19,8 +19,8 @@
 }
 
 
-.eventListReduced {
-  @include eventList();
+.contentListReduced {
+  @include contentList();
   display: none;
 
   @include respond-to(medium) {
