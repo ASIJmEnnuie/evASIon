@@ -32,7 +32,7 @@ const FRIP_SearchController = React.createClass({
     return (
       <div className="globalController">
         <div className="deployController">
-          <span>{this.props.data.search}</span>
+          <span>{this.props.deployText}</span>
           <IconButton
             onTouchTap={this.props.deploySearchController}
             iconStyle={iconStyle}
@@ -42,40 +42,7 @@ const FRIP_SearchController = React.createClass({
         </div>
 
         <div className={this.props.searchControllerClassName}>
-          <FRIP_TextField
-            hintText={this.props.data.name}
-          />
-
-          <FRIP_DatePicker
-            hintText={this.props.data.date}
-          />
-
-          <FRIP_SelectField
-            floatingLabelText={this.props.data.categorie.name}
-            items={this.props.data.categorie.items}
-          />
-
-          <FRIP_Slider
-            title={this.props.data.price}
-          />
-
-          <FRIP_TextField
-            hintText={this.props.data.place}
-            onChange={this.props.placeController}
-          />
-
-          <FRIP_TimePicker
-            hintText={this.props.data.time}
-          />
-
-          <FRIP_SelectField
-            floatingLabelText={this.props.data.tag.name}
-            items={this.props.data.tag.items}
-          />
-
-          <FRIP_Slider
-            title={this.props.data.proximity}
-          />
+          {this.props.children}
         </div>
       </div>
     )
@@ -87,11 +54,46 @@ const FRIP_EventsSearchController = React.createClass({
   render: function() {
     return (
       <FRIP_SearchController
-        data={this.props.data}
         deploySearchController={this.props.deploySearchController}
         iconDeploySearchController={this.props.iconDeploySearchController}
         searchControllerClassName={this.props.searchControllerClassName}
-      />
+        deployText={this.props.data.search}
+      >
+        <FRIP_TextField
+          hintText={this.props.data.name}
+        />
+
+        <FRIP_DatePicker
+          hintText={this.props.data.date}
+        />
+
+        <FRIP_SelectField
+          floatingLabelText={this.props.data.categorie.name}
+          items={this.props.data.categorie.items}
+        />
+
+        <FRIP_Slider
+          title={this.props.data.price}
+        />
+
+        <FRIP_TextField
+          hintText={this.props.data.place}
+          onChange={this.props.placeController}
+        />
+
+        <FRIP_TimePicker
+          hintText={this.props.data.time}
+        />
+
+        <FRIP_SelectField
+          floatingLabelText={this.props.data.tag.name}
+          items={this.props.data.tag.items}
+        />
+
+        <FRIP_Slider
+          title={this.props.data.proximity}
+        />
+      </FRIP_SearchController>
     );
   }
 });
