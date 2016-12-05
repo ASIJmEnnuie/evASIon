@@ -80,12 +80,9 @@ const FRIP_SearchController = React.createClass({
             onChange={this.props.placeController}
           />
 
-          <div className="searchSelector">
-            <TimePicker
-              hintText={this.props.data.time}
-              onChange={this.props.timeController}
-            />
-          </div>
+          <FRIP_TimePicker
+            hintText={this.props.data.time}
+          />
 
           <FRIP_SelectField
             floatingLabelText={this.props.data.tag.name}

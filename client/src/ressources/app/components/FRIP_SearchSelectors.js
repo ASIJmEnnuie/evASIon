@@ -86,7 +86,12 @@ const FRIP_Slider = React.createClass({
 const FRIP_TimePicker = React.createClass({
   render: function() {
     return (
-      <div>TimePicker</div>
+      <div className="searchSelector">
+        <TimePicker
+          hintText={this.props.hintText}
+          onChange={this.props.onChange}
+        />
+      </div>
     );
   }
 });
