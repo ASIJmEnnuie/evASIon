@@ -1,10 +1,4 @@
 import React, {Component, PropTypes, Children} from 'react';
-import TextField from 'material-ui/TextField';
-import DatePicker from 'material-ui/DatePicker';
-import TimePicker from 'material-ui/TimePicker';
-import Slider from 'material-ui/Slider';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 import AutoComplete from 'material-ui/AutoComplete';
 import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
@@ -27,21 +21,11 @@ const iconStyle = {
 };
 
 const FRIP_SearchController = React.createClass({
-  getInitialState: function() {
-    return {
-      value: 1,
-    }
-  },
-
   getDefaultProps: function() {
     return {
       iconDeploySearchController: <HardwareKeyboardArrowDown/>,
       searchControllerClassName: "searchController",
     }
-  },
-
-  handleChange: function(event, index, value) {
-    this.setState({value});
   },
 
   render: function() {
