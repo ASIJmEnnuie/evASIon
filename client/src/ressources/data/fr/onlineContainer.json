@@ -79,6 +79,13 @@
         "proximity": "Proximité",
         "search": "Rechercher"
       }
+    },
+    
+    "activityPage": {
+      "searchController": {
+        "name": "Nom",
+        "search": "Rechercher"
+      }
     }
   }
 }

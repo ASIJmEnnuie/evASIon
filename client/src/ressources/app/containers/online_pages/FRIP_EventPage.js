@@ -6,10 +6,10 @@ const FRIP_EventPage = React.createClass({
     let events = require("../../../data/events.json").events;
     return (
       <FRIP_SearchPage
+        id={this.props.id}
         data={this.props.data}
         content={events}
         page="event"
-        id={this.props.id}
       />
     );
   }

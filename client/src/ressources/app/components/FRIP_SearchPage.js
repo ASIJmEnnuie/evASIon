@@ -1,5 +1,5 @@
 import React from 'react';
-import {FRIP_EventSearchController, FRIP_ActivitiesSearchController} from './FRIP_SearchController';
+import {FRIP_EventSearchController, FRIP_ActivitySearchController} from './FRIP_SearchController';
 import FRIP_EventList from './FRIP_EventList';
 
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
