@@ -4,6 +4,8 @@ import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
 import Slider from 'material-ui/Slider';
 import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+
 
 const FRIP_TextField = React.createClass({
   render: function() {
@@ -32,9 +34,38 @@ const FRIP_DatePicker = React.createClass({
 });
 
 const FRIP_SelectField = React.createClass({
+  getInitialState: function() {
+    return {
+      value: 0,
+    }
+  },
+
+  changeItem: function(event, index, value) {
+    this.setState({value});
+  },
+
   render: function() {
     return (
-      <div>SelectField</div>
+      <div className="searchSelector">
+        <SelectField
+          floatingLabelText={this.props.floatingLabelText}
+          value={this.state.value}
+          onChange={this.changeItem}
+          className="select"
+        >
+          {
+            this.props.items.map(function(item, i) {
+              return (
+                <MenuItem
+                  value={i}
+                  primaryText={item}
+                  key={"searchSelectorCategorie" + i}
+                />
+              );
+            })
+          }
+        </SelectField>
+      </div>
     );
   }
 });

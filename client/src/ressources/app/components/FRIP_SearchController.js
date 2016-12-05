@@ -61,30 +61,16 @@ const FRIP_SearchController = React.createClass({
 
           <FRIP_TextField
             hintText={this.props.data.name}
-            onChange={this.props.nameController}
           />
 
           <FRIP_DatePicker
             hintText={this.props.data.date}
-            onChange={this.props.dateController}
           />
 
-          <div className="searchSelector">
-            <SelectField
-              floatingLabelText={this.props.data.categorie.name}
-              value={this.state.value}
-              onChange={this.handleChange}
-              className="select"
-            >
-              {
-                this.props.data.categorie.items.map(function(item, i) {
-                  return (
-                    <MenuItem value={i} primaryText={item} key={"searchSelectorCategorie"+i}/>
-                  );
-                })
-              }
-            </SelectField>
-          </div>
+          <FRIP_SelectField
+            floatingLabelText={this.props.data.categorie.name}
+            items={this.props.data.categorie.items}
+          />
 
           <div className="searchSelector">
             <div className="text">{this.props.data.price}</div>
@@ -103,22 +89,10 @@ const FRIP_SearchController = React.createClass({
             />
           </div>
 
-          <div className="searchSelector">
-            <SelectField
-              floatingLabelText={this.props.data.tag.name}
-              value={this.state.value}
-              onChange={this.handleChange}
-              className="select"
-            >
-              {
-                this.props.data.tag.items.map(function(item, i) {
-                  return (
-                    <MenuItem value={i} primaryText={item} key={"searchSelectorTag"+i}/>
-                  );
-                })
-              }
-            </SelectField>
-          </div>
+          <FRIP_SelectField
+            floatingLabelText={this.props.data.tag.name}
+            items={this.props.data.tag.items}
+          />
 
           <div className="searchSelector">
             <div className="text">{this.props.data.proximity}</div>
