@@ -5,16 +5,19 @@ import TimePicker from 'material-ui/TimePicker';
 import Slider from 'material-ui/Slider';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
 import AutoComplete from 'material-ui/AutoComplete';
-import Autosuggest from 'react-autosuggest';
-
+import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
+import RaisedButton from 'material-ui/RaisedButton';
+
+import Autosuggest from 'react-autosuggest';
 
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
 
-import RaisedButton from 'material-ui/RaisedButton';
+import {FRIP_TextField, FRIP_DatePicker, FRIP_SelectField, FRIP_Slider, FRIP_TimePicker} from '../components/FRIP_SearchSelectors.js';
+
+
 const iconStyle = {
   marginTop: "auto",
   marginBottom: "auto",
@@ -53,13 +56,13 @@ const FRIP_SearchController = React.createClass({
             {this.props.iconDeploySearchController}
           </IconButton>
         </div>
+
         <div className={this.props.searchControllerClassName}>
-          <div className="searchSelector">
-            <TextField
-              hintText={this.props.data.name}
-              onChange={this.props.nameController}
-            />
-          </div>
+
+          <FRIP_TextField
+            hintText={this.props.data.name}
+            onChange={this.props.nameController}
+          />
 
           <div className="searchSelector">
             <DatePicker
@@ -130,6 +133,15 @@ const FRIP_SearchController = React.createClass({
     )
   },
 });
+
+
+
+
+/*-----------------------------*/
+
+
+
+
 
 const FRIP_SearchActivityLittleController = React.createClass({
   getInitialState: function(){
