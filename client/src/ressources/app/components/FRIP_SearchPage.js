@@ -1,6 +1,6 @@
 import React from 'react';
 import {FRIP_EventSearchController, FRIP_ActivitySearchController} from './FRIP_SearchController';
-import FRIP_EventList from './FRIP_EventList';
+import {FRIP_EventList, FRIP_ActivityList} from './FRIP_ContentList';
 
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
@@ -44,9 +44,9 @@ const FRIP_SearchPage = React.createClass({
             iconDeploySearchController={this.state.iconDeploySearchController}
             searchControllerClassName={this.state.searchControllerClassName}
           />
-          <FRIP_EventList
+          <FRIP_ActivityList
             activities={this.props.content}
-            eventListClassName={this.state.contentListClassName}
+            activityListClassName={this.state.contentListClassName}
           />
         </div>
       );
