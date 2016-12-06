@@ -1,13 +1,12 @@
 .form {
-  background-color: white;
-
-  @include respond-to(medium) {
-    width: 48%;
-  };
-
+  background-color: $secondaryColor;
   overflow: auto;
   text-align: center;
-  margin-bottom: 2%;
+  margin-bottom: $margin;
+
+  @include respond-to(medium) {
+    @include calc(width, "50%  - 2 * " + $margin);
+  };
 
   .form-text {
     display: block;

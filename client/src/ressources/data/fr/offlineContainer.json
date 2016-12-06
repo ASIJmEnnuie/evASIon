@@ -30,11 +30,11 @@
       "nameFormInscription": "Inscription",
       "cancelLabel": "Annuler",
       "okLabel": "Ok",
-      "locale": "fr"
+      "locale": "fr",
+      "buttonConnexionLabel": "Connexion",
+      "buttonInscriptionLabel": "Inscription"
     },
 
-    "buttonConnexionLabel": "Connexion",
-    "buttonInscriptionLabel": "Inscription",
     "linkInscriptionLabel": "Pas encore inscrit ?",
     "cancelLabel": "Annuler"
   }

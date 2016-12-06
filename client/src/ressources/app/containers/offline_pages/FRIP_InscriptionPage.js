@@ -12,14 +12,9 @@ const FRIP_InscriptionPage = React.createClass({
       >
         <FRIP_FormInscription
           data={this.props.data.form}
-          label={this.props.data.buttonInscriptionLabel}
           connexion={this.props.connexion}
         />
-        <div
-          className="link"
-          onTouchTap={this.props.changePage}>
-            {this.props.data.cancelLabel}
-        </div>
+        <div className="link" onTouchTap={this.props.changePage}> {this.props.data.cancelLabel} </div>
       </div>
     );
   }

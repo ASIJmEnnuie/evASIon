@@ -109,7 +109,7 @@ var FRIP_FormConnexion = React.createClass({
             <ErrorText id="passwordError" text={this.props.data.errorText} />
           </div>
           <div className="form-validation">
-            <RaisedButton value="Submit" className="form-button" label={this.props.label} primary={true} onTouchTap={this.handleSubmit}/>
+            <RaisedButton value="Submit" className="form-button" label={this.props.data.buttonConnexionLabel} primary={true} onTouchTap={this.handleSubmit}/>
             <ErrorText id="globalError" text={this.props.data.errorTextAllAreRequired} />
             <ErrorText id="globalConnexionError" text={this.props.data.errorInfo} />
           </div>
@@ -285,7 +285,7 @@ var FRIP_FormInscription = React.createClass({
             />
           </div>
           <div className="form-validation">
-            <RaisedButton className="form-button" label={this.props.label} primary={true} onTouchTap={this.handleSubmit}/>
+            <RaisedButton className="form-button" label={this.props.data.buttonInscriptionLabel} primary={true} onTouchTap={this.handleSubmit}/>
             <ErrorText id="globalInscriptionError" text={this.props.data.errorTextAllAreRequired} />
           </div>
         </form>
@@ -481,7 +481,7 @@ var FRIP_FormActivityCreation = React.createClass({
     }
     else {
       // TODO envoie BD
-      this.props.link();
+      console.log("L'activité a bien été crée");
 
       // A ENLEVER
       console.log("activityName : "+this.state.activityName);

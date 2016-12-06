@@ -127,6 +127,7 @@ const FRIP_SearchActivityLittleController = React.createClass({
     return {
       value: "",
       suggestions: [],
+      selected: false,
     }
   },
 
@@ -182,6 +183,12 @@ const FRIP_SearchActivityLittleController = React.createClass({
     this.setState({
       value: newValue
     });
+    // TODO
+    // if (newValue existe dans les activités existantes) {
+      this.setState({
+        selected: true
+      });
+    // }
   },
 
   // Autosuggest will call this function every time you need to update suggestions.

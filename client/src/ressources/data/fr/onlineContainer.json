@@ -50,7 +50,8 @@
       "activitySearch": "Rechercher une activité",
       "yes": "Oui",
       "no": "Non",
-      "createActivitySuggestion": "Créer une activité ?"
+      "createActivitySuggestion": "Créer une activité ?",
+      "errorNotSelected": "Veuillez selectionner une activité ou retourner à l'étape 1"
     },
 
     "activityCreation": {

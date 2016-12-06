@@ -1,13 +1,17 @@
 #eventCreationPage {
-  height: 100%;
+  @include calc(height, "100% - " + $heightNavbar + " - 2 * " + $margin);
+  @include calc(width, "100%  - 2 * " + $margin);
+  margin: $margin;
   overflow: auto;
-  //background-color: white;
 
   #eventCreationContent {
-    margin: 2%;
+    margin: $margin;
+    padding: 15px 10px;
+    background-color: $secondaryColor;
+    @include shadowBox($gray);
 
     @include respond-to(medium) {
-      width: 48%;
+      @include calc(width, "50%  -  " + $margin + " / 2");
       margin-left: auto;
       margin-right: auto;
     };
@@ -29,10 +33,13 @@
     }
 
     .step {
-      //@include shadowBox($gray);
-      padding: 10px 20px;
       height: 60%;
       overflow: auto;
+    }
+
+    .error {
+      font-size: 70%;
+      display: none;
     }
 
   }
