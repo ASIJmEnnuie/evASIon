@@ -6,6 +6,7 @@ import areIntlLocalesSupported from 'intl-locales-supported';
 import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import FRIP_Popup from './FRIP_Popup';
 
 let DateTimeFormat;
 
@@ -482,7 +483,7 @@ var FRIP_FormActivityCreation = React.createClass({
     else {
       // TODO envoie BD
       console.log("L'activité a bien été crée");
-      this.props.accessToHomePage();
+      this.refs.popupCreationActivity.handleOpen();
 
       // A ENLEVER
       console.log("activityName : "+this.state.activityName);
@@ -580,6 +581,13 @@ var FRIP_FormActivityCreation = React.createClass({
             <ErrorText id="globalActivityCreationError" text={this.props.data.errorTextAllAreRequired} />
           </div>
         </form>
+        <FRIP_Popup
+          title={this.props.data.popupCreationActivityTitle}
+          text={this.props.data.popupCreationActivityContent}
+          buttonLabel={this.props.data.popupCreationActivityButtonLabel}
+          ref="popupCreationActivity"
+          accessToHomePage={this.props.accessToHomePage}
+        />
       </div>
     );
   },
