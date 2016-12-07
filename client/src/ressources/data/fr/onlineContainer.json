@@ -69,7 +69,10 @@
       "okLabel": "Ok",
       "locale": "fr",
       "timeFormat": "24hr",
-      "creationLabel": "Créer"
+      "creationLabel": "Créer",
+      "popupCreationActivityTitle": "Confirmation",
+      "popupCreationActivityContent": "Activitée créée avec succes",
+      "popupCreationActivityButtonLabel": "Ok"
     },
 
     "eventPage": {
@@ -99,7 +102,7 @@
         "search": "Rechercher"
       }
     },
-    
+
     "activityPage": {
       "searchController": {
         "name": "Nom",

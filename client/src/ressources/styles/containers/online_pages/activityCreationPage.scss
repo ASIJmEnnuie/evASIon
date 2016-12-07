@@ -2,6 +2,7 @@
   margin: $margin;
   @include calc( max-height, '100% - 2 * ' + $margin);
   overflow: auto;
+  @include shadowBox($gray);
 
   @include respond-to(medium) {
     @include calc(width, '50% - 2 * ' + $margin);
