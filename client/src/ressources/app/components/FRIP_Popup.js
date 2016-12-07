@@ -23,7 +23,7 @@ var FRIP_Popup = React.createClass({
   render: function() {
     const actions = [
       <FlatButton
-        label={this.props.data.buttonLabel}
+        label={this.props.buttonLabel}
         primary={true}
         onTouchTap={this.handleClose}
       />,
@@ -32,13 +32,13 @@ var FRIP_Popup = React.createClass({
     return (
       <div>
         <Dialog
-          title={this.props.data.title}
+          title={this.props.title}
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          {this.props.data.text}
+          {this.props.text}
         </Dialog>
       </div>
     );

@@ -11,6 +11,7 @@ import MenuItem from 'material-ui/MenuItem';
 
 import {FRIP_FormEventCreation} from '../../components/FRIP_Form';
 import {FRIP_SearchActivityLittleController} from '../../components/FRIP_SearchController';
+import FRIP_Popup from '../../components/FRIP_Popup';
 
 const FRIP_EventCreationPage = React.createClass({
   getInitialState: function() {
@@ -83,6 +84,7 @@ const FRIP_EventCreationPage = React.createClass({
   handleSubmit: function() {
 
     // TODO ENVOI BD pour la création de l'évt
+    this.refs.popupCreationEvent.handleOpen();
 
     // A ENLEVER
     console.log("eventActivityName: "+this.state.eventActivityName);
@@ -204,6 +206,13 @@ const FRIP_EventCreationPage = React.createClass({
             )}
           </div>
         </div>
+        <FRIP_Popup
+          title={this.props.data.popupCreationEventTitle}
+          text={this.props.data.popupCreationEventContent}
+          buttonLabel={this.props.data.popupCreationEventButtonLabel}
+          ref="popupCreationEvent"
+          accessToHomePage={this.props.accessToHomePage}
+        />
         </div>
       </div>
     );

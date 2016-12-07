@@ -482,10 +482,10 @@ var FRIP_FormActivityCreation = React.createClass({
     }
     else {
       // TODO envoie BD
-      console.log("L'activité a bien été crée");
       this.refs.popupCreationActivity.handleOpen();
 
       // A ENLEVER
+      console.log("L'activité a bien été crée");
       console.log("activityName : "+this.state.activityName);
       console.log("activityPlace : "+this.state.activityPlace);
       console.log("activityDescription : "+this.state.activityDescription);
