@@ -482,6 +482,7 @@ var FRIP_FormActivityCreation = React.createClass({
     else {
       // TODO envoie BD
       console.log("L'activité a bien été crée");
+      this.props.accessToHomePage();
 
       // A ENLEVER
       console.log("activityName : "+this.state.activityName);

@@ -29,12 +29,12 @@ const FRIP_OnlineContainer = React.createClass({
     }
   },
 
-  accessToPageCreationActivity: function() {
+  accessToHomePage: function() {
+    this.setState({page: 0});
+  },
+
+  accessToActivityCreationPage: function() {
     this.setState({page: 4});
-    var breakpointSmall = parseInt(parameters.breakpoints.small.substring(0, parameters.breakpoints.small.length-2));
-    if (this.props.screenWidth <= breakpointSmall) {
-      this.clickOnLeftButton();
-    }
   },
 
   accessToParameters: function() {
@@ -86,7 +86,7 @@ const FRIP_OnlineContainer = React.createClass({
           <FRIP_EventCreationPage
             id={this.state.pageId}
             data={this.props.data.eventCreation}
-            accessToPageCreationActivity={this.accessToPageCreationActivity}
+            accessToActivityCreationPage={this.accessToActivityCreationPage}
           />
         );
         break;
@@ -103,6 +103,7 @@ const FRIP_OnlineContainer = React.createClass({
           <FRIP_ActivityCreationPage
             id={this.state.pageId}
             data={this.props.data.activityCreation}
+            accessToHomePage={this.accessToHomePage}
           />
         );
         break;

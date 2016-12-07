@@ -130,7 +130,7 @@ const FRIP_EventCreationPage = React.createClass({
                 <MenuItem value={1} primaryText={this.props.data.yes} className="form-select-content"/>
                 <MenuItem value={2} primaryText={this.props.data.no} className="form-select-content"/>
               </SelectField>
-              <div id="linkCreateActivity" className="link" onTouchTap={this.props.accessToPageCreationActivity}>{this.props.data.createActivitySuggestion}</div>
+              <div id="linkCreateActivity" className="link" onTouchTap={this.props.accessToActivityCreationPage}>{this.props.data.createActivitySuggestion}</div>
             </div>
           </div>
           );
