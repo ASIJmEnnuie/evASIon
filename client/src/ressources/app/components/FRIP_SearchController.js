@@ -55,34 +55,48 @@ const FRIP_EventSearchController = React.createClass({
     return {
       valueCategorie: 0,
       valueTag: 0,
+      name: "",
+      date: "",
+      categorie: "",
+      price: 0,
+      place: "",
+      time: "",
+      tag: "",
+      proximity: 0
     }
   },
 
   change: function(event, content, controller) {
     switch (controller) {
       case "name":
-        console.log(content);
+        this.setState({"name": content});
         break;
       case "date":
-        console.log(content);
+        this.setState({"date": content});
         break;
       case "categorie":
-        console.log(content);
+        this.setState({
+          "valueCategorie": content,
+          "categorie": this.props.data.categorie.items[content]
+        });
         break;
       case "price":
-        console.log(content);
+        this.setState({"price": content});
         break;
       case "place":
-        console.log(content);
+        this.setState({"place": content});
         break;
       case "time":
-        console.log(content);
+        this.setState({"time": content});
         break;
       case "tag":
-        console.log(content);
+        this.setState({
+          "valueTag": content,
+          "tag": this.props.data.tag.items[content]
+        });
         break;
       case "proximity":
-        console.log(content);
+        this.setState({"proximity": content});
         break;
     }
   },
@@ -108,6 +122,7 @@ const FRIP_EventSearchController = React.createClass({
         <FRIP_SelectField
           floatingLabelText={this.props.data.categorie.name}
           items={this.props.data.categorie.items}
+          value={this.state.valueCategorie}
           onChange={(event, content) => this.change(event, content, "categorie")}
         />
 
@@ -131,6 +146,7 @@ const FRIP_EventSearchController = React.createClass({
         <FRIP_SelectField
           floatingLabelText={this.props.data.tag.name}
           items={this.props.data.tag.items}
+          value={this.state.valueTag}
           onChange={(event, content) => this.change(event, content, "tag")}
         />
 
