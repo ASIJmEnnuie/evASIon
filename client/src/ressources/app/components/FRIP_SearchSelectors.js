@@ -34,14 +34,10 @@ const FRIP_DatePicker = React.createClass({
 });
 
 const FRIP_SelectField = React.createClass({
-  getInitialState: function() {
+  getDefaultProps: function() {
     return {
       value: 0,
     }
-  },
-
-  changeItem: function(event, index, value) {
-    this.setState({value});
   },
 
   render: function() {
@@ -49,8 +45,8 @@ const FRIP_SelectField = React.createClass({
       <div className="searchSelector">
         <SelectField
           floatingLabelText={this.props.floatingLabelText}
-          value={this.state.value}
-          onChange={this.changeItem}
+          value={this.props.value}
+          onChange={this.props.onChange}
           className="select"
         >
           {
@@ -77,7 +73,12 @@ const FRIP_Slider = React.createClass({
         <div className="text">
           {this.props.title}
         </div>
-        <Slider className="slider"/>
+        <Slider
+          className="slider"
+          min={this.props.min}
+          max={this.props.max}
+          onChange={this.props.onChange}
+        />
       </div>
     );
   }
