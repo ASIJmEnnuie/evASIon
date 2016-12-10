@@ -66,7 +66,7 @@ const FRIP_EventSearchController = React.createClass({
     }
   },
 
-  change: function(event, content, controller) {
+  onSelectorChange: function(event, content, controller) {
     switch (controller) {
       case "name":
         this.setState({"name": content});
@@ -111,50 +111,50 @@ const FRIP_EventSearchController = React.createClass({
       >
         <FRIP_TextField
           hintText={this.props.data.name}
-          onChange={(event, content) => this.change(event, content, "name")}
+          onChange={(event, content) => this.onSelectorChange(event, content, "name")}
         />
 
         <FRIP_DatePicker
           hintText={this.props.data.date}
-          onChange={(event, content) => this.change(event, content, "date")}
+          onChange={(event, content) => this.onSelectorChange(event, content, "date")}
         />
 
         <FRIP_SelectField
           floatingLabelText={this.props.data.categorie.name}
           items={this.props.data.categorie.items}
           value={this.state.valueCategorie}
-          onChange={(event, content) => this.change(event, content, "categorie")}
+          onChange={(event, content) => this.onSelectorChange(event, content, "categorie")}
         />
 
         <FRIP_Slider
           title={this.props.data.price.name}
           min={this.props.data.price.min}
           max={this.props.data.price.max}
-          onChange={(event, content) => this.change(event, content, "price")}
+          onChange={(event, content) => this.onSelectorChange(event, content, "price")}
         />
 
         <FRIP_TextField
           hintText={this.props.data.place}
-          onChange={(event, content) => this.change(event, content, "place")}
+          onChange={(event, content) => this.onSelectorChange(event, content, "place")}
         />
 
         <FRIP_TimePicker
           hintText={this.props.data.time}
-          onChange={(event, content) => this.change(event, content, "time")}
+          onChange={(event, content) => this.onSelectorChange(event, content, "time")}
         />
 
         <FRIP_SelectField
           floatingLabelText={this.props.data.tag.name}
           items={this.props.data.tag.items}
           value={this.state.valueTag}
-          onChange={(event, content) => this.change(event, content, "tag")}
+          onChange={(event, content) => this.onSelectorChange(event, content, "tag")}
         />
 
         <FRIP_Slider
           title={this.props.data.proximity.name}
           min={this.props.data.proximity.min}
           max={this.props.data.proximity.max}
-          onChange={(event, content) => this.change(event, content, "proximity")}
+          onChange={(event, content) => this.onSelectorChange(event, content, "proximity")}
         />
       </FRIP_SearchController>
     );
