@@ -28,7 +28,6 @@ const FRIP_DatePicker = React.createClass({
         <DatePicker
           hintText={this.props.hintText}
           onChange={this.props.onChange}
-          onDismiss={this.props.onDismiss}
         />
       </div>
     );
@@ -50,7 +49,6 @@ const FRIP_SelectField = React.createClass({
           floatingLabelText={this.props.floatingLabelText}
           value={this.props.value}
           onChange={this.props.onChange}
-          onBlur={this.props.onBlur}
         >
           {
             this.props.items.map(function(item, i) {
@@ -101,7 +99,6 @@ const FRIP_TimePicker = React.createClass({
         <TimePicker
           hintText={this.props.hintText}
           onChange={this.props.onChange}
-          onDismiss={this.props.onDismiss}
         />
       </div>
     );
