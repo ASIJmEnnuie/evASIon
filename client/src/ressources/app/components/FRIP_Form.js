@@ -216,74 +216,76 @@ var FRIP_FormInscription = React.createClass({
       <div>
         <form>
           <h2 className="form-title">{this.props.data.nameFormInscription}</h2>
-          <div className="form-champ">
-            <TextField
-              id="name"
-              placeholder={this.props.data.familyName}
-              className="form-text"
-              onBlur={this.setFamilyName}
-            />
-            <ErrorText id="familyNameError" text={this.props.data.errorText} />
-          </div>
-          <div className="form-champ">
-            <TextField
-              id="firstname"
-              placeholder={this.props.data.firstname}
-              className="form-text"
-              onBlur={this.setFirstname}
-            />
-            <ErrorText id="firstnameError" text={this.props.data.errorText} />
-          </div>
-          <div className="form-champ">
-            <TextField
-              id="email"
-              placeholder={this.props.data.email}
-              className="form-text"
-              onBlur={this.setEmail}
-            />
-            <ErrorText id="emailError" text={this.props.data.errorText} />
-          </div>
-          <div className="form-champ">
-            <TextField
-              id="password"
-              type="password"
-              placeholder={this.props.data.password}
-              className="form-text"
-              onBlur={this.setPassword}
-            />
-            <ErrorText id="passwordError" text={this.props.data.errorText} />
-          </div>
-          <div className="form-champ">
-            <TextField
-              id="passwordConfirmation"
-              type="password"
-              placeholder={this.props.data.passwordConfirmation}
-              className="form-text"
-              onChange={this.setPasswordConfirmation}
-            />
-            <ErrorText id="passwordConfirmationError" text={this.props.data.errorTextDifferentPassword} />
-          </div>
-          <div className="form-select-field">
-            <SelectField
-              id="gender"
-              value={this.state.value}
-              onChange={this.setGender}
-              hintText={this.props.data.gender}
-            >
-              <MenuItem value={1} primaryText={this.props.data.female} className="form-select-content"/>
-              <MenuItem value={2} primaryText={this.props.data.male} className="form-select-content"/>
-            </SelectField>
-          </div>
-          <div className="form-select-field">
-            <DatePicker
-              id="birthday"
-              hintText={this.props.data.birthday}
-              onChange={this.setBirthday}
-              DateTimeFormat={DateTimeFormat}
-              okLabel={this.props.data.okLabel}
-              cancelLabel={this.props.data.cancelLabel}
-              locale={this.props.data.locale}
-            />
+          <div className="form-content">
+            <div className="form-champ">
+              <TextField
+                id="name"
+                placeholder={this.props.data.familyName}
+                className="form-text"
+                onBlur={this.setFamilyName}
+              />
+              <ErrorText id="familyNameError" text={this.props.data.errorText} />
+            </div>
+            <div className="form-champ">
+              <TextField
+                id="firstname"
+                placeholder={this.props.data.firstname}
+                className="form-text"
+                onBlur={this.setFirstname}
+              />
+              <ErrorText id="firstnameError" text={this.props.data.errorText} />
+            </div>
+            <div className="form-champ">
+              <TextField
+                id="email"
+                placeholder={this.props.data.email}
+                className="form-text"
+                onBlur={this.setEmail}
+              />
+              <ErrorText id="emailError" text={this.props.data.errorText} />
+            </div>
+            <div className="form-champ">
+              <TextField
+                id="password"
+                type="password"
+                placeholder={this.props.data.password}
+                className="form-text"
+                onBlur={this.setPassword}
+              />
+              <ErrorText id="passwordError" text={this.props.data.errorText} />
+            </div>
+            <div className="form-champ">
+              <TextField
+                id="passwordConfirmation"
+                type="password"
+                placeholder={this.props.data.passwordConfirmation}
+                className="form-text"
+                onChange={this.setPasswordConfirmation}
+              />
+              <ErrorText id="passwordConfirmationError" text={this.props.data.errorTextDifferentPassword} />
+            </div>
+            <div className="form-select-field">
+              <SelectField
+                id="gender"
+                value={this.state.value}
+                onChange={this.setGender}
+                hintText={this.props.data.gender}
+              >
+                <MenuItem value={1} primaryText={this.props.data.female} className="form-select-content"/>
+                <MenuItem value={2} primaryText={this.props.data.male} className="form-select-content"/>
+              </SelectField>
+            </div>
+            <div className="form-select-field">
+              <DatePicker
+                id="birthday"
+                hintText={this.props.data.birthday}
+                onChange={this.setBirthday}
+                DateTimeFormat={DateTimeFormat}
+                okLabel={this.props.data.okLabel}
+                cancelLabel={this.props.data.cancelLabel}
+                locale={this.props.data.locale}
+              />
+            </div>
           </div>
           <div className="form-validation">
             <RaisedButton className="form-button" label={this.props.data.buttonInscriptionLabel} primary={true} onTouchTap={this.handleSubmit}/>

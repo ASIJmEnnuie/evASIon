@@ -32,10 +32,13 @@
   @include calc(max-width, "100%  - 2 * " + $margin);
   margin: $margin;
 
-  @include respond-to(medium) {
-    margin-left: auto;
-    margin-right: auto;
-  };
+  .form {
+    @include shadowBox($gray);
+    @include respond-to(medium) {
+      margin-left: auto;
+      margin-right: auto;
+    };
+  }
 }
 
 .link {
