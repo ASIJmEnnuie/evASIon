@@ -71,12 +71,18 @@ const FRIP_Slider = React.createClass({
     return (
       <div className="searchSelector">
         <div className="text">
-          {this.props.title}
+          <span className="title">
+            {this.props.title}
+          </span>
+          <span className="value">
+            {this.props.value}
+          </span>
         </div>
         <Slider
           className="slider"
           min={this.props.min}
           max={this.props.max}
+          step={this.props.step}
           onChange={this.props.onChange}
         />
       </div>

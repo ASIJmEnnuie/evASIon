@@ -71,30 +71,37 @@ const FRIP_EventSearchController = React.createClass({
       case "name":
         this.setState({"name": content});
         break;
+
       case "date":
         this.setState({"date": content});
         break;
+
       case "categorie":
         this.setState({
           "valueCategorie": content,
           "categorie": this.props.data.categorie.items[content]
         });
         break;
+
       case "price":
         this.setState({"price": content});
         break;
+
       case "place":
         this.setState({"place": content});
         break;
+
       case "time":
         this.setState({"time": content});
         break;
+
       case "tag":
         this.setState({
           "valueTag": content,
           "tag": this.props.data.tag.items[content]
         });
         break;
+
       case "proximity":
         this.setState({"proximity": content});
         break;
@@ -130,6 +137,7 @@ const FRIP_EventSearchController = React.createClass({
           title={this.props.data.price.name}
           min={this.props.data.price.min}
           max={this.props.data.price.max}
+          value={this.state.price}
           onChange={(event, content) => this.onSelectorChange(event, content, "price")}
         />
 
@@ -154,6 +162,7 @@ const FRIP_EventSearchController = React.createClass({
           title={this.props.data.proximity.name}
           min={this.props.data.proximity.min}
           max={this.props.data.proximity.max}
+          value={this.state.proximity}
           onChange={(event, content) => this.onSelectorChange(event, content, "proximity")}
         />
       </FRIP_SearchController>
