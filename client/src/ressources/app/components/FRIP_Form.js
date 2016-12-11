@@ -45,6 +45,19 @@ var errorDisplay = function(state, id) {
     display(id);
 };
 
+var validateEmail = function(value) {
+  // regex from http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(value);
+};
+
+var errorDisplayEmail = function(state, id) {
+  if (validateEmail(state))
+    notDisplay(id);
+  else
+    display(id);
+};
+
 var FRIP_FormConnexion = React.createClass({
   getInitialState: function() {
     return {
@@ -55,7 +68,7 @@ var FRIP_FormConnexion = React.createClass({
 
   handleSubmit: function() {
     // A DECOMMENTER
-    // if (!this.state.email.trim() || !this.state.password.trim()) {
+    // if (!validateEmail(this.state.email) || !this.state.password.trim()) {
     //   display("globalError");
     // }
     // else {
@@ -77,7 +90,7 @@ var FRIP_FormConnexion = React.createClass({
 
   setEmail: function(event) {
     this.setState({email: event.target.value});
-    errorDisplay(event.target.value, "emailError");
+    errorDisplayEmail(event.target.value, "emailError");
   },
 
   setPassword: function(event) {
@@ -96,7 +109,7 @@ var FRIP_FormConnexion = React.createClass({
             className="form-text"
             onBlur={this.setEmail}
           />
-          <ErrorText id="emailError" text={this.props.data.errorText} />
+        <ErrorText id="emailError" text={this.props.data.errorEmail} />
         </div>
         <div className="form-champ">
           <TextField
@@ -133,7 +146,7 @@ var FRIP_FormInscription = React.createClass({
   },
 
   handleSubmit: function() {
-    if (!this.state.familyName.trim() || !this.state.firstname.trim() || !this.state.email.trim() || !this.state.password.trim() || !this.state.passwordConfirmation.trim() || (this.state.password!=this.state.passwordConfirmation)) {
+    if (!this.state.familyName.trim() || !this.state.firstname.trim() || !validateEmail(this.state.email) || !this.state.password.trim() || !this.state.passwordConfirmation.trim() || (this.state.password!=this.state.passwordConfirmation)) {
       return display("globalInscriptionError");
     }
     else {
@@ -163,7 +176,7 @@ var FRIP_FormInscription = React.createClass({
 
   setEmail: function(event) {
     this.setState({email: event.target.value});
-    errorDisplay(event.target.value, "emailError");
+    errorDisplayEmail(event.target.value, "emailError");
   },
 
   setPassword: function(event) {
@@ -239,7 +252,7 @@ var FRIP_FormInscription = React.createClass({
               className="form-text"
               onBlur={this.setEmail}
             />
-            <ErrorText id="emailError" text={this.props.data.errorText} />
+          <ErrorText id="emailError" text={this.props.data.errorEmail} />
           </div>
           <div className="form-champ">
             <TextField
