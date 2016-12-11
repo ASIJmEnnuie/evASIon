@@ -427,21 +427,21 @@ var FRIP_FormEventCreation = React.createClass({
         this.setState({eventPlace: event.target.value});
         errorDisplay(event.target.value, "eventPlaceError");
         break;
-      case "eventMeetingPlace":
-        this.setState({eventMeetingPlace: event.target.value});
-        break;
+      // case "eventMeetingPlace":
+      //   this.setState({eventMeetingPlace: event.target.value});
+      //   break;
       case "eventDate":
         this.setState({eventDate: formatDate(content)});
         break;
       case "eventTime":
         this.setState({eventTime: formatDate(content)});
         break;
-      case "eventDateEnd":
-        this.setState({eventDateEnd: formatDate(content)});
-        break;
-      case "eventTimeEnd":
-        this.setState({eventTimeEnd: formatDate(content)});
-        break;
+      // case "eventDateEnd":
+      //   this.setState({eventDateEnd: formatDate(content)});
+      //   break;
+      // case "eventTimeEnd":
+      //   this.setState({eventTimeEnd: formatDate(content)});
+      //   break;
       case "eventMemberMax":
         this.setState({eventMemberMax: event.target.value});
         break;
@@ -475,14 +475,6 @@ var FRIP_FormEventCreation = React.createClass({
             />
           <ErrorText id="eventPlaceError" text={this.props.data.errorText} />
           </div>
-          <div className="form-champ">
-            <TextField
-              id="eventMeetingPlace"
-              placeholder={this.props.data.eventMeetingPlace}
-              className="form-text"
-              onBlur={(event, content) => this.onSelectorChange(event, content, "eventMeetingPlace")}
-            />
-          </div>
           <div className="form-select-field">
             <DatePicker
               id="eventDate"
@@ -500,28 +492,6 @@ var FRIP_FormEventCreation = React.createClass({
               id="eventTime"
               hintText={this.props.data.eventTime}
               onChange={(event, content) => this.onSelectorChange(event, content, "eventTime")}
-              autoOk={true}
-              format={this.props.data.timeFormat}
-              okLabel={this.props.data.okLabel}
-              cancelLabel={this.props.data.cancelLabel}
-            />
-          </div>
-          <div className="form-select-field">
-            <DatePicker
-              id="eventDateEnd"
-              hintText={this.props.data.eventDateEnd}
-              onChange={(event, content) => this.onSelectorChange(event, content, "eventDateEnd")}
-              DateTimeFormat={DateTimeFormat}
-              okLabel={this.props.data.okLabel}
-              cancelLabel={this.props.data.cancelLabel}
-              locale={this.props.data.locale}
-            />
-          </div>
-          <div className="form-select-field">
-            <TimePicker
-              id="eventTimeEnd"
-              hintText={this.props.data.eventTimeEnd}
-              onChange={(event, content) => this.onSelectorChange(event, content, "eventTimeEnd")}
               autoOk={true}
               format={this.props.data.timeFormat}
               okLabel={this.props.data.okLabel}
@@ -554,6 +524,36 @@ var FRIP_FormEventCreation = React.createClass({
   },
 });
 
+// <div className="form-champ">
+//   <TextField
+//     id="eventMeetingPlace"
+//     placeholder={this.props.data.eventMeetingPlace}
+//     className="form-text"
+//     onBlur={(event, content) => this.onSelectorChange(event, content, "eventMeetingPlace")}
+//   />
+// </div>
+// <div className="form-select-field">
+//   <DatePicker
+//     id="eventDateEnd"
+//     hintText={this.props.data.eventDateEnd}
+//     onChange={(event, content) => this.onSelectorChange(event, content, "eventDateEnd")}
+//     DateTimeFormat={DateTimeFormat}
+//     okLabel={this.props.data.okLabel}
+//     cancelLabel={this.props.data.cancelLabel}
+//     locale={this.props.data.locale}
+//   />
+// </div>
+// <div className="form-select-field">
+//   <TimePicker
+//     id="eventTimeEnd"
+//     hintText={this.props.data.eventTimeEnd}
+//     onChange={(event, content) => this.onSelectorChange(event, content, "eventTimeEnd")}
+//     autoOk={true}
+//     format={this.props.data.timeFormat}
+//     okLabel={this.props.data.okLabel}
+//     cancelLabel={this.props.data.cancelLabel}
+//   />
+// </div>
 
 var FRIP_FormActivityCreation = React.createClass({
   getInitialState: function() {
