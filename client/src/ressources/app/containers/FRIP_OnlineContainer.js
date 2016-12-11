@@ -80,6 +80,7 @@ const FRIP_OnlineContainer = React.createClass({
             data={this.props.data.eventPage}
             stompClient={this.props.stompClient}
             eventList={this.props.eventList}
+            userId={this.props.userId}
           />
         );
         break;

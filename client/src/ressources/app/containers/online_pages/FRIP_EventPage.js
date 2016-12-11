@@ -10,6 +10,7 @@ const FRIP_EventPage = React.createClass({
         content={this.props.eventList}
         page="event"
         stompClient={this.props.stompClient}
+        userId={this.props.userId}
       />
     );
   }

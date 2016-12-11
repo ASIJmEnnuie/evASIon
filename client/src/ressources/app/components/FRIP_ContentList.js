@@ -26,6 +26,8 @@ const FRIP_EventList = React.createClass({
               nbPlaces={event.nb_places}
               image={event.image}
               registration={this.props.data.registration}
+              stompClient={this.props.stompClient}
+              userId={this.props.userId}
             />
           );
         })

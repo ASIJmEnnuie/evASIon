@@ -3,7 +3,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const FRIP_Event = React.createClass({
   registration: function() {
-    console.log("yeah");
+    console.log(this.props.userId);
   },
 
   render: function() {

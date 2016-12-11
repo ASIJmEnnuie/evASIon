@@ -35,6 +35,7 @@ const FRIP_SearchPage = React.createClass({
 
   render: function() {
     let page = (<div></div>);
+
     if (this.props.page === "activity") {
       page = (
         <div id="contentPage">
@@ -65,6 +66,8 @@ const FRIP_SearchPage = React.createClass({
             events={this.props.content}
             eventListClassName={this.state.contentListClassName}
             data={this.props.data.list}
+            stompClient={this.props.stompClient}
+            userId={this.props.userId}
           />
         </div>
       );

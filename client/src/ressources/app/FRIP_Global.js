@@ -16,7 +16,8 @@ const FRIP_Global = React.createClass({
       screenHeight: window.innerHeight,
       screenWidth: window.innerWidth,
       container: "online",
-      lang: "fr"
+      lang: "fr",
+      userId: "userId",
     }
   },
 
@@ -26,22 +27,30 @@ const FRIP_Global = React.createClass({
         let stompClient = Stomp.over(new SockJS(serverAddress));
 
         stompClient.connect({}, (frame) => {
-          stompClient.subscribe('/topic/EventList', (eventList) => {
+          stompClient.subscribe('/topic/eventlist', (eventList) => {
             this.setState({
               eventList: JSON.parse(eventList.body)
             });
           });
 
-          stompClient.subscribe('/topic/ActivityList', (activityList) => {
+          stompClient.subscribe('/topic/activitylist', (activityList) => {
             this.setState({
               activityList: JSON.parse(activityList.body)
+            });
+          });
+
+          // TODO: assurer ici la récupération des paramètres de connexion au serveur.
+          // Ceci est actuellement un exemple non representatif de l'état final mais aidant à la compréhension de la suite du code
+          stompClient.subscribe('/topic/connexion', (connexionInformation) => {
+            this.setState({
+              userId: JSON.parse(connexionInformation.body)
             });
           });
         });
 
         return {
           stompClient: stompClient,
-          container: "online"
+          container: "online",
         };
       });
     }
@@ -72,6 +81,7 @@ const FRIP_Global = React.createClass({
         eventList={this.state.eventList}
         activityList={this.state.activityList}
         stompClient={this.state.stompClient}
+        userId={this.state.userId}
       />
     );
 
