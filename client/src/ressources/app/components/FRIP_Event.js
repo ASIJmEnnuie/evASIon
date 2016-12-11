@@ -1,4 +1,5 @@
 import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 
 const FRIP_Event = React.createClass({
   render: function() {
@@ -27,13 +28,17 @@ const FRIP_Event = React.createClass({
                 <span><span className="digit">{this.props.nbInscriptions}</span> personne(s) inscrites</span>
               </div>
               <div className="row">
-                <span><span className="digit">{this.props.nbPlaces-this.props.nbInscriptions}</span> place(s) restantes</span>
+                <span><span className="digit">{this.props.nbPlaces - this.props.nbInscriptions}</span> place(s) restantes</span>
               </div>
             </div>
 
             <div className="row">
               <span>{this.props.description}</span>
             </div>
+          </div>
+
+          <div className="row">
+            <RaisedButton label="Inscription" primary={true} />
           </div>
         </div>
       </section>
