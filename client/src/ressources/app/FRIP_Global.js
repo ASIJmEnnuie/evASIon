@@ -17,7 +17,7 @@ const FRIP_Global = React.createClass({
       screenWidth: window.innerWidth,
       container: "online",
       lang: "fr",
-      userId: "userId",
+      userId: "",
     }
   },
 
