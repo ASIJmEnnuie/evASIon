@@ -92,6 +92,7 @@ const FRIP_OnlineContainer = React.createClass({
             accessToActivityCreationPage={this.accessToActivityCreationPage}
             accessToHomePage={this.accessToHomePage}
             stompClient={this.props.stompClient}
+            userId={this.props.userId}
           />
         );
         break;

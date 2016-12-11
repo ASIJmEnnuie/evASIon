@@ -122,14 +122,15 @@ var FRIP_FormConnexion = React.createClass({
     //   display("globalError");
     // }
     // else {
-        const values = {
-          "email": this.state.email,
-          "password": this.state.password,
-        };
-        // A ENLEVER
-        console.log(values);
-        if (this.props.stompClient != null)
-          var formValid = this.props.stompClient.send("?", {}, JSON.stringify(values));
+      const values = {
+        "email": this.state.email,
+        "password": this.state.password,
+      };
+      // A ENLEVER
+      console.log(values);
+      if (this.props.stompClient != null)
+        this.props.stompClient.send("?", {}, JSON.stringify(values));
+      // var formValid = TODO
       // if formValid {
         this.props.connexion();
       // }
@@ -222,9 +223,10 @@ var FRIP_FormInscription = React.createClass({
       // TODO A ENLEVER
       console.log(values);
       if (this.props.stompClient != null)
-        var formValid = this.props.stompClient.send("?", {}, JSON.stringify(values));
-      // TODO if formValid {
-        //this.props.connexion();
+        this.props.stompClient.send("?", {}, JSON.stringify(values));
+    // var formValid = TODO
+    // TODO if formValid {
+      this.props.connexion();
       // } else {
         // notDisplay("globalError");
         // display("globalInscriptionError");

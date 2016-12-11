@@ -83,21 +83,25 @@ const FRIP_EventCreationPage = React.createClass({
 
   handleSubmit: function() {
 
-    // TODO ENVOI BD pour la création de l'évt
+    const values = {
+      "eventActivityName": this.state.eventActivityName,
+      "eventName": this.refs.formEvent.state.eventName,
+      "eventPlace": this.refs.formEvent.state.eventPlace,
+      "eventMeetingPlace": this.refs.formEvent.state.eventMeetingPlace,
+      "eventDate": this.refs.formEvent.state.eventDate,
+      "eventTime": this.refs.formEvent.state.eventTime,
+      "eventDateEnd": this.refs.formEvent.state.eventDateEnd,
+      "eventTimeEnd": this.refs.formEvent.state.eventTimeEnd,
+      "eventMemberMax": this.refs.formEvent.state.eventMemberMax,
+      "eventDescription": this.refs.formEvent.state.eventDescription,
+      "eventCreator": this.props.userId,
+    };
+    // TODO A ENLEVER
+    console.log(values);
+    if (this.props.stompClient != null)
+      var formValid = this.props.stompClient.send("?", {}, JSON.stringify(values));
+
     this.refs.popupCreationEvent.handleOpen();
-
-    // A ENLEVER
-    console.log("eventActivityName: "+this.state.eventActivityName);
-    console.log("eventName : "+this.refs.formEvent.state.eventName);
-    console.log("eventPlace : "+this.refs.formEvent.state.eventPlace);
-    console.log("eventMeetingPlace : "+this.refs.formEvent.state.eventMeetingPlace);
-    console.log("eventDate : "+this.refs.formEvent.state.eventDate.toString());
-    console.log("eventTime : "+this.refs.formEvent.state.eventTime.toString());
-    // console.log("eventDateEnd : "+this.refs.formEvent.state.eventDateEnd.toString());
-    // console.log("eventTimeEnd : "+this.refs.formEvent.state.eventTimeEnd.toString());
-    console.log("eventMemberMax : "+this.refs.formEvent.state.eventMemberMax);
-    console.log("eventDescription : "+this.refs.formEvent.state.eventDescription);
-
   },
 
   setActivityPresent: function(event, index, value) {
@@ -151,6 +155,7 @@ const FRIP_EventCreationPage = React.createClass({
             <FRIP_FormEventCreation
               data={this.props.data}
               ref="formEvent"
+              stompClient={this.props.stompClient}
             />
           </div>
           </div>
