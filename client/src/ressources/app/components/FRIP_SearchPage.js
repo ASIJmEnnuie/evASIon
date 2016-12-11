@@ -43,6 +43,7 @@ const FRIP_SearchPage = React.createClass({
             deploySearchController={this.deploySearchController}
             iconDeploySearchController={this.state.iconDeploySearchController}
             searchControllerClassName={this.state.searchControllerClassName}
+            stompClient={this.props.stompClient}
           />
           <FRIP_ActivityList
             activities={this.props.content}

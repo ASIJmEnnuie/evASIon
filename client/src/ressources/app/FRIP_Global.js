@@ -12,6 +12,7 @@ const FRIP_Global = React.createClass({
     return {
       stompClient: null,
       eventList: require("../data/events").events,
+      activityList: require("../data/activities").activities,
       screenHeight: window.innerHeight,
       screenWidth: window.innerWidth,
       container: "online",
@@ -25,9 +26,15 @@ const FRIP_Global = React.createClass({
         let stompClient = Stomp.over(new SockJS(serverAddress));
 
         stompClient.connect({}, (frame) => {
-          stompClient.subscribe('/topic/listeEvents', (eventList) => {
+          stompClient.subscribe('/topic/EventList', (eventList) => {
             this.setState({
               eventList: JSON.parse(eventList.body)
+            });
+          });
+
+          stompClient.subscribe('/topic/ActivityList', (activityList) => {
+            this.setState({
+              activityList: JSON.parse(activityList.body)
             });
           });
         });
@@ -63,6 +70,7 @@ const FRIP_Global = React.createClass({
         screenWidth={this.state.screenWidth}
         screenHeight={this.state.screenHeight}
         eventList={this.state.eventList}
+        activityList={this.state.activityList}
         stompClient={this.state.stompClient}
       />
     );
