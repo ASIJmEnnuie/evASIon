@@ -90,6 +90,7 @@ const FRIP_OnlineContainer = React.createClass({
             id={this.state.pageId}
             data={this.props.data.eventCreation}
             accessToActivityCreationPage={this.accessToActivityCreationPage}
+            accessToHomePage={this.accessToHomePage}
           />
         );
         break;

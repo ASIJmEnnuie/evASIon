@@ -45,6 +45,24 @@ var errorDisplay = function(state, id) {
     display(id);
 };
 
+var validateEmail = function(value) {
+  // regex from http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(value);
+};
+
+var errorDisplayEmail = function(state, id) {
+  if (validateEmail(state))
+    notDisplay(id);
+  else
+    display(id);
+};
+
+var getCurrentDate = function() {
+  var today = new Date();
+  return today;
+};
+
 var FRIP_FormConnexion = React.createClass({
   getInitialState: function() {
     return {
@@ -55,7 +73,7 @@ var FRIP_FormConnexion = React.createClass({
 
   handleSubmit: function() {
     // A DECOMMENTER
-    // if (!this.state.email.trim() || !this.state.password.trim()) {
+    // if (!validateEmail(this.state.email) || !this.state.password.trim()) {
     //   display("globalError");
     // }
     // else {
@@ -77,7 +95,7 @@ var FRIP_FormConnexion = React.createClass({
 
   setEmail: function(event) {
     this.setState({email: event.target.value});
-    errorDisplay(event.target.value, "emailError");
+    errorDisplayEmail(event.target.value, "emailError");
   },
 
   setPassword: function(event) {
@@ -88,8 +106,8 @@ var FRIP_FormConnexion = React.createClass({
   render: function() {
     return (
       <div>
-        <form>
-          <h2 className="form-title">{this.props.data.nameFormConnexion}</h2>
+        <h2 className="form-title">{this.props.data.nameFormConnexion}</h2>
+        <div className="form-content">
           <div className="form-champ">
             <TextField
               id="email"
@@ -97,7 +115,7 @@ var FRIP_FormConnexion = React.createClass({
               className="form-text"
               onBlur={this.setEmail}
             />
-            <ErrorText id="emailError" text={this.props.data.errorText} />
+          <ErrorText id="emailError" text={this.props.data.errorEmail} />
           </div>
           <div className="form-champ">
             <TextField
@@ -109,12 +127,12 @@ var FRIP_FormConnexion = React.createClass({
             />
             <ErrorText id="passwordError" text={this.props.data.errorText} />
           </div>
-          <div className="form-validation">
-            <RaisedButton value="Submit" className="form-button" label={this.props.data.buttonConnexionLabel} primary={true} onTouchTap={this.handleSubmit}/>
-            <ErrorText id="globalError" text={this.props.data.errorTextAllAreRequired} />
-            <ErrorText id="globalConnexionError" text={this.props.data.errorInfo} />
-          </div>
-        </form>
+        </div>
+        <div className="form-validation">
+          <RaisedButton value="Submit" className="form-button" label={this.props.data.buttonConnexionLabel} primary={true} onTouchTap={this.handleSubmit}/>
+          <ErrorText id="globalError" text={this.props.data.errorTextAllAreRequired} />
+          <ErrorText id="globalConnexionError" text={this.props.data.errorInfo} />
+        </div>
       </div>
     );
   },
@@ -135,7 +153,7 @@ var FRIP_FormInscription = React.createClass({
   },
 
   handleSubmit: function() {
-    if (!this.state.familyName.trim() || !this.state.firstname.trim() || !this.state.email.trim() || !this.state.password.trim() || !this.state.passwordConfirmation.trim() || (this.state.password!=this.state.passwordConfirmation)) {
+    if (!this.state.familyName.trim() || !this.state.firstname.trim() || !validateEmail(this.state.email) || !this.state.password.trim() || !this.state.passwordConfirmation.trim() || (this.state.password!=this.state.passwordConfirmation)) {
       return display("globalInscriptionError");
     }
     else {
@@ -165,7 +183,7 @@ var FRIP_FormInscription = React.createClass({
 
   setEmail: function(event) {
     this.setState({email: event.target.value});
-    errorDisplay(event.target.value, "emailError");
+    errorDisplayEmail(event.target.value, "emailError");
   },
 
   setPassword: function(event) {
@@ -213,9 +231,9 @@ var FRIP_FormInscription = React.createClass({
   render: function() {
 
     return (
-      <div>
-        <form>
-          <h2 className="form-title">{this.props.data.nameFormInscription}</h2>
+      <div className="form-global-content">
+        <h2 className="form-title">{this.props.data.nameFormInscription}</h2>
+        <div className="form-content">
           <div className="form-champ">
             <TextField
               id="name"
@@ -241,7 +259,7 @@ var FRIP_FormInscription = React.createClass({
               className="form-text"
               onBlur={this.setEmail}
             />
-            <ErrorText id="emailError" text={this.props.data.errorText} />
+          <ErrorText id="emailError" text={this.props.data.errorEmail} />
           </div>
           <div className="form-champ">
             <TextField
@@ -283,13 +301,14 @@ var FRIP_FormInscription = React.createClass({
               okLabel={this.props.data.okLabel}
               cancelLabel={this.props.data.cancelLabel}
               locale={this.props.data.locale}
+              maxDate={getCurrentDate()}
             />
           </div>
-          <div className="form-validation">
-            <RaisedButton className="form-button" label={this.props.data.buttonInscriptionLabel} primary={true} onTouchTap={this.handleSubmit}/>
-            <ErrorText id="globalInscriptionError" text={this.props.data.errorTextAllAreRequired} />
-          </div>
-        </form>
+        </div>
+        <div className="form-validation">
+          <RaisedButton className="form-button" label={this.props.data.buttonInscriptionLabel} primary={true} onTouchTap={this.handleSubmit}/>
+          <ErrorText id="globalInscriptionError" text={this.props.data.errorTextAllAreRequired} />
+        </div>
       </div>
     );
   },
@@ -362,9 +381,9 @@ var FRIP_FormEventCreation = React.createClass({
   render: function() {
 
     return (
-      <div>
-        <form>
-          <h2 className="form-title">{this.props.data.nameFormEventCreation}</h2>
+      <div className="form-global-content">
+        <h2 className="form-title">{this.props.data.nameFormEventCreation}</h2>
+        <div className="form-content">
           <div className="form-champ">
             <TextField
               id="eventName"
@@ -400,6 +419,7 @@ var FRIP_FormEventCreation = React.createClass({
               okLabel={this.props.data.okLabel}
               cancelLabel={this.props.data.cancelLabel}
               locale={this.props.data.locale}
+              minDate={getCurrentDate()}
             />
           </div>
           <div className="form-select-field">
@@ -452,10 +472,10 @@ var FRIP_FormEventCreation = React.createClass({
               onBlur={this.setEventDescription}
             />
           </div>
-          <div className="form-event-validation">
-            <ErrorText id="globalEventCreationError" text={this.props.data.errorTextAllAreRequired} />
-          </div>
-        </form>
+        </div>
+        <div className="form-event-validation">
+          <ErrorText id="globalEventCreationError" text={this.props.data.errorTextAllAreRequired} />
+        </div>
       </div>
     );
   },
@@ -482,10 +502,10 @@ var FRIP_FormActivityCreation = React.createClass({
     }
     else {
       // TODO envoie BD
-      console.log("L'activité a bien été crée");
       this.refs.popupCreationActivity.handleOpen();
 
       // A ENLEVER
+      console.log("L'activité a bien été crée");
       console.log("activityName : "+this.state.activityName);
       console.log("activityPlace : "+this.state.activityPlace);
       console.log("activityDescription : "+this.state.activityDescription);
@@ -523,9 +543,9 @@ var FRIP_FormActivityCreation = React.createClass({
   render: function() {
 
     return (
-      <div>
-        <form>
-          <h2 className="form-title">{this.props.data.nameFormActivityCreation}</h2>
+      <div className="form-global-content">
+        <h2 className="form-title">{this.props.data.nameFormActivityCreation}</h2>
+        <div className="form-content">
           <div className="form-champ">
             <TextField
               id="activityName"
@@ -576,11 +596,11 @@ var FRIP_FormActivityCreation = React.createClass({
               onBlur={this.setActivityWebsite}
             />
           </div>
-          <div className="form-validation">
-            <RaisedButton className="form-button" label={this.props.data.creationLabel} primary={true} onTouchTap={this.handleSubmit}/>
-            <ErrorText id="globalActivityCreationError" text={this.props.data.errorTextAllAreRequired} />
-          </div>
-        </form>
+        </div>
+        <div className="form-validation">
+          <RaisedButton className="form-button" label={this.props.data.creationLabel} primary={true} onTouchTap={this.handleSubmit}/>
+          <ErrorText id="globalActivityCreationError" text={this.props.data.errorTextAllAreRequired} />
+        </div>
         <FRIP_Popup
           title={this.props.data.popupCreationActivityTitle}
           text={this.props.data.popupCreationActivityContent}

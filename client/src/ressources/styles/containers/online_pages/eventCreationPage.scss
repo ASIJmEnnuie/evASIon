@@ -1,46 +1,86 @@
 #eventCreationPage {
-  @include calc(height, "100% - " + $heightNavbar + " - 2 * " + $margin);
-  @include calc(width, "100%  - 2 * " + $margin);
-  margin: $margin;
+  @include calc(height, "100% - 2 * " + $margin2);
+  @include calc(width, "100%  - 2 * " + $margin2);
+  margin: $margin2;
   overflow: auto;
 
   #eventCreationContent {
-    margin: $margin;
-    padding: 15px 10px;
+    margin: $margin2;
     background-color: $secondaryColor;
     @include shadowBox($gray);
+    @include calc(height, "100% - 2 * " + $margin2);
 
     @include respond-to(medium) {
-      @include calc(width, "50%  -  " + $margin + " / 2");
+      @include calc(width, "70%  -  " + $margin2 + " / 2");
       margin-left: auto;
       margin-right: auto;
     };
 
-    .form {
-      width: 100%;
-
-      .form-event-validation {
-        height: 15px;
-      }
-    }
-
     .form-stepper-content {
       text-align: center;
-    }
+      @include calc(height, "100% - " + 72px);
 
-    #linkCreateActivity {
-      display: none;
-    }
+      .step {
+        @include calc(height, "100%  - " + 70px);
+        @include calc(width, "100% - 2 * " + $margin2);
+        margin-left: auto;
+        margin-right: auto;
+        overflow: auto;
 
-    .step {
-      height: 60%;
-      overflow: auto;
-    }
+        @include respond-to(medium) {
+          @include calc(width, "70%  -  " + $margin2 + " / 2");
+          margin-left: auto;
+          margin-right: auto;
+        };
 
-    .error {
-      font-size: 70%;
-      display: none;
-    }
+        .form {
+          width: 100% !important;
+          height: 100% !important;
 
+          .form-global-content {
+            width: 100% !important;
+            @include calc(height, "100% - " 29px );
+
+            .form-content {
+              @include calc(height, "100% - " 60px );
+            }
+
+            .form-event-validation {
+              height: 15px;
+            }
+          }
+        }
+
+
+          .form-select-field {
+            height: 66px;
+
+            .form-select-content {
+              width: 90% !important;
+            }
+          }
+
+        #linkCreateActivity {
+          display: none;
+        }
+
+        .error {
+          font-size: 70%;
+          display: none;
+        }
+
+        .searchLittleController {
+          .react-autosuggest__container--open .react-autosuggest__suggestions-container {
+            @include calc(height, "100%  - " + 90px);
+            @include calc(width, "100%");
+            overflow: auto;
+          }
+
+          .react-autosuggest__input {
+            @include calc(width, "100%");
+          }
+        }
+      }
+    }
   }
 }

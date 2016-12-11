@@ -11,6 +11,7 @@ import MenuItem from 'material-ui/MenuItem';
 
 import {FRIP_FormEventCreation} from '../../components/FRIP_Form';
 import {FRIP_SearchActivityLittleController} from '../../components/FRIP_SearchController';
+import FRIP_Popup from '../../components/FRIP_Popup';
 
 const FRIP_EventCreationPage = React.createClass({
   getInitialState: function() {
@@ -83,6 +84,7 @@ const FRIP_EventCreationPage = React.createClass({
   handleSubmit: function() {
 
     // TODO ENVOI BD pour la création de l'évt
+    this.refs.popupCreationEvent.handleOpen();
 
     // A ENLEVER
     console.log("eventActivityName: "+this.state.eventActivityName);
@@ -115,7 +117,6 @@ const FRIP_EventCreationPage = React.createClass({
   getStepContent: function(stepIndex) {
     switch (stepIndex) {
       case 0:
-        //TODO mettre le lien ! onTouchTap={}
         return (
           <div className="step">
             <div className="form-select-field">
@@ -141,7 +142,7 @@ const FRIP_EventCreationPage = React.createClass({
               data={this.props.data}
               ref="searchActivity"
             />
-          <div id="errorNotSelected" className="error" >{this.props.data.errorNotSelected}</div>
+            <div id="errorNotSelected" className="error" >{this.props.data.errorNotSelected}</div>
           </div>);
       case 2:
         return (
@@ -180,30 +181,29 @@ const FRIP_EventCreationPage = React.createClass({
             </Stepper>
           </div>
           <div className="form-stepper-content">
-            {finished ? (
-              <div>
-                {this.props.data.eventCreationValidation}
-              </div>
-            ) : (
-              <div>
-                {this.getStepContent(stepIndex)}
-                <div style={{marginTop: 30}}>
-                  <FlatButton
-                    label={this.props.data.back}
-                    disabled={stepIndex === 0}
-                    onTouchTap={this.handlePrev}
-                    style={{marginRight: 12}}
-                  />
-                  <RaisedButton
-                    label={stepIndex === 2 ? this.props.data.finish : this.props.data.next}
-                    primary={true}
-                    onTouchTap={this.handleNext}
-                  />
-                </div>
-              </div>
-            )}
+            {this.getStepContent(stepIndex)}
+            <div>
+              <FlatButton
+                label={this.props.data.back}
+                disabled={stepIndex === 0}
+                onTouchTap={this.handlePrev}
+                style={{marginRight: 12}}
+              />
+              <RaisedButton
+                label={stepIndex === 2 ? this.props.data.finish : this.props.data.next}
+                primary={true}
+                onTouchTap={this.handleNext}
+              />
+            </div>
           </div>
         </div>
+        <FRIP_Popup
+          title={this.props.data.popupCreationEventTitle}
+          text={this.props.data.popupCreationEventContent}
+          buttonLabel={this.props.data.popupCreationEventButtonLabel}
+          ref="popupCreationEvent"
+          accessToHomePage={this.props.accessToHomePage}
+        />
         </div>
       </div>
     );
