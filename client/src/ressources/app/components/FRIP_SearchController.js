@@ -245,6 +245,7 @@ const FRIP_EventSearchController = React.createClass({
           value={this.state.proximity}
           onChange={(event, content) => this.onSelectorChange(event, content, "proximity")}
           onDragStop={() => this.sendSelectorsValues(makeValuesToSend(this.state))}
+          disabled={true}
         />
       </FRIP_SearchController>
     );

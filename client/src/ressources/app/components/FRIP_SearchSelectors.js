@@ -86,6 +86,7 @@ const FRIP_Slider = React.createClass({
           step={this.props.step}
           onChange={this.props.onChange}
           onDragStop={this.props.onDragStop}
+          disabled={this.props.disabled}
         />
       </div>
     );
