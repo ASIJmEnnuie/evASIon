@@ -104,6 +104,10 @@ const formatTime = (dateReceived) => {
 /* Components  */
 /*-------------------*/
 
+/*-------------------*/
+/* Offline Form  */
+/*-------------------*/
+
 var FRIP_FormConnexion = React.createClass({
   getInitialState: function() {
     return {
@@ -381,6 +385,10 @@ var FRIP_FormInscription = React.createClass({
   },
 });
 
+/*-------------------*/
+/* Online Form  */
+/*-------------------*/
+
 var FRIP_FormEventCreation = React.createClass({
   getInitialState: function() {
     return {
@@ -564,17 +572,20 @@ var FRIP_FormActivityCreation = React.createClass({
       return false;
     }
     else {
-      // TODO envoie BD
-      this.refs.popupCreationActivity.handleOpen();
+      const values = {
+        "activityName": this.state.activityName,
+        "activityPlace": this.state.activityPlace,
+        "activityDescription": this.state.activityDescription,
+        "activityPrice": this.state.activityPrice,
+        "activityCategory": this.state.activityCategory,
+        "activityWebsite": this.state.activityWebsite,
+      };
 
-      // A ENLEVER
-      console.log("L'activité a bien été crée");
-      console.log("activityName : "+this.state.activityName);
-      console.log("activityPlace : "+this.state.activityPlace);
-      console.log("activityDescription : "+this.state.activityDescription);
-      console.log("activityPrice : "+this.state.activityPrice);
-      console.log("activityCategory : "+this.state.activityCategory);
-      console.log("activityWebsite : "+this.state.activityWebsite);
+      // TODO A ENLEVER
+      console.log(values);
+      if (this.props.stompClient != null)
+        this.props.stompClient.send("?", {}, JSON.stringify(values));
+      this.refs.popupCreationActivity.handleOpen();
     }
   },
 
