@@ -63,7 +63,7 @@ const makeValuesToSend = (state) => {
     "price": state.price,
     "place": state.place,
     "time": state.time,
-    "tag": state.tag,
+    "activity": state.activity,
     "proximity": state.proximity,
   }
 };
@@ -111,14 +111,13 @@ const FRIP_EventSearchController = React.createClass({
   getInitialState: function() {
     return {
       valueCategorie: 0,
-      valueTag: 0,
       name: "",
       date: "",
       categorie: "",
       price: 0,
       place: "",
       time: "",
-      tag: "",
+      activity: "",
       proximity: 0
     }
   },
@@ -171,16 +170,8 @@ const FRIP_EventSearchController = React.createClass({
         });
         break;
 
-      case "tag":
-        this.setState((prevState, props) => {
-          let values = makeValuesToSend(prevState);
-          values.tag = this.props.data.tag.items[content];
-          this.sendSelectorsValues(values);
-          return {
-            "valueTag": content,
-            "tag": this.props.data.tag.items[content]
-          }
-        });
+      case "activity":
+        this.setState({"activity": content});
         break;
 
       case "proximity":
@@ -241,11 +232,10 @@ const FRIP_EventSearchController = React.createClass({
           onChange={(event, content) => this.onSelectorChange(event, content, "time")}
         />
 
-        <FRIP_SelectField
-          floatingLabelText={this.props.data.tag.name}
-          items={this.props.data.tag.items}
-          value={this.state.valueTag}
-          onChange={(event, content) => this.onSelectorChange(event, content, "tag")}
+        <FRIP_TextField
+          hintText={this.props.data.activity}
+          onChange={(event, content) => this.onSelectorChange(event, content, "activity")}
+          onBlur={() => this.sendSelectorsValues(makeValuesToSend(this.state))}
         />
 
         <FRIP_Slider
