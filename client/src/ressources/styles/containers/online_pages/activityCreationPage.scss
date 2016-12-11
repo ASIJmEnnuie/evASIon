@@ -1,7 +1,7 @@
 #activityCreationPage {
+  @include calc(height, "100% - 2 * " + $margin);
+  @include calc(width, "100%  - 2 * " + $margin);
   margin: $margin;
-  @include calc( max-height, '100% - 2 * ' + $margin);
-  overflow: auto;
   @include shadowBox($gray);
 
   @include respond-to(medium) {
@@ -9,5 +9,10 @@
     margin-left: auto;
     margin-right: auto;
   };
+
+  .form-content {
+    @include calc(height, "100% - 2 * " + $margin + " - " + 140px);
+    overflow: auto;
+  }
 
 }

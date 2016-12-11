@@ -23,10 +23,10 @@
     },
 
     "eventCreation": {
-      "firstStep": "Étape 1",
+      "firstStep": "",
       "firstStepContent": "L'évènement à créer est-il lié à une activité ?",
-      "secondStep": "Étape 2",
-      "thirdStep": "Étape 3",
+      "secondStep": "",
+      "thirdStep": "",
       "finish" : "Créer",
       "next": "Suivant",
       "back": "Retour",

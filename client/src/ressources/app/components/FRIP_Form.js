@@ -88,33 +88,31 @@ var FRIP_FormConnexion = React.createClass({
   render: function() {
     return (
       <div>
-        <form>
-          <h2 className="form-title">{this.props.data.nameFormConnexion}</h2>
-          <div className="form-champ">
-            <TextField
-              id="email"
-              placeholder={this.props.data.email}
-              className="form-text"
-              onBlur={this.setEmail}
-            />
-            <ErrorText id="emailError" text={this.props.data.errorText} />
-          </div>
-          <div className="form-champ">
-            <TextField
-              id="password"
-              type="password"
-              placeholder={this.props.data.password}
-              className="form-text"
-              onBlur={this.setPassword}
-            />
-            <ErrorText id="passwordError" text={this.props.data.errorText} />
-          </div>
-          <div className="form-validation">
-            <RaisedButton value="Submit" className="form-button" label={this.props.data.buttonConnexionLabel} primary={true} onTouchTap={this.handleSubmit}/>
-            <ErrorText id="globalError" text={this.props.data.errorTextAllAreRequired} />
-            <ErrorText id="globalConnexionError" text={this.props.data.errorInfo} />
-          </div>
-        </form>
+        <h2 className="form-title">{this.props.data.nameFormConnexion}</h2>
+        <div className="form-champ">
+          <TextField
+            id="email"
+            placeholder={this.props.data.email}
+            className="form-text"
+            onBlur={this.setEmail}
+          />
+          <ErrorText id="emailError" text={this.props.data.errorText} />
+        </div>
+        <div className="form-champ">
+          <TextField
+            id="password"
+            type="password"
+            placeholder={this.props.data.password}
+            className="form-text"
+            onBlur={this.setPassword}
+          />
+          <ErrorText id="passwordError" text={this.props.data.errorText} />
+        </div>
+        <div className="form-validation">
+          <RaisedButton value="Submit" className="form-button" label={this.props.data.buttonConnexionLabel} primary={true} onTouchTap={this.handleSubmit}/>
+          <ErrorText id="globalError" text={this.props.data.errorTextAllAreRequired} />
+          <ErrorText id="globalConnexionError" text={this.props.data.errorInfo} />
+        </div>
       </div>
     );
   },
@@ -214,84 +212,82 @@ var FRIP_FormInscription = React.createClass({
 
     return (
       <div>
-        <form>
-          <h2 className="form-title">{this.props.data.nameFormInscription}</h2>
-          <div className="form-content">
-            <div className="form-champ">
-              <TextField
-                id="name"
-                placeholder={this.props.data.familyName}
-                className="form-text"
-                onBlur={this.setFamilyName}
-              />
-              <ErrorText id="familyNameError" text={this.props.data.errorText} />
-            </div>
-            <div className="form-champ">
-              <TextField
-                id="firstname"
-                placeholder={this.props.data.firstname}
-                className="form-text"
-                onBlur={this.setFirstname}
-              />
-              <ErrorText id="firstnameError" text={this.props.data.errorText} />
-            </div>
-            <div className="form-champ">
-              <TextField
-                id="email"
-                placeholder={this.props.data.email}
-                className="form-text"
-                onBlur={this.setEmail}
-              />
-              <ErrorText id="emailError" text={this.props.data.errorText} />
-            </div>
-            <div className="form-champ">
-              <TextField
-                id="password"
-                type="password"
-                placeholder={this.props.data.password}
-                className="form-text"
-                onBlur={this.setPassword}
-              />
-              <ErrorText id="passwordError" text={this.props.data.errorText} />
-            </div>
-            <div className="form-champ">
-              <TextField
-                id="passwordConfirmation"
-                type="password"
-                placeholder={this.props.data.passwordConfirmation}
-                className="form-text"
-                onChange={this.setPasswordConfirmation}
-              />
-              <ErrorText id="passwordConfirmationError" text={this.props.data.errorTextDifferentPassword} />
-            </div>
-            <div className="form-select-field">
-              <SelectField
-                id="gender"
-                value={this.state.value}
-                onChange={this.setGender}
-                hintText={this.props.data.gender}
-              >
-                <MenuItem value={1} primaryText={this.props.data.female} className="form-select-content"/>
-                <MenuItem value={2} primaryText={this.props.data.male} className="form-select-content"/>
-              </SelectField>
-            </div>
-            <div className="form-select-field">
-              <DatePicker
-                id="birthday"
-                hintText={this.props.data.birthday}
-                onChange={this.setBirthday}
-                DateTimeFormat={DateTimeFormat}
-                okLabel={this.props.data.okLabel}
-                cancelLabel={this.props.data.cancelLabel}
-                locale={this.props.data.locale}
-              />
-            </div>
+        <h2 className="form-title">{this.props.data.nameFormInscription}</h2>
+        <div className="form-content">
+          <div className="form-champ">
+            <TextField
+              id="name"
+              placeholder={this.props.data.familyName}
+              className="form-text"
+              onBlur={this.setFamilyName}
+            />
+            <ErrorText id="familyNameError" text={this.props.data.errorText} />
           </div>
-          <div className="form-validation">
-            <RaisedButton className="form-button" label={this.props.data.buttonInscriptionLabel} primary={true} onTouchTap={this.handleSubmit}/>
-            <ErrorText id="globalInscriptionError" text={this.props.data.errorTextAllAreRequired} />
+          <div className="form-champ">
+            <TextField
+              id="firstname"
+              placeholder={this.props.data.firstname}
+              className="form-text"
+              onBlur={this.setFirstname}
+            />
+            <ErrorText id="firstnameError" text={this.props.data.errorText} />
           </div>
-        </form>
+          <div className="form-champ">
+            <TextField
+              id="email"
+              placeholder={this.props.data.email}
+              className="form-text"
+              onBlur={this.setEmail}
+            />
+            <ErrorText id="emailError" text={this.props.data.errorText} />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="password"
+              type="password"
+              placeholder={this.props.data.password}
+              className="form-text"
+              onBlur={this.setPassword}
+            />
+            <ErrorText id="passwordError" text={this.props.data.errorText} />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="passwordConfirmation"
+              type="password"
+              placeholder={this.props.data.passwordConfirmation}
+              className="form-text"
+              onChange={this.setPasswordConfirmation}
+            />
+            <ErrorText id="passwordConfirmationError" text={this.props.data.errorTextDifferentPassword} />
+          </div>
+          <div className="form-select-field">
+            <SelectField
+              id="gender"
+              value={this.state.value}
+              onChange={this.setGender}
+              hintText={this.props.data.gender}
+            >
+              <MenuItem value={1} primaryText={this.props.data.female} className="form-select-content"/>
+              <MenuItem value={2} primaryText={this.props.data.male} className="form-select-content"/>
+            </SelectField>
+          </div>
+          <div className="form-select-field">
+            <DatePicker
+              id="birthday"
+              hintText={this.props.data.birthday}
+              onChange={this.setBirthday}
+              DateTimeFormat={DateTimeFormat}
+              okLabel={this.props.data.okLabel}
+              cancelLabel={this.props.data.cancelLabel}
+              locale={this.props.data.locale}
+            />
+          </div>
+        </div>
+        <div className="form-validation">
+          <RaisedButton className="form-button" label={this.props.data.buttonInscriptionLabel} primary={true} onTouchTap={this.handleSubmit}/>
+          <ErrorText id="globalInscriptionError" text={this.props.data.errorTextAllAreRequired} />
+        </div>
       </div>
     );
   },
@@ -364,9 +360,9 @@ var FRIP_FormEventCreation = React.createClass({
   render: function() {
 
     return (
-      <div>
-        <form>
-          <h2 className="form-title">{this.props.data.nameFormEventCreation}</h2>
+      <div className="form-global-content">
+        <h2 className="form-title">{this.props.data.nameFormEventCreation}</h2>
+        <div className="form-content">
           <div className="form-champ">
             <TextField
               id="eventName"
@@ -454,10 +450,10 @@ var FRIP_FormEventCreation = React.createClass({
               onBlur={this.setEventDescription}
             />
           </div>
-          <div className="form-event-validation">
-            <ErrorText id="globalEventCreationError" text={this.props.data.errorTextAllAreRequired} />
-          </div>
-        </form>
+        </div>
+        <div className="form-event-validation">
+          <ErrorText id="globalEventCreationError" text={this.props.data.errorTextAllAreRequired} />
+        </div>
       </div>
     );
   },
@@ -526,8 +522,8 @@ var FRIP_FormActivityCreation = React.createClass({
 
     return (
       <div>
-        <form>
-          <h2 className="form-title">{this.props.data.nameFormActivityCreation}</h2>
+        <h2 className="form-title">{this.props.data.nameFormActivityCreation}</h2>
+        <div className="form-content">
           <div className="form-champ">
             <TextField
               id="activityName"
@@ -578,11 +574,11 @@ var FRIP_FormActivityCreation = React.createClass({
               onBlur={this.setActivityWebsite}
             />
           </div>
-          <div className="form-validation">
-            <RaisedButton className="form-button" label={this.props.data.creationLabel} primary={true} onTouchTap={this.handleSubmit}/>
-            <ErrorText id="globalActivityCreationError" text={this.props.data.errorTextAllAreRequired} />
-          </div>
-        </form>
+        </div>
+        <div className="form-validation">
+          <RaisedButton className="form-button" label={this.props.data.creationLabel} primary={true} onTouchTap={this.handleSubmit}/>
+          <ErrorText id="globalActivityCreationError" text={this.props.data.errorTextAllAreRequired} />
+        </div>
         <FRIP_Popup
           title={this.props.data.popupCreationActivityTitle}
           text={this.props.data.popupCreationActivityContent}
