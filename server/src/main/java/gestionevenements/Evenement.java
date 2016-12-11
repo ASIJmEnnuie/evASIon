@@ -8,26 +8,30 @@ public class Evenement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_evt", nullable = false)
+    @Column(name = "idEvt")
     private Long idEvt;
-    @Column(name = "nom_evt", nullable = false)
+    @Column(name = "nom")
     private String nomEvt;
-    @Column(name = "lieu_evt")
+    @Column(name = "lieu")
     private String lieuEvt;
-    @Column(name = "orga_evt")
+    @Column(name = "idOrga")
     private String orgaEvt;
-    @Column(name = "date_evt")
+    @Column(name = "dateEvt")
     private String dateEvt;
-    @Column(name = "heure_evt")
+    @Column(name = "heure")
     private String heureEvt;
-    @Column(name = "desc_evt")
+    @Column(name = "description")
     private String descEvt;
-    @Column(name = "nb_insc_evt")
+    @Column(name = "nbInscrits")
     private int nbInscEvt;
-    @Column(name = "nb_places_evt")
+    @Column(name = "nbPlaces")
     private int nbPlacesEvt;
-    @Column(name = "image_evt")
+    @Column(name = "image")
     private String imageEvt;
+    @Column(name = "prix")
+    private String price;
+    @Column(name = "idAct")
+    private String activite;
 
     public Evenement() {
 
@@ -37,9 +41,34 @@ public class Evenement {
         this.nomEvt = nomEvt;
     }
 
-    public Evenement(Long id, String nom, String lieu, String orga, String date, String heure,
+    public Evenement(String nom, String lieu, String date, String heure, String price, String activite) {
+        this.nomEvt = nom;
+        this.lieuEvt = lieu;
+        this.dateEvt = date;
+        this.heureEvt = heure;
+        this.price = price;
+        this.activite = activite;
+    }
+
+    public Evenement(Long idEvt, String nom, String lieu, String orga, String date, String heure,
+                     String description, int nb_inscriptions, int nb_places, String image, String price, String activite) {
+        this.idEvt = idEvt;
+        this.nomEvt = nom;
+        this.lieuEvt = lieu;
+        this.orgaEvt = orga;
+        this.dateEvt = date;
+        this.heureEvt = heure;
+        this.descEvt = description;
+        this.nbInscEvt = nb_inscriptions;
+        this.nbPlacesEvt = nb_places;
+        this.imageEvt = image;
+        this.price = price;
+        this.activite = activite;
+    }
+
+    public Evenement(Long idEvt, String nom, String lieu, String orga, String date, String heure,
                      String description, int nb_inscriptions, int nb_places, String image) {
-        this.idEvt = id;
+        this.idEvt = idEvt;
         this.nomEvt = nom;
         this.lieuEvt = lieu;
         this.orgaEvt = orga;
@@ -89,6 +118,14 @@ public class Evenement {
 
     public String getImageEvt() {
         return imageEvt;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getActivite() {
+        return activite;
     }
 
     public void setIdEvt(Long id) {

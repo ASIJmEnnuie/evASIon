@@ -21,48 +21,87 @@ public class EventsController {
     @Inject
     EvenementRepository evenementRepository;
 
-  public EventsController() {
-  }
-
-  @MessageMapping("/evenements")
-  @SendTo("/topic/listeEvenements")
-    //@RequestMapping(value = "/evenement", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Evenement> getAllEvents() {
-        final List<Evenement> resultList = new ArrayList<>();
-       final Iterable<Evenement> all = evenementRepository.findAll();
-
-       System.out.println("\n\nUN TEST\n\n");
-       all.forEach(new Consumer<Evenement>() {
-           @Override
-           public void accept(Evenement evenement) {
-               resultList.add(evenement);
-           }
-       });
-       return resultList;
+    public EventsController() {
     }
 
-    @MessageMapping("/evenementsDate")
-    @SendTo("/topic/listeEvenementsDate")
-    public List<Evenement> getEventsByDate(@PathVariable Message message) {
+    @MessageMapping("/evenements")
+    @SendTo("/topic/listeEvenements")
+    public List<Evenement> getEvents(@PathVariable String name, @PathVariable String date,
+                                     @PathVariable String category, @PathVariable String price,
+                                     @PathVariable String place, @PathVariable String time,
+                                     @PathVariable String activity, @PathVariable String proximity) {
+
+        Evenement e = new Evenement(name, place, date, time, price, activity);
+        String nomQuery = "%";
+        String placeQuery = "%";
+        String dateQuery = "%";
+        String heureQuery = "%";
+        String activityQuery = "%";
+        String prixQuery = "%";
+
+        //tmp
+        int idAct = 1;
+        int idCat = 1;
+
+        if (!name.equals("") && name != null)
+            nomQuery = "nomEvt = " + name;
+        if (!date.equals("") && date != null)
+            dateQuery = "dateEvt = " + date;
+        //categoryRepository.findByName(category)
+        /*if (!category.equals("") && category != null)
+            query = " and idCat = " + idCat;*/
+        if (!place.equals("") && place != null)
+            placeQuery = "lieuEvt = " + place;
+        if (!price.equals("") && price != null)
+            prixQuery = "price = " + price;
+        //activityRepository.findByName(activity)
+        if (!activity.equals("") && activity != null)
+            activityQuery = "activite = " + idAct;
+        if (!time.equals("") && time != null)
+            heureQuery = "heureEvt = " + date;
+
         final List<Evenement> eventsFound = new LinkedList<>();
-        final Iterable<Evenement> events = evenementRepository.findByDateEvt(message.getMessage());
-        System.out.println("\n\n\n\n un evt : " + events + "\n\n\n\n ");
+        final Iterable<Evenement> events = evenementRepository.findEvents(nomQuery, dateQuery, placeQuery, prixQuery, activityQuery, heureQuery);
+
         events.forEach(new Consumer<Evenement>() {
             @Override
             public void accept(Evenement evenement) {
-                System.out.println("\n\n\n\n un evt : " + evenement + "\n\n\n\n ");
                 eventsFound.add(evenement);
             }
         });
-        /*for (Evenement e : evenements)
-            if (e.getDate().equals(message.getMessage()))
-                eventsFound.add(e);*/
         return eventsFound;
     }
 
-    @MessageMapping("/evenementsLieu")
-    @SendTo("/topic/listeEvenementsLieu")
-    public List<Evenement> getEventsByLieu(@PathVariable Message message) {
+
+    @MessageMapping("/allEvenements")
+    @SendTo("/topic/listeAllEvenements")
+    public List<Evenement> getAllEvents() {
+        final List<Evenement> resultList = new ArrayList<>();
+        final Iterable<Evenement> all = evenementRepository.findAll();
+
+        all.forEach(new Consumer<Evenement>() {
+            @Override
+            public void accept(Evenement evenement) {
+               resultList.add(evenement);
+            }
+        });
+        return resultList;
+    }
+    /*
+    public List<Evenement> getEventsByDate(String date) {
+        final List<Evenement> eventsFound = new LinkedList<>();
+        final Iterable<Evenement> events = evenementRepository.findByDateEvt(message.getMessage());
+
+        events.forEach(new Consumer<Evenement>() {
+            @Override
+            public void accept(Evenement evenement) {
+                eventsFound.add(evenement);
+            }
+        });
+        return eventsFound;
+    }
+
+    public List<Evenement> getEventsByLieu(String lieu) {
         final List<Evenement> eventsFound = new LinkedList<>();
         final Iterable<Evenement> events = evenementRepository.findByLieuEvt(message.getMessage());
 
@@ -72,11 +111,6 @@ public class EventsController {
                 eventsFound.add(evenement);
             }
         });
-        /*
-        for (Evenement e : evenements)
-            if (e.getLieu().equals(message.getMessage()))
-                eventsFound.add(e);
-        */
         return eventsFound;
-    }
+    }*/
 }
