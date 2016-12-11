@@ -87,19 +87,23 @@
             "catégorie3"
           ]
         },
-        "price": "Prix",
+        "price": {
+          "name": "Prix",
+          "min": 0,
+          "max": 50
+        },
         "place": "Lieu",
         "time": "Heure de début",
-        "tag": {
-          "name": "Tags",
-          "items": [
-            "tag1",
-            "tag2",
-            "tag3"
-          ]
+        "activity": "Activité",
+        "proximity": {
+          "name": "Proximité",
+          "min": 1,
+          "max": 100
         },
-        "proximity": "Proximité",
         "search": "Rechercher"
+      },
+      "list": {
+        "registration": "Inscription"
       }
     },
 

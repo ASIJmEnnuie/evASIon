@@ -1,10 +1,21 @@
+$buttonEventHeigth: 36px;
+
 .event {
   @include shadowBox($gray);
+  @include calc(height, $imgHeight + " + 2 * " + $margin + " + " + $buttonEventHeigth);
   margin-bottom: $margin;
   background-color: $secondaryColor;
 
   .content {
     padding: $margin;
+
+    .row {
+      display: flex;
+      * {
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
 
     .colImage {
       vertical-align: top;
@@ -24,8 +35,10 @@
       display: inline-block;
 
       .row {
+        display: block;
         width: 100%;
-        height: 50%;
+        height: 40%;
+        overflow-y: auto;
         font-style: italic;
 
         span {
@@ -34,11 +47,6 @@
             margin: 0px;
             font-weight: bold;
           }
-        }
-
-        span:hover {
-          opacity: 0.6;
-          cursor: pointer;
         }
 
         span.title {
@@ -61,6 +69,7 @@
         display: inline-block;
 
         .row {
+          display: block;
           height: auto;
           font-style:normal;
         }

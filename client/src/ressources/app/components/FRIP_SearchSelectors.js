@@ -14,6 +14,7 @@ const FRIP_TextField = React.createClass({
         <TextField
           hintText={this.props.hintText}
           onChange={this.props.onChange}
+          onBlur={this.props.onBlur}
         />
       </div>
     );
@@ -34,24 +35,20 @@ const FRIP_DatePicker = React.createClass({
 });
 
 const FRIP_SelectField = React.createClass({
-  getInitialState: function() {
+  getDefaultProps: function() {
     return {
       value: 0,
     }
-  },
-
-  changeItem: function(event, index, value) {
-    this.setState({value});
   },
 
   render: function() {
     return (
       <div className="searchSelector">
         <SelectField
-          floatingLabelText={this.props.floatingLabelText}
-          value={this.state.value}
-          onChange={this.changeItem}
           className="select"
+          floatingLabelText={this.props.floatingLabelText}
+          value={this.props.value}
+          onChange={this.props.onChange}
         >
           {
             this.props.items.map(function(item, i) {
@@ -75,9 +72,22 @@ const FRIP_Slider = React.createClass({
     return (
       <div className="searchSelector">
         <div className="text">
-          {this.props.title}
+          <span className="title">
+            {this.props.title}
+          </span>
+          <span className="value">
+            {this.props.value}
+          </span>
         </div>
-        <Slider className="slider"/>
+        <Slider
+          className="slider"
+          min={this.props.min}
+          max={this.props.max}
+          step={this.props.step}
+          onChange={this.props.onChange}
+          onDragStop={this.props.onDragStop}
+          disabled={this.props.disabled}
+        />
       </div>
     );
   }
