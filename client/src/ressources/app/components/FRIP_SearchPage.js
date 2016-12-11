@@ -35,6 +35,7 @@ const FRIP_SearchPage = React.createClass({
 
   render: function() {
     let page = (<div></div>);
+
     if (this.props.page === "activity") {
       page = (
         <div id="contentPage">
@@ -43,6 +44,7 @@ const FRIP_SearchPage = React.createClass({
             deploySearchController={this.deploySearchController}
             iconDeploySearchController={this.state.iconDeploySearchController}
             searchControllerClassName={this.state.searchControllerClassName}
+            stompClient={this.props.stompClient}
           />
           <FRIP_ActivityList
             activities={this.props.content}
@@ -58,10 +60,14 @@ const FRIP_SearchPage = React.createClass({
             deploySearchController={this.deploySearchController}
             iconDeploySearchController={this.state.iconDeploySearchController}
             searchControllerClassName={this.state.searchControllerClassName}
+            stompClient={this.props.stompClient}
           />
           <FRIP_EventList
             events={this.props.content}
             eventListClassName={this.state.contentListClassName}
+            data={this.props.data.list}
+            stompClient={this.props.stompClient}
+            userId={this.props.userId}
           />
         </div>
       );

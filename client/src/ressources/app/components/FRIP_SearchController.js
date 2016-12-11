@@ -1,16 +1,21 @@
+/*-------------------*/
+/* Imports           */
+/*-------------------*/
+
 import React, {Component, PropTypes, Children} from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
 import RaisedButton from 'material-ui/RaisedButton';
-
 import Autosuggest from 'react-autosuggest';
-
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
-
 import {FRIP_TextField, FRIP_DatePicker, FRIP_SelectField, FRIP_Slider, FRIP_TimePicker} from '../components/FRIP_SearchSelectors.js';
 
+
+/*-------------------*/
+/* Constants         */
+/*-------------------*/
 
 const iconStyle = {
   marginTop: "auto",
@@ -19,6 +24,54 @@ const iconStyle = {
   height: "24px",
   padding: "0px",
 };
+
+
+/*-------------------*/
+/* Useful functions  */
+/*-------------------*/
+
+const zerosBeforeNumbers = (n) => {
+  if (n < 10){
+    return "0"+n;
+  }
+  return n;
+};
+
+
+const formatDate = (dateReceived) => {
+  let date = new Date(dateReceived);
+  let day = zerosBeforeNumbers(date.getDate());
+  let month = zerosBeforeNumbers(date.getMonth()+1);
+  let year = date.getFullYear();
+  return day + "/" + month + "/" + year;
+};
+
+
+const formatTime = (dateReceived) => {
+  let date = new Date(dateReceived);
+  let hours = zerosBeforeNumbers(date.getHours());
+  let minutes = zerosBeforeNumbers(date.getMinutes());
+  return hours + ":" + minutes;
+}
+
+
+const makeValuesToSend = (state) => {
+  return {
+    "name": state.name,
+    "date": state.date,
+    "categorie": state.categorie,
+    "price": state.price,
+    "place": state.place,
+    "time": state.time,
+    "activity": state.activity,
+    "proximity": state.proximity,
+  }
+};
+
+
+/*-------------------*/
+/* Global component  */
+/*-------------------*/
 
 const FRIP_SearchController = React.createClass({
   getDefaultProps: function() {
@@ -50,18 +103,21 @@ const FRIP_SearchController = React.createClass({
 });
 
 
+/*-------------------*/
+/* Thibault's part   */
+/*-------------------*/
+
 const FRIP_EventSearchController = React.createClass({
   getInitialState: function() {
     return {
       valueCategorie: 0,
-      valueTag: 0,
       name: "",
       date: "",
       categorie: "",
       price: 0,
       place: "",
       time: "",
-      tag: "",
+      activity: "",
       proximity: 0
     }
   },
@@ -74,18 +130,18 @@ const FRIP_EventSearchController = React.createClass({
 
       case "date":
         this.setState((prevState, props) => {
-          let values = this.makeValuesToSend(prevState);
-          values.date = content;
+          let values = makeValuesToSend(prevState);
+          values.date = formatDate(content);
           this.sendSelectorsValues(values);
           return {
-            "date": content
+            "date": values.date,
           }
         });
         break;
 
       case "categorie":
         this.setState((prevState, props) => {
-          let values = this.makeValuesToSend(prevState);
+          let values = makeValuesToSend(prevState);
           values.categorie = this.props.data.categorie.items[content];
           this.sendSelectorsValues(values);
           return {
@@ -105,25 +161,17 @@ const FRIP_EventSearchController = React.createClass({
 
       case "time":
         this.setState((prevState, props) => {
-          let values = this.makeValuesToSend(prevState);
-          values.time = content;
+          let values = makeValuesToSend(prevState);
+          values.time = formatTime(content);
           this.sendSelectorsValues(values);
           return {
-            "time": content
+            "time": values.time,
           }
         });
         break;
 
-      case "tag":
-        this.setState((prevState, props) => {
-          let values = this.makeValuesToSend(prevState);
-          values.tag = this.props.data.tag.items[content];
-          this.sendSelectorsValues(values);
-          return {
-            "valueTag": content,
-            "tag": this.props.data.tag.items[content]
-          }
-        });
+      case "activity":
+        this.setState({"activity": content});
         break;
 
       case "proximity":
@@ -134,19 +182,8 @@ const FRIP_EventSearchController = React.createClass({
 
   sendSelectorsValues: function(values) {
     console.log(values);
-  },
-
-  makeValuesToSend: function(state) {
-    return {
-      "name": state.name,
-      "date": state.date,
-      "categorie": state.categorie,
-      "price": state.price,
-      "place": state.place,
-      "time": state.time,
-      "tag": state.tag,
-      "proximity": state.proximity,
-    }
+    if (this.props.stompClient != null)
+      this.props.stompClient.send("?", {}, JSON.stringify(values));
   },
 
   render: function() {
@@ -160,7 +197,7 @@ const FRIP_EventSearchController = React.createClass({
         <FRIP_TextField
           hintText={this.props.data.name}
           onChange={(event, content) => this.onSelectorChange(event, content, "name")}
-          onBlur={() => this.sendSelectorsValues(this.makeValuesToSend(this.state))}
+          onBlur={() => this.sendSelectorsValues(makeValuesToSend(this.state))}
         />
 
         <FRIP_DatePicker
@@ -181,13 +218,13 @@ const FRIP_EventSearchController = React.createClass({
           max={this.props.data.price.max}
           value={this.state.price}
           onChange={(event, content) => this.onSelectorChange(event, content, "price")}
-          onDragStop={() => this.sendSelectorsValues(this.makeValuesToSend(this.state))}
+          onDragStop={() => this.sendSelectorsValues(makeValuesToSend(this.state))}
         />
 
         <FRIP_TextField
           hintText={this.props.data.place}
           onChange={(event, content) => this.onSelectorChange(event, content, "place")}
-          onBlur={() => this.sendSelectorsValues(this.makeValuesToSend(this.state))}
+          onBlur={() => this.sendSelectorsValues(makeValuesToSend(this.state))}
         />
 
         <FRIP_TimePicker
@@ -195,11 +232,10 @@ const FRIP_EventSearchController = React.createClass({
           onChange={(event, content) => this.onSelectorChange(event, content, "time")}
         />
 
-        <FRIP_SelectField
-          floatingLabelText={this.props.data.tag.name}
-          items={this.props.data.tag.items}
-          value={this.state.valueTag}
-          onChange={(event, content) => this.onSelectorChange(event, content, "tag")}
+        <FRIP_TextField
+          hintText={this.props.data.activity}
+          onChange={(event, content) => this.onSelectorChange(event, content, "activity")}
+          onBlur={() => this.sendSelectorsValues(makeValuesToSend(this.state))}
         />
 
         <FRIP_Slider
@@ -208,12 +244,14 @@ const FRIP_EventSearchController = React.createClass({
           max={this.props.data.proximity.max}
           value={this.state.proximity}
           onChange={(event, content) => this.onSelectorChange(event, content, "proximity")}
-          onDragStop={() => this.sendSelectorsValues(this.makeValuesToSend(this.state))}
+          onDragStop={() => this.sendSelectorsValues(makeValuesToSend(this.state))}
+          disabled={true}
         />
       </FRIP_SearchController>
     );
   }
 });
+
 
 const FRIP_ActivitySearchController = React.createClass({
   render: function() {
@@ -233,11 +271,9 @@ const FRIP_ActivitySearchController = React.createClass({
 });
 
 
-/*-----------------------------*/
-
-
-
-
+/*-------------------*/
+/* Morganes's part   */
+/*-------------------*/
 
 const FRIP_SearchActivityLittleController = React.createClass({
   getInitialState: function(){
@@ -350,4 +386,7 @@ const FRIP_SearchActivityLittleController = React.createClass({
 });
 
 
+/*-------------------*/
+/* Exports           */
+/*-------------------*/
 export {FRIP_EventSearchController, FRIP_ActivitySearchController, FRIP_SearchActivityLittleController};

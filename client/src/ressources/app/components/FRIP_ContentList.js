@@ -16,8 +16,9 @@ const FRIP_EventList = React.createClass({
           return(
             <FRIP_Event
               key={i}
+              data={event}
               nom={event.nom}
-              lieu={event.lieu}
+              place={event.lieu}
               organisateur={event.organisateur}
               date={event.date}
               heure={event.heure}
@@ -25,6 +26,9 @@ const FRIP_EventList = React.createClass({
               nbInscriptions={event.nb_inscriptions}
               nbPlaces={event.nb_places}
               image={event.image}
+              registration={this.props.data.registration}
+              stompClient={this.props.stompClient}
+              userId={this.props.userId}
             />
           );
         })
