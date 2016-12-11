@@ -32,8 +32,16 @@ const formatDate = (dateReceived) => {
   let day = zerosBeforeNumbers(date.getDate());
   let month = zerosBeforeNumbers(date.getMonth()+1);
   let year = date.getFullYear();
-  return day+"/"+month+"/"+year;
+  return day + "/" + month + "/" + year;
 };
+
+
+const formatTime = (dateReceived) => {
+  let date = new Date(dateReceived);
+  let hours = zerosBeforeNumbers(date.getHours());
+  let minutes = zerosBeforeNumbers(date.getMinutes());
+  return hours + ":" + minutes;
+}
 
 
 const makeValuesToSend = (state) => {
@@ -110,7 +118,7 @@ const FRIP_EventSearchController = React.createClass({
           values.date = formatDate(content);
           this.sendSelectorsValues(values);
           return {
-            "date": content
+            "date": values.date,
           }
         });
         break;
@@ -138,10 +146,10 @@ const FRIP_EventSearchController = React.createClass({
       case "time":
         this.setState((prevState, props) => {
           let values = makeValuesToSend(prevState);
-          values.time = content;
+          values.time = formatTime(content);
           this.sendSelectorsValues(values);
           return {
-            "time": content
+            "time": values.time,
           }
         });
         break;
