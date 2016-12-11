@@ -50,6 +50,18 @@ public class Evenement {
         this.activite = activite;
     }
 
+    public Evenement(String nom, String lieu, String date, String heure, String price, String description, int nbInscrits, int nbPlaces, String activite) {
+        this.nomEvt = nom;
+        this.lieuEvt = lieu;
+        this.dateEvt = date;
+        this.heureEvt = heure;
+        this.price = price;
+        this.descEvt = description;
+        this.nbInscEvt = nbInscrits;
+        this.nbPlacesEvt = nbPlaces;
+        this.activite = activite;
+    }
+
     public Evenement(Long idEvt, String nom, String lieu, String orga, String date, String heure,
                      String description, int nb_inscriptions, int nb_places, String image, String price, String activite) {
         this.idEvt = idEvt;

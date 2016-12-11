@@ -87,6 +87,23 @@ public class EventsController {
         });
         return resultList;
     }
+
+    @MessageMapping("/ajoutEvenements")
+    @SendTo("/topic/creationEvenements")
+    public Long AddEvents(String activite, String nom, String lieu, String date, String heure, String nbPlaces, String description) {
+
+        //activityRepository.findByName(activity) = idAct
+        try {
+            int nbPlacesEvt = Integer.parseInt(nbPlaces);
+
+            Evenement e = new Evenement (nom, lieu, date, heure, "0", description, 0, nbPlacesEvt, activite);
+            evenementRepository.saveAndFlush(e);
+            return e.getIdEvt();
+        }
+        catch (Exception e) {
+            return 0L;
+        }
+    }
     /*
     public List<Evenement> getEventsByDate(String date) {
         final List<Evenement> eventsFound = new LinkedList<>();
