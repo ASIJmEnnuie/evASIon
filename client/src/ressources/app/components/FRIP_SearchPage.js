@@ -62,6 +62,7 @@ const FRIP_SearchPage = React.createClass({
           <FRIP_EventList
             events={this.props.content}
             eventListClassName={this.state.contentListClassName}
+            data={this.props.data.list}
           />
         </div>
       );

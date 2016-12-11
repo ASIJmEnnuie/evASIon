@@ -38,7 +38,10 @@ const FRIP_Event = React.createClass({
           </div>
 
           <div className="row">
-            <RaisedButton label="Inscription" primary={true} />
+            <RaisedButton
+              label={this.props.registration}
+              primary={true}
+            />
           </div>
         </div>
       </section>

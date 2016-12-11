@@ -25,6 +25,7 @@ const FRIP_EventList = React.createClass({
               nbInscriptions={event.nb_inscriptions}
               nbPlaces={event.nb_places}
               image={event.image}
+              registration={this.props.data.registration}
             />
           );
         })

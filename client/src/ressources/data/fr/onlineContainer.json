@@ -105,6 +105,9 @@
           "max": 100
         },
         "search": "Rechercher"
+      },
+      "list": {
+        "registration": "Inscription"
       }
     },
 
