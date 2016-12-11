@@ -386,11 +386,11 @@ var FRIP_FormEventCreation = React.createClass({
     return {
       eventName: "",
       eventPlace: "",
-      eventMeetingPlace: "",
+      //eventMeetingPlace: "",
       eventDate: undefined,
       eventTime: undefined,
-      eventDateEnd: undefined,
-      eventTimeEnd: undefined,
+      //eventDateEnd: undefined,
+      //eventTimeEnd: undefined,
       eventMemberMax: undefined,
       eventDescription: "",
     }
@@ -407,42 +407,38 @@ var FRIP_FormEventCreation = React.createClass({
     }
   },
 
-  setEventName: function(event) {
-    this.setState({eventName: event.target.value});
-    errorDisplay(event.target.value, "eventNameError");
-  },
-
-  setEventPlace: function(event) {
-    this.setState({eventPlace: event.target.value});
-    errorDisplay(event.target.value, "eventPlaceError");
-  },
-
-  setEventMeetingPlace: function(event) {
-    this.setState({eventMeetingPlace: event.target.value});
-  },
-
-  setEventDate: function(event, value) {
-    this.setState({eventDate: value});
-  },
-
-  setEventTime: function(event, value) {
-    this.setState({eventTime: value});
-  },
-
-  setEventDateEnd: function(event, value) {
-    this.setState({eventDateEnd: value});
-  },
-
-  setEventTimeEnd: function(event, value) {
-    this.setState({eventTimeEnd: value});
-  },
-
-  setEventMemberMax: function(event) {
-    this.setState({eventMemberMax: event.target.value});
-  },
-
-  setEventDescription: function(event) {
-    this.setState({eventDescription: event.target.value});
+  onSelectorChange: function(event, content, controller) {
+    switch (controller) {
+      case "eventName":
+        this.setState({eventName: event.target.value});
+        errorDisplay(event.target.value, "eventNameError");
+        break;
+      case "eventPlace":
+        this.setState({eventPlace: event.target.value});
+        errorDisplay(event.target.value, "eventPlaceError");
+        break;
+      case "eventMeetingPlace":
+        this.setState({eventMeetingPlace: event.target.value});
+        break;
+      case "eventDate":
+        this.setState({eventDate: formatDate(content)});
+        break;
+      case "eventTime":
+        this.setState({eventTime: formatDate(content)});
+        break;
+      case "eventDateEnd":
+        this.setState({eventDateEnd: formatDate(content)});
+        break;
+      case "eventTimeEnd":
+        this.setState({eventTimeEnd: formatDate(content)});
+        break;
+      case "eventMemberMax":
+        this.setState({eventMemberMax: event.target.value});
+        break;
+      case "eventDescription":
+        this.setState({eventDescription: event.target.value});
+        break;
+    }
   },
 
   render: function() {
@@ -456,7 +452,7 @@ var FRIP_FormEventCreation = React.createClass({
               id="eventName"
               placeholder={this.props.data.eventName}
               className="form-text"
-              onBlur={this.setEventName}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "eventName")}
             />
           <ErrorText id="eventNameError" text={this.props.data.errorText} />
           </div>
@@ -465,7 +461,7 @@ var FRIP_FormEventCreation = React.createClass({
               id="eventPlace"
               placeholder={this.props.data.eventPlace}
               className="form-text"
-              onBlur={this.setEventPlace}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "eventPlace")}
             />
           <ErrorText id="eventPlaceError" text={this.props.data.errorText} />
           </div>
@@ -474,14 +470,14 @@ var FRIP_FormEventCreation = React.createClass({
               id="eventMeetingPlace"
               placeholder={this.props.data.eventMeetingPlace}
               className="form-text"
-              onBlur={this.setEventMeetingPlace}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "eventMeetingPlace")}
             />
           </div>
           <div className="form-select-field">
             <DatePicker
               id="eventDate"
               hintText={this.props.data.eventDate}
-              onChange={this.setEventDate}
+              onChange={(event, content) => this.onSelectorChange(event, content, "eventDate")}
               DateTimeFormat={DateTimeFormat}
               okLabel={this.props.data.okLabel}
               cancelLabel={this.props.data.cancelLabel}
@@ -493,7 +489,7 @@ var FRIP_FormEventCreation = React.createClass({
             <TimePicker
               id="eventTime"
               hintText={this.props.data.eventTime}
-              onChange={this.setEventTime}
+              onChange={(event, content) => this.onSelectorChange(event, content, "eventTime")}
               autoOk={true}
               format={this.props.data.timeFormat}
               okLabel={this.props.data.okLabel}
@@ -504,7 +500,7 @@ var FRIP_FormEventCreation = React.createClass({
             <DatePicker
               id="eventDateEnd"
               hintText={this.props.data.eventDateEnd}
-              onChange={this.setEventDateEnd}
+              onChange={(event, content) => this.onSelectorChange(event, content, "eventDateEnd")}
               DateTimeFormat={DateTimeFormat}
               okLabel={this.props.data.okLabel}
               cancelLabel={this.props.data.cancelLabel}
@@ -515,7 +511,7 @@ var FRIP_FormEventCreation = React.createClass({
             <TimePicker
               id="eventTimeEnd"
               hintText={this.props.data.eventTimeEnd}
-              onChange={this.setEventTimeEnd}
+              onChange={(event, content) => this.onSelectorChange(event, content, "eventTimeEnd")}
               autoOk={true}
               format={this.props.data.timeFormat}
               okLabel={this.props.data.okLabel}
@@ -527,7 +523,7 @@ var FRIP_FormEventCreation = React.createClass({
               id="eventMemberMax"
               placeholder={this.props.data.eventMemberMax}
               className="form-text"
-              onBlur={this.setEventMemberMax}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "eventMemberMax")}
               type="number"
             />
           </div>
@@ -536,7 +532,7 @@ var FRIP_FormEventCreation = React.createClass({
               id="eventDescription"
               placeholder={this.props.data.eventDescription}
               className="form-text"
-              onBlur={this.setEventDescription}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "eventDescription")}
             />
           </div>
         </div>
@@ -582,29 +578,28 @@ var FRIP_FormActivityCreation = React.createClass({
     }
   },
 
-  setActivityName: function(event) {
-    this.setState({activityName: event.target.value});
-    errorDisplay(event.target.value, "activityNameError");
-  },
-
-  setActivityPlace: function(event) {
-    this.setState({activityPlace: event.target.value});
-  },
-
-  setActivityDescription: function(event) {
-    this.setState({activityDescription: event.target.value});
-  },
-
-  setActivityPrice: function(event) {
-    this.setState({activityPrice: event.target.value});
-  },
-
-  setActivityCategory: function(event) {
-    this.setState({activityCategory: event.target.value});
-  },
-
-  setActivityWebsite: function(event) {
-    this.setState({activityWebsite: event.target.value});
+  onSelectorChange: function(event, content, controller) {
+    switch (controller) {
+      case "activityName":
+      this.setState({activityName: event.target.value});
+      errorDisplay(event.target.value, "activityNameError");
+        break;
+      case "activityPlace":
+        this.setState({activityPlace: event.target.value});
+        break;
+      case "activityDescription":
+        this.setState({activityDescription: event.target.value});
+        break;
+      case "activityPrice":
+        this.setState({activityPrice: event.target.value});
+        break;
+      case "activityCategory":
+        this.setState({activityCategory: event.target.value});
+        break;
+      case "activityWebsite":
+        this.setState({activityWebsite: event.target.value});
+        break;
+    }
   },
 
   render: function() {
@@ -618,7 +613,7 @@ var FRIP_FormActivityCreation = React.createClass({
               id="activityName"
               placeholder={this.props.data.activityName}
               className="form-text"
-              onBlur={this.setActivityName}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "activityName")}
             />
           <ErrorText id="activityNameError" text={this.props.data.errorText} />
           </div>
@@ -627,7 +622,7 @@ var FRIP_FormActivityCreation = React.createClass({
               id="activityPlace"
               placeholder={this.props.data.activityPlace}
               className="form-text"
-              onBlur={this.setActivityPlace}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "activityPlace")}
             />
           </div>
           <div className="form-champ">
@@ -635,7 +630,7 @@ var FRIP_FormActivityCreation = React.createClass({
               id="activityDescription"
               placeholder={this.props.data.activityDescription}
               className="form-text"
-              onBlur={this.setActivityDescription}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "activityDescription")}
             />
           </div>
           <div className="form-champ">
@@ -643,7 +638,7 @@ var FRIP_FormActivityCreation = React.createClass({
               id="activityPrice"
               placeholder={this.props.data.activityPrice}
               className="form-text"
-              onBlur={this.setActivityPrice}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "activityPrice")}
               type="number"
             />
           </div>
@@ -652,7 +647,7 @@ var FRIP_FormActivityCreation = React.createClass({
               id="activityCategory"
               placeholder={this.props.data.activityCategory}
               className="form-text"
-              onBlur={this.setActivityCategory}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "activityCategory")}
             />
           </div>
           <div className="form-champ">
@@ -660,7 +655,7 @@ var FRIP_FormActivityCreation = React.createClass({
               id="activityWebsite"
               placeholder={this.props.data.activityWebsite}
               className="form-text"
-              onBlur={this.setActivityWebsite}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "activityWebsite")}
             />
           </div>
         </div>

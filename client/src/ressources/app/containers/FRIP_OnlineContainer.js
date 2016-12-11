@@ -91,6 +91,7 @@ const FRIP_OnlineContainer = React.createClass({
             data={this.props.data.eventCreation}
             accessToActivityCreationPage={this.accessToActivityCreationPage}
             accessToHomePage={this.accessToHomePage}
+            stompClient={this.props.stompClient}
           />
         );
         break;
@@ -110,6 +111,7 @@ const FRIP_OnlineContainer = React.createClass({
             id={this.state.pageId}
             data={this.props.data.activityCreation}
             accessToHomePage={this.accessToHomePage}
+            stompClient={this.props.stompClient}
           />
         );
         break;
