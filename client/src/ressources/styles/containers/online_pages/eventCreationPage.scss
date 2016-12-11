@@ -39,7 +39,7 @@
 
           .form-global-content {
             width: 100% !important;
-            @include calc(height, "100% - " 29px );;
+            @include calc(height, "100% - " 29px );
 
             .form-content {
               @include calc(height, "100% - " 60px );

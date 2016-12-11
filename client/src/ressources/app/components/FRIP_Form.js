@@ -231,7 +231,7 @@ var FRIP_FormInscription = React.createClass({
   render: function() {
 
     return (
-      <div>
+      <div className="form-global-content">
         <h2 className="form-title">{this.props.data.nameFormInscription}</h2>
         <div className="form-content">
           <div className="form-champ">
@@ -543,7 +543,7 @@ var FRIP_FormActivityCreation = React.createClass({
   render: function() {
 
     return (
-      <div>
+      <div className="form-global-content">
         <h2 className="form-title">{this.props.data.nameFormActivityCreation}</h2>
         <div className="form-content">
           <div className="form-champ">
