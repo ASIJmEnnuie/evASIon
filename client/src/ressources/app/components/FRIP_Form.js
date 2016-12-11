@@ -58,6 +58,11 @@ var errorDisplayEmail = function(state, id) {
     display(id);
 };
 
+var getCurrentDate = function() {
+  var today = new Date();
+  return today;
+};
+
 var FRIP_FormConnexion = React.createClass({
   getInitialState: function() {
     return {
@@ -102,24 +107,26 @@ var FRIP_FormConnexion = React.createClass({
     return (
       <div>
         <h2 className="form-title">{this.props.data.nameFormConnexion}</h2>
-        <div className="form-champ">
-          <TextField
-            id="email"
-            placeholder={this.props.data.email}
-            className="form-text"
-            onBlur={this.setEmail}
-          />
-        <ErrorText id="emailError" text={this.props.data.errorEmail} />
-        </div>
-        <div className="form-champ">
-          <TextField
-            id="password"
-            type="password"
-            placeholder={this.props.data.password}
-            className="form-text"
-            onBlur={this.setPassword}
-          />
-          <ErrorText id="passwordError" text={this.props.data.errorText} />
+        <div className="form-content">
+          <div className="form-champ">
+            <TextField
+              id="email"
+              placeholder={this.props.data.email}
+              className="form-text"
+              onBlur={this.setEmail}
+            />
+          <ErrorText id="emailError" text={this.props.data.errorEmail} />
+          </div>
+          <div className="form-champ">
+            <TextField
+              id="password"
+              type="password"
+              placeholder={this.props.data.password}
+              className="form-text"
+              onBlur={this.setPassword}
+            />
+            <ErrorText id="passwordError" text={this.props.data.errorText} />
+          </div>
         </div>
         <div className="form-validation">
           <RaisedButton value="Submit" className="form-button" label={this.props.data.buttonConnexionLabel} primary={true} onTouchTap={this.handleSubmit}/>
@@ -294,6 +301,7 @@ var FRIP_FormInscription = React.createClass({
               okLabel={this.props.data.okLabel}
               cancelLabel={this.props.data.cancelLabel}
               locale={this.props.data.locale}
+              maxDate={getCurrentDate()}
             />
           </div>
         </div>
@@ -411,6 +419,7 @@ var FRIP_FormEventCreation = React.createClass({
               okLabel={this.props.data.okLabel}
               cancelLabel={this.props.data.cancelLabel}
               locale={this.props.data.locale}
+              minDate={getCurrentDate()}
             />
           </div>
           <div className="form-select-field">
