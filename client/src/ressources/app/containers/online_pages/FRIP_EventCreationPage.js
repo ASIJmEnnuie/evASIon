@@ -109,7 +109,7 @@ const FRIP_EventCreationPage = React.createClass({
     else {
       if (value == 2) {
         obj.style.display='block';
-        this.setState({eventActivityName: "Autre"});
+        this.setState({eventActivityName: "Other"});
       }
     }
   },

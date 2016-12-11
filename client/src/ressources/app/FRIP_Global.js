@@ -69,6 +69,7 @@ const FRIP_Global = React.createClass({
       <FRIP_OfflineContainer
         data={dataOffline.offlineContainer}
         connexion={this.connexion}
+        stompClient={this.state.stompClient}
       />
     );
 

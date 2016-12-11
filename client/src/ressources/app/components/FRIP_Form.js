@@ -1,3 +1,7 @@
+/*-------------------*/
+/* Imports           */
+/*-------------------*/
+
 import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import DatePicker from 'material-ui/DatePicker';
@@ -8,15 +12,24 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import FRIP_Popup from './FRIP_Popup';
 
+/*-------------------*/
+/* Constants         */
+/*-------------------*/
+
 let DateTimeFormat;
 
-var lang = require("../../data/lang");
+const lang = require("../../data/lang");
 // TODO à redéfinir avec une vaiable propre à la session ?
 if (lang.lang == "fr") {
   if (areIntlLocalesSupported(['fr'])) {
     DateTimeFormat = global.Intl.DateTimeFormat;
   }
 }
+
+
+/*-------------------*/
+/* Useful functions  */
+/*-------------------*/
 
 var ErrorText = React.createClass({
   render: function() {
@@ -63,6 +76,34 @@ var getCurrentDate = function() {
   return today;
 };
 
+const zerosBeforeNumbers = (n) => {
+  if (n < 10){
+    return "0"+n;
+  }
+  return n;
+};
+
+
+const formatDate = (dateReceived) => {
+  let date = new Date(dateReceived);
+  let day = zerosBeforeNumbers(date.getDate());
+  let month = zerosBeforeNumbers(date.getMonth()+1);
+  let year = date.getFullYear();
+  return day + "/" + month + "/" + year;
+};
+
+
+const formatTime = (dateReceived) => {
+  let date = new Date(dateReceived);
+  let hours = zerosBeforeNumbers(date.getHours());
+  let minutes = zerosBeforeNumbers(date.getMinutes());
+  return hours + ":" + minutes;
+}
+
+/*-------------------*/
+/* Components  */
+/*-------------------*/
+
 var FRIP_FormConnexion = React.createClass({
   getInitialState: function() {
     return {
@@ -72,12 +113,19 @@ var FRIP_FormConnexion = React.createClass({
   },
 
   handleSubmit: function() {
-    // A DECOMMENTER
+    // TODO A DECOMMENTER
     // if (!validateEmail(this.state.email) || !this.state.password.trim()) {
     //   display("globalError");
     // }
     // else {
-      // TODO var formValid = CONTROLE BD (this.state.email,this.state.password) : true ou false
+        const values = {
+          "email": this.state.email,
+          "password": this.state.password,
+        };
+        // A ENLEVER
+        console.log(values);
+        if (this.props.stompClient != null)
+          var formValid = this.props.stompClient.send("?", {}, JSON.stringify(values));
       // if formValid {
         this.props.connexion();
       // }
@@ -88,22 +136,23 @@ var FRIP_FormConnexion = React.createClass({
 
     //}
 
-    // A ENLEVER
-    console.log("email : "+this.state.email);
-    console.log("password : "+this.state.password);
   },
 
-  setEmail: function(event) {
-    this.setState({email: event.target.value});
-    errorDisplayEmail(event.target.value, "emailError");
-  },
-
-  setPassword: function(event) {
-    this.setState({password: event.target.value});
-    errorDisplay(event.target.value, "passwordError");
+  onSelectorChange: function(event, content, controller) {
+    switch (controller) {
+      case "email":
+        this.setState({email: event.target.value});
+        errorDisplayEmail(event.target.value, "emailError");
+        break;
+      case "password":
+        this.setState({password: event.target.value});
+        errorDisplay(event.target.value, "passwordError");
+        break;
+    }
   },
 
   render: function() {
+
     return (
       <div>
         <h2 className="form-title">{this.props.data.nameFormConnexion}</h2>
@@ -113,7 +162,7 @@ var FRIP_FormConnexion = React.createClass({
               id="email"
               placeholder={this.props.data.email}
               className="form-text"
-              onBlur={this.setEmail}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "email")}
             />
           <ErrorText id="emailError" text={this.props.data.errorEmail} />
           </div>
@@ -123,7 +172,7 @@ var FRIP_FormConnexion = React.createClass({
               type="password"
               placeholder={this.props.data.password}
               className="form-text"
-              onBlur={this.setPassword}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "password")}
             />
             <ErrorText id="passwordError" text={this.props.data.errorText} />
           </div>
@@ -148,54 +197,85 @@ var FRIP_FormInscription = React.createClass({
       passwordConfirmation: "",
       gender: "",
       value: undefined,
-      birthday: undefined,
+      birthday: "",
     }
   },
 
   handleSubmit: function() {
     if (!this.state.familyName.trim() || !this.state.firstname.trim() || !validateEmail(this.state.email) || !this.state.password.trim() || !this.state.passwordConfirmation.trim() || (this.state.password!=this.state.passwordConfirmation)) {
-      return display("globalInscriptionError");
+      return display("globalError");
     }
     else {
-      // TODO ENVOI BD
-      this.props.connexion();
+      const values = {
+        "familyName": this.state.familyName,
+        "firstname": this.state.firstname,
+        "email": this.state.email,
+        "password": this.state.password,
+        "passwordConfirmation": this.state.passwordConfirmation,
+        "gender": this.state.gender,
+        "birthday": this.state.birthday,
+      };
+      // TODO A ENLEVER
+      console.log(values);
+      if (this.props.stompClient != null)
+        var formValid = this.props.stompClient.send("?", {}, JSON.stringify(values));
+      // TODO if formValid {
+        //this.props.connexion();
+      // } else {
+        // notDisplay("globalError");
+        // display("globalInscriptionError");
+      // }
     }
 
-    // A ENLEVER
-    console.log("familyName : "+this.state.familyName);
-    console.log("firstname : "+this.state.firstname);
-    console.log("email : "+this.state.email);
-    console.log("password : "+this.state.password);
-    console.log("passwordConfirmation : "+this.state.passwordConfirmation);
-    console.log("genre : "+this.state.gender);
-    console.log("date de naissance : "+this.state.birthday.toString());
   },
 
-  setFamilyName: function(event) {
-    this.setState({familyName: event.target.value});
-    errorDisplay(event.target.value, "familyNameError");
+  onSelectorChange: function(event, content, controller) {
+    switch (controller) {
+      case "familyName":
+        this.setState({familyName: event.target.value});
+        errorDisplay(event.target.value, "familyNameError");
+        break;
+      case "firstname":
+        this.setState({firstname: event.target.value});
+        errorDisplay(event.target.value, "firstnameError");
+        break;
+      case "email":
+        this.setState({email: event.target.value});
+        errorDisplayEmail(event.target.value, "emailError");
+        break;
+      case "password":
+        this.setState({password: event.target.value});
+        errorDisplay(event.target.value, "passwordError");
+        this.errorPassword("password", event.target.value, "passwordConfirmationError");
+        break;
+      case "passwordConfirmation":
+        this.setState({passwordConfirmation: event.target.value});
+        this.errorPassword("passwordConfirmation", event.target.value, "passwordConfirmationError");
+        break;
+      case "gender":
+        this.setState({value : content});
+        if (content == 1)
+          this.setState({gender : "Female"});
+        else {
+          if (content == 2)
+            this.setState({gender: "Male"});
+        }
+        break;
+      case "birthday":
+        this.setState({birthday: formatDate(content)});
+        break;
+    }
   },
 
-  setFirstname: function(event) {
-    this.setState({firstname: event.target.value});
-    errorDisplay(event.target.value, "firstnameError");
-  },
-
-  setEmail: function(event) {
-    this.setState({email: event.target.value});
-    errorDisplayEmail(event.target.value, "emailError");
-  },
-
-  setPassword: function(event) {
-    this.setState({password: event.target.value});
-    errorDisplay(event.target.value, "passwordError");
-    this.errorPassword("password", event.target.value, "passwordConfirmationError");
-  },
-
-  setPasswordConfirmation: function(event) {
-    this.setState({passwordConfirmation: event.target.value});
-    this.errorPassword("passwordConfirmation", event.target.value, "passwordConfirmationError");
-  },
+ setGender: function(event, index, value) {
+   this.setState({value});
+   if (value == 1)
+     this.setState({gender : "Female"});
+   else {
+     if (value == 2)
+       this.setState({gender: "Male"});
+   }
+ },
 
   errorPassword: function(name, value, idError) {
     if (name == "password") {
@@ -214,20 +294,6 @@ var FRIP_FormInscription = React.createClass({
     }
   },
 
-  setGender: function(event, index, value) {
-    this.setState({value});
-    if (value == 1)
-      this.setState({gender : "Female"});
-    else {
-      if (value == 2)
-        this.setState({gender: "Male"});
-    }
-  },
-
-  setBirthday: function(event, value) {
-    this.setState({birthday: value});
-  },
-
   render: function() {
 
     return (
@@ -239,7 +305,7 @@ var FRIP_FormInscription = React.createClass({
               id="name"
               placeholder={this.props.data.familyName}
               className="form-text"
-              onBlur={this.setFamilyName}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "familyName")}
             />
             <ErrorText id="familyNameError" text={this.props.data.errorText} />
           </div>
@@ -248,7 +314,7 @@ var FRIP_FormInscription = React.createClass({
               id="firstname"
               placeholder={this.props.data.firstname}
               className="form-text"
-              onBlur={this.setFirstname}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "firstname")}
             />
             <ErrorText id="firstnameError" text={this.props.data.errorText} />
           </div>
@@ -257,7 +323,7 @@ var FRIP_FormInscription = React.createClass({
               id="email"
               placeholder={this.props.data.email}
               className="form-text"
-              onBlur={this.setEmail}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "email")}
             />
           <ErrorText id="emailError" text={this.props.data.errorEmail} />
           </div>
@@ -267,7 +333,7 @@ var FRIP_FormInscription = React.createClass({
               type="password"
               placeholder={this.props.data.password}
               className="form-text"
-              onBlur={this.setPassword}
+              onBlur={(event, content) => this.onSelectorChange(event, content, "password")}
             />
             <ErrorText id="passwordError" text={this.props.data.errorText} />
           </div>
@@ -277,7 +343,7 @@ var FRIP_FormInscription = React.createClass({
               type="password"
               placeholder={this.props.data.passwordConfirmation}
               className="form-text"
-              onChange={this.setPasswordConfirmation}
+              onChange={(event, content) => this.onSelectorChange(event, content, "passwordConfirmation")}
             />
             <ErrorText id="passwordConfirmationError" text={this.props.data.errorTextDifferentPassword} />
           </div>
@@ -296,7 +362,7 @@ var FRIP_FormInscription = React.createClass({
             <DatePicker
               id="birthday"
               hintText={this.props.data.birthday}
-              onChange={this.setBirthday}
+              onChange={(event, content) => this.onSelectorChange(event, content, "birthday")}
               DateTimeFormat={DateTimeFormat}
               okLabel={this.props.data.okLabel}
               cancelLabel={this.props.data.cancelLabel}
@@ -307,7 +373,8 @@ var FRIP_FormInscription = React.createClass({
         </div>
         <div className="form-validation">
           <RaisedButton className="form-button" label={this.props.data.buttonInscriptionLabel} primary={true} onTouchTap={this.handleSubmit}/>
-          <ErrorText id="globalInscriptionError" text={this.props.data.errorTextAllAreRequired} />
+          <ErrorText id="globalError" text={this.props.data.errorTextAllAreRequired} />
+          <ErrorText id="globalInscriptionError" text={this.props.data.errorEmailExistant} />
         </div>
       </div>
     );
@@ -612,5 +679,9 @@ var FRIP_FormActivityCreation = React.createClass({
     );
   },
 });
+
+/*-------------------*/
+/* Exports           */
+/*-------------------*/
 
 export {FRIP_FormConnexion, FRIP_FormInscription, FRIP_FormEventCreation, FRIP_FormActivityCreation};

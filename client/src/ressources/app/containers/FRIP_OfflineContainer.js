@@ -32,13 +32,34 @@ var FRIP_OfflineContainer = React.createClass({
     var page = null;
     switch (this.state.page) {
       case 0:
-        page = (<FRIP_HomeOfflinePage id={this.state.pageId} data={this.props.data} connexion={this.props.connexion} changePage={this.changePage}/>);
+        page = (
+          <FRIP_HomeOfflinePage
+            id={this.state.pageId}
+            data={this.props.data}
+            connexion={this.props.connexion}
+            changePage={this.changePage}
+            stompClient={this.props.stompClient}
+          />);
         break;
       case 1:
-        page = (<FRIP_InscriptionPage id={this.state.pageId} data={this.props.data} connexion={this.props.connexion} changePage={this.changePage}/>);
+        page = (
+          <FRIP_InscriptionPage
+            id={this.state.pageId}
+            data={this.props.data}
+            connexion={this.props.connexion}
+            changePage={this.changePage}
+            stompClient={this.props.stompClient}
+          />);
         break;
       default:
-        page = (<FRIP_HomeOfflinePage id={this.state.pageId} data={this.props.data} connexion={this.props.connexion} changePage={this.changePage}/>);
+        page = (
+          <FRIP_HomeOfflinePage
+            id={this.state.pageId}
+            data={this.props.data}
+            connexion={this.props.connexion}
+            changePage={this.changePage}
+            stompClient={this.props.stompClient}
+          />);
     }
     return (
       <div>
