@@ -1,15 +1,21 @@
+/*-------------------*/
+/* Imports           */
+/*-------------------*/
+
 import React, {Component, PropTypes, Children} from 'react';
 import AutoComplete from 'material-ui/AutoComplete';
 import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
 import RaisedButton from 'material-ui/RaisedButton';
-
 import Autosuggest from 'react-autosuggest';
-
 import HardwareKeyboardArrowDown from 'material-ui/svg-icons/hardware/keyboard-arrow-down';
 import HardwareKeyboardArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up';
-
 import {FRIP_TextField, FRIP_DatePicker, FRIP_SelectField, FRIP_Slider, FRIP_TimePicker} from '../components/FRIP_SearchSelectors.js';
+
+
+/*-------------------*/
+/* Constants         */
+/*-------------------*/
 
 const iconStyle = {
   marginTop: "auto",
@@ -18,6 +24,11 @@ const iconStyle = {
   height: "24px",
   padding: "0px",
 };
+
+
+/*-------------------*/
+/* Useful functions  */
+/*-------------------*/
 
 const zerosBeforeNumbers = (n) => {
   if (n < 10){
@@ -58,7 +69,9 @@ const makeValuesToSend = (state) => {
 };
 
 
-
+/*-------------------*/
+/* Global component  */
+/*-------------------*/
 
 const FRIP_SearchController = React.createClass({
   getDefaultProps: function() {
@@ -89,6 +102,10 @@ const FRIP_SearchController = React.createClass({
   },
 });
 
+
+/*-------------------*/
+/* Thibault's part   */
+/*-------------------*/
 
 const FRIP_EventSearchController = React.createClass({
   getInitialState: function() {
@@ -242,6 +259,7 @@ const FRIP_EventSearchController = React.createClass({
   }
 });
 
+
 const FRIP_ActivitySearchController = React.createClass({
   render: function() {
     return (
@@ -260,11 +278,9 @@ const FRIP_ActivitySearchController = React.createClass({
 });
 
 
-/*-----------------------------*/
-
-
-
-
+/*-------------------*/
+/* Morganes's part   */
+/*-------------------*/
 
 const FRIP_SearchActivityLittleController = React.createClass({
   getInitialState: function(){
@@ -377,4 +393,7 @@ const FRIP_SearchActivityLittleController = React.createClass({
 });
 
 
+/*-------------------*/
+/* Exports           */
+/*-------------------*/
 export {FRIP_EventSearchController, FRIP_ActivitySearchController, FRIP_SearchActivityLittleController};
