@@ -24,8 +24,8 @@ public class EventsController {
     public EventsController() {
     }
 
-    @MessageMapping("/evenements")
-    @SendTo("/topic/listeEvenements")
+    @MessageMapping("/evenementsAvecCritere")
+    @SendTo("/topic/listeEvenementsCritere")
     public List<Evenement> getEvents(@PathVariable String name, @PathVariable String date,
                                      @PathVariable String category, @PathVariable String price,
                                      @PathVariable String place, @PathVariable String time,
@@ -73,8 +73,8 @@ public class EventsController {
     }
 
 
-    @MessageMapping("/allEvenements")
-    @SendTo("/topic/listeAllEvenements")
+    @MessageMapping("/evenements")
+    @SendTo("/topic/listeEvenements")
     public List<Evenement> getAllEvents() {
         final List<Evenement> resultList = new ArrayList<>();
         final Iterable<Evenement> all = evenementRepository.findAll();
@@ -98,7 +98,7 @@ public class EventsController {
 
             Evenement e = new Evenement (nom, lieu, date, heure, "0", description, 0, nbPlacesEvt, activite);
             evenementRepository.saveAndFlush(e);
-            return e.getIdEvt();
+            return e.getId_evt();
         }
         catch (Exception e) {
             return 0L;

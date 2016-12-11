@@ -8,180 +8,166 @@ public class Evenement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "idEvt")
-    private Long idEvt;
+    @Column(name = "id_evt")
+    private Long id_evt;
     @Column(name = "nom")
-    private String nomEvt;
+    private String nom_evt;
     @Column(name = "lieu")
-    private String lieuEvt;
-    @Column(name = "idOrga")
-    private String orgaEvt;
-    @Column(name = "dateEvt")
-    private String dateEvt;
+    private String lieu_evt;
+    @Column(name = "id_orga")
+    private String orga_evt;
+    @Column(name = "date_evt")
+    private String date_evt;
     @Column(name = "heure")
-    private String heureEvt;
+    private String heure_evt;
     @Column(name = "description")
-    private String descEvt;
-    @Column(name = "nbInscrits")
-    private int nbInscEvt;
-    @Column(name = "nbPlaces")
-    private int nbPlacesEvt;
+    private String desc_evt;
+    @Column(name = "nb_inscrits")
+    private int nb_insc_evt;
+    @Column(name = "nb_places")
+    private int nb_places_evt;
     @Column(name = "image")
-    private String imageEvt;
+    private String image_evt;
     @Column(name = "prix")
     private String price;
-    @Column(name = "idAct")
+    @Column(name = "id_act")
     private String activite;
+
 
     public Evenement() {
 
     }
 
     public Evenement(String nomEvt) {
-        this.nomEvt = nomEvt;
+        this.nom_evt = nomEvt;
     }
 
     public Evenement(String nom, String lieu, String date, String heure, String price, String activite) {
-        this.nomEvt = nom;
-        this.lieuEvt = lieu;
-        this.dateEvt = date;
-        this.heureEvt = heure;
+        this.nom_evt = nom;
+        this.lieu_evt = lieu;
+        this.date_evt = date;
+        this.heure_evt = heure;
         this.price = price;
         this.activite = activite;
     }
 
     public Evenement(String nom, String lieu, String date, String heure, String price, String description, int nbInscrits, int nbPlaces, String activite) {
-        this.nomEvt = nom;
-        this.lieuEvt = lieu;
-        this.dateEvt = date;
-        this.heureEvt = heure;
+        this.nom_evt = nom;
+        this.lieu_evt = lieu;
+        this.date_evt = date;
+        this.heure_evt = heure;
         this.price = price;
-        this.descEvt = description;
-        this.nbInscEvt = nbInscrits;
-        this.nbPlacesEvt = nbPlaces;
+        this.desc_evt = description;
+        this.nb_insc_evt = nbInscrits;
+        this.nb_places_evt = nbPlaces;
         this.activite = activite;
     }
 
     public Evenement(Long idEvt, String nom, String lieu, String orga, String date, String heure,
                      String description, int nb_inscriptions, int nb_places, String image, String price, String activite) {
-        this.idEvt = idEvt;
-        this.nomEvt = nom;
-        this.lieuEvt = lieu;
-        this.orgaEvt = orga;
-        this.dateEvt = date;
-        this.heureEvt = heure;
-        this.descEvt = description;
-        this.nbInscEvt = nb_inscriptions;
-        this.nbPlacesEvt = nb_places;
-        this.imageEvt = image;
+        this.id_evt = idEvt;
+        this.nom_evt = nom;
+        this.lieu_evt = lieu;
+        this.orga_evt = orga;
+        this.date_evt = date;
+        this.heure_evt = heure;
+        this.desc_evt = description;
+        this.nb_insc_evt = nb_inscriptions;
+        this.nb_places_evt = nb_places;
+        this.image_evt = image;
         this.price = price;
         this.activite = activite;
     }
 
     public Evenement(Long idEvt, String nom, String lieu, String orga, String date, String heure,
                      String description, int nb_inscriptions, int nb_places, String image) {
-        this.idEvt = idEvt;
-        this.nomEvt = nom;
-        this.lieuEvt = lieu;
-        this.orgaEvt = orga;
-        this.dateEvt = date;
-        this.heureEvt = heure;
-        this.descEvt = description;
-        this.nbInscEvt = nb_inscriptions;
-        this.nbPlacesEvt = nb_places;
-        this.imageEvt = image;
+        this.id_evt = idEvt;
+        this.nom_evt = nom;
+        this.lieu_evt = lieu;
+        this.orga_evt = orga;
+        this.date_evt = date;
+        this.heure_evt = heure;
+        this.desc_evt = description;
+        this.nb_insc_evt = nb_inscriptions;
+        this.nb_places_evt = nb_places;
+        this.image_evt = image;
     }
 
-    public Long getIdEvt() {
-        return idEvt;
-    }
-
-    public String getNomEvt() {
-        return nomEvt;
-    }
-
-    public String getLieuEvt() {
-        return lieuEvt;
-    }
-
-    public String getOrgaEvt() {
-        return orgaEvt;
-    }
-
-    public String getDateEvt() {
-        return dateEvt;
-    }
-
-    public String getHeureEvt() {
-        return heureEvt;
-    }
-
-    public String getDescEvt() {
-        return descEvt;
-    }
-
-    public int getNbInscEvt() {
-        return nbInscEvt;
-    }
-
-    public int getNbPlacesEvt() {
-        return nbPlacesEvt;
-    }
-
-    public String getImageEvt() {
-        return imageEvt;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public String getActivite() {
-        return activite;
-    }
-
-    public void setIdEvt(Long id) {
-        this.idEvt = id;
-    }
-
-    public void setNomEvt(String nom) {
-        this.nomEvt = nom;
-    }
-
-    public void setLieuEvt(String lieu) {
-        this.lieuEvt = lieu;
-    }
-
-    public void setOrgaEvt(String organisateur) {
-        this.orgaEvt = organisateur;
-    }
-
-    public void setDateEvt(String date) {
-        this.dateEvt = date;
-    }
-
-    public void setHeureEvt(String heure) {
-        this.heureEvt = heure;
-    }
-
-    public void setDescEvt(String description) {
-        this.descEvt = description;
-    }
-
-    public void setNbInscEvt(int nb_inscriptions) {
-        this.nbInscEvt = nb_inscriptions;
-    }
-
-    public void setNbPlacesEvt(int nb_places) {
-        this.nbPlacesEvt = nb_places;
-    }
-
-    public void setImageEvt(String image) {
-        this.imageEvt = image;
-    }
+	public Long getId_evt() {
+		return id_evt;
+	}
+	public void setId_evt(Long id_evt) {
+		this.id_evt = id_evt;
+	}
+	public String getNom_evt() {
+		return nom_evt;
+	}
+	public void setNom_evt(String nom_evt) {
+		this.nom_evt = nom_evt;
+	}
+	public String getLieu_evt() {
+		return lieu_evt;
+	}
+	public void setLieu_evt(String lieu_evt) {
+		this.lieu_evt = lieu_evt;
+	}
+	public String getOrga_evt() {
+		return orga_evt;
+	}
+	public void setOrga_evt(String orga_evt) {
+		this.orga_evt = orga_evt;
+	}
+	public String getDate_evt() {
+		return date_evt;
+	}
+	public void setDate_evt(String date_evt) {
+		this.date_evt = date_evt;
+	}
+	public String getHeure_evt() {
+		return heure_evt;
+	}
+	public void setHeure_evt(String heure_evt) {
+		this.heure_evt = heure_evt;
+	}
+	public String getDesc_evt() {
+		return desc_evt;
+	}
+	public void setDesc_evt(String desc_evt) {
+		this.desc_evt = desc_evt;
+	}
+	public int getNb_insc_evt() {
+		return nb_insc_evt;
+	}
+	public void setNb_insc_evt(int nb_insc_evt) {
+		this.nb_insc_evt = nb_insc_evt;
+	}
+	public int getNb_places_evt() {
+		return nb_places_evt;
+	}
+	public void setNb_places_evt(int nb_places_evt) {
+		this.nb_places_evt = nb_places_evt;
+	}
+	public String getImage_evt() {
+		return image_evt;
+	}
+	public void setImage_evt(String image_evt) {
+		this.image_evt = image_evt;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public String getActivite() {
+		return activite;
+	}
+	public void setActivite(String activite) {
+		this.activite = activite;
+	}
 
     @Override
     public String toString() {
-        return String.format("Id : %d, Nom : %s, Lieu : %s.", idEvt, nomEvt, lieuEvt);
+        return String.format("Id : %d, Nom : %s, Lieu : %s.", id_evt, nom_evt, lieu_evt);
     }
 }
