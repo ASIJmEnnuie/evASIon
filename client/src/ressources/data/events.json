@@ -2,6 +2,7 @@
   "events":
   [
     {
+      "id": 1,
       "nom": "un nom",
       "lieu": "un lieu",
       "organisateur": "un orga",
@@ -13,6 +14,7 @@
       "image": "ressources/images/profil.svg"
     },
     {
+      "id": 2,
       "nom": "un autre nom",
       "lieu": "un autre lieu",
       "organisateur": "un autre orga",
@@ -24,6 +26,7 @@
       "image": "ressources/images/profil.svg"
     },
     {
+      "id": 3,
       "nom": "un nom",
       "lieu": "un lieu",
       "organisateur": "un orga",
@@ -35,6 +38,7 @@
       "image": "ressources/images/profil.svg"
     },
     {
+      "id": 4,
       "nom": "un autre nom",
       "lieu": "un autre lieu",
       "organisateur": "un autre orga",
