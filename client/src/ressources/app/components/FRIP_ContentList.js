@@ -16,8 +16,9 @@ const FRIP_EventList = React.createClass({
           return(
             <FRIP_Event
               key={i}
+              data={event}
               nom={event.nom}
-              lieu={event.lieu}
+              place={event.lieu}
               organisateur={event.organisateur}
               date={event.date}
               heure={event.heure}
