@@ -191,6 +191,8 @@ const FRIP_EventSearchController = React.createClass({
 
   sendSelectorsValues: function(values) {
     console.log(values);
+    if (this.props.stompClient != null)
+      this.props.stompClient.send("?", {}, JSON.stringify(values));
   },
 
   render: function() {

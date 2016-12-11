@@ -2,6 +2,10 @@ import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 
 const FRIP_Event = React.createClass({
+  registration: function() {
+    console.log("yeah");
+  },
+
   render: function() {
     return (
       <section className="event">
@@ -41,6 +45,7 @@ const FRIP_Event = React.createClass({
             <RaisedButton
               label={this.props.registration}
               primary={true}
+              onTouchTap={this.registration}
             />
           </div>
         </div>

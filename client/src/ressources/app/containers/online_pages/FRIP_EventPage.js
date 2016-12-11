@@ -3,13 +3,13 @@ import FRIP_SearchPage from "../../components/FRIP_SearchPage.js";
 
 const FRIP_EventPage = React.createClass({
   render: function() {
-    let events = require("../../../data/events.json").events;
     return (
       <FRIP_SearchPage
         id={this.props.id}
         data={this.props.data}
-        content={events}
+        content={this.props.eventList}
         page="event"
+        stompClient={this.props.stompClient}
       />
     );
   }

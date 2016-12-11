@@ -5,11 +5,13 @@ import Stomp from 'stompjs';
 import FRIP_OfflineContainer from './containers/FRIP_OfflineContainer';
 import FRIP_OnlineContainer from './containers/FRIP_OnlineContainer';
 
+const serverAddress = 'http://localhost:8080/evasion';
+
 const FRIP_Global = React.createClass({
   getInitialState: function() {
     return {
       stompClient: null,
-      donnees: [],
+      eventList: require("../data/events").events,
       screenHeight: window.innerHeight,
       screenWidth: window.innerWidth,
       container: "online",
@@ -19,33 +21,49 @@ const FRIP_Global = React.createClass({
 
   connexion: function() {
     if (this.state.stompClient === null) {
-      // TODO initiate stompClient connexion
-      this.setState({container:"online"});
+      this.setState(function(prevState, props) {
+        let stompClient = Stomp.over(new SockJS(serverAddress));
+
+        stompClient.connect({}, (frame) => {
+          stompClient.subscribe('/topic/listeEvents', (eventList) => {
+            this.setState({
+              eventList: JSON.parse(eventList.body)
+            });
+          });
+        });
+
+        return {
+          stompClient: stompClient,
+          container: "online"
+        };
+      });
     }
   },
 
   deconnexion: function() {
     //TODO disconnect stompClient here
-    this.setState({container:"offline"});
+    this.setState({container: "offline"});
   },
 
   render: function() {
-    var data = require("../data/"+this.state.lang+"/onlineContainer");
-    var dataOffline = require("../data/"+this.state.lang+"/offlineContainer");
+    let data = require("../data/" + this.state.lang + "/onlineContainer");
+    let dataOffline = require("../data/" + this.state.lang + "/offlineContainer");
 
-    var offlineContainer = (
+    let offlineContainer = (
       <FRIP_OfflineContainer
         data={dataOffline.offlineContainer}
         connexion={this.connexion}
       />
     );
 
-    var onlineContainer = (
+    let onlineContainer = (
       <FRIP_OnlineContainer
         data={data.onlineContainer}
         deconnexion={this.deconnexion}
         screenWidth={this.state.screenWidth}
         screenHeight={this.state.screenHeight}
+        eventList={this.state.eventList}
+        stompClient={this.state.stompClient}
       />
     );
 
