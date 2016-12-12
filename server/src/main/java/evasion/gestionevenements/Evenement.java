@@ -1,4 +1,4 @@
-package gestionevenements;
+package evasion.gestionevenements;
 
 
 import javax.persistence.*;
