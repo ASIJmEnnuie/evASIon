@@ -118,28 +118,29 @@ var FRIP_FormConnexion = React.createClass({
 
   handleSubmit: function() {
     // TODO A DECOMMENTER
-    // if (!validateEmail(this.state.email) || !this.state.password.trim()) {
-    //   display("globalError");
-    // }
-    // else {
+    if (!validateEmail(this.state.email) || !this.state.password.trim()) {
+      display("globalError");
+    }
+    else {
       const values = {
         "email": this.state.email,
         "password": this.state.password,
       };
-      // A ENLEVER
+      // TODO A ENLEVER
       console.log(values);
+      if (this.props.stompClient === null)
+        this.props.serverConnexion();
       if (this.props.stompClient != null)
         this.props.stompClient.send("?", {}, JSON.stringify(values));
-      // var formValid = TODO
-      // if formValid {
+      var formValid = 1; //TODO
+      if (formValid==1) {
         this.props.connexion();
-      // }
-      // else {
-        // notDisplay("globalError");
-        // display("globalConnexionError");
-      // }
-
-    //}
+      }
+      else {
+        notDisplay("globalError");
+        display("globalConnexionError");
+      }
+    }
 
   },
 
@@ -222,17 +223,18 @@ var FRIP_FormInscription = React.createClass({
       };
       // TODO A ENLEVER
       console.log(values);
+      if (this.props.stompClient === null)
+        this.props.serverConnexion();
       if (this.props.stompClient != null)
         this.props.stompClient.send("?", {}, JSON.stringify(values));
-    // var formValid = TODO
-    // TODO if formValid {
-      this.props.connexion();
-      // } else {
-        // notDisplay("globalError");
-        // display("globalInscriptionError");
-      // }
+      var formValid = 1; //TODO
+      if (formValid==1) {
+        this.props.connexion();
+      } else {
+        notDisplay("globalError");
+        display("globalInscriptionError");
+      }
     }
-
   },
 
   onSelectorChange: function(event, content, controller) {
