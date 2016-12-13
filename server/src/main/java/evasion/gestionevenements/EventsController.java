@@ -25,7 +25,7 @@ public class EventsController {
     }
 
     @MessageMapping("/evenementsAvecCritere")
-    @SendTo("/topic/listeEvenementsCritere")
+    @SendTo("/topic/eventlistWithCriteria")
     public List<Evenement> getEvents(@PathVariable String name, @PathVariable String date,
                                      @PathVariable String category, @PathVariable String price,
                                      @PathVariable String place, @PathVariable String time,
@@ -73,9 +73,9 @@ public class EventsController {
     }
 
 
-    @MessageMapping("/evenements")
-    @SendTo("/topic/listeEvenements")
-    public List<Evenement> getAllEvents() {
+    @MessageMapping("/events")
+    @SendTo("/topic/eventlist")
+    public List<Evenement> eventList() {
         final List<Evenement> resultList = new ArrayList<>();
         final Iterable<Evenement> all = evenementRepository.findAll();
 
@@ -89,7 +89,7 @@ public class EventsController {
     }
 
     @MessageMapping("/ajoutEvenements")
-    @SendTo("/topic/creationEvenements")
+    @SendTo("/topic/eventCreation")
     public Long AddEvents(String activite, String nom, String lieu, String date, String heure, String nbPlaces, String description) {
 
         //activityRepository.findByName(activity) = idAct
