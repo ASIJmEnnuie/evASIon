@@ -14,42 +14,41 @@ public class Compte {
     @Column(name = "prenom")
     private String prenom;
     @Column(name = "date_naissance")
-    private String date_naissance;
+    private String dateNaissance;
     @Column(name = "genre")
     private String genre;
     @Column(name = "email")
     private String email;
     @Column(name = "mot_de_passe")
-    private String mot_de_passe;
+    private String motDePasse;
     @Column(name = "flag_suppression")
-    private boolean flag_suppression;
+    private boolean flagSuppression;
 
     public Compte() {
 
     }
 
-	public Compte(String nom, String prenom, String date_naissance, String genre, String email, String mot_de_passe,
-			boolean flag_suppression) {
+	public Compte(String nom, String prenom, String dateNaissance, String genre, String email, String motDePasse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		this.date_naissance = date_naissance;
+		this.dateNaissance = dateNaissance;
 		this.genre = genre;
 		this.email = email;
-		this.mot_de_passe = mot_de_passe;
-		this.flag_suppression = flag_suppression;
+		this.motDePasse = motDePasse;
+		this.flagSuppression = false;
 	}
 
-	public Compte(Long id, String nom, String prenom, String date_naissance, String genre, String email,
-			String mot_de_passe, boolean flag_suppression) {
+	public Compte(Long id, String nom, String prenom, String dateNaissance, String genre, String email,
+			String motDePasse, boolean flagSuppression) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.date_naissance = date_naissance;
+		this.dateNaissance = dateNaissance;
 		this.genre = genre;
 		this.email = email;
-		this.mot_de_passe = mot_de_passe;
-		this.flag_suppression = flag_suppression;
+		this.motDePasse = motDePasse;
+		this.flagSuppression = flagSuppression;
 	}
 
 	public Long getId() {
@@ -76,12 +75,12 @@ public class Compte {
 		this.prenom = prenom;
 	}
 
-	public String getDate_naissance() {
-		return date_naissance;
+	public String getDateNaissance() {
+		return dateNaissance;
 	}
 
-	public void setDate_naissance(String date_naissance) {
-		this.date_naissance = date_naissance;
+	public void setDateNaissance(String dateNaissance) {
+		this.dateNaissance = dateNaissance;
 	}
 
 	public String getGenre() {
@@ -100,20 +99,20 @@ public class Compte {
 		this.email = email;
 	}
 
-	public String getMot_de_passe() {
-		return mot_de_passe;
+	public String getMotDePasse() {
+		return motDePasse;
 	}
 
-	public void setMot_de_passe(String mot_de_passe) {
-		this.mot_de_passe = mot_de_passe;
+	public void setMotDePasse(String motDePasse) {
+		this.motDePasse = motDePasse;
 	}
 
-	public boolean isFlag_suppression() {
-		return flag_suppression;
+	public boolean isFlagSuppression() {
+		return flagSuppression;
 	}
 
-	public void setFlag_suppression(boolean flag_suppression) {
-		this.flag_suppression = flag_suppression;
+	public void setFlagSuppression(boolean flagSuppression) {
+		this.flagSuppression = flagSuppression;
 	}
 
 }
