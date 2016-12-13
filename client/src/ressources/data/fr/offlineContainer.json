@@ -16,6 +16,8 @@
       "email": "Email *",
       "password": "Mot de passe *",
       "errorText": "Champ obligatoire",
+      "errorEmail": "Email non valide",
+      "errorEmailExistant": "Email déjà utilisé",
       "errorTextAllAreRequired": "Veuillez remplir tout les champs obligatoires *",
       "errorInfo": "Informations incorrectes",
       "errorTextDifferentPassword": "Le mot de passe n'est pas identique",

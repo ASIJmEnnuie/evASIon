@@ -1,16 +1,42 @@
 .form {
   background-color: $secondaryColor;
+  //margin-bottom: $margin;
   overflow: auto;
   text-align: center;
-  margin-bottom: $margin;
-
   @include respond-to(medium) {
     @include calc(width, "50%  - 2 * " + $margin);
   };
 
-  .form-text {
-    display: block;
-    padding: 3px 0px;
+  .form-title {
+
+  }
+
+  .form-content {
+    overflow: auto;
+    text-align: center;
+
+    .form-text {
+      display: block;
+      padding: 3px 0px;
+    }
+
+    .form-champ {
+      height: 66px;
+    }
+
+    .form-select-content {
+      text-align: left;
+    }
+
+    .form-select-field {
+      font-size: 14px;
+      height: 66px;
+    }
+
+  }
+
+  .form-validation {
+    height: 83px;
   }
 
   .form-button {
@@ -18,30 +44,9 @@
     margin-top: 20px;
   }
 
-  .form-title {
-
-  }
-
   .form-error {
     font-size: 70%;
     display: none;
-  }
-
-  .form-champ {
-    height: 66px;
-  }
-
-  .form-validation {
-    height: 83px;
-  }
-
-  .form-select-content {
-    text-align: left;
-  }
-
-  .form-select-field {
-    font-size: 14px;
-    height: 66px;
   }
 
 }
