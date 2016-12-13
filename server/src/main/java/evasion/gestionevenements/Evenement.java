@@ -26,8 +26,6 @@ public class Evenement {
     private int nb_insc_evt;
     @Column(name = "nb_places")
     private int nb_places_evt;
-    @Column(name = "image")
-    private String image_evt;
     @Column(name = "prix")
     private String price;
     @Column(name = "id_act")
@@ -64,7 +62,7 @@ public class Evenement {
     }
 
     public Evenement(Long idEvt, String nom, String lieu, String orga, String date, String heure,
-                     String description, int nb_inscriptions, int nb_places, String image, String price, String activite) {
+                     String description, int nb_inscriptions, int nb_places, String price, String activite) {
         this.id_evt = idEvt;
         this.nom_evt = nom;
         this.lieu_evt = lieu;
@@ -74,13 +72,12 @@ public class Evenement {
         this.desc_evt = description;
         this.nb_insc_evt = nb_inscriptions;
         this.nb_places_evt = nb_places;
-        this.image_evt = image;
         this.price = price;
         this.activite = activite;
     }
 
     public Evenement(Long idEvt, String nom, String lieu, String orga, String date, String heure,
-                     String description, int nb_inscriptions, int nb_places, String image) {
+                     String description, int nb_inscriptions, int nb_places) {
         this.id_evt = idEvt;
         this.nom_evt = nom;
         this.lieu_evt = lieu;
@@ -90,7 +87,6 @@ public class Evenement {
         this.desc_evt = description;
         this.nb_insc_evt = nb_inscriptions;
         this.nb_places_evt = nb_places;
-        this.image_evt = image;
     }
 
 	public Long getId_evt() {
@@ -146,12 +142,6 @@ public class Evenement {
 	}
 	public void setNb_places_evt(int nb_places_evt) {
 		this.nb_places_evt = nb_places_evt;
-	}
-	public String getImage_evt() {
-		return image_evt;
-	}
-	public void setImage_evt(String image_evt) {
-		this.image_evt = image_evt;
 	}
 	public String getPrice() {
 		return price;

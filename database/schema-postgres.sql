@@ -52,7 +52,6 @@ CREATE TABLE Evenement (
     date_evt varchar(255) NOT NULL,
     description varchar(255) default NULL,
     heure varchar(10) NOT NULL,
-    image varchar(255) default NULL,
     lieu varchar(255) NOT NULL,
     nb_inscrits integer default NULL,
     nb_places integer default NULL,
