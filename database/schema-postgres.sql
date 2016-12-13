@@ -41,7 +41,7 @@ CREATE TABLE Activite (
   adresse varchar(255) default NULL,
   description varchar(255) default NULL,
   site varchar(255) default NULL,
-  id_admin_derniere_podif integer REFERENCES Compte(id),
+  id_admin_derniere_modif integer REFERENCES Compte(id),
   date_derniere_modif varchar(255) default NULL
 );
 
