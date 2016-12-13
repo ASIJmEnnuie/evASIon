@@ -124,15 +124,14 @@ var FRIP_FormConnexion = React.createClass({
     else {
       const values = {
         "email": this.state.email,
-        "password": this.state.password,
+        "mdp": this.state.password,
       };
       // TODO A ENLEVER
       console.log(values);
       if (this.props.stompClient === null)
         this.props.serverConnexion();
       if (this.props.stompClient != null)
-        this.props.stompClient.send("?", {}, JSON.stringify(values));
-      var formValid = 1; //TODO
+        var formValid = this.props.stompClient.send("/topic/connexion", {}, JSON.stringify(values));
       if (formValid==1) {
         this.props.connexion();
       }
@@ -213,21 +212,19 @@ var FRIP_FormInscription = React.createClass({
     }
     else {
       const values = {
-        "familyName": this.state.familyName,
-        "firstname": this.state.firstname,
+        "nom": this.state.familyName,
+        "prenom": this.state.firstname,
         "email": this.state.email,
-        "password": this.state.password,
-        "passwordConfirmation": this.state.passwordConfirmation,
-        "gender": this.state.gender,
-        "birthday": this.state.birthday,
+        "mdp": this.state.password,
+        "genre": this.state.gender,
+        "dateNaissance": this.state.birthday,
       };
       // TODO A ENLEVER
       console.log(values);
       if (this.props.stompClient === null)
         this.props.serverConnexion();
       if (this.props.stompClient != null)
-        this.props.stompClient.send("?", {}, JSON.stringify(values));
-      var formValid = 1; //TODO
+        var formValid = this.props.stompClient.send("/topic/userCreation", {}, JSON.stringify(values));
       if (formValid==1) {
         this.props.connexion();
       } else {
