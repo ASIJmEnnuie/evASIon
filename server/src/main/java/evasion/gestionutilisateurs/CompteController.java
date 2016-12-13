@@ -34,4 +34,22 @@ public class CompteController {
             return 0L;
         }
     }
+
+    @MessageMapping("/connexionUser")
+    @SendTo("/topic/connexion")
+    public Long connexion(String email, String mdp) {
+        final List<Compte> compteFound = new LinkedList<>();
+        final Iterable<Compte> comptes = compteRepository.findByEmailAndMotDePasse(email, mdp);
+
+        comptes.forEach(new Consumer<Compte>() {
+            @Override
+            public void accept(Compte compte) {
+                compteFound.add(compte);
+            }
+        });
+        if (compteFound.size() != 0 )
+            return compteFound.get(0).getId();
+        else
+            return 0L;
+    }
 }
