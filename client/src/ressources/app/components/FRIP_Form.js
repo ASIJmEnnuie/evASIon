@@ -569,7 +569,9 @@ var FRIP_FormActivityCreation = React.createClass({
 
   handleSubmit: function() {
     var obj1 = document.getElementById("globalActivityCreationError");
+    var obj2 = document.getElementById("globalError");
     if (!this.state.activityName.trim()) {
+      obj2.style.display='none';
       obj1.style.display='block';
       return false;
     }
@@ -587,13 +589,14 @@ var FRIP_FormActivityCreation = React.createClass({
       console.log(values);
       if (this.props.stompClient != null)
         var formValid = this.props.stompClient.send("topic/eventCreation", {}, JSON.stringify(values));
-      //formValid = 1; // TODO A ENLEVER
+      formValid = 1; // TODO A ENLEVER
       if (formValid==1) {
         this.refs.popupCreationActivity.handleOpen();
       }
-      if (this.props.stompClient != null)
-        this.props.stompClient.send("?", {}, JSON.stringify(values));
-
+      else {
+        obj1.style.display='none';
+        obj2.style.display='block';
+      }
     }
   },
 
