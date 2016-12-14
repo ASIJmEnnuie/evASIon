@@ -52,6 +52,7 @@
       "no": "Non",
       "createActivitySuggestion": "Créer une activité ?",
       "errorNotSelected": "Veuillez selectionner une activité ou retourner à l'étape 1",
+      "errorForm": "Erreur dans le formulaire",
       "popupCreationEventTitle": "Confirmation",
       "popupCreationEventContent": "Évènement créé avec succès",
       "popupCreationEventButtonLabel": "Ok"
@@ -59,6 +60,7 @@
 
     "activityCreation": {
       "activityCreationValidation": "L'activité a bien été créé :)",
+      "error": "Erreur",
       "errorText": "Champ obligatoire",
       "errorTextAllAreRequired": "Veuillez remplir tout les champs obligatoires *",
       "activityName": "Nom de l'activité *",

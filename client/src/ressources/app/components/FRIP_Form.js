@@ -132,6 +132,7 @@ var FRIP_FormConnexion = React.createClass({
         this.props.serverConnexion();
       if (this.props.stompClient != null)
         var formValid = this.props.stompClient.send("/topic/connexion", {}, JSON.stringify(values));
+        formValid = 1; // TODO à enlever
       if (formValid==1) {
         this.props.connexion();
       }
@@ -567,26 +568,32 @@ var FRIP_FormActivityCreation = React.createClass({
   },
 
   handleSubmit: function() {
+    var obj1 = document.getElementById("globalActivityCreationError");
     if (!this.state.activityName.trim()) {
-      var obj = document.getElementById("globalActivityCreationError");
-      obj.style.display='block';
+      obj1.style.display='block';
       return false;
     }
     else {
       const values = {
-        "activityName": this.state.activityName,
-        "activityPlace": this.state.activityPlace,
-        "activityDescription": this.state.activityDescription,
+        "nom": this.state.activityName,
+        "adresse": this.state.activityPlace,
+        "description": this.state.activityDescription,
         "activityPrice": this.state.activityPrice,
         "activityCategory": this.state.activityCategory,
-        "activityWebsite": this.state.activityWebsite,
+        "site": this.state.activityWebsite,
       };
 
       // TODO A ENLEVER
       console.log(values);
       if (this.props.stompClient != null)
+        var formValid = this.props.stompClient.send("topic/eventCreation", {}, JSON.stringify(values));
+      //formValid = 1; // TODO A ENLEVER
+      if (formValid==1) {
+        this.refs.popupCreationActivity.handleOpen();
+      }
+      if (this.props.stompClient != null)
         this.props.stompClient.send("?", {}, JSON.stringify(values));
-      this.refs.popupCreationActivity.handleOpen();
+
     }
   },
 
@@ -673,6 +680,7 @@ var FRIP_FormActivityCreation = React.createClass({
         </div>
         <div className="form-validation">
           <RaisedButton className="form-button" label={this.props.data.creationLabel} primary={true} onTouchTap={this.handleSubmit}/>
+          <ErrorText id="globalError" text={this.props.data.error} />
           <ErrorText id="globalActivityCreationError" text={this.props.data.errorTextAllAreRequired} />
         </div>
         <FRIP_Popup

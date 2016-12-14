@@ -183,7 +183,7 @@ const FRIP_EventSearchController = React.createClass({
   sendSelectorsValues: function(values) {
     console.log(values);
     if (this.props.stompClient != null)
-      this.props.stompClient.send("?", {}, JSON.stringify(values));
+      this.props.stompClient.send("/topic/eventlistWithCriteria", {}, JSON.stringify(values));
   },
 
   render: function() {
@@ -306,7 +306,7 @@ const FRIP_SearchActivityLittleController = React.createClass({
   // Teach Autosuggest how to calculate suggestions for any given input value.
   getSuggestions: function(value) {
     // TODO récupérer liste activités dans BD, suivre notation de activities.json, puis le supprimer
-    const activities = require("../../data/activities.json").activities;
+    const activities = this.props.activityList;
     const inputValue = this.withoutAccent(value.trim().toLowerCase());
     const inputLength = inputValue.length;
 

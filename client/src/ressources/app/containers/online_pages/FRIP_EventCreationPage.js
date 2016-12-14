@@ -84,24 +84,26 @@ const FRIP_EventCreationPage = React.createClass({
   handleSubmit: function() {
 
     const values = {
-      "eventActivityName": this.state.eventActivityName,
-      "eventName": this.refs.formEvent.state.eventName,
-      "eventPlace": this.refs.formEvent.state.eventPlace,
+      "activity": this.state.eventActivityName,
+      "name": this.refs.formEvent.state.eventName,
+      "place": this.refs.formEvent.state.eventPlace,
       // "eventMeetingPlace": this.refs.formEvent.state.eventMeetingPlace,
-      "eventDate": this.refs.formEvent.state.eventDate,
-      "eventTime": this.refs.formEvent.state.eventTime,
+      "date": this.refs.formEvent.state.eventDate,
+      "time": this.refs.formEvent.state.eventTime,
       // "eventDateEnd": this.refs.formEvent.state.eventDateEnd,
       // "eventTimeEnd": this.refs.formEvent.state.eventTimeEnd,
-      "eventMemberMax": this.refs.formEvent.state.eventMemberMax,
-      "eventDescription": this.refs.formEvent.state.eventDescription,
-      "eventCreator": this.props.userId,
+      "nbPlaces": this.refs.formEvent.state.eventMemberMax,
+      "description": this.refs.formEvent.state.eventDescription,
+      // "eventCreator": this.props.userId,
     };
     // TODO A ENLEVER
     console.log(values);
     if (this.props.stompClient != null)
-      var formValid = this.props.stompClient.send("?", {}, JSON.stringify(values));
-
-    this.refs.popupCreationEvent.handleOpen();
+      var formValid = this.props.stompClient.send("topic/eventCreation", {}, JSON.stringify(values));
+    //formValid = 1; // TODO A ENLEVER
+    if (formValid==1) {
+      this.refs.popupCreationEvent.handleOpen();
+    }
   },
 
   setActivityPresent: function(event, index, value) {
@@ -145,6 +147,7 @@ const FRIP_EventCreationPage = React.createClass({
             <FRIP_SearchActivityLittleController
               data={this.props.data}
               ref="searchActivity"
+              activityList={this.props.activityList}
             />
             <div id="errorNotSelected" className="error" >{this.props.data.errorNotSelected}</div>
           </div>);
@@ -158,6 +161,7 @@ const FRIP_EventCreationPage = React.createClass({
               stompClient={this.props.stompClient}
             />
           </div>
+          <div id="errorForm" className="error" >{this.props.data.errorForm}</div>
           </div>
       );
       default:
