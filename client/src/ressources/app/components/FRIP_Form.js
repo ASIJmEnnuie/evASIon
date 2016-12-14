@@ -561,7 +561,6 @@ var FRIP_FormActivityCreation = React.createClass({
       activityName: "",
       activityPlace: "",
       activityDescription: "",
-      activityPrice: undefined,
       activityCategory: "",
       activityWebsite: "",
     }
@@ -580,8 +579,7 @@ var FRIP_FormActivityCreation = React.createClass({
         "nom": this.state.activityName,
         "adresse": this.state.activityPlace,
         "description": this.state.activityDescription,
-        "activityPrice": this.state.activityPrice,
-        "activityCategory": this.state.activityCategory,
+        "categorie": this.state.activityCategory,
         "site": this.state.activityWebsite,
       };
 
@@ -611,9 +609,6 @@ var FRIP_FormActivityCreation = React.createClass({
         break;
       case "activityDescription":
         this.setState({activityDescription: event.target.value});
-        break;
-      case "activityPrice":
-        this.setState({activityPrice: event.target.value});
         break;
       case "activityCategory":
         this.setState({activityCategory: event.target.value});
@@ -653,15 +648,6 @@ var FRIP_FormActivityCreation = React.createClass({
               placeholder={this.props.data.activityDescription}
               className="form-text"
               onBlur={(event, content) => this.onSelectorChange(event, content, "activityDescription")}
-            />
-          </div>
-          <div className="form-champ">
-            <TextField
-              id="activityPrice"
-              placeholder={this.props.data.activityPrice}
-              className="form-text"
-              onBlur={(event, content) => this.onSelectorChange(event, content, "activityPrice")}
-              type="number"
             />
           </div>
           <div className="form-champ">
