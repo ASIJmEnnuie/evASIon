@@ -15,13 +15,13 @@ const FRIP_Global = React.createClass({
       activityList: require("../data/activities").activities,
       screenHeight: window.innerHeight,
       screenWidth: window.innerWidth,
-      container: "online",
+      container: "offline",
       lang: "fr",
       userId: "",
     }
   },
 
-  connexion: function() {
+  serverConnexion: function() {
     if (this.state.stompClient === null) {
       this.setState(function(prevState, props) {
         let stompClient = Stomp.over(new SockJS(serverAddress));
@@ -50,15 +50,22 @@ const FRIP_Global = React.createClass({
 
         return {
           stompClient: stompClient,
-          container: "online",
         };
       });
     }
   },
 
-  deconnexion: function() {
+  serverDeconnexion: function() {
     //TODO disconnect stompClient here
+  },
+
+  connexion: function() {
+    this.setState({container: "online"});
+  },
+
+  deconnexion: function() {
     this.setState({container: "offline"});
+    this.serverDeconnexion();
   },
 
   render: function() {
@@ -69,6 +76,7 @@ const FRIP_Global = React.createClass({
       <FRIP_OfflineContainer
         data={dataOffline.offlineContainer}
         connexion={this.connexion}
+        serverConnexion={this.serverConnexion}
         stompClient={this.state.stompClient}
       />
     );

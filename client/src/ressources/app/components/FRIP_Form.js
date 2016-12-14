@@ -118,28 +118,29 @@ var FRIP_FormConnexion = React.createClass({
 
   handleSubmit: function() {
     // TODO A DECOMMENTER
-    // if (!validateEmail(this.state.email) || !this.state.password.trim()) {
-    //   display("globalError");
-    // }
-    // else {
+    if (!validateEmail(this.state.email) || !this.state.password.trim()) {
+      display("globalError");
+    }
+    else {
       const values = {
         "email": this.state.email,
-        "password": this.state.password,
+        "mdp": this.state.password,
       };
-      // A ENLEVER
+      // TODO A ENLEVER
       console.log(values);
+      if (this.props.stompClient === null)
+        this.props.serverConnexion();
       if (this.props.stompClient != null)
-        this.props.stompClient.send("?", {}, JSON.stringify(values));
-      // var formValid = TODO
-      // if formValid {
+        var formValid = this.props.stompClient.send("/topic/connexion", {}, JSON.stringify(values));
+        formValid = 1; // TODO à enlever
+      if (formValid==1) {
         this.props.connexion();
-      // }
-      // else {
-        // notDisplay("globalError");
-        // display("globalConnexionError");
-      // }
-
-    //}
+      }
+      else {
+        notDisplay("globalError");
+        display("globalConnexionError");
+      }
+    }
 
   },
 
@@ -212,27 +213,26 @@ var FRIP_FormInscription = React.createClass({
     }
     else {
       const values = {
-        "familyName": this.state.familyName,
-        "firstname": this.state.firstname,
+        "nom": this.state.familyName,
+        "prenom": this.state.firstname,
         "email": this.state.email,
-        "password": this.state.password,
-        "passwordConfirmation": this.state.passwordConfirmation,
-        "gender": this.state.gender,
-        "birthday": this.state.birthday,
+        "mdp": this.state.password,
+        "genre": this.state.gender,
+        "dateNaissance": this.state.birthday,
       };
       // TODO A ENLEVER
       console.log(values);
+      if (this.props.stompClient === null)
+        this.props.serverConnexion();
       if (this.props.stompClient != null)
-        this.props.stompClient.send("?", {}, JSON.stringify(values));
-    // var formValid = TODO
-    // TODO if formValid {
-      this.props.connexion();
-      // } else {
-        // notDisplay("globalError");
-        // display("globalInscriptionError");
-      // }
+        var formValid = this.props.stompClient.send("/topic/userCreation", {}, JSON.stringify(values));
+      if (formValid==1) {
+        this.props.connexion();
+      } else {
+        notDisplay("globalError");
+        display("globalInscriptionError");
+      }
     }
-
   },
 
   onSelectorChange: function(event, content, controller) {
@@ -561,33 +561,40 @@ var FRIP_FormActivityCreation = React.createClass({
       activityName: "",
       activityPlace: "",
       activityDescription: "",
-      activityPrice: undefined,
       activityCategory: "",
       activityWebsite: "",
     }
   },
 
   handleSubmit: function() {
+    var obj1 = document.getElementById("globalActivityCreationError");
+    var obj2 = document.getElementById("globalError");
     if (!this.state.activityName.trim()) {
-      var obj = document.getElementById("globalActivityCreationError");
-      obj.style.display='block';
+      obj2.style.display='none';
+      obj1.style.display='block';
       return false;
     }
     else {
       const values = {
-        "activityName": this.state.activityName,
-        "activityPlace": this.state.activityPlace,
-        "activityDescription": this.state.activityDescription,
-        "activityPrice": this.state.activityPrice,
-        "activityCategory": this.state.activityCategory,
-        "activityWebsite": this.state.activityWebsite,
+        "nom": this.state.activityName,
+        "adresse": this.state.activityPlace,
+        "description": this.state.activityDescription,
+        "categorie": this.state.activityCategory,
+        "site": this.state.activityWebsite,
       };
 
       // TODO A ENLEVER
       console.log(values);
       if (this.props.stompClient != null)
-        this.props.stompClient.send("?", {}, JSON.stringify(values));
-      this.refs.popupCreationActivity.handleOpen();
+        var formValid = this.props.stompClient.send("topic/eventCreation", {}, JSON.stringify(values));
+      formValid = 1; // TODO A ENLEVER
+      if (formValid==1) {
+        this.refs.popupCreationActivity.handleOpen();
+      }
+      else {
+        obj1.style.display='none';
+        obj2.style.display='block';
+      }
     }
   },
 
@@ -602,9 +609,6 @@ var FRIP_FormActivityCreation = React.createClass({
         break;
       case "activityDescription":
         this.setState({activityDescription: event.target.value});
-        break;
-      case "activityPrice":
-        this.setState({activityPrice: event.target.value});
         break;
       case "activityCategory":
         this.setState({activityCategory: event.target.value});
@@ -648,15 +652,6 @@ var FRIP_FormActivityCreation = React.createClass({
           </div>
           <div className="form-champ">
             <TextField
-              id="activityPrice"
-              placeholder={this.props.data.activityPrice}
-              className="form-text"
-              onBlur={(event, content) => this.onSelectorChange(event, content, "activityPrice")}
-              type="number"
-            />
-          </div>
-          <div className="form-champ">
-            <TextField
               id="activityCategory"
               placeholder={this.props.data.activityCategory}
               className="form-text"
@@ -674,6 +669,7 @@ var FRIP_FormActivityCreation = React.createClass({
         </div>
         <div className="form-validation">
           <RaisedButton className="form-button" label={this.props.data.creationLabel} primary={true} onTouchTap={this.handleSubmit}/>
+          <ErrorText id="globalError" text={this.props.data.error} />
           <ErrorText id="globalActivityCreationError" text={this.props.data.errorTextAllAreRequired} />
         </div>
         <FRIP_Popup
