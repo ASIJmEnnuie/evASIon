@@ -58,4 +58,8 @@ public class Image {
     public void setChemin(String chemin) {
         this.chemin = chemin;
     }
+
+    public Collection<Evenement> getEvenements() {
+        return evenements;
+    }
 }

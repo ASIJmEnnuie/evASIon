@@ -1,7 +1,8 @@
 package evasion.gestionevenements;
 
 import javax.persistence.*;
-import java.util.Collection;
+import org.hibernate.annotations.WhereJoinTable;
+import java.util.List;
 import evasion.gestionimages.*;
 
 @Entity
@@ -33,9 +34,11 @@ public class Evenement {
     private String activite;
 
     @ManyToMany(mappedBy = "evenements")
-    private Collection<Image> images;
-    
-    public Collection<Image> getImages() {return images;}
+    @WhereJoinTable( clause = "est_principale = true")
+    private List<Image> imagesPrincipales;
+
+    @ManyToMany(mappedBy = "evenements") 
+    private List<Image> images;
 
     public Evenement() {
 
@@ -160,6 +163,14 @@ public class Evenement {
 	public void setActivite(String activite) {
 		this.activite = activite;
 	}
+
+    public Image getImagePrincipale() {
+        return (imagesPrincipales.isEmpty() ? null : imagesPrincipales.get(0));
+    }
+
+    public List<Image> getImages() {
+        return images;
+    }
 
     @Override
     public String toString() {
