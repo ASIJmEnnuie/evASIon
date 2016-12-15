@@ -15,12 +15,12 @@ public class Image {
     private String chemin;
 
     @ManyToMany
-    @JoinTable(name = "ImgEvt",
+    @JoinTable(name = "Image_Evenement",
                joinColumns = @JoinColumn(name = "id_img", referencedColumnName="id"),
                inverseJoinColumns = @JoinColumn(name = "id_evt", referencedColumnName="id_evt"))
     private Collection<Evenement> evenements;
 
-    public Collection<Evenement> getImages() {return evenements;}
+    public Collection<Evenement> getEvenements() {return evenements;}
 
     public Image() {
 
