@@ -8,6 +8,7 @@ INSERT INTO activite values (2, 'Théatre Les Etoiles', 'Paris', 'Spectacles et 
 INSERT INTO activite values (3, 'Musee du Louvre', 'Paris', 'Visite du musee', 'louvre.fr', null, null);
 INSERT INTO activite values (4, 'La Tour Eiffel', 'Paris', 'Visite de la TE', 'toureiffel.fr', null, null);
 INSERT INTO activite values (5, 'Laser Game Evolution', 'Rouen', 'Partie de Laser Game...', 'www.LGEvolution.com', null, null);
+INSERT INTO activite values (6, 'Autre', 'Autre', 'Autre', 'Autre', null, null);
 
 INSERT INTO image values (1, 'zenith.jpg');
 INSERT INTO image values (2, 'theatre.jpg');
@@ -20,28 +21,46 @@ INSERT INTO image values (8, 'randonne.jpg');
 INSERT INTO image values (9, 'jeux.jpg');
 INSERT INTO image values (10, 'visite.jpg');
 INSERT INTO image values (11, 'autre.jpg');
-INSERT INTO image values (12, 'sport.jpg');
-INSERT INTO image values (13, 'concert.jpg');
+INSERT INTO image values (12, 'lutin.jpg');
+INSERT INTO image values (13, 'perenoel.jpg');
 
-id_act integer references Activite(id),
-date_evt varchar(255) NOT NULL,
-description varchar(255) default NULL,
-heure varchar(10) NOT NULL,
-lieu varchar(255) NOT NULL,
-nb_inscrits integer default NULL,
-nb_places integer default NULL,
-nom varchar(255) NOT NULL,
-id_orga integer references Compte(id),
-prix varchar(10) default NULL
-
-INSERT INTO evenement values (1, 1, '25/12/2016', 'Concert du père noel', '21:00', 'Paris', 10, 15, );
-INSERT INTO evenement values (2, );
-INSERT INTO evenement values (3, );
-INSERT INTO evenement values (4, );
-INSERT INTO evenement values (5, );
+INSERT INTO evenement values (1, 1, '25/12/2016', 'Concert du père noel', '21:00', 'Paris', 2, 15, 'Le Père Noël Arrive', 4, '0');
+INSERT INTO evenement values (2, 5, '01/01/2017', '2 parties de LG pour le nouvel an', '15:00', 'Rouen', 2, 20, 'Laser Game de l''An', 1, '15');
+INSERT INTO evenement values (3, 4, '25/02/2017', 'Visite de la TE groupé', '10:00', 'Paris', 3, 15, 'Viste Tour Eiffel', 2, '20');
+INSERT INTO evenement values (4, 2, '05/01/2017', 'Spectacle pour enfants, durée 1h30', '20:00', 'Paris', 3, 10, 'Spectacle des Lutins', 4, '12');
 
 INSERT INTO categorie values (1, 'Sport', 12);
 INSERT INTO categorie values (2, 'Visite', 10);
 INSERT INTO categorie values (3, 'Concert', 13);
 INSERT INTO categorie values (4, 'Randonnee', 8);
 INSERT INTO categorie values (5, 'Jeux', 9);
+
+INSERT INTO Imgact values (1, 1, true);
+INSERT INTO Imgact values (2, 2, true);
+INSERT INTO Imgact values (3, 3, true);
+INSERT INTO Imgact values (4, 4, true);
+INSERT INTO Imgact values (4, 6, false);
+INSERT INTO Imgact values (5, 5, true);
+INSERT INTO Imgact values (5, 7, false);
+INSERT INTO Imgact values (6, 11, true);
+
+INSERT INTO CategorieAct values (1, 3);
+INSERT INTO CategorieAct values (2, 3);
+INSERT INTO CategorieAct values (3, 2);
+INSERT INTO CategorieAct values (4, 2);
+INSERT INTO CategorieAct values (5, 5);
+
+INSERT INTO ImgEvt values (1, 13, true);
+INSERT INTO ImgEvt values (4, 12, true);
+
+
+INSERT INTO ParticipantEvt values (1, 2);
+INSERT INTO ParticipantEvt values (1, 3);
+INSERT INTO ParticipantEvt values (2, 3);
+INSERT INTO ParticipantEvt values (2, 2);
+INSERT INTO ParticipantEvt values (3, 1);
+INSERT INTO ParticipantEvt values (3, 3);
+INSERT INTO ParticipantEvt values (3, 4);
+INSERT INTO ParticipantEvt values (4, 1);
+INSERT INTO ParticipantEvt values (4, 2);
+INSERT INTO ParticipantEvt values (4, 3);
