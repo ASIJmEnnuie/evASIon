@@ -35,32 +35,32 @@ INSERT INTO categorie values (3, 'Concert', 13);
 INSERT INTO categorie values (4, 'Randonnee', 8);
 INSERT INTO categorie values (5, 'Jeux', 9);
 
-INSERT INTO Imgact values (1, 1, true);
-INSERT INTO Imgact values (2, 2, true);
-INSERT INTO Imgact values (3, 3, true);
-INSERT INTO Imgact values (4, 4, true);
-INSERT INTO Imgact values (4, 6, false);
-INSERT INTO Imgact values (5, 5, true);
-INSERT INTO Imgact values (5, 7, false);
-INSERT INTO Imgact values (6, 11, true);
+INSERT INTO Image_Activite values (1, 1, true);
+INSERT INTO Image_Activite values (2, 2, true);
+INSERT INTO Image_Activite values (3, 3, true);
+INSERT INTO Image_Activite values (4, 4, true);
+INSERT INTO Image_Activite values (4, 6, false);
+INSERT INTO Image_Activite values (5, 5, true);
+INSERT INTO Image_Activite values (5, 7, false);
+INSERT INTO Image_Activite values (6, 11, true);
 
-INSERT INTO CategorieAct values (1, 3);
-INSERT INTO CategorieAct values (2, 3);
-INSERT INTO CategorieAct values (3, 2);
-INSERT INTO CategorieAct values (4, 2);
-INSERT INTO CategorieAct values (5, 5);
+INSERT INTO Categorie_Activite values (1, 3);
+INSERT INTO Categorie_Activite values (2, 3);
+INSERT INTO Categorie_Activite values (3, 2);
+INSERT INTO Categorie_Activite values (4, 2);
+INSERT INTO Categorie_Activite values (5, 5);
 
-INSERT INTO ImgEvt values (1, 13, true);
-INSERT INTO ImgEvt values (4, 12, true);
+INSERT INTO Image_Evenement values (1, 13, true);
+INSERT INTO Image_Evenement values (4, 12, true);
 
 
-INSERT INTO ParticipantEvt values (1, 2);
-INSERT INTO ParticipantEvt values (1, 3);
-INSERT INTO ParticipantEvt values (2, 3);
-INSERT INTO ParticipantEvt values (2, 2);
-INSERT INTO ParticipantEvt values (3, 1);
-INSERT INTO ParticipantEvt values (3, 3);
-INSERT INTO ParticipantEvt values (3, 4);
-INSERT INTO ParticipantEvt values (4, 1);
-INSERT INTO ParticipantEvt values (4, 2);
-INSERT INTO ParticipantEvt values (4, 3);
+INSERT INTO Participant_Evenement values (1, 2);
+INSERT INTO Participant_Evenement values (1, 3);
+INSERT INTO Participant_Evenement values (2, 3);
+INSERT INTO Participant_Evenement values (2, 2);
+INSERT INTO Participant_Evenement values (3, 1);
+INSERT INTO Participant_Evenement values (3, 3);
+INSERT INTO Participant_Evenement values (3, 4);
+INSERT INTO Participant_Evenement values (4, 1);
+INSERT INTO Participant_Evenement values (4, 2);
+INSERT INTO Participant_Evenement values (4, 3);
