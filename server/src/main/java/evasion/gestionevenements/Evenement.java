@@ -1,7 +1,8 @@
 package evasion.gestionevenements;
 
-
 import javax.persistence.*;
+import java.util.Collection;
+import evasion.gestionimages.*;
 
 @Entity
 public class Evenement {
@@ -31,6 +32,10 @@ public class Evenement {
     @Column(name = "id_act")
     private String activite;
 
+    @ManyToMany(mappedBy = "evenements")
+    private Collection<Image> images;
+    
+    public Collection<Image> getImages() {return images;}
 
     public Evenement() {
 

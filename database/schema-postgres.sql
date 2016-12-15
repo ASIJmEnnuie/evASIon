@@ -1,10 +1,10 @@
-DROP TABLE IF EXISTS CategorieFavoriteCompte;
-DROP TABLE IF EXISTS ImgEvt;
-DROP TABLE IF EXISTS CollaborateurEvt;
-DROP TABLE IF EXISTS ParticipantEvt;
-DROP TABLE IF EXISTS CategorieAct;
-DROP TABLE IF EXISTS ImgAct;
-DROP TABLE IF EXISTS ImgCompte;
+DROP TABLE IF EXISTS Categorie_favorite_Compte;
+DROP TABLE IF EXISTS Image_Evenement;
+DROP TABLE IF EXISTS Collaborateur_Evenement;
+DROP TABLE IF EXISTS Participant_Evenement;
+DROP TABLE IF EXISTS Categorie_Activite;
+DROP TABLE IF EXISTS Image_Activite;
+DROP TABLE IF EXISTS Image_Compte;
 DROP TABLE IF EXISTS Ami;
 DROP TABLE IF EXISTS Evenement;
 DROP TABLE IF EXISTS Categorie;
@@ -71,14 +71,14 @@ CREATE TABLE Categorie (
     id_img integer references Image(id)
 );
 
-CREATE TABLE ImgAct (
+CREATE TABLE Image_Activite (
 	id_act integer REFERENCES Activite(id),
 	id_img integer REFERENCES Image(id),
 	est_principale boolean NOT NULL,
 	PRIMARY KEY(id_act, id_img)
 );
 
-CREATE TABLE CategorieAct (
+CREATE TABLE Categorie_Activite (
 	id_act integer REFERENCES Activite(id),
 	id_cat integer REFERENCES Categorie(id),
 	PRIMARY KEY(id_act, id_cat)
@@ -91,33 +91,33 @@ CREATE TABLE Ami (
 	PRIMARY KEY (id_compte1, id_compte2)
 );
 
-CREATE TABLE ImgCompte (
+CREATE TABLE Image_Compte (
 	id_compte integer REFERENCES Compte(id),
 	id_img integer REFERENCES Image(id),
 	est_principale boolean NOT NULL,
 	PRIMARY KEY(id_compte, id_img)
 );
 
-CREATE TABLE ImgEvt (
+CREATE TABLE Image_Evenement (
     id_evt integer references Evenement(id_evt),
     id_img integer references Image(id),
     est_principale boolean,
     PRIMARY KEY(id_evt, id_img)
 );
 
-CREATE TABLE CollaborateurEvt (
+CREATE TABLE Collaborateur_Evenement (
     id_evt integer references Evenement(id_evt),
     id_compte integer references Compte(id),
     PRIMARY KEY(id_evt, id_compte)
 );
 
-CREATE TABLE ParticipantEvt (
+CREATE TABLE Participant_Evenement (
     id_evt integer references Evenement(id_evt),
     id_compte integer references Compte(id),
     PRIMARY KEY(id_evt, id_compte)
 );
 
-CREATE TABLE CategorieFavoriteCompte (
+CREATE TABLE Categorie_favorite_Compte (
     id_cat integer references Categorie(id),
     id_compte integer references Compte(id),
     PRIMARY KEY(id_cat, id_compte)

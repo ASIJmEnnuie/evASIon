@@ -132,8 +132,8 @@ var FRIP_FormConnexion = React.createClass({
         this.props.serverConnexion();
       if (this.props.stompClient != null)
         var formValid = this.props.stompClient.send("/topic/connexion", {}, JSON.stringify(values));
-        formValid = 1; // TODO à enlever
-      if (formValid==1) {
+        //formValid = 1; // TODO à enlever
+      if (formValid!=0) {
         this.props.connexion();
       }
       else {
