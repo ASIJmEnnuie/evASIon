@@ -33,17 +33,17 @@ const FRIP_Global = React.createClass({
             });
           });
 
-          stompClient.subscribe('/topic/activitylist', (activityList) => {
+          stompClient.subscribe('/topic/listeActivites', (getAllActivities) => {
             this.setState({
-              activityList: JSON.parse(activityList.body)
+              activityList: JSON.parse(getAllActivities.body)
             });
           });
 
           // TODO: assurer ici la récupération des paramètres de connexion au serveur.
           // Ceci est actuellement un exemple non representatif de l'état final mais aidant à la compréhension de la suite du code
-          stompClient.subscribe('/topic/connexion', (connexionInformation) => {
+          stompClient.subscribe('/topic/connexion', (connexion) => {
             this.setState({
-              userId: JSON.parse(connexionInformation.body)
+              userId: JSON.parse(connexion.body)
             });
           });
         });
