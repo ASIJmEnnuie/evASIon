@@ -22,6 +22,10 @@ const FRIP_OnlineContainer = React.createClass({
   },
 
   changePage: function(event, menuItem, index) {
+    if (index == 1 && this.props.stompClient != null) {
+      this.props.stompClient.send("/events", {}, "");
+    }
+
     this.setState({page: index});
     var breakpointSmall = parseInt(parameters.breakpoints.small.substring(0, parameters.breakpoints.small.length-2));
     if (this.props.screenWidth <= breakpointSmall) {

@@ -11,7 +11,7 @@ const FRIP_Global = React.createClass({
   getInitialState: function() {
     return {
       stompClient: null,
-      eventList: require("../data/events").events,
+      eventList: [],
       activityList: require("../data/activities").activities,
       screenHeight: window.innerHeight,
       screenWidth: window.innerWidth,
@@ -27,9 +27,18 @@ const FRIP_Global = React.createClass({
         let stompClient = Stomp.over(new SockJS(serverAddress));
 
         stompClient.connect({}, (frame) => {
-          stompClient.subscribe('/topic/eventlist', (eventList) => {
-            this.setState({
-              eventList: JSON.parse(eventList.body)
+          stompClient.subscribe('/topic/eventlistWithCriteria', (eventList) => {
+            // this.setState({
+            //   eventList: JSON.parse(eventList.body)
+            // });
+          });
+
+          stompClient.connect({}, (frame) => {
+            stompClient.subscribe('/topic/eventlist', (eventList) => {
+              console.log(eventList.body);
+              // this.setState({
+              //   eventList: JSON.parse(eventList.body)
+              // });
             });
           });
 
