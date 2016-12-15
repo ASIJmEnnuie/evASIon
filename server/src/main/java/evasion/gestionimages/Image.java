@@ -1,7 +1,8 @@
 package evasion.gestionimages;
 
-
 import javax.persistence.*;
+import java.util.Collection;
+import evasion.gestionevenements.Evenement;
 
 @Entity
 public class Image {
@@ -12,6 +13,14 @@ public class Image {
     private Long id;
     @Column(name = "chemin")
     private String chemin;
+
+    @ManyToMany
+    @JoinTable(name = "ImgEvt",
+               joinColumns = @JoinColumn(name = "id_img", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name = "id_evt", referencedColumnName="id_evt"))
+    private Collection<Evenement> evenements;
+
+    public Collection<Evenement> getImages() {return evenements;}
 
     public Image() {
 
