@@ -104,30 +104,4 @@ public class EventsController {
             return 0L;
         }
     }
-    /*
-    public List<Evenement> getEventsByDate(String date) {
-        final List<Evenement> eventsFound = new LinkedList<>();
-        final Iterable<Evenement> events = evenementRepository.findByDateEvt(message.getMessage());
-
-        events.forEach(new Consumer<Evenement>() {
-            @Override
-            public void accept(Evenement evenement) {
-                eventsFound.add(evenement);
-            }
-        });
-        return eventsFound;
-    }
-
-    public List<Evenement> getEventsByLieu(String lieu) {
-        final List<Evenement> eventsFound = new LinkedList<>();
-        final Iterable<Evenement> events = evenementRepository.findByLieuEvt(message.getMessage());
-
-        events.forEach(new Consumer<Evenement>() {
-            @Override
-            public void accept(Evenement evenement) {
-                eventsFound.add(evenement);
-            }
-        });
-        return eventsFound;
-    }*/
 }

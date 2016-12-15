@@ -2,6 +2,8 @@ package evasion.gestionactivites;
 
 
 import javax.persistence.*;
+import java.util.Collection;
+import evasion.gestionimages.Image;
 
 @Entity
 public class Activite {
@@ -22,6 +24,8 @@ public class Activite {
     private String id_admin_modif;
     @Column(name = "date_derniere_modif")
     private String date_modif;
+    @ManyToMany(mappedBy = "activites")
+    private Collection<Image> images;
 
 
     public Activite() {
@@ -52,6 +56,8 @@ public class Activite {
         this.id_admin_modif = id_admin_modif;
         this.date_modif = date_modif;
     }
+
+    public Collection<Image> getImages() {return images;}
 
 	public Long getId_act() {
 		return id_act;
