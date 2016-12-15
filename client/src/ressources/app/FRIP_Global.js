@@ -43,8 +43,7 @@ const FRIP_Global = React.createClass({
           // Ceci est actuellement un exemple non representatif de l'état final mais aidant à la compréhension de la suite du code
           stompClient.subscribe('/topic/connexion', (connexion) => {
             this.setState({
-              userId: JSON.parse(connexion.body),
-              stompClient: stompClient
+              userId: JSON.parse(connexion.body)
             });
           });
         });
