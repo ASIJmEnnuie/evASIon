@@ -12,7 +12,9 @@ const FRIP_HomeOfflinePage = React.createClass({
         <div className="form">
           <FRIP_FormConnexion
             connexion={this.props.connexion}
+            serverConnexion={this.props.serverConnexion}
             data={this.props.data.form}
+            stompClient={this.props.stompClient}
           />
           <div className="link" onTouchTap={this.props.changePage}>{this.props.data.linkInscriptionLabel}</div>
         </div>

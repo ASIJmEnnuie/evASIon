@@ -23,10 +23,10 @@
     },
 
     "eventCreation": {
-      "firstStep": "Étape 1",
+      "firstStep": "",
       "firstStepContent": "L'évènement à créer est-il lié à une activité ?",
-      "secondStep": "Étape 2",
-      "thirdStep": "Étape 3",
+      "secondStep": "",
+      "thirdStep": "",
       "finish" : "Créer",
       "next": "Suivant",
       "back": "Retour",
@@ -51,11 +51,16 @@
       "yes": "Oui",
       "no": "Non",
       "createActivitySuggestion": "Créer une activité ?",
-      "errorNotSelected": "Veuillez selectionner une activité ou retourner à l'étape 1"
+      "errorNotSelected": "Veuillez selectionner une activité ou retourner à l'étape 1",
+      "errorForm": "Erreur dans le formulaire",
+      "popupCreationEventTitle": "Confirmation",
+      "popupCreationEventContent": "Évènement créé avec succès",
+      "popupCreationEventButtonLabel": "Ok"
     },
 
     "activityCreation": {
       "activityCreationValidation": "L'activité a bien été créé :)",
+      "error": "Erreur",
       "errorText": "Champ obligatoire",
       "errorTextAllAreRequired": "Veuillez remplir tout les champs obligatoires *",
       "activityName": "Nom de l'activité *",
@@ -69,7 +74,10 @@
       "okLabel": "Ok",
       "locale": "fr",
       "timeFormat": "24hr",
-      "creationLabel": "Créer"
+      "creationLabel": "Créer",
+      "popupCreationActivityTitle": "Confirmation",
+      "popupCreationActivityContent": "Activitée créée avec succès",
+      "popupCreationActivityButtonLabel": "Ok"
     },
 
     "eventPage": {

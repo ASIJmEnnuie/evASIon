@@ -32,10 +32,19 @@
   @include calc(max-width, "100%  - 2 * " + $margin);
   margin: $margin;
 
-  @include respond-to(medium) {
-    margin-left: auto;
-    margin-right: auto;
-  };
+  .form {
+    width: 100% !important;
+    height: 100% !important;
+    @include shadowBox($gray);
+    @include respond-to(medium) {
+      margin-left: auto;
+      margin-right: auto;
+    };
+
+    .form-content {
+      @include calc(height, "100% - 2 * " + $margin + " - " + 160px);
+    }
+  }
 }
 
 .link {

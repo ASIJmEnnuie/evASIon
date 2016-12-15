@@ -11,6 +11,7 @@ import MenuItem from 'material-ui/MenuItem';
 
 import {FRIP_FormEventCreation} from '../../components/FRIP_Form';
 import {FRIP_SearchActivityLittleController} from '../../components/FRIP_SearchController';
+import FRIP_Popup from '../../components/FRIP_Popup';
 
 const FRIP_EventCreationPage = React.createClass({
   getInitialState: function() {
@@ -82,20 +83,27 @@ const FRIP_EventCreationPage = React.createClass({
 
   handleSubmit: function() {
 
-    // TODO ENVOI BD pour la création de l'évt
-
-    // A ENLEVER
-    console.log("eventActivityName: "+this.state.eventActivityName);
-    console.log("eventName : "+this.refs.formEvent.state.eventName);
-    console.log("eventPlace : "+this.refs.formEvent.state.eventPlace);
-    console.log("eventMeetingPlace : "+this.refs.formEvent.state.eventMeetingPlace);
-    console.log("eventDate : "+this.refs.formEvent.state.eventDate.toString());
-    console.log("eventTime : "+this.refs.formEvent.state.eventTime.toString());
-    // console.log("eventDateEnd : "+this.refs.formEvent.state.eventDateEnd.toString());
-    // console.log("eventTimeEnd : "+this.refs.formEvent.state.eventTimeEnd.toString());
-    console.log("eventMemberMax : "+this.refs.formEvent.state.eventMemberMax);
-    console.log("eventDescription : "+this.refs.formEvent.state.eventDescription);
-
+    const values = {
+      "activity": this.state.eventActivityName,
+      "name": this.refs.formEvent.state.eventName,
+      "place": this.refs.formEvent.state.eventPlace,
+      // "eventMeetingPlace": this.refs.formEvent.state.eventMeetingPlace,
+      "date": this.refs.formEvent.state.eventDate,
+      "time": this.refs.formEvent.state.eventTime,
+      // "eventDateEnd": this.refs.formEvent.state.eventDateEnd,
+      // "eventTimeEnd": this.refs.formEvent.state.eventTimeEnd,
+      "nbPlaces": this.refs.formEvent.state.eventMemberMax,
+      "description": this.refs.formEvent.state.eventDescription,
+      // "eventCreator": this.props.userId,
+    };
+    // TODO A ENLEVER
+    console.log(values);
+    if (this.props.stompClient != null)
+      var formValid = this.props.stompClient.send("topic/eventCreation", {}, JSON.stringify(values));
+    //formValid = 1; // TODO A ENLEVER
+    if (formValid==1) {
+      this.refs.popupCreationEvent.handleOpen();
+    }
   },
 
   setActivityPresent: function(event, index, value) {
@@ -107,7 +115,7 @@ const FRIP_EventCreationPage = React.createClass({
     else {
       if (value == 2) {
         obj.style.display='block';
-        this.setState({eventActivityName: "Autre"});
+        this.setState({eventActivityName: "Other"});
       }
     }
   },
@@ -115,7 +123,6 @@ const FRIP_EventCreationPage = React.createClass({
   getStepContent: function(stepIndex) {
     switch (stepIndex) {
       case 0:
-        //TODO mettre le lien ! onTouchTap={}
         return (
           <div className="step">
             <div className="form-select-field">
@@ -130,7 +137,7 @@ const FRIP_EventCreationPage = React.createClass({
                 <MenuItem value={1} primaryText={this.props.data.yes} className="form-select-content"/>
                 <MenuItem value={2} primaryText={this.props.data.no} className="form-select-content"/>
               </SelectField>
-              <div id="linkCreateActivity" className="link" onTouchTap={this.props.accessToPage3}>{this.props.data.createActivitySuggestion}</div>
+              <div id="linkCreateActivity" className="link" onTouchTap={this.props.accessToActivityCreationPage}>{this.props.data.createActivitySuggestion}</div>
             </div>
           </div>
           );
@@ -140,8 +147,9 @@ const FRIP_EventCreationPage = React.createClass({
             <FRIP_SearchActivityLittleController
               data={this.props.data}
               ref="searchActivity"
+              activityList={this.props.activityList}
             />
-          <div id="errorNotSelected" className="error" >{this.props.data.errorNotSelected}</div>
+            <div id="errorNotSelected" className="error" >{this.props.data.errorNotSelected}</div>
           </div>);
       case 2:
         return (
@@ -150,8 +158,10 @@ const FRIP_EventCreationPage = React.createClass({
             <FRIP_FormEventCreation
               data={this.props.data}
               ref="formEvent"
+              stompClient={this.props.stompClient}
             />
           </div>
+          <div id="errorForm" className="error" >{this.props.data.errorForm}</div>
           </div>
       );
       default:
@@ -180,30 +190,29 @@ const FRIP_EventCreationPage = React.createClass({
             </Stepper>
           </div>
           <div className="form-stepper-content">
-            {finished ? (
-              <div>
-                {this.props.data.eventCreationValidation}
-              </div>
-            ) : (
-              <div>
-                {this.getStepContent(stepIndex)}
-                <div style={{marginTop: 30}}>
-                  <FlatButton
-                    label={this.props.data.back}
-                    disabled={stepIndex === 0}
-                    onTouchTap={this.handlePrev}
-                    style={{marginRight: 12}}
-                  />
-                  <RaisedButton
-                    label={stepIndex === 2 ? this.props.data.finish : this.props.data.next}
-                    primary={true}
-                    onTouchTap={this.handleNext}
-                  />
-                </div>
-              </div>
-            )}
+            {this.getStepContent(stepIndex)}
+            <div>
+              <FlatButton
+                label={this.props.data.back}
+                disabled={stepIndex === 0}
+                onTouchTap={this.handlePrev}
+                style={{marginRight: 12}}
+              />
+              <RaisedButton
+                label={stepIndex === 2 ? this.props.data.finish : this.props.data.next}
+                primary={true}
+                onTouchTap={this.handleNext}
+              />
+            </div>
           </div>
         </div>
+        <FRIP_Popup
+          title={this.props.data.popupCreationEventTitle}
+          text={this.props.data.popupCreationEventContent}
+          buttonLabel={this.props.data.popupCreationEventButtonLabel}
+          ref="popupCreationEvent"
+          accessToHomePage={this.props.accessToHomePage}
+        />
         </div>
       </div>
     );

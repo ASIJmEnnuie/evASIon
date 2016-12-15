@@ -58,8 +58,8 @@
   - [ ] potentiel prix
   - [ ] date et heure
   - [ ] potentiel lieu de rendez-vous
-- [ ] Interface de création d’un événement
-- [ ] Interface de création d’une activité
+- [x] Interface de création d’un événement
+- [x] Interface de création d’une activité
 
 ### Partie hors connexion
 - [x] Barre de navigation

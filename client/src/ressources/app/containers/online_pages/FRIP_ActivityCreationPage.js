@@ -8,6 +8,8 @@ const FRIP_ActivityCreationPage = React.createClass({
         <div id="activityCreationPage" className="form">
           <FRIP_FormActivityCreation
             data={this.props.data}
+            accessToHomePage={this.props.accessToHomePage}
+            stompClient={this.props.stompClient}
           />
         </div>
       </div>
