@@ -15,4 +15,5 @@ public interface ActiviteRepository extends CrudRepository<Activite,Long>{
         public List<Activite> findActivities(@Param("nom") String nom, @Param("adresse") String adresse, @Param("description") String description,
                                    @Param("site") String site, @Param("adminmodif") String adminmodif, @Param("datemodif") String datemodif);
         public void saveAndFlush(Activite a);
+        public List<Activite> findByNomAct(String name);
     }

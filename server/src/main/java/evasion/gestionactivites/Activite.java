@@ -13,7 +13,7 @@ public class Activite {
     @Column(name = "id")
     private Long id_act;
     @Column(name = "nom")
-    private String nom_act;
+    private String nomAct;
     @Column(name = "adresse")
     private String adresse;
     @Column(name = "description")
@@ -33,13 +33,13 @@ public class Activite {
     }
 
     public Activite(String nomAct) {
-        this.nom_act = nomAct;
+        this.nomAct = nomAct;
     }
 
     public Activite(Long idAct, String nom, String adresse, String secription, String site,
                      String id_admin_modif, String date_modif) {
         this.id_act = idAct;
-        this.nom_act = nom;
+        this.nomAct = nom;
         this.adresse = adresse;
         this.description = description;
         this.site = site;
@@ -49,7 +49,7 @@ public class Activite {
 
     public Activite(String nom, String adresse, String secription, String site,
                      String id_admin_modif, String date_modif) {
-        this.nom_act = nom;
+        this.nomAct = nom;
         this.adresse = adresse;
         this.description = description;
         this.site = site;
@@ -65,11 +65,11 @@ public class Activite {
 	public void setId_act(Long id_act) {
 		this.id_act = id_act;
 	}
-	public String getNom_act() {
-		return nom_act;
+	public String getNomAct() {
+		return nomAct;
 	}
-	public void setNom_act(String nom_act) {
-		this.nom_act = nom_act;
+	public void setNomAct(String nomAct) {
+		this.nomAct = nomAct;
 	}
 	public String getAdresse() {
 		return adresse;
@@ -104,6 +104,6 @@ public class Activite {
 
     @Override
     public String toString() {
-        return String.format("Id : %d, Nom : %s, adresse : %s.", id_act, nom_act, adresse);
+        return String.format("Id : %d, Nom : %s, adresse : %s.", id_act, nomAct, adresse);
     }
 }

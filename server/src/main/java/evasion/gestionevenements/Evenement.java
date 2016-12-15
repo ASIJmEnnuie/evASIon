@@ -31,13 +31,13 @@ public class Evenement {
     @Column(name = "prix")
     private String price;
     @Column(name = "id_act")
-    private String activite;
+    private Long activite;
 
     @ManyToMany(mappedBy = "evenements")
     @WhereJoinTable( clause = "est_principale = true")
     private List<Image> imagesPrincipales;
 
-    @ManyToMany(mappedBy = "evenements") 
+    @ManyToMany(mappedBy = "evenements")
     private List<Image> images;
 
     public Evenement() {
@@ -48,7 +48,7 @@ public class Evenement {
         this.nom_evt = nomEvt;
     }
 
-    public Evenement(String nom, String lieu, String date, String heure, String price, String activite) {
+    public Evenement(String nom, String lieu, String date, String heure, String price, Long activite) {
         this.nom_evt = nom;
         this.lieu_evt = lieu;
         this.date_evt = date;
@@ -57,7 +57,7 @@ public class Evenement {
         this.activite = activite;
     }
 
-    public Evenement(String nom, String lieu, String date, String heure, String price, String description, int nbInscrits, int nbPlaces, String activite) {
+    public Evenement(String nom, String lieu, String date, String heure, String price, String description, int nbInscrits, int nbPlaces, Long activite) {
         this.nom_evt = nom;
         this.lieu_evt = lieu;
         this.date_evt = date;
@@ -70,7 +70,7 @@ public class Evenement {
     }
 
     public Evenement(Long idEvt, String nom, String lieu, String orga, String date, String heure,
-                     String description, int nb_inscriptions, int nb_places, String price, String activite) {
+                     String description, int nb_inscriptions, int nb_places, String price, Long activite) {
         this.id_evt = idEvt;
         this.nom_evt = nom;
         this.lieu_evt = lieu;
@@ -157,10 +157,10 @@ public class Evenement {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public String getActivite() {
+	public Long getActivite() {
 		return activite;
 	}
-	public void setActivite(String activite) {
+	public void setActivite(Long activite) {
 		this.activite = activite;
 	}
 

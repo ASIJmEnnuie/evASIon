@@ -89,4 +89,18 @@ public class ActivitiesController {
             return 0L;
         }
     }
+
+
+    public List<Activite> getActivityByName(String name) {
+        final List<Activite> activiteFound = new LinkedList<>();
+        final Iterable<Activite> activites = activiteRepository.findByNomAct(name);
+
+        activites.forEach(new Consumer<Activite>() {
+            @Override
+            public void accept(Activite activite) {
+                activiteFound.add(activite);
+            }
+        });
+        return activiteFound;
+    }
 }
