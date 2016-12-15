@@ -24,6 +24,7 @@ const FRIP_Global = React.createClass({
   serverConnexion: function() {
     if (this.state.stompClient === null) {
       this.setState(function(prevState, props) {
+          console.log("dans la function !!!!!!!!!");
         let stompClient = Stomp.over(new SockJS(serverAddress));
 
         stompClient.connect({}, (frame) => {

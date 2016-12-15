@@ -127,13 +127,18 @@ var FRIP_FormConnexion = React.createClass({
         "mdp": this.state.password,
       };
       // TODO A ENLEVER
-      console.log(values);
-      if (this.props.stompClient === null)
+     // console.log(values);
+     console.log("dans la connexion : " + this.props.stompClient);
+      if (this.props.stompClient === null) {
+        console.log("truc");
         this.props.serverConnexion();
-      if (this.props.stompClient != null)
-        var formValid = this.props.stompClient.send("/topic/connexion", {}, JSON.stringify(values));
-        //formValid = 1; // TODO à enlever
+      }
+      if (this.props.stompClient != null) {
+          console.log("machin");
+        var formValid = this.props.stompClient.send("/app/connexionUser", {}, JSON.stringify(values));
+    }
       if (formValid!=0) {
+          console.log("test : " + formValid);
         this.props.connexion();
       }
       else {
@@ -225,7 +230,7 @@ var FRIP_FormInscription = React.createClass({
       if (this.props.stompClient === null)
         this.props.serverConnexion();
       if (this.props.stompClient != null)
-        var formValid = this.props.stompClient.send("/topic/userCreation", {}, JSON.stringify(values));
+        var formValid = this.props.stompClient.send("/app/ajoutCompte", {}, JSON.stringify(values));
       if (formValid==1) {
         this.props.connexion();
       } else {
@@ -586,7 +591,7 @@ var FRIP_FormActivityCreation = React.createClass({
       // TODO A ENLEVER
       console.log(values);
       if (this.props.stompClient != null)
-        var formValid = this.props.stompClient.send("topic/eventCreation", {}, JSON.stringify(values));
+        var formValid = this.props.stompClient.send("app/ajoutEvenements", {}, JSON.stringify(values));
       formValid = 1; // TODO A ENLEVER
       if (formValid==1) {
         this.refs.popupCreationActivity.handleOpen();

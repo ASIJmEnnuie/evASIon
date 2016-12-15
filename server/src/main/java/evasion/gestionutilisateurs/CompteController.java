@@ -38,6 +38,8 @@ public class CompteController {
     @MessageMapping("/connexionUser")
     @SendTo("/topic/connexion")
     public Long connexion(String email, String mdp) {
+        System.out.println("EMAIL = " + email);
+        System.out.println("MDP = " + mdp);
         final List<Compte> compteFound = new LinkedList<>();
         final Iterable<Compte> comptes = compteRepository.findByEmailAndMotDePasse(email, mdp);
 
