@@ -27,9 +27,6 @@ public class Image {
                inverseJoinColumns = @JoinColumn(name = "id_act", referencedColumnName="id"))
     private Collection<Activite> activites;
 
-    public Collection<Evenement> getEvenements() {return evenements;}
-    public Collection<Activite> getActivites() {return activites;}
-
     public Image() {
 
     }
@@ -61,5 +58,9 @@ public class Image {
 
     public Collection<Evenement> getEvenements() {
         return evenements;
+    }
+
+    public Collection<Activite> getActivites() {
+        return activites;
     }
 }
