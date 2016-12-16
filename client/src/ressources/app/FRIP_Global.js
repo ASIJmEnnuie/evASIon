@@ -46,11 +46,17 @@ const FRIP_Global = React.createClass({
           });
         });
 
-        // TODO: assurer ici la récupération des paramètres de connexion au serveur.
-        // Ceci est actuellement un exemple non representatif de l'état final mais aidant à la compréhension de la suite du code
         stompClient.subscribe('/topic/connexion', (connexion) => {
           this.setState({
-            userId: JSON.parse(connexion.body)
+            userId: JSON.parse(connexion.body),
+            container: "online",
+          });
+        });
+
+        stompClient.subscribe('/topic/userCreation', (connexion) => {
+          this.setState({
+            userId: JSON.parse(connexion.body),
+            container: "online",
           });
         });
       });
@@ -61,16 +67,8 @@ const FRIP_Global = React.createClass({
     });
   },
 
-  serverConnexion: function() {
-    console.log("serverConnexion");
-  },
-
   serverDeconnexion: function() {
     //TODO disconnect stompClient here
-  },
-
-  connexion: function() {
-    this.setState({container: "online"});
   },
 
   deconnexion: function() {
@@ -85,8 +83,6 @@ const FRIP_Global = React.createClass({
     let offlineContainer = (
       <FRIP_OfflineContainer
         data={dataOffline.offlineContainer}
-        connexion={this.connexion}
-        serverConnexion={this.serverConnexion}
         stompClient={this.state.stompClient}
       />
     );
