@@ -271,7 +271,7 @@ const FRIP_ActivitySearchController = React.createClass({
 
 
 /*-------------------*/
-/* Morganes's part   */
+/* Morgane's  part   */
 /*-------------------*/
 
 const FRIP_SearchActivityLittleController = React.createClass({

@@ -11,7 +11,7 @@ const FRIP_Global = React.createClass({
   getInitialState: function() {
     return {
       stompClient: null,
-      eventList: [],
+      eventList: require("../data/events").events,
       activityList: require("../data/activities").activities,
       screenHeight: window.innerHeight,
       screenWidth: window.innerWidth,
@@ -21,47 +21,48 @@ const FRIP_Global = React.createClass({
     }
   },
 
-  serverConnexion: function() {
-    if (this.state.stompClient === null) {
-      this.setState(function(prevState, props) {
-        let stompClient = Stomp.over(new SockJS(serverAddress));
+  componentDidMount: function() {
+    this.setState(function(prevState, props) {
+      let stompClient = Stomp.over(new SockJS(serverAddress));
+
+      stompClient.connect({}, (frame) => {
+        stompClient.subscribe('/topic/eventlistWithCriteria', (eventList) => {
+          // this.setState({
+          //   eventList: JSON.parse(eventList.body)
+          // });
+        });
 
         stompClient.connect({}, (frame) => {
-          stompClient.subscribe('/topic/eventlistWithCriteria', (eventList) => {
+          stompClient.subscribe('/topic/eventlist', (eventList) => {
             // this.setState({
             //   eventList: JSON.parse(eventList.body)
             // });
           });
+        });
 
-          stompClient.connect({}, (frame) => {
-            stompClient.subscribe('/topic/eventlist', (eventList) => {
-              console.log(eventList.body);
-              // this.setState({
-              //   eventList: JSON.parse(eventList.body)
-              // });
-            });
-          });
-
-          stompClient.subscribe('/topic/listeActivites', (getAllActivities) => {
-            this.setState({
-              activityList: JSON.parse(getAllActivities.body)
-            });
-          });
-
-          // TODO: assurer ici la récupération des paramètres de connexion au serveur.
-          // Ceci est actuellement un exemple non representatif de l'état final mais aidant à la compréhension de la suite du code
-          stompClient.subscribe('/topic/connexion', (connexion) => {
-            this.setState({
-              userId: JSON.parse(connexion.body)
-            });
+        stompClient.subscribe('/topic/listeActivites', (getAllActivities) => {
+          this.setState({
+            activityList: JSON.parse(getAllActivities.body)
           });
         });
 
-        return {
-          stompClient: stompClient,
-        };
+        // TODO: assurer ici la récupération des paramètres de connexion au serveur.
+        // Ceci est actuellement un exemple non representatif de l'état final mais aidant à la compréhension de la suite du code
+        stompClient.subscribe('/topic/connexion', (connexion) => {
+          this.setState({
+            userId: JSON.parse(connexion.body)
+          });
+        });
       });
-    }
+
+      return {
+        stompClient: stompClient,
+      };
+    });
+  },
+
+  serverConnexion: function() {
+    console.log("serverConnexion");
   },
 
   serverDeconnexion: function() {
