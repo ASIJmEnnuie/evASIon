@@ -8,6 +8,7 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 
+import evasion.gestionactivites.*;
 import javax.inject.Inject;
 import java.util.*;
 import java.util.function.Consumer;
@@ -20,6 +21,7 @@ public class EventsController {
 
     @Inject
     EvenementRepository evenementRepository;
+    ActivitiesController activitiesController;
 
     public EventsController() {
     }
@@ -30,23 +32,19 @@ public class EventsController {
                                      @PathVariable String category, @PathVariable String price,
                                      @PathVariable String place, @PathVariable String time,
                                      @PathVariable String activity, @PathVariable String proximity) {
-
-        Evenement e = new Evenement(name, place, date, time, price, activity);
         String nomQuery = "%";
         String placeQuery = "%";
         String dateQuery = "%";
         String heureQuery = "%";
         String activityQuery = "%";
         String prixQuery = "%";
-
-        //tmp
-        int idAct = 1;
-        int idCat = 1;
+        Activite a = null;
 
         if (!name.equals("") && name != null)
             nomQuery = "nomEvt = " + name;
         if (!date.equals("") && date != null)
             dateQuery = "dateEvt = " + date;
+        //Jusqu'à la Version 2, la catégorie n'est pas gérée.
         //categoryRepository.findByName(category)
         /*if (!category.equals("") && category != null)
             query = " and idCat = " + idCat;*/
@@ -54,9 +52,13 @@ public class EventsController {
             placeQuery = "lieuEvt = " + place;
         if (!price.equals("") && price != null)
             prixQuery = "price = " + price;
-        //activityRepository.findByName(activity)
-        if (!activity.equals("") && activity != null)
-            activityQuery = "activite = " + idAct;
+
+        List<Activite> activities = activitiesController.getActivityByName(activity);
+        if (activities.size() != 0)
+            a = activities.get(1);
+
+        if (!activity.equals("") && activity != null && a != null)
+            activityQuery = "activite = " + a.getId_act();
         if (!time.equals("") && time != null)
             heureQuery = "heureEvt = " + date;
 
@@ -88,15 +90,17 @@ public class EventsController {
         return resultList;
     }
 
+    //TODO with activity ID
     @MessageMapping("/ajoutEvenements")
     @SendTo("/topic/eventCreation")
     public Long AddEvents(String activite, String nom, String lieu, String date, String heure, String nbPlaces, String description) {
 
         //activityRepository.findByName(activity) = idAct
+        Long idactivite = 0L;
         try {
             int nbPlacesEvt = Integer.parseInt(nbPlaces);
 
-            Evenement e = new Evenement (nom, lieu, date, heure, "0", description, 0, nbPlacesEvt, activite);
+            Evenement e = new Evenement (nom, lieu, date, heure, "0", description, 0, nbPlacesEvt, idactivite);
             evenementRepository.saveAndFlush(e);
             return e.getId_evt();
         }
@@ -104,30 +108,4 @@ public class EventsController {
             return 0L;
         }
     }
-    /*
-    public List<Evenement> getEventsByDate(String date) {
-        final List<Evenement> eventsFound = new LinkedList<>();
-        final Iterable<Evenement> events = evenementRepository.findByDateEvt(message.getMessage());
-
-        events.forEach(new Consumer<Evenement>() {
-            @Override
-            public void accept(Evenement evenement) {
-                eventsFound.add(evenement);
-            }
-        });
-        return eventsFound;
-    }
-
-    public List<Evenement> getEventsByLieu(String lieu) {
-        final List<Evenement> eventsFound = new LinkedList<>();
-        final Iterable<Evenement> events = evenementRepository.findByLieuEvt(message.getMessage());
-
-        events.forEach(new Consumer<Evenement>() {
-            @Override
-            public void accept(Evenement evenement) {
-                eventsFound.add(evenement);
-            }
-        });
-        return eventsFound;
-    }*/
 }
