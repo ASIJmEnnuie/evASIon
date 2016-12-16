@@ -183,7 +183,7 @@ const FRIP_EventSearchController = React.createClass({
   sendSelectorsValues: function(values) {
     if (this.props.stompClient != null) {
       //TODO Changer l'url
-      this.props.stompClient.send("/topic/eventlistWithCriteria", {}, JSON.stringify(values));
+      this.props.stompClient.send("/app/evenementsAvecCritere", {}, JSON.stringify(values));
     }
   },
 

@@ -23,7 +23,7 @@ const FRIP_OnlineContainer = React.createClass({
 
   changePage: function(event, menuItem, index) {
     if (index == 1 && this.props.stompClient != null) {
-      this.props.stompClient.send("/events", {}, "");
+      this.props.stompClient.send("/app/events", {}, "");
     }
 
     this.setState({page: index});
