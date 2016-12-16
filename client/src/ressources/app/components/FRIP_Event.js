@@ -8,7 +8,7 @@ const FRIP_Event = React.createClass({
       eventId: this.props.data.id,
     };
     if (this.props.stompClient != null)
-      this.props.stompClient.send("?", {}, JSON.stringify(values));
+      this.props.stompClient.send("/app/attendEvenement", {}, JSON.stringify(values));
   },
 
   render: function() {

@@ -99,8 +99,8 @@ const FRIP_EventCreationPage = React.createClass({
     // TODO A ENLEVER
     console.log(values);
     if (this.props.stompClient != null)
-      var formValid = this.props.stompClient.send("topic/eventCreation", {}, JSON.stringify(values));
-    //formValid = 1; // TODO A ENLEVER
+      this.props.stompClient.send("/app/ajoutEvenements", {}, JSON.stringify(values));
+    formValid = 1; // TODO A Modifier
     if (formValid==1) {
       this.refs.popupCreationEvent.handleOpen();
     }

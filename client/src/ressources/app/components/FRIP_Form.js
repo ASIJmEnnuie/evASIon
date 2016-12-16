@@ -129,7 +129,7 @@ var FRIP_FormConnexion = React.createClass({
 
       //TODO Remplacer l'url par la bonne
       if (this.props.stompClient != null) {
-        this.props.stompClient.send("/app/connexion", {}, JSON.stringify(values));
+        this.props.stompClient.send("/app/connexionUser", {}, JSON.stringify(values));
       }
 
       // TODO A ENLEVER
@@ -230,7 +230,7 @@ var FRIP_FormInscription = React.createClass({
 
       //TODO Remplacer l'url par la bonne
       if (this.props.stompClient != null) {
-        this.props.stompClient.send("/topic/ajoutCompte", {}, JSON.stringify(values));
+        this.props.stompClient.send("/app/ajoutCompte", {}, JSON.stringify(values));
       }
       // TODO A ENLEVER
       // console.log(values);
@@ -598,8 +598,8 @@ var FRIP_FormActivityCreation = React.createClass({
       // TODO A ENLEVER
       console.log(values);
       if (this.props.stompClient != null)
-        var formValid = this.props.stompClient.send("app/ajoutEvenements", {}, JSON.stringify(values));
-      formValid = 1; // TODO A ENLEVER
+        this.props.stompClient.send("/app/ajoutActivites", {}, JSON.stringify(values));
+      formValid = 1; // TODO A modifier
       if (formValid==1) {
         this.refs.popupCreationActivity.handleOpen();
       }
