@@ -2,7 +2,7 @@ package evasion.gestionactivites;
 
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.*;
 import evasion.gestionimages.Image;
 
 @Entity
@@ -29,11 +29,13 @@ public class Activite {
 
 
     public Activite() {
-
+        this.images = new ArrayList<Image>();
     }
 
     public Activite(String nomAct) {
         this.nomAct = nomAct;
+        this.images = new ArrayList<Image>();
+
     }
 
     public Activite(Long idAct, String nom, String adresse, String secription, String site,
@@ -45,6 +47,8 @@ public class Activite {
         this.site = site;
         this.id_admin_modif = id_admin_modif;
         this.date_modif = date_modif;
+        this.images = new ArrayList<Image>();
+
     }
 
     public Activite(String nom, String adresse, String secription, String site,
@@ -55,6 +59,8 @@ public class Activite {
         this.site = site;
         this.id_admin_modif = id_admin_modif;
         this.date_modif = date_modif;
+        this.images = new ArrayList<Image>();
+
     }
 
     public Collection<Image> getImages() {return images;}

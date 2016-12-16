@@ -78,6 +78,8 @@ public class EventsController {
     @MessageMapping("/events")
     @SendTo("/topic/eventlist")
     public List<Evenement> eventList() {
+
+        System.out.println("\n\nDANS LA METHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOODE\n\n");
         final List<Evenement> resultList = new ArrayList<>();
         final Iterable<Evenement> all = evenementRepository.findAll();
 
@@ -87,6 +89,7 @@ public class EventsController {
                resultList.add(evenement);
             }
         });
+        System.out.println("EVENT : " + resultList.get(1));
         return resultList;
     }
 

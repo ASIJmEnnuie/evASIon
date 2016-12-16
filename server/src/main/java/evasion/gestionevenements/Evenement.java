@@ -2,7 +2,7 @@ package evasion.gestionevenements;
 
 import javax.persistence.*;
 import org.hibernate.annotations.WhereJoinTable;
-import java.util.List;
+import java.util.*;
 import evasion.gestionimages.*;
 
 @Entity
@@ -33,19 +33,24 @@ public class Evenement {
     @Column(name = "id_act")
     private Long activite;
 
-    @ManyToMany(mappedBy = "evenements")
+
+    @ManyToMany(mappedBy = "evenements", fetch = FetchType.EAGER)
     @WhereJoinTable( clause = "est_principale = true")
     private List<Image> imagesPrincipales;
 
-    @ManyToMany(mappedBy = "evenements")
+    @ManyToMany(mappedBy = "evenements", fetch = FetchType.EAGER)
     private List<Image> images;
 
     public Evenement() {
+        this.imagesPrincipales = new ArrayList<Image>();
+        this.images = new ArrayList<Image>();
 
     }
 
     public Evenement(String nomEvt) {
         this.nom_evt = nomEvt;
+        this.imagesPrincipales = new ArrayList<Image>();
+        this.images = new ArrayList<Image>();
     }
 
     public Evenement(String nom, String lieu, String date, String heure, String price, Long activite) {
@@ -55,6 +60,8 @@ public class Evenement {
         this.heure_evt = heure;
         this.price = price;
         this.activite = activite;
+        this.imagesPrincipales = new ArrayList<Image>();
+        this.images = new ArrayList<Image>();
     }
 
     public Evenement(String nom, String lieu, String date, String heure, String price, String description, int nbInscrits, int nbPlaces, Long activite) {
@@ -67,6 +74,8 @@ public class Evenement {
         this.nb_insc_evt = nbInscrits;
         this.nb_places_evt = nbPlaces;
         this.activite = activite;
+        this.imagesPrincipales = new ArrayList<Image>();
+        this.images = new ArrayList<Image>();
     }
 
     public Evenement(Long idEvt, String nom, String lieu, String orga, String date, String heure,
@@ -82,6 +91,8 @@ public class Evenement {
         this.nb_places_evt = nb_places;
         this.price = price;
         this.activite = activite;
+        this.imagesPrincipales = new ArrayList<Image>();
+        this.images = new ArrayList<Image>();
     }
 
     public Evenement(Long idEvt, String nom, String lieu, String orga, String date, String heure,
@@ -95,6 +106,8 @@ public class Evenement {
         this.desc_evt = description;
         this.nb_insc_evt = nb_inscriptions;
         this.nb_places_evt = nb_places;
+        this.imagesPrincipales = new ArrayList<Image>();
+        this.images = new ArrayList<Image>();
     }
 
 	public Long getId_evt() {
@@ -168,8 +181,16 @@ public class Evenement {
         return (imagesPrincipales.isEmpty() ? null : imagesPrincipales.get(0));
     }
 
+    public void setImagePrincipale(List<Image> img) {
+        this.imagesPrincipales = img;
+    }
+
     public List<Image> getImages() {
         return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
     @Override
