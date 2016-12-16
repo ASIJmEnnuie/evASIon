@@ -126,25 +126,27 @@ var FRIP_FormConnexion = React.createClass({
         "email": this.state.email,
         "mdp": this.state.password,
       };
-      // TODO A ENLEVER
-     // console.log(values);
-     console.log("dans la connexion : " + this.props.stompClient);
-      if (this.props.stompClient === null) {
-        console.log("truc");
-        this.props.serverConnexion();
-      }
+
+      //TODO Remplacer l'url par la bonne
       if (this.props.stompClient != null) {
-          console.log("machin");
-        var formValid = this.props.stompClient.send("/app/connexionUser", {}, JSON.stringify(values));
-    }
-      if (formValid!=0) {
-          console.log("test : " + formValid);
-        this.props.connexion();
+        this.props.stompClient.send("/topic/connexion", {}, JSON.stringify(values));
       }
-      else {
-        notDisplay("globalError");
-        display("globalConnexionError");
-      }
+
+      // TODO A ENLEVER
+      // console.log(values);
+
+      // if (this.props.stompClient === null)
+      //   this.props.serverConnexion();
+      // if (this.props.stompClient != null)
+      //   var formValid = this.props.stompClient.send("/topic/connexion", {}, JSON.stringify(values));
+      //   //formValid = 1;
+      // if (formValid!=0) {
+      //   this.props.connexion();
+      // }
+      // else {
+      //   notDisplay("globalError");
+      //   display("globalConnexionError");
+      // }
     }
 
   },
@@ -225,18 +227,23 @@ var FRIP_FormInscription = React.createClass({
         "genre": this.state.gender,
         "dateNaissance": this.state.birthday,
       };
-      // TODO A ENLEVER
-      console.log(values);
-      if (this.props.stompClient === null)
-        this.props.serverConnexion();
-      if (this.props.stompClient != null)
-        var formValid = this.props.stompClient.send("/app/ajoutCompte", {}, JSON.stringify(values));
-      if (formValid==1) {
-        this.props.connexion();
-      } else {
-        notDisplay("globalError");
-        display("globalInscriptionError");
+
+      //TODO Remplacer l'url par la bonne
+      if (this.props.stompClient != null) {
+        this.props.stompClient.send("/topic/ajoutCompte", {}, JSON.stringify(values));
       }
+      // TODO A ENLEVER
+      // console.log(values);
+      // if (this.props.stompClient === null)
+      //   this.props.serverConnexion();
+      // if (this.props.stompClient != null)
+      //   var formValid = this.props.stompClient.send("/topic/userCreation", {}, JSON.stringify(values));
+      // if (formValid==1) {
+      //   this.props.connexion();
+      // } else {
+      //   notDisplay("globalError");
+      //   display("globalInscriptionError");
+      // }
     }
   },
 

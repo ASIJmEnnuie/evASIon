@@ -21,47 +21,54 @@ const FRIP_Global = React.createClass({
     }
   },
 
-  serverConnexion: function() {
-    if (this.state.stompClient === null) {
-      this.setState(function(prevState, props) {
-          console.log("dans la function !!!!!!!!!");
-        let stompClient = Stomp.over(new SockJS(serverAddress));
+  componentDidMount: function() {
+    this.setState(function(prevState, props) {
+      let stompClient = Stomp.over(new SockJS(serverAddress));
+
+      stompClient.connect({}, (frame) => {
+        stompClient.subscribe('/topic/eventlistWithCriteria', (eventList) => {
+          // this.setState({
+          //   eventList: JSON.parse(eventList.body)
+          // });
+        });
 
         stompClient.connect({}, (frame) => {
           stompClient.subscribe('/topic/eventlist', (eventList) => {
-            this.setState({
-              eventList: JSON.parse(eventList.body)
-            });
-          });
-
-          stompClient.subscribe('/topic/listeActivites', (getAllActivities) => {
-            this.setState({
-              activityList: JSON.parse(getAllActivities.body)
-            });
-          });
-
-          // TODO: assurer ici la récupération des paramètres de connexion au serveur.
-          // Ceci est actuellement un exemple non representatif de l'état final mais aidant à la compréhension de la suite du code
-          stompClient.subscribe('/topic/connexion', (connexion) => {
-            this.setState({
-              userId: JSON.parse(connexion.body)
-            });
+            // this.setState({
+            //   eventList: JSON.parse(eventList.body)
+            // });
           });
         });
 
-        return {
-          stompClient: stompClient,
-        };
+        stompClient.subscribe('/topic/listeActivites', (getAllActivities) => {
+          this.setState({
+            activityList: JSON.parse(getAllActivities.body)
+          });
+        });
+
+        stompClient.subscribe('/topic/connexion', (connexion) => {
+          this.setState({
+            userId: JSON.parse(connexion.body),
+            container: "online",
+          });
+        });
+
+        stompClient.subscribe('/topic/userCreation', (connexion) => {
+          this.setState({
+            userId: JSON.parse(connexion.body),
+            container: "online",
+          });
+        });
       });
-    }
+
+      return {
+        stompClient: stompClient,
+      };
+    });
   },
 
   serverDeconnexion: function() {
     //TODO disconnect stompClient here
-  },
-
-  connexion: function() {
-    this.setState({container: "online"});
   },
 
   deconnexion: function() {
@@ -76,8 +83,6 @@ const FRIP_Global = React.createClass({
     let offlineContainer = (
       <FRIP_OfflineContainer
         data={dataOffline.offlineContainer}
-        connexion={this.connexion}
-        serverConnexion={this.serverConnexion}
         stompClient={this.state.stompClient}
       />
     );

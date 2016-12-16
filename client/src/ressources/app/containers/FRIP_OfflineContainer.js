@@ -36,8 +36,6 @@ var FRIP_OfflineContainer = React.createClass({
           <FRIP_HomeOfflinePage
             id={this.state.pageId}
             data={this.props.data}
-            connexion={this.props.connexion}
-            serverConnexion={this.props.serverConnexion}
             changePage={this.changePage}
             stompClient={this.props.stompClient}
           />);
@@ -47,8 +45,6 @@ var FRIP_OfflineContainer = React.createClass({
           <FRIP_InscriptionPage
             id={this.state.pageId}
             data={this.props.data}
-            connexion={this.props.connexion}
-            serverConnexion={this.props.serverConnexion}
             changePage={this.changePage}
             stompClient={this.props.stompClient}
           />);
@@ -58,8 +54,6 @@ var FRIP_OfflineContainer = React.createClass({
           <FRIP_HomeOfflinePage
             id={this.state.pageId}
             data={this.props.data}
-            connexion={this.props.connexion}
-            serverConnexion={this.props.serverConnexion}
             changePage={this.changePage}
             stompClient={this.props.stompClient}
           />);

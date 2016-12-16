@@ -181,9 +181,10 @@ const FRIP_EventSearchController = React.createClass({
   },
 
   sendSelectorsValues: function(values) {
-    console.log(values);
-    if (this.props.stompClient != null)
+    if (this.props.stompClient != null) {
+      //TODO Changer l'url
       this.props.stompClient.send("/topic/eventlistWithCriteria", {}, JSON.stringify(values));
+    }
   },
 
   render: function() {
@@ -272,7 +273,7 @@ const FRIP_ActivitySearchController = React.createClass({
 
 
 /*-------------------*/
-/* Morganes's part   */
+/* Morgane's  part   */
 /*-------------------*/
 
 const FRIP_SearchActivityLittleController = React.createClass({
