@@ -26,4 +26,3 @@ client/.node-gyp
 # Compilator
 client/.node-gyp
 client/.npm
-client/*.json
