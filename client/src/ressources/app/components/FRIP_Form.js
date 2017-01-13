@@ -129,7 +129,7 @@ var FRIP_FormConnexion = React.createClass({
 
       //TODO Remplacer l'url par la bonne
       if (this.props.stompClient != null) {
-        this.props.stompClient.send("/app/connexion", {}, JSON.stringify(values));
+        this.props.stompClient.send("/app/connexionUser", {}, JSON.stringify(values));
       }
 
       // TODO A ENLEVER
